@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>형용사 마스터 가이드 (v2.0 - 최종판)</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            line-height: 2.0; /* 가독성 향상을 위해 줄간격 추가 조정 */
+            margin: 0;
+            padding: 0;
+            background-color: #f7f8fc; /* 매우 밝고 부드러운 배경 */
+            color: #1a202c; /* 기본 텍스트 색상 (어두운 차콜) */
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px; /* 콘텐츠 폭 확장 */
+            margin: 45px auto;
+            background-color: #ffffff;
+            padding: 45px 60px; /* 패딩 증가 */
+            border-radius: 24px; /* 더 부드러운 곡선 */
+            box-shadow: 0 16px 45px rgba(0,0,0,0.09); /* 그림자 효과 강화 */
+            border: 1px solid #e2e8f0; /* 테두리 색상 조정 */
+        }
+        h1, h2, h3, h4, h5 {
+            color: #002d62; /* 깊고 신뢰감 있는 다크 블루 */
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+        h1 {
+            text-align: center;
+            color: #004d40; /* 차분하고 깊은 청록색 */
+            border-bottom: 5px solid #00796b; /* 하단선 두께 증가 */
+            padding-bottom: 28px;
+            margin-bottom: 60px;
+            font-size: 3em; /* 타이틀 크기 증가 */
+        }
+        h2 {
+            color: #005a9c; /* 선명한 파란색 */
+            margin-top: 70px; /* 섹션 간 간격 증가 */
+            border-left: 10px solid #0288d1; /* 밝은 파랑 */
+            padding-left: 25px;
+            font-size: 2.4em; /* h2 크기 증가 */
+            margin-bottom: 40px;
+        }
+        h3 {
+            color: #c2185b; /* 강렬한 마젠타 */
+            margin-top: 60px;
+            font-size: 2.0em; /* h3 크기 증가 */
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f48fb1; /* 연한 핑크 점선 */
+        }
+        h4 {
+            color: #512da8; /* 딥 퍼플 */
+            font-size: 1.7em; /* h4 크기 증가 */
+            margin-top: 40px;
+            font-weight: 600;
+        }
+        h5 {
+            color: #00796b; /* 틸 그린 */
+            font-size: 1.4em; /* h5 크기 증가 */
+            margin-top: 35px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 25px;
+            color: #2d3748; /* 차콜 그레이 */
+            font-size: 1.18em; /* 기본 폰트 크기 약간 증가 */
+        }
+        ul, ol {
+            list-style-position: outside;
+            padding-left: 35px; /* 들여쓰기 조정 */
+        }
+        ul li, ol li {
+            background-color: #f8fafc; /* 매우 연한 하늘색/회색 */
+            margin-bottom: 20px;
+            padding: 22px 28px; /* 패딩 증가 */
+            border-radius: 12px; /* 곡률 증가 */
+            border-left: 8px solid #6772e5; /* 스트라이프 인디고 */
+            transition: box-shadow 0.3s ease, transform 0.25s ease;
+        }
+        ul li:hover, ol li:hover {
+            box-shadow: 0 7px 20px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+        }
+        ul li strong, ol li strong {
+            color: #434190; /* 더 진한 인디고 */
+        }
+        code, .code-inline {
+            background-color: #f0f4f8; /* 연한 하늘색 배경 */
+            color: #1e3a8a; /* 진한 네이비 블루 텍스트 */
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-weight: 500;
+            font-size: 1.05em; /* 코드 폰트 크기 조정 */
+            border: 1px solid #d1d5db; /* 코드 블록 테두리 */
+        }
+        .example {
+            font-style: normal;
+            color: #334155; /* 슬레이트 그레이 */
+            margin-left: 0;
+            padding: 16px 24px; /* 패딩 증가 */
+            border-left: 6px solid #94a3b8; /* 밝은 슬레이트 테두리 */
+            margin-bottom: 22px;
+            background-color: #f1f5f9; /* 매우 연한 슬레이트 배경 */
+            border-radius: 10px;
+        }
+        .example-label {
+            font-weight: bold;
+            color: #1d4ed8; /* 강한 파랑 */
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .highlight {
+            background-color: #fef3c7; /* 연한 앰버 */
+            color: #78350f; /* 어두운 앰버 */
+            padding: 3px 7px;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .keyword {
+            color: #047857; /* 에메랄드 그린 (진하게) */
+            font-weight: bold;
+            border-bottom: 2px dotted #34d399; /* 밝은 에메랄드 점선 */
+        }
+        .definition-box, .intro-box, .summary-box {
+            background-color: #fffbeb; /* 매우 연한 노랑/오렌지 */
+            padding: 35px; /* 패딩 증가 */
+            border-left: 10px solid #f59e0b; /* 호박색 */
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+        .summary-box h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #fcd34d; /* 밝은 노랑 */
+            color: #b45309; /* 다크 오렌지/브라운 */
+        }
+        .key-concept-box {
+            background-color: #ecfdf5; /* 매우 연한 녹색 */
+            border: 2px dashed #34d399; /* 밝은 녹색 점선 */
+            padding: 30px; /* 패딩 증가 */
+            margin: 40px 0;
+            border-radius: 12px;
+        }
+        .key-concept-box h4 {
+            margin-top:0;
+            color: #065f46; /* 진한 녹색 */
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #d1d5db; /* 중간 회색 테두리 */
+            padding: 18px 24px; /* 셀 패딩 증가 */
+            text-align: left;
+            font-size: 1.1em;
+        }
+        .comparison-table th {
+            background-color: #1f2937; /* 매우 어두운 차콜 (거의 검정) */
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table td code {
+            font-size: 0.95em;
+            padding: 4px 8px;
+        }
+        .comparison-table tr:nth-child(even) td {
+            background-color: #f9fafb;
+        }
+        .comparison-table tr:hover td {
+            background-color: #f0f9ff; /* 호버 시 연한 하늘색 */
+        }
+        .note, .philosophical-link, .linguistic-insight, .corpus-info, .cultural-note, .tip-box, .cognitive-box, .derivation-box {
+            font-size: 1.1em; /* 폰트 크기 증가 */
+            color: #334155;
+            margin-top: 18px;
+            padding: 22px; /* 패딩 증가 */
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border-left: 7px solid #94a3b8; /* 중간 회색 */
+        }
+        .philosophical-link { background-color: #fffbeb; border-left-color: #fcd34d; }
+        .linguistic-insight { background-color: #eff6ff; border-left-color: #60a5fa; }
+        .cognitive-box { background-color: #f5f3ff; border-left-color: #8b5cf6; }
+        .derivation-box { background-color: #f0fdf4; border-left-color: #4ade80; }
+        .corpus-info { background-color: #fff1f2; border-left-color: #fb7185; } /* 연한 핑크 */
+        .cultural-note { background-color: #fff7ed; border-left-color: #fb923c; }
+        .tip-box { background-color: #ecfdf5; border-left-color: #34d399; }
+        .section-intro {
+            font-size: 1.25em; /* 폰트 크기 증가 */
+            color: #334155;
+            margin-bottom: 35px;
+            padding: 28px;
+            background-color: #f9fafb;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .practice-section {
+            background-color: #f0fdfa; /* 매우 연한 청록 */
+            padding: 40px;
+            border-radius: 16px;
+            margin-top: 50px;
+            border-left: 8px solid #2dd4bf; /* 청록 */
+        }
+        .practice-section h3 { color: #0f766e; /* 진한 청록 */ }
+        .practice-question {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #99f6e4; /* 연한 청록 점선 */
+        }
+        .practice-question:last-child { border-bottom: none; }
+        .practice-answer {
+            color: #064e3b; /* 매우 진한 청록 */
+            font-weight: bold;
+            margin-top: 12px;
+            padding: 12px;
+            background-color: #ccfbf1; /* 매우 연한 청록 */
+            border-radius: 8px;
+        }
+        .original-x { text-decoration: line-through; color: #dc2626; } /* 더 진한 빨강 */
+        .corrected-example { color: #059669; font-weight: bold; } /* 에메랄드 그린 */
+        .mermaid {
+            text-align: center;
+            margin: 40px auto; /* 가운데 정렬 */
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .container { width: 95%; padding: 25px 15px; }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 2.0em; }
+            h3 { font-size: 1.7em; }
+            p, ul li, ol li { font-size: 1.08em; }
+            .comparison-table th, .comparison-table td { padding: 12px 14px; font-size: 0.98em; }
+            .example { padding: 12px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span style="font-size: 1.2em;">🎨</span> 형용사 마스터 가이드 <small style="font-size:0.4em; color:#52525b;">(v2.0 - 최종판)</small> 🎨</h1>
+
+        <section id="intro-adjectives">
+            <h2>I. 형용사, 세계를 다채롭게 그리는 붓 🖌️</h2>
+            <p class="section-intro">
+                언어라는 팔레트 위에서 명사가 사물과 개념의 '형태'를 그린다면, <strong class="keyword">형용사</strong>는 그 형태에 '색채'와 '질감', 그리고 '감정'을 불어넣는 섬세한 붓과 같습니다. 형용사는 단순히 명사를 꾸미는 장식적 요소를 넘어, 우리가 세상을 얼마나 정교하고 풍부하게 인식하며, 그 인식을 타인과 어떻게 공유하는지를 결정짓는 핵심 도구입니다. '크다', '작다'와 같은 기본적인 묘사부터 '황홀하다', '처참하다'와 같은 복잡한 감정 표현까지, 형용사는 우리의 경험 세계에 깊이와 다채로움을 더합니다.
+            </p>
+            <p>
+                이 가이드에서는 형용사의 기본적인 문법적 용법(한정적, 서술적, 명사화)을 시작으로, 의미론적 분류, 어순의 비밀, 전치사와의 궁합, 그리고 접미사를 통한 능동/수동의 뉘앙스까지 심층적으로 탐구할 것입니다. 또한, 형용사의 인지언어학적 측면과 실제 코퍼스 데이터를 통해 그 사용 양상을 살펴보고, 한국적 맥락에서의 활용 팁과 다양한 연습 문제를 통해 형용사 마스터의 길로 안내할 것입니다. 형용사의 본질을 이해하고 그 활용법을 마스터함으로써, 여러분의 영어 표현력은 한층 더 섬세하고 강력해질 것입니다.
+            </p>
+        </section>
+
+        <section id="basic-uses">
+            <h2>II. 형용사의 기본 용법 분류: 문장 속 세 가지 얼굴</h2>
+            <p class="section-intro">형용사는 문장 내에서 크게 세 가지 주요한 역할을 수행합니다. 명사를 직접 꾸며주거나, 주어나 목적어를 설명하거나, 때로는 스스로 명사가 되기도 합니다. 이 세 가지 얼굴을 이해하는 것이 형용사 학습의 첫걸음입니다.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>구분</th>
+                        <th>설명</th>
+                        <th>예시</th>
+                        <th>문법적 특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">한정적 용법</span> (Attributive Use)</td>
+                        <td>명사를 <span class="highlight">앞 또는 뒤에서 직접 수식</span>하여 명사의 의미를 구체적으로 제한하거나 한정합니다. "어떤" 명사인지 꾸며주는 역할입니다.</td>
+                        <td>
+                            <p class="example"><span class="example-label">전치 수식:</span> a <strong class="highlight">responsible</strong> man (책임감 있는 남자)</p>
+                            <p class="example"><span class="example-label">후치 수식:</span> the man <strong class="highlight">responsible</strong> for the task (그 임무에 책임이 있는 남자)</p>
+                        </td>
+                        <td>
+                            <strong>전치 수식 (Premodification):</strong> 형용사가 명사 앞에 위치 (가장 일반적).<br>
+                            <strong>후치 수식 (Postmodification):</strong> 형용사(구)가 명사 뒤에 위치 (특정 조건 하).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">서술적 용법</span> (Predicative Use)</td>
+                        <td>주어나 목적어의 <span class="highlight">상태나 성질을 설명</span>하는 보어(주격 보어, 목적격 보어)로 사용됩니다. 주로 동사 뒤에 위치합니다.</td>
+                        <td>
+                            <p class="example"><span class="example-label">주격 보어:</span> The man <strong class="highlight">is responsible</strong> for the task.</p>
+                            <p class="example"><span class="example-label">목적격 보어:</span> I found the book <strong class="highlight">interesting</strong>.</p>
+                        </td>
+                        <td>
+                            주로 <code class="code-inline">be</code>, <code class="code-inline">become</code>, <code class="code-inline">seem</code>, <code class="code-inline">look</code>, <code class="code-inline">feel</code> 등 연결동사(linking verb) 또는 감각동사(sensory verb) 뒤에 위치하여 보어 역할을 수행합니다.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">명사화 용법</span> (Substantivized Use)</td>
+                        <td>형용사가 <span class="highlight">관사 <code class="code-inline">the</code>와 함께</span> 쓰여 명사처럼 사용됩니다. 특정 집단의 사람들 또는 추상적인 개념을 나타냅니다.</td>
+                        <td>
+                            <p class="example"><strong class="highlight">The rich</strong> should help <strong class="highlight">the poor</strong>. (부유한 사람들은 가난한 사람들을 도와야 한다.) - 복수 보통명사 취급</p>
+                            <p class="example">She studies <strong class="highlight">the unknown</strong>. (그녀는 미지의 것을 연구한다.) - 단수 추상명사 취급</p>
+                        </td>
+                        <td>
+                            <strong><code class="code-inline">the + 형용사</code>:</strong> '~한 사람들' (복수 취급), '~한 것' (단수 취급)의 의미. 문장 내에서 주어, 목적어, 보어 역할을 할 수 있습니다.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="attributive-deep-dive">
+            <h2>III. 한정적 용법 심층 탐구: 명사를 빛내는 자리 ✨</h2>
+            <p class="section-intro">형용사가 명사를 직접 꾸며주는 한정적 용법은 그 위치(명사 앞 또는 뒤)와 순서에 따라 미묘한 의미 차이를 만들어냅니다. 이 섹션에서는 전치 수식과 후치 수식의 조건, 그리고 여러 형용사가 함께 쓰일 때의 자연스러운 어순을 인지적 관점과 함께 자세히 살펴봅니다.</p>
+
+            <h3>1. 전치 수식 (Premodification): 명사 앞의 단짝</h3>
+            <p>대부분의 단일 형용사는 명사 바로 앞에서 명사를 수식합니다. 이는 가장 일반적이고 기본적인 형용사의 사용 방식입니다.</p>
+            <p class="example"><span class="example-label">기본:</span> a <strong class="keyword">diligent</strong> student, <strong class="keyword">delicious</strong> food, <strong class="keyword">sunny</strong> weather.</p>
+
+            <h4>형용사의 어순 (Order of Adjectives): 인지적 흐름과 객관성</h4>
+            <p>두 개 이상의 형용사가 하나의 명사를 수식할 때는 특정한 순서를 따르는 경향이 있습니다. 이 순서는 절대적인 규칙은 아니지만, 원어민들이 자연스럽게 느끼는 일반적인 패턴입니다. 이는 종종 <span class="highlight">화자의 주관적 판단에서 객관적 사실로, 일반적인 것에서 구체적인 것으로 나아가는 인지적 흐름</span>을 반영합니다.</p>
+            
+            <div class="mermaid">
+            graph LR
+                A[한정사<br>(a, the, my)] --> B(의견/관찰<br><span style="font-size:0.8em;">lovely, awful</span>)
+                B --> C(크기<br><span style="font-size:0.8em;">big, small</span>)
+                C --> D(모양/형태<br><span style="font-size:0.8em;">round, long</span>)
+                D --> E(나이/상태<br><span style="font-size:0.8em;">old, new</span>)
+                E --> F(색깔<br><span style="font-size:0.8em;">red, blue</span>)
+                F --> G(출신/기원<br><span style="font-size:0.8em;">Korean, solar</span>)
+                G --> H(재료<br><span style="font-size:0.8em;">wooden, silk</span>)
+                H --> I(목적/용도<br><span style="font-size:0.8em;">dining, sports</span>)
+                I --> J[<strong>명사</strong>]
+
+                classDef category fill:#e0e7ff,stroke:#6366f1,stroke-width:2px,color:#4338ca;
+                class A,B,C,D,E,F,G,H,I,J category;
+            </div>
+            <p class="note">위 다이어그램은 일반적인 형용사 어순의 흐름을 보여줍니다. 명사에 가까울수록 더 객관적이고 본질적인 속성을 나타내는 경향이 있습니다.</p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>순서</th>
+                        <th>카테고리 (Category)</th>
+                        <th>예시 형용사</th>
+                        <th>예시 구문</th>
+                        <th>인지적 설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>0</td>
+                        <td>한정사 (Determiner)</td>
+                        <td>a, the, my, some, two</td>
+                        <td><code class="code-inline">a</code> beautiful old Italian touring car</td>
+                        <td>수량이나 지시를 나타내며 가장 먼저 옴</td>
+                    </tr>
+                    <tr>
+                        <td>1</td>
+                        <td>의견/관찰 (Opinion/Observation)</td>
+                        <td>lovely, beautiful, horrible, difficult, <span style="color:purple;">wonderful</span></td>
+                        <td>a <code class="code-inline">wonderful</code> old Italian touring car</td>
+                        <td>가장 주관적인 판단/느낌</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>크기 (Size)</td>
+                        <td>large, small, tiny, enormous, tall, <span style="color:purple;">huge</span></td>
+                        <td>a wonderful <code class="code-inline">huge</code> old Italian car</td>
+                        <td>비교적 객관적인 물리적 크기</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>모양/형태 (Shape/Form)</td>
+                        <td>round, square, long, thin, <span style="color:purple;">rectangular</span></td>
+                        <td>a huge <code class="code-inline">rectangular</code> wooden table</td>
+                        <td>구체적인 물리적 모양</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>나이/상태 (Age/Condition)</td>
+                        <td>old, new, young, ancient, broken, <span style="color:purple;">modern</span></td>
+                        <td>a wonderful huge modern <code class="code-inline">Italian</code> car</td>
+                        <td>시간적 속성이나 현재 상태</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>색깔 (Color)</td>
+                        <td>red, blue, green, dark, pale, <span style="color:purple;">crimson</span></td>
+                        <td>a modern <code class="code-inline">crimson</code> silk tie</td>
+                        <td>시각적 속성</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>출신/기원 (Origin)</td>
+                        <td>Italian, Korean, American, solar, <span style="color:purple;">Victorian</span></td>
+                        <td>a huge modern Victorian <code class="code-inline">touring</span> car</td>
+                        <td>국적, 지역, 시대, 유래</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>재료 (Material)</td>
+                        <td>wooden, metal, cotton, silk, <span style="color:purple;">plastic</span></td>
+                        <td>a rectangular wooden <code class="code-inline">dining</code> table</td>
+                        <td>구성 물질 (명사와 가장 밀접한 속성 중 하나)</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>목적/용도 (Purpose/Qualifier)</td>
+                        <td>dining, touring, sleeping, sports, <span style="color:purple;">racing</span></td>
+                        <td>a Victorian touring <code class="code-inline">car</code></td>
+                        <td>명사의 기능이나 용도 (종종 명사가 형용사처럼 쓰임, 명사와 가장 가까이 위치)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="tip-box"><strong>팁:</strong> 이 순서는 엄격한 문법 규칙이라기보다는 자연스러운 경향성입니다. 때로는 강조나 특정 문체적 효과를 위해 순서가 바뀌기도 합니다. 예를 들어, "a <span style="color:purple;">big bad</span> wolf"처럼 크기보다 부정적 의견이 먼저 오는 관용적 표현도 있습니다.</p>
+
+            <h3>2. 후치 수식 (Postmodification): 명사 뒤의 조력자</h3>
+            <p>형용사(구)가 명사 뒤에서 수식하는 경우는 특정 조건 하에서 발생하며, 문장에 더 많은 정보를 압축적으로 전달하거나 특정 뉘앙스를 부여합니다.</p>
+            <!-- 이전 HTML의 후치 수식 조건 표 내용 유지 및 예문 보강 -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>조건 유형</th>
+                        <th>설명</th>
+                        <th>예문 (일상/아카데믹/한국적 맥락 포함)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">형용사구가 길 때</span></td>
+                        <td>형용사가 단독이 아닌, <span class="highlight">전치사구, to부정사구, 분사구 등과 함께 긴 구</span>를 이룰 때 명사 뒤로 이동합니다. (정보의 무게 중심 원리)</td>
+                        <td>
+                            <p class="example"><span class="example-label">일상:</span> "The cat <strong class="highlight">sleeping on the sofa</strong> is very fluffy."</p>
+                            <p class="example"><span class="example-label">아카데믹:</span> "This is a problem <strong class="highlight">worthy of serious consideration</strong>."</p>
+                            <p class="example"><span class="example-label">한국적 맥락:</span> "김치찌개 <strong class="highlight">끓이는 냄새가 나는 집</strong> (the house <strong class="highlight">smelling of kimchi jjigae being cooked</strong>)은 항상 정겹다."</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">부정대명사 수식</span></td>
+                        <td><code class="code-inline">-thing</code>, <code class="code-inline">-one</code>, <code class="code-inline">-body</code>, <code class="code-inline">-where</code> 등으로 끝나는 <span class="highlight">부정대명사</span>를 수식할 때 형용사는 항상 뒤에 위치합니다.</td>
+                        <td>
+                            <p class="example"><span class="example-label">일상:</span> "I want to try something <strong class="highlight">new and exciting</strong>."</p>
+                            <p class="example"><span class="example-label">비즈니스:</span> "We need someone <strong class="highlight">reliable and experienced</strong> for this role."</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">일부 특정 형용사</span></td>
+                        <td><code class="code-inline">present</code> (참석한), <code class="code-inline">concerned</code> (관련된), <code class="code-inline">involved</code> (연루된), <code class="code-inline">elect</code> (당선된), <code class="code-inline">galore</code> (많은), <code class="code-inline">proper</code> (자체의, 고유의) 등. 이들은 명사 뒤에 올 때 특정 의미를 가집니다.</td>
+                        <td>
+                            <p class="example"><span class="example-label">회의:</span> "All members <strong class="highlight">present</strong> agreed to the proposal." (참석한 모든 회원)</p>
+                            <p class="example"><span class="example-label">선거:</span> "The president <strong class="highlight">elect</strong> is preparing for the transition." (대통령 당선인)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">관용적 표현</span></td>
+                        <td>일부 고정된 <span class="highlight">관용적 표현</span> (주로 프랑스어 등에서 유래)에서 형용사가 명사 뒤에 위치합니다.</td>
+                        <td>
+                            <p class="example">attorney <strong class="highlight">general</strong>, court <strong class="highlight">martial</strong>, body <strong class="highlight">politic</strong>, proof <strong class="highlight">positive</strong>, time <strong class="highlight">immemorial</strong></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="predicative-uses-advanced">
+            <h2>IV. 서술적 용법 상세: 주어와 목적어를 설명하다 (심화) 🖼️</h2>
+            <p class="section-intro">서술적 용법은 형용사가 문장 내에서 보어(주격 보어 또는 목적격 보어)로 사용되어 주어나 목적어의 상태, 성질, 특성을 설명하는 방식입니다. 이는 단순히 명사를 꾸미는 것을 넘어, 문장의 핵심적인 정보를 전달하는 역할을 합니다.</p>
+            <!-- 이전 HTML의 "III. 서술적 용법 상세" 표 내용과 "서술적 용법으로 주로 쓰이는 형용사 (A-형용사 등)" 표 내용을 여기에 통합 및 보강 -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>유형</th>
+                        <th>설명</th>
+                        <th>예시 (일상/아카데믹/한국적 맥락 포함)</th>
+                        <th>주요 동사</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">주격 보어</span> (Subject Complement)</td>
+                        <td>주어의 상태나 성질을 설명. <code class="code-inline">주어 + 동사 + 형용사(주격보어)</code>.</td>
+                        <td>
+                            <p class="example"><span class="example-label">일상:</span> "She <strong class="highlight">is incredibly talented</strong>."</p>
+                            <p class="example"><span class="example-label">감각:</span> "The coffee <strong class="highlight">smells wonderful</strong>."</p>
+                            <p class="example"><span class="example-label">상태변화:</span> "He <strong class="highlight">became quite famous</strong> after the movie."</p>
+                            <p class="example"><span class="example-label">아카데믹:</span> "The results <strong class="highlight">proved inconclusive</strong>." (그 결과는 결정적이지 않은 것으로 판명되었다.)</p>
+                            <p class="example"><span class="example-label">한국적 맥락:</span> "시험이 끝나니 마음이 <strong class="highlight">홀가분하다</strong>." (I feel <strong class="highlight">lighthearted / relieved</strong> now that the exam is over.)</p>
+                        </td>
+                        <td><code class="code-inline">be</code>, <code class="code-inline">become</code>, <code class="code-inline">get</code>, <code class="code-inline">grow</code>, <code class="code-inline">seem</code>, <code class="code-inline">appear</code>, <code class="code-inline">look</code>, <code class="code-inline">sound</code>, <code class="code-inline">smell</code>, <code class="code-inline">taste</code>, <code class="code-inline">feel</code>, <code class="code-inline">remain</code>, <code class="code-inline">stay</code>, <code class="code-inline">prove</code>, <code class="code-inline">turn out</code></td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">목적격 보어</span> (Object Complement)</td>
+                        <td>목적어의 상태나 성질을 설명. <code class="code-inline">주어 + 동사 + 목적어 + 형용사(목적격보어)</code>.</td>
+                        <td>
+                            <p class="example"><span class="example-label">일상:</span> "I find this music very <strong class="highlight">relaxing</strong>."</p>
+                            <p class="example"><span class="example-label">행동 유발:</span> "His rude comments made her <strong class="highlight">angry</strong>."</p>
+                            <p class="example"><span class="example-label">상태 유지:</span> "Please keep the door <strong class="highlight">closed</strong>."</p>
+                            <p class="example"><span class="example-label">아카데믹/비즈니스:</span> "The committee considered the proposal <strong class="highlight">unacceptable</strong>." (위원회는 그 제안을 받아들일 수 없다고 여겼다.)</p>
+                        </td>
+                        <td><code class="code-inline">make</code>, <code class="code-inline">find</code>, <code class="code-inline">keep</code>, <code class="code-inline">consider</code>, <code class="code-inline">believe</code>, <code class="code-inline">think</code>, <code class="code-inline">call</code>, <code class="code-inline">name</code>, <code class="code-inline">appoint</code>, <code class="code-inline">elect</code>, <code class="code-inline">leave</code>, <code class="code-inline">paint</code>, <code class="code-inline">drive (someone crazy)</code></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>서술적 용법으로 주로/만 쓰이는 형용사 (Predicative-only Adjectives)</h4>
+            <p>일부 형용사들은 그 의미나 구조상 명사 앞에서 직접 수식하는 한정적 용법으로는 거의 쓰이지 않거나 전혀 쓰이지 않고, 주로 서술적 용법으로만 사용됩니다. 이들은 종종 주체의 일시적인 상태, 감정, 또는 관계를 나타냅니다.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>형용사</th>
+                        <th>서술적 용법 예시 (O)</th>
+                        <th>한정적 용법 예시 (X 또는 매우 어색/다른 의미)</th>
+                        <th>한정적 용법 시 대체 표현</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code class="code-inline">afraid</code></td>
+                        <td>The child is <strong class="highlight">afraid</strong> of the dark.</td>
+                        <td><span class="original-x">*an afraid child</span></td>
+                        <td>a <strong class="corrected-example">frightened/scared</strong> child</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">asleep</code></td>
+                        <td>The cat is <strong class="highlight">asleep</strong>.</td>
+                        <td><span class="original-x">*an asleep cat</span></td>
+                        <td>a <strong class="corrected-example">sleeping</strong> cat</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">alive</code></td>
+                        <td>Is the patient still <strong class="highlight">alive</strong>?</td>
+                        <td><span class="original-x">*an alive person</span> (매우 어색)</td>
+                        <td>a <strong class="corrected-example">living</strong> person / a <strong class="corrected-example">live</strong> animal (live는 가능)</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">alone</code></td>
+                        <td>She prefers to be <strong class="highlight">alone</strong>.</td>
+                        <td><span class="original-x">*an alone traveler</span></td>
+                        <td>a <strong class="corrected-example">lone</strong> traveler / a traveler who is <strong class="corrected-example">alone</strong></td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">aware</code></td>
+                        <td>He was not <strong class="highlight">aware</strong> of the changes.</td>
+                        <td><span class="original-x">?an aware student</span> (가능은 하나 흔치 않음)</td>
+                        <td>an <strong class="corrected-example">attentive/conscious</strong> student</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">ashamed</code></td>
+                        <td>They felt <strong class="highlight">ashamed</strong> of their actions.</td>
+                        <td><span class="original-x">*an ashamed look</span></td>
+                        <td>a <strong class="corrected-example">shamefaced/guilty</strong> look</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">content</code></td>
+                        <td>He seems <strong class="highlight">content</strong> with his life.</td>
+                        <td><span class="original-x">?a content smile</span> (가능은 하나, '내용물'의 content와 혼동 가능)</td>
+                        <td>a <strong class="corrected-example">satisfied/pleased</strong> smile</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">unable</code></td>
+                        <td>I am <strong class="highlight">unable</strong> to help you.</td>
+                        <td><span class="original-x">*an unable person</span></td>
+                        <td>a person <strong class="corrected-example">who is unable</strong>... / a <strong class="corrected-example">disabled</strong> person (다른 의미)</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">well</code> (건강한)</td>
+                        <td>She is not feeling <strong class="highlight">well</strong> today.</td>
+                        <td><span class="original-x">*a well patient</span> (X, 부사 well은 가능: a well-behaved child)</td>
+                        <td>a <strong class="corrected-example">healthy</strong> patient</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">worth</code> (+ 명사/동명사)</td>
+                        <td>This museum is <strong class="highlight">worth</strong> a visit. / The book is <strong class="highlight">worth</strong> reading.</td>
+                        <td><span class="original-x">*a worth book</span></td>
+                        <td>a <strong class="corrected-example">worthwhile/valuable</strong> book</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">fond (of)</code></td>
+                        <td>She is very <strong class="highlight">fond of</strong> her grandchildren.</td>
+                        <td><span class="original-x">*a fond grandmother</span> (X, '애정 어린' 의미의 fond는 가능: a fond farewell)</td>
+                        <td>a grandmother who is <strong class="corrected-example">fond of</strong>...</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">glad</code></td>
+                        <td>I am <strong class="highlight">glad</strong> to see you.</td>
+                        <td><span class="original-x">*a glad tiding</span> (X, 고어체에서는 가능했으나 현대 영어에서는 어색)</td>
+                        <td><strong class="corrected-example">good/welcome</strong> news (tidings)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="tip-box">이러한 형용사들은 종종 전치사구나 to부정사, that절 등을 동반하여 완전한 의미를 이루기 때문에, 명사 앞에 단독으로 오기보다는 서술적인 위치에서 그 보충어구와 함께 사용되는 것이 자연스럽습니다.</p>
+        </section>
+
+        <section id="substantivized-adjectives-advanced">
+            <h2>V. 명사화된 형용사: <code class="code-inline">The + 형용사</code>의 마법 (심화) 🧑‍🤝‍🧑</h2>
+            <p class="section-intro"><code class="code-inline">the + 형용사</code> 형태는 문맥에 따라 특정 집단의 사람들이나 추상적인 개념을 나타내는 명사구로 기능하며, 문장에 간결함과 함축미를 더합니다. 이 용법은 사회적, 철학적 논의에서 자주 등장합니다.</p>
+            <!-- 기존 HTML의 "IV. 명사화된 형용사 (The + 형용사)" 표 내용 여기에 통합 및 보강 -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>유형</th>
+                        <th>설명</th>
+                        <th>예시 (일상/아카데믹/한국적 맥락 포함)</th>
+                        <th>문법적 특징</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">집단 개념 (복수)</span></td>
+                        <td>특정 성질을 가진 <span class="highlight">사람들 전체</span>를 지칭. 항상 <span class="highlight">복수 동사</span> 사용.</td>
+                        <td>
+                            <p class="example"><span class="example-label">사회적 약자:</span> "<strong class="highlight">The poor and the marginalized</strong> often face systemic discrimination." (가난한 이들과 소외된 이들은 종종 제도적 차별에 직면한다.)</p>
+                            <p class="example"><span class="example-label">국민/민족:</span> "<strong class="highlight">The French</strong> are known for their cuisine, while <strong class="highlight">the Japanese</strong> are renowned for their precision." (프랑스인들은 요리로, 일본인들은 정교함으로 유명하다.)</p>
+                            <p class="example"><span class="example-label">한국적 맥락:</span> "MZ세대는 <strong class="highlight">the young</strong>에 해당하며, <strong class="highlight">the old</strong>와는 다른 가치관을 가질 수 있다." (The MZ generation corresponds to <strong class="highlight">the young</strong> and may have different values from <strong class="highlight">the old</strong>.)</p>
+                        </td>
+                        <td><code class="code-inline">the rich</code>, <code class="code-inline">the poor</code>, <code class="code-inline">the young</code>, <code class="code-inline">the old</code>, <code class="code-inline">the sick</code>, <code class="code-inline">the disabled</code>, <code class="code-inline">the unemployed</code>, <code class="code-inline">the homeless</code>, <code class="code-inline">the brave</code>, <code class="code-inline">the wise</code>.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">추상 개념 (단수)</span></td>
+                        <td>형용사가 나타내는 <span class="highlight">추상적인 속성이나 개념 자체</span>를 지칭. 일반적으로 <span class="highlight">단수 동사</span> 사용.</td>
+                        <td>
+                            <p class="example"><span class="example-label">철학/예술:</span> "Philosophers often contemplate <strong class="highlight">the good, the true, and the beautiful</strong>." (철학자들은 종종 선, 진리, 그리고 아름다움을 숙고한다.)</p>
+                            <p class="example"><span class="example-label">모험/탐험:</span> "Explorers are drawn to <strong class="highlight">the unknown and the mysterious</strong>." (탐험가들은 미지의 것과 신비로운 것에 끌린다.)</p>
+                            <p class="example"><span class="example-label">아카데믹:</span> "The study of <strong class="highlight">the sublime</strong> in art history reveals changing aesthetic values." (미술사에서 숭고함에 대한 연구는 변화하는 미적 가치를 드러낸다.)</p>
+                        </td>
+                        <td><code class="code-inline">the good</code> (선), <code class="code-inline">the evil</code> (악), <code class="code-inline">the beautiful</code> (미), <code class="code-inline">the sublime</code> (숭고함), <code class="code-inline">the impossible</code> (불가능한 것), <code class="code-inline">the supernatural</code> (초자연적인 것).</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="semantic-expansion-advanced">
+            <h2>VI. 형용사의 의미론적 확장과 관계 🔗 (심화)</h2>
+            <p class="section-intro">형용사는 단순히 사물의 특징을 묘사하는 것을 넘어, 다양한 의미론적 기능을 수행하며 다른 단어들과 긴밀한 관계를 맺습니다. 이 섹션에서는 형용사의 의미론적 분류, 전치사와의 결합, 그리고 접미사를 통한 의미 확장을 더욱 깊이 있게 살펴봅니다.</p>
+
+            <h3>1. 의미론적 관점에서의 형용사 분류 (재검토 및 예시 강화)</h3>
+            <!-- 이전 HTML의 "VI. 1. 의미론적 관점에서의 형용사 분류" 표 내용 유지 및 예시 보강 -->
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>분류</th>
+                        <th>설명</th>
+                        <th>예시 형용사</th>
+                        <th>특징 및 추가 예문</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">기술 형용사</span> (Descriptive/Qualitative)</td>
+                        <td>사물이나 사람의 성질, 상태, 특징, 품질을 직접 묘사.</td>
+                        <td><code class="code-inline">beautiful</code>, <code class="code-inline">large</code>, <code class="code-inline">red</code>, <code class="code-inline">happy</code>, <code class="code-inline">intelligent</code>, <code class="code-inline">delicious</code>, <code class="code-inline">soft</code>, <code class="code-inline">loud</code></td>
+                        <td>정도 부사(very, extremely) 수식 가능, 비교급/최상급 가능.
+                            <p class="example">"The lecture was <span style="color:blue;">extremely informative</span>."</p>
+                            <p class="example">"This fabric feels <span style="color:blue;">incredibly soft</span>."</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">분류 형용사</span> (Classifying/Categorical/Denominal)</td>
+                        <td>명사를 특정 범주, 종류, 유형으로 분류. '어떤 종류의'에 해당. 종종 명사에서 파생 (Denominal Adjectives).</td>
+                        <td><code class="code-inline">medical</code> (의학의), <code class="code-inline">political</code> (정치의), <code class="code-inline">solar</code> (태양의), <code class="code-inline">digital</code> (디지털의), <code class="code-inline">annual</code> (매년의), <code class="code-inline">Korean</code> (한국의), <code class="code-inline">wooden</code> (나무로 된)</td>
+                        <td>일반적으로 비교급/최상급 불가, 정도 부사 수식 어색. (예: <span class="original-x">*a very solar panel</span>, <span class="original-x">*more wooden than that</span>). 이들은 명사의 본질적 분류를 나타냄.
+                            <p class="example">"She is studying <span style="color:blue;">Korean</span> literature."</p>
+                            <p class="example">"The <span style="color:blue;">annual</span> report will be published next month."</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">관계 형용사</span> (Relational)</td>
+                        <td>명사에서 파생되어 그 명사와의 관계('...에 관련된', '...의')를 나타냄. 분류 형용사와 기능적으로 유사.</td>
+                        <td><code class="code-inline">atomic</code> (원자의), <code class="code-inline">national</code> (국가의), <code class="code-inline">historical</code> (역사적인), <code class="code-inline">parental</code> (부모의), <code class="code-inline">industrial</code> (산업의)</td>
+                        <td>분류 형용사와 유사한 문법적 특징. 명사의 의미 영역을 한정.
+                            <p class="example">"The museum houses many <span style="color:blue;">historical</span> artifacts."</p>
+                            <p class="example">"<span style="color:blue;">Parental</span> consent is required for minors."</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">강조 형용사</span> (Intensifying/Emphasizing)</td>
+                        <td>명사의 의미를 강조. 주로 한정적 용법으로 쓰임.</td>
+                        <td><code class="code-inline">utter</code> (완전한), <code class="code-inline">mere</code> (단지), <code class="code-inline">sheer</code> (순전한), <code class="code-inline">absolute</code> (절대적인), <code class="code-inline">complete</code> (완전한), <code class="code-inline">pure</code> (순수한)</td>
+                        <td>서술적으로 쓰이기 어렵거나 의미가 달라짐. 종종 특정 명사와 강한 연어 관계를 형성.
+                            <p class="example">"It was <span style="color:blue;">sheer</span> luck that he survived." (그가 살아남은 것은 순전한 운이었다.)</p>
+                            <p class="example">"Her explanation was <span style="color:blue;">utter</span> nonsense." (그녀의 설명은 완전한 헛소리였다.)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. 형용사와 전치사의 결합 (Adjective + Preposition Collocations) - (예시 확장)</h3>
+            <!-- 이전 HTML의 "VI. 2. 형용사와 전치사의 결합" 표 내용 유지 및 예시 대폭 확장 -->
+            <p>많은 형용사들은 특정 전치사와 함께 쓰여 고유한 의미 단위를 형성합니다. 이러한 조합을 익히는 것은 자연스러운 영어 구사에 필수적입니다.</p>
+            <div class="tip-box">
+                <p><strong>학습 팁:</strong> 형용사와 전치사 조합은 단순히 암기하기보다는, <span class="highlight">의미 덩어리(chunk)로 함께 기억</span>하고, 다양한 예문을 통해 그 쓰임새를 익히는 것이 효과적입니다. 전치사는 종종 형용사가 나타내는 감정, 관계, 상태의 '방향'이나 '대상'을 지정해줍니다.</p>
+            </div>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>형용사 + 전치사</th>
+                        <th>의미</th>
+                        <th>일상 예문</th>
+                        <th>아카데믹/비즈니스 예문</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><code class="code-inline">accustomed to</code></td><td>~에 익숙한</td><td>"I am not <span style="color:green;">accustomed to</span> such cold weather."</td><td>"The staff quickly became <span style="color:green;">accustomed to</span> the new software."</td></tr>
+                    <tr><td><code class="code-inline">afraid of</code></td><td>~을 두려워하는</td><td>"Many children are <span style="color:green;">afraid of</span> the dark."</td><td>"Investors are often <span style="color:green;">afraid of</span> market volatility."</td></tr>
+                    <tr><td><code class="code-inline">angry at/with (someone) for/about (something)</code></td><td>(누구에게) (무엇 때문에) 화난</td><td>"She was <span style="color:green;">angry with</span> him <span style="color:green;">for</span> being late."</td><td>"The public was <span style="color:green;">angry at</span> the government's decision <span style="color:green;">about</span> the tax increase."</td></tr>
+                    <tr><td><code class="code-inline">anxious about (something) / for (someone)</code></td><td>~에 대해 걱정하는 / ~를 위해 염려하는</td><td>"I'm <span style="color:green;">anxious about</span> my exam results."</td><td>"The company is <span style="color:green;">anxious for</span> news on the merger."</td></tr>
+                    <tr><td><code class="code-inline">aware of</code></td><td>~을 알고 있는, 인지하는</td><td>"Are you <span style="color:green;">aware of</span> the potential dangers?"</td><td>"It is important to be <span style="color:green;">aware of</span> cultural differences in international business."</td></tr>
+                    <tr><td><code class="code-inline">capable of</code></td><td>~을 할 수 있는</td><td>"He is <span style="color:green;">capable of</span> running a marathon."</td><td>"The system is <span style="color:green;">capable of</span> processing vast amounts of data."</td></tr>
+                    <tr><td><code class="code-inline">different from/to/than</code></td><td>~와 다른</td><td>"My opinion is <span style="color:green;">different from</span> yours."</td><td>"This approach is significantly <span style="color:green;">different than</span> previous methods."</td></tr>
+                    <tr><td><code class="code-inline">fond of</code></td><td>~을 좋아하는</td><td>"She is very <span style="color:green;">fond of</span> her grandchildren."</td><td>(주로 비격식적 상황에서 사용)</td></tr>
+                    <tr><td><code class="code-inline">full of</code></td><td>~로 가득 찬</td><td>"The basket was <span style="color:green;">full of</span> apples."</td><td>"The report is <span style="color:green;">full of</span> useful information and insightful analysis."</td></tr>
+                    <tr><td><code class="code-inline">good at (skill/activity) / for (health/purpose) / to (person)</code></td><td>~을 잘하는 / ~에 좋은 / ~에게 친절한</td><td>"He is very <span style="color:green;">good at</span> playing the piano." / "Exercise is <span style="color:green;">good for</span> your health." / "She was very <span style="color:green;">good to</span> me."</td><td>"The team is <span style="color:green;">good at</span> strategic planning." / "This policy is <span style="color:green;">good for</span> the company's long-term growth."</td></tr>
+                    <tr><td><code class="code-inline">interested in</code></td><td>~에 관심 있는</td><td>"I'm <span style="color:green;">interested in</span> learning a new language."</td><td>"The study is <span style="color:green;">interested in</span> the long-term effects of the new drug."</td></tr>
+                    <tr><td><code class="code-inline">jealous of</code></td><td>~을 질투하는</td><td>"He was <span style="color:green;">jealous of</span> his brother's success."</td><td>(주로 개인적 감정 표현에 사용)</td></tr>
+                    <tr><td><code class="code-inline">keen on</code></td><td>~을 아주 좋아하는, 열중하는</td><td>"My son is <span style="color:green;">keen on</span> collecting stamps."</td><td>"The investors are <span style="color:green;">keen on</span> projects with high growth potential."</td></tr>
+                    <tr><td><code class="code-inline">proud of</code></td><td>~을 자랑스러워하는</td><td>"She is very <span style="color:green;">proud of</span> her achievements."</td><td>"The company is <span style="color:green;">proud of</span> its commitment to sustainability."</td></tr>
+                    <tr><td><code class="code-inline">responsible for</code></td><td>~에 책임이 있는</td><td>"You are <span style="color:green;">responsible for</span> your own actions."</td><td>"The project manager is <span style="color:green;">responsible for</span> ensuring timely completion."</td></tr>
+                    <tr><td><code class="code-inline">satisfied with</code></td><td>~에 만족하는</td><td>"Are you <span style="color:green;">satisfied with</span> the results?"</td><td>"Clientele are generally <span style="color:green;">satisfied with</span> the quality of our services."</td></tr>
+                    <tr><td><code class="code-inline">similar to</code></td><td>~와 비슷한</td><td>"Her new car is <span style="color:green;">similar to</span> mine."</td><td>"The findings of this study are <span style="color:green;">similar to</span> those reported in previous literature."</td></tr>
+                    <tr><td><code class="code-inline">sorry about (something done) / for (someone/something affected)</code></td><td>~에 대해 미안한 / ~에게/대해 유감스러운</td><td>"I'm <span style="color:green;">sorry about</span> the mess." / "I feel <span style="color:green;">sorry for</span> him."</td><td>"We are <span style="color:green;">sorry for</span> any inconvenience this may have caused."</td></tr>
+                    <tr><td><code class="code-inline">tired of</code></td><td>~에 싫증 난, 지긋지긋한</td><td>"I'm <span style="color:green;">tired of</span> listening to his complaints."</td><td>(주로 비격식적 상황에서 사용)</td></tr>
+                    <!-- 더 많은 예시 추가 -->
+                </tbody>
+            </table>
+
+            <h3>3. 형용사의 파생과 확장: 접미사와 의미적 경향성 (능동 vs. 수동) - (심화)</h3>
+            <p>많은 형용사들은 다른 품사(주로 명사나 동사)에 접미사가 붙어 만들어집니다. 일부 접미사는 형용사에 <span class="highlight">능동적이거나 수동적인 의미적 경향성</span>, 또는 <span class="highlight">가능성, 성향, 특징</span> 등을 부여합니다. 이를 이해하면 어휘 확장과 의미 파악에 큰 도움이 됩니다. (분사 형용사 <code class="code-inline">-ing</code>/ <code class="code-inline">-ed</code>는 동사의 성질을 강하게 유지하며 능동/수동을 명확히 나타내지만, 여기서는 그 외 주요 접미사에 초점을 맞춥니다.)</p>
+            <div class="derivation-box">
+                <h4>주요 형용사 파생 접미사와 의미적 경향성</h4>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>접미사</th>
+                            <th>의미적 경향성/주요 의미</th>
+                            <th>설명 및 대표 형용사 예시 (일상/아카데믹/한국적 맥락)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code class="code-inline">-able</code> / <code class="code-inline">-ible</code></td>
+                            <td>수동적 가능성 ("~될 수 있는", "~할 수 있는", "~받을 만한")</td>
+                            <td>주체가 어떤 작용을 당하거나, 어떤 작용이 가능함을 나타냅니다. "be + 과거분사"와 유사한 의미를 내포할 때가 많습니다.
+                                <p class="example"><code class="code-inline">readable</code>: "This novel is highly <span style="color:purple;">readable</span>, even for beginners." (쉽게 읽힐 수 있는)</p>
+                                <p class="example"><code class="code-inline">flexible</code>: "We need a <span style="color:purple;">flexible</span> approach to solve this complex problem." (유연하게 적용될 수 있는)</p>
+                                <p class="example"><code class="code-inline">visible</code>: "The effects of climate change are becoming increasingly <span style="color:purple;">visible</span>." (눈에 보이게 되는)</p>
+                                <p class="example"><span class="example-label">한국적 맥락:</span> "이 앱은 사용자 설정이 <span style="color:purple;">customizable</span>해서 편리하다." (This app is convenient because its user settings are <span style="color:purple;">customizable</span>.)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-ive</code></td>
+                            <td>능동적 경향/성질 ("~하는 경향이 있는", "~적인", "~을 유발하는")</td>
+                            <td>주체가 적극적으로 어떤 작용을 하거나 그런 성향/능력을 보임을 나타냅니다.
+                                <p class="example"><code class="code-inline">active</code>: "She maintains an <span style="color:green;">active</span> social life despite her busy schedule." (활동적인 사회생활을 하는)</p>
+                                <p class="example"><code class="code-inline">creative</code>: "The marketing team came up with a very <span style="color:green;">creative</span> campaign." (창의적인 캠페인 - 창조하는 능력이 있는)</p>
+                                <p class="example"><code class="code-inline">persuasive</code>: "His arguments were so <span style="color:green;">persuasive</span> that everyone agreed." (설득력 있는 - 설득하는 힘이 있는)</p>
+                                <p class="example"><span class="example-label">아카데믹:</span> "The study adopted a <span style="color:green;">quantitative</span> approach to data analysis." (데이터 분석에 양적인 접근법을 채택한)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-ful</code></td>
+                            <td>~로 가득 찬, ~을 많이 가진, ~을 주는/일으키는 (때로 능동적)</td>
+                            <td>어떤 특성이나 감정으로 가득 차 있거나, 그것을 유발하는 의미를 가집니다.
+                                <p class="example"><code class="code-inline">beautiful</code>: "The view from the mountaintop was truly <span style="color:green;">beautiful</span>." (아름다움을 주는)</p>
+                                <p class="example"><code class="code-inline">hopeful</code>: "Despite the challenges, they remained <span style="color:green;">hopeful</span> about the future." (희망으로 가득 찬)</p>
+                                <p class="example"><code class="code-inline">stressful</code>: "Preparing for the <span style="color:green;">수능 (CSAT)</span> can be a very <span style="color:green;">stressful</span> period for students." (스트레스를 유발하는)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-less</code></td>
+                            <td>~이 없는 (결여)</td>
+                            <td>어떤 특성이나 사물이 없음을 나타냅니다.
+                                <p class="example"><code class="code-inline">homeless</code>: "The city is trying to provide more shelters for <span style="color:purple;">homeless</span> individuals." (집이 없는)</p>
+                                <p class="example"><code class="code-inline">careless</code>: "A <span style="color:purple;">careless</span> mistake in the calculation led to an incorrect result." (부주의한 - 주의가 없는)</p>
+                                <p class="example"><code class="code-inline">endless</code>: "The possibilities seem <span style="color:purple;">endless</span>." (끝이 없는)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-ous</code> / <code class="code-inline">-ious</code> / <code class="code-inline">-eous</code></td>
+                            <td>~의 성질을 가진, ~이 풍부한, ~하는 경향이 있는</td>
+                            <td>특정 성질을 많이 가지고 있거나 그런 경향을 보임을 나타냅니다.
+                                <p class="example"><code class="code-inline">dangerous</code>: "It's <span style="color:green;">dangerous</span> to swim in this river due to strong currents." (위험한 성질을 가진)</p>
+                                <p class="example"><code class="code-inline">famous</code>: "Seoul is <span style="color:green;">famous</span> for its vibrant nightlife and delicious food." (명성이 풍부한)</p>
+                                <p class="example"><code class="code-inline">anxious</code>: "He felt <span style="color:green;">anxious</span> about the upcoming presentation." (불안해하는 경향이 있는)</p>
+                                <p class="example"><span class="example-label">아카데믹:</span> "The experiment yielded <span style="color:green;">anomalous</span> results that require further investigation." (변칙적인 결과를 낳은)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-al</code> / <code class="code-inline">-ial</code> / <code class="code-inline">-ical</code></td>
+                            <td>~에 관련된, ~의 성질을 가진, ~적인 (주로 관계/분류)</td>
+                            <td>명사와의 관계나 특정 분야의 성질을 나타냅니다.
+                                <p class="example"><code class="code-inline">national</code>: "<span style="color:green;">National</span> identity is a complex concept." (국가의)</p>
+                                <p class="example"><code class="code-inline">historical</code>: "The novel is set against a rich <span style="color:green;">historical</span> backdrop." (역사적인)</p>
+                                <p class="example"><code class="code-inline">logical</code>: "Her argument was clear and <span style="color:green;">logical</span>." (논리적인)</p>
+                                <p class="example"><span class="example-label">비즈니스:</span> "A <span style="color:green;">financial</span> advisor can help you manage your investments." (재정의)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-ic</code></td>
+                            <td>~의, ~적인, ~과 관련된 (특성, 분야)</td>
+                            <td>특정 분야, 예술, 과학 또는 특정 성질과 관련됨을 나타냅니다.
+                                <p class="example"><code class="code-inline">economic</code>: "The government announced new <span style="color:green;">economic</span> policies." (경제의)</p>
+                                <p class="example"><code class="code-inline">historic</code>: "The signing of the treaty was a <span style="color:green;">historic</span> event." (역사적으로 중요한)</p>
+                                <p class="example"><code class="code-inline">energetic</code>: "The children were very <span style="color:green;">energetic</span> after their nap." (활기찬)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-ant</code> / <code class="code-inline">-ent</code></td>
+                            <td>~하는, ~의 성질을 가진, ~하는 사람/것 (때로 능동적)</td>
+                            <td>어떤 작용을 하거나 특정 상태, 성질을 나타냅니다. 명사로도 쓰이는 경우가 많습니다.
+                                <p class="example"><code class="code-inline">important</code>: "Regular exercise is <span style="color:green;">important</span> for good health." (중요한)</p>
+                                <p class="example"><code class="code-inline">different</code>: "People have <span style="color:green;">different</span> ways of learning." (다른)</p>
+                                <p class="example"><code class="code-inline">resistant</code>: "This new material is highly <span style="color:green;">resistant</span> to wear and tear." (마모에 강하게 저항하는 - 능동적 성질)</p>
+                                <p class="example"><span class="example-label">아카데믹:</span> "The study identified <span style="color:green;">significant</span> differences between the two groups." (상당한, 중요한)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><code class="code-inline">-y</code></td>
+                            <td>~의 성질을 가진, ~이 많은, ~하기 쉬운</td>
+                            <td>어떤 특성으로 덮여 있거나, 그런 경향이 있음을 나타냅니다.
+                                <p class="example"><code class="code-inline">sunny</code>: "It's a <span style="color:green;">sunny</span> day, perfect for a picnic." (햇볕이 많은)</p>
+                                <p class="example"><code class="code-inline">sleepy</code>: "I feel <span style="color:green;">sleepy</span> after lunch." (잠이 오기 쉬운)</p>
+                                <p class="example"><code class="code-inline">healthy</code>: "Eating <span style="color:green;">healthy</span> food is essential." (건강한 성질의)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="note"><strong>주의:</strong> 이러한 경향성은 절대적인 규칙이 아니며, 각 형용사의 구체적인 의미와 용법은 문맥과 사전을 통해 확인하는 것이 중요합니다. 특히 분사 형용사(<code class="code-inline">-ing</code>: 능동/진행, <code class="code-inline">-ed</code>: 수동/완료)는 동사에서 직접 파생되어 능동/수동의 의미가 더 명확하게 드러나는 반면, 위 접미사들은 보다 일반적인 성향이나 특징을 나타내는 경우가 많습니다.</p>
+            </div>
+        </section>
+
+        <section id="advanced-topics-final">
+            <h2>VII. 형용사의 심화 이해: 문화, 문체, 그리고 비교 🌐 (확장)</h2>
+            <p class="section-intro">형용사는 단순한 수식어를 넘어, 문화적 함의를 담고 글의 전체적인 톤과 스타일을 결정짓는 중요한 요소입니다. 또한, 대상을 비교하고 평가하는 데 핵심적인 역할을 합니다. 이 섹션에서는 용법이 제한되는 형용사, 비교급/최상급, 그리고 문화적/문체적 측면을 더 깊이 있게 다룹니다.</p>
+
+            <h3>1. 의미에 따라 용법이 제한되는 형용사 (복습 및 확장)</h3>
+            <p>일부 형용사는 그 자체의 의미 때문에 한정적 용법으로만(<code class="code-inline">[only before noun]</code>), 혹은 서술적 용법으로만(<code class="code-inline">[not before noun]</code>) 사용되거나, 두 용법에서 의미가 달라집니다. 사전을 통해 이러한 용법 제한을 확인하는 것이 중요합니다.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>형용사</th>
+                        <th>의미</th>
+                        <th>용법 제한 및 예시 (한정적)</th>
+                        <th>용법 제한 및 예시 (서술적)</th>
+                        <th>설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2"><code class="code-inline">certain</code></td>
+                        <td>1. (명사 앞) 특정한, 어떤 (specific but not named)</td>
+                        <td><p class="example">"A <strong class="highlight">certain</strong> individual contacted me."</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example"><span class="original-x">*The individual is certain.</span> (X)</p></td>
+                        <td>'어떤 불특정하지만 구체적인'의 의미.</td>
+                    </tr>
+                    <tr>
+                        <td>2. 확신하는, 확실한 (sure, convinced)</td>
+                        <td><p class="example">"?a <strong class="highlight">certain</strong> outcome" (△, 가능하나 <code class="code-inline">a sure outcome</code>이 더 일반적)</p></td>
+                        <td><p class="example">"I am <strong class="highlight">certain</strong> of his success." (O)</p><p class="example">"Victory is <strong class="highlight">certain</strong>." (O)</p></td>
+                        <td>주로 서술적으로 쓰여 확신을 나타냄.</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">mere</code></td>
+                        <td>단지, 그저, ~에 불과한 (only, simply)</td>
+                        <td><p class="example">"It was a <strong class="highlight">mere</strong> scratch."</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example"><span class="original-x">*The scratch is mere.</span> (X)</p></td>
+                        <td>명사의 중요성이나 정도를 낮춤.</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">utter</code></td>
+                        <td>완전한, 순전한 (complete, total - 주로 부정적)</td>
+                        <td><p class="example">"<strong class="highlight">Utter</strong> chaos erupted."</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example"><span class="original-x">*The chaos was utter.</span> (X)</p></td>
+                        <td>주로 부정적 명사를 강조.</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">main</code> / <code class="code-inline">chief</code> / <code class="code-inline">principal</code></td>
+                        <td>주요한, 주된</td>
+                        <td><p class="example">"The <strong class="highlight">main</strong> reason..." / "The <strong class="highlight">chief</strong> architect..." / "The <strong class="highlight">principal</strong> investigator..."</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example"><span class="original-x">*The reason is main/chief.</span> (X)</p><p class="corrected-example">The reason is <strong class="highlight">primary</strong> / <strong class="highlight">the most important</strong>.</p></td>
+                        <td>가장 중요한 것을 나타낼 때. <code class="code-inline">Principal</code>은 서술적으로도 가능 ("His role is principal.")</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">former</code> / <code class="code-inline">latter</code></td>
+                        <td>이전의 / 후자의</td>
+                        <td><p class="example">"The <strong class="highlight">former</strong> option is better." / "The <strong class="highlight">latter</strong> part of the book..."</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example"><span class="original-x">*The option is former.</span> (X)</p></td>
+                        <td>순서상 앞/뒤를 나타냄.</td>
+                    </tr>
+                    <tr>
+                        <td><code class="code-inline">live</code></td>
+                        <td>1. 살아있는 (동물 등) <br>2. 생방송의</td>
+                        <td><p class="example">"<span style="color:blue;">a live</span> snake" / "<span style="color:blue;">a live</span> broadcast"</p><p class="note">[only before noun]</p></td>
+                        <td><p class="example">"The snake is <strong class="corrected-example">alive</strong>." (O, <code class="code-inline">alive</code> 사용)</p><p class="example">"The concert is <strong class="highlight">live</strong>." (O, 생방송 중)</p></td>
+                        <td>'살아있는' 의미의 <code class="code-inline">live</code>는 명사 앞, 서술적으로는 <code class="code-inline">alive</code>. '생방송의' 의미는 양쪽 가능.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2. 형용사의 비교급과 최상급 (복습 및 심화)</h3>
+            <p>형용사는 대상을 비교하거나 정도를 나타내기 위해 비교급(<code class="code-inline">-er</code>, <code class="code-inline">more</code>)과 최상급(<code class="code-inline">-est</code>, <code class="code-inline">most</code>) 형태로 변형됩니다. 이는 객관적 사실뿐 아니라 주관적 평가를 전달하는 데 중요한 역할을 합니다.</p>
+            <ul>
+                <li><strong>규칙 변화:</strong> 대부분의 1음절 및 일부 2음절 형용사 (예: <code class="code-inline">tall - taller - tallest</code>, <code class="code-inline">happy - happier - happiest</code>, <code class="code-inline">clever - cleverer - cleverest</code>).</li>
+                <li><strong><code class="code-inline">more/most</code> 사용:</strong> 2음절 이상의 긴 형용사, 특정 접미사(<code class="code-inline">-ful</code>, <code class="code-inline">-less</code>, <code class="code-inline">-ous</code>, <code class="code-inline">-ive</code>, <code class="code-inline">-ing</code>, <code class="code-inline">-ed</code> 등)로 끝나는 형용사 (예: <code class="code-inline">beautiful - more beautiful - most beautiful</code>, <code class="code-inline">interesting - more interesting - most interesting</code>).</li>
+                <li><strong>불규칙 변화:</strong> <code class="code-inline">good - better - best</code>, <code class="code-inline">bad - worse - worst</code>, <code class="code-inline">far - farther/further - farthest/furthest</code>, <code class="code-inline">little - less - least</code>, <code class="code-inline">many/much - more - most</code>.</li>
+            </ul>
+            <p class="example"><span class="example-label">아카데믹:</span> "The <span style="color:purple;">more comprehensive</span> a study is, the <span style="color:purple;">more reliable</span> its findings are likely to be." (연구가 포괄적일수록 그 결과는 더 신뢰할 만할 가능성이 높다.)</p>
+            <p class="example"><span class="example-label">비즈니스:</span> "This new model is <span style="color:purple;">more expensive</span> but also <span style="color:purple;">more efficient</span> than the previous one." (이 새 모델은 더 비싸지만 이전 모델보다 더 효율적이다.)</p>
+            <p class="tip-box"><strong>비교 대상의 명확성:</strong> 비교급을 사용할 때는 비교 대상(<code class="code-inline">than ...</code>)을 명확히 하거나 문맥상 분명해야 합니다. 최상급은 특정 범위(<code class="code-inline">in the class</code>, <code class="code-inline">of all</code>) 내에서 사용됩니다.</p>
+
+            <h3>3. 문화적 뉘앙스와 문체적 효과 (심화)</h3>
+            <div class="cultural-note">
+                <p><strong>문화적 함의와 연상:</strong></p>
+                <ul>
+                    <li><strong>색깔 형용사:</strong> <code class="code-inline">Red</code>는 서양에서 위험, 열정, 사랑을, 동양에서는 행운, 경사를 상징할 수 있습니다. <code class="code-inline">Green</code>은 자연, 성장, 때로는 질투(green with envy)를 의미하기도 합니다.
+                        <p class="example">한국적 맥락: "결혼식 축의금 봉투는 <span style="color:purple;">하얀색(white)</span>을 사용하는 것이 일반적이다." (It is common to use <span style="color:purple;">white</span> envelopes for wedding gift money in Korea.) - 서양의 장례식 색과 대조.</p>
+                    </li>
+                    <li><strong>긍정/부정의 강도:</strong> <code class="code-inline">Good</code>은 일반적인 긍정이지만, <code class="code-inline">excellent</code>, <code class="code-inline">outstanding</code>, <code class="code-inline">superb</code>는 훨씬 강한 긍정을 나타냅니다. 마찬가지로 <code class="code-inline">bad</code>보다 <code class="code-inline">terrible</code>, <code class="code-inline">awful</code>, <code class="code-inline">dreadful</code>이 더 강한 부정입니다. 이러한 강도 차이를 이해하는 것은 정확한 감정 전달에 중요합니다.</li>
+                </ul>
+                <p><strong>문체적 효과와 격식:</strong></p>
+                <ul>
+                    <li><strong>격식체 vs. 비격식체:</strong>
+                        <p class="example">격식: "The data revealed a <span style="color:purple;">substantial</span> increase in sales."</p>
+                        <p class="example">비격식: "Wow, sales went up by a <span style="color:purple;">huge</span> amount!"</p>
+                    </li>
+                    <li><strong>객관적 vs. 주관적 묘사:</strong>
+                        <p class="example">객관적 (주로 분류/관계 형용사): "This is a <span style="color:purple;">financial</span> report."</p>
+                        <p class="example">주관적 (주로 의견 형용사): "This is a <span style="color:purple;">well-written</span> report."</p>
+                    </li>
+                </ul>
+                <p><strong>한국어의 풍부한 묘사 표현과 영어 형용사:</strong></p>
+                <p>한국어는 의성어, 의태어, 다양한 상태 동사/형용사를 통해 매우 섬세하고 감각적인 묘사가 가능합니다. (예: "노릇노릇하다", "아삭아삭하다", "새콤달콤하다"). 이를 영어로 옮길 때는 하나의 형용사로 완벽히 대응되기 어려우므로, 여러 형용사를 조합하거나, 부사+형용사, 또는 구체적인 상황 묘사를 통해 그 느낌을 전달해야 합니다.</p>
+                <p class="example">"김치가 <span style="color:purple;">새콤달콤하게</span> 잘 익었다." → "The kimchi is <span style="color:purple;">perfectly ripe, with a nice balance of sour and sweet flavors</span>." (또는 "The kimchi is <span style="color:purple;">pleasantly tangy and sweet</span>.")</p>
+            </div>
+        </section>
+
+        <section id="specific-adjective-analysis">
+            <h2>VIII. 특정 핵심 형용사 심층 분석: "Responsible" 🧐</h2>
+            <p class="section-intro">일반적인 형용사 용법을 넘어, 실제 자주 사용되는 특정 형용사를 깊이 있게 분석하는 것은 매우 유용합니다. 여기서는 <strong class="keyword">"responsible"</strong>을 예로 들어 다의적 의미, 가산성 관련 명사형, 주요 Collocations, 전치사 사용 등을 살펴보겠습니다.</p>
+
+            <div class="definition-box">
+                <p><strong>Responsible /rɪˈspɒnsəbəl/</strong></p>
+                <p><strong>핵심 의미:</strong> 어떤 일이나 결과에 대해 책임이 있거나, 신뢰할 수 있고 분별력 있게 행동하는.</p>
+            </div>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>"Responsible"의 주요 의미/용법</th>
+                        <th>설명 및 특징</th>
+                        <th>예문 (일상/아카데믹/비즈니스/한국적 맥락)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. (~에 대해) 책임이 있는, 원인이 되는 (for something/someone)</strong></td>
+                        <td>어떤 행동, 결정, 결과에 대한 의무나 책임을 짐. 주로 서술적 용법으로 쓰이며, <code class="code-inline">for</code>와 함께 사용.</td>
+                        <td>
+                            <p class="example"><span class="example-label">일상:</span> "Parents are <strong class="highlight">responsible for</strong> their children's safety."</p>
+                            <p class="example"><span class="example-label">비즈니스:</span> "The project manager is <strong class="highlight">responsible for</strong> delivering the project on time and within budget."</p>
+                            <p class="example"><span class="example-label">부정적 결과:</span> "Who is <strong class="highlight">responsible for</strong> this mistake?"</p>
+                            <p class="example"><span class="example-label">아카데믹:</span> "Several factors are <strong class="highlight">responsible for</strong> climate change." (기후 변화의 원인이 된다)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. (~에게) 책임을 지는, 보고할 의무가 있는 (to someone)</strong></td>
+                        <td>특정 사람이나 기관에 대해 자신의 행동이나 결정에 대해 설명하거나 해명할 의무가 있음을 의미.</td>
+                        <td>
+                            <p class="example"><span class="example-label">비즈니스:</span> "The department head is <strong class="highlight">responsible to</strong> the CEO." (부서장은 CEO에게 보고할 의무가 있다.)</p>
+                            <p class="example"><span class="example-label">정치:</span> "Elected officials should be <strong class="highlight">responsible to</strong> the voters." (선출직 공무원은 유권자에게 책임을 져야 한다.)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. 책임감 있는, 분별력 있는 (신뢰할 수 있는 성격/행동)</strong></td>
+                        <td>신뢰할 수 있고, 합리적이며, 올바른 판단을 내릴 수 있는 성격이나 행동을 묘사. 한정적, 서술적 용법 모두 가능.</td>
+                        <td>
+                            <p class="example"><span class="example-label">한정적:</span> "We are looking for a <strong class="highlight">responsible</strong> individual to fill this position." (이 직책에 책임감 있는 사람을 찾고 있습니다.)</p>
+                            <p class="example"><span class="example-label">서술적:</span> "She is very <strong class="highlight">responsible</strong> and always finishes her work on time."</p>
+                            <p class="example"><span class="example-label">한국적 맥락 (자녀 교육):</span> "아이를 <strong class="highlight">책임감 있는</strong> 사람으로 키우는 것은 모든 부모의 바람이다." (It is every parent's wish to raise their child to be a <strong class="highlight">responsible</strong> person.)</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. (법률) 법적 책임이 있는</strong></td>
+                        <td>법적으로 어떤 행위나 결과에 대해 책임을 져야 함을 의미.</td>
+                        <td>
+                            <p class="example"><span class="example-label">법률:</span> "The company was held <strong class="highlight">responsible</strong> for the environmental damage." (그 회사는 환경 피해에 대해 법적 책임을 져야 했다.)</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h5>주요 Collocations 및 관련 표현:</h5>
+            <ul>
+                <li><strong>be responsible for + 명사/동명사:</strong> ~에 대해 책임이 있다.
+                    <p class="example">"He <span style="color:purple;">is responsible for managing</span> the team."</p>
+                </li>
+                <li><strong>hold someone responsible (for something):</strong> ~에게 (~에 대한) 책임을 묻다.
+                    <p class="example">"The public <span style="color:purple;">held the government responsible</span> for the economic crisis."</p>
+                </li>
+                <li><strong>a responsible attitude/approach/decision:</strong> 책임감 있는 태도/접근법/결정.</li>
+                <li><strong>socially responsible:</strong> 사회적으로 책임감 있는.
+                    <p class="example">"Many consumers prefer to buy from <span style="color:purple;">socially responsible</span> companies."</p>
+                </li>
+                <li><strong>명사형:</strong> <code class="code-inline">responsibility</code> (책임, 책무 - 주로 U, 특정 책임들은 C: <code class="code-inline">responsibilities</code>)
+                    <p class="example">"It's your <span style="color:blue;">responsibility</span> to lock the door." [U]</p>
+                    <p class="example">"She has many <span style="color:blue;">responsibilities</span> at work." [C]</p>
+                </li>
+            </ul>
+            <p class="tip-box">"Responsible"은 문맥에 따라 '원인이 되는' (causal) 의미와 '의무가 있는' (accountable) 의미, 그리고 '신뢰할 만한 성격' (dependable)의 의미를 모두 가질 수 있으므로, 정확한 의미 파악이 중요합니다.</p>
+        </section>
+
+        <section class="practice-section">
+            <h2>IX. 형용사 마스터를 위한 실전 훈련 ✍️ (심화)</h2>
+            <p class="section-intro">이론을 실제 사용으로 연결하는 연습은 필수입니다. 다음 문제들을 통해 형용사 용법에 대한 이해를 점검하고 실력을 향상시켜 보세요. 각 문제의 해설을 통해 왜 그런 답이 나오는지 이해하는 데 집중하세요.</p>
+
+            <h5>A. 형용사 어순 배열하기 (해설 포함)</h5>
+            <div class="practice-question">
+                <p>다음 단어들을 올바른 순서로 배열하여 명사구를 만드세요: (a, wooden, beautiful, small, old, coffee, table)</p>
+                <p class="practice-answer">정답: a beautiful small old wooden coffee table<br><strong>해설:</strong> 일반적인 형용사 어순(한정사 → 의견 → 크기 → 나이 → (모양) → (색깔) → (출신) → 재료 → 목적/용도 → 명사)을 따릅니다. 'beautiful'(의견) → 'small'(크기) → 'old'(나이) → 'wooden'(재료) → 'coffee'(목적/용도) 순서입니다.</p>
+            </div>
+
+            <h5>B. 알맞은 전치사 선택하기 (해설 포함)</h5>
+            <div class="practice-question">
+                <p>She is very proud ________ her daughter's achievements.</p>
+                <p>(a) in (b) at (c) of (d) for</p>
+                <p class="practice-answer">정답: (c) of<br><strong>해설:</strong> <code class="code-inline">proud of someone/something</code>은 '~을 자랑스러워하다'라는 의미의 고정된 형용사-전치사 조합입니다.</p>
+            </div>
+            <div class="practice-question">
+                <p>This tool is useful ________ cutting thick branches.</p>
+                <p>(a) to (b) for (c) with (d) about</p>
+                <p class="practice-answer">정답: (b) for<br><strong>해설:</strong> <code class="code-inline">useful for + (동)명사</code>는 '~하는 데 유용한'이라는 의미로 목적이나 용도를 나타냅니다. <code class="code-inline">useful to + 사람</code>은 '~에게 유용한'의 의미입니다.</p>
+            </div>
+
+            <h5>C. 문맥에 맞는 형용사 형태 고르기 (능동/수동/기타 접미사, 해설 포함)</h5>
+            <div class="practice-question">
+                <p>The new software is much more ________ (use) than the old version.</p>
+                <p class="practice-answer">정답: usable / user-friendly<br><strong>해설:</strong> <code class="code-inline">usable</code>은 '사용될 수 있는', '사용하기에 적합한' (수동적 가능성)의 의미입니다. <code class="code-inline">user-friendly</code>는 '사용자 친화적인' (사용하기 쉬운 성질)을 의미합니다. 문맥상 둘 다 가능합니다.</p>
+            </div>
+            <div class="practice-question">
+                <p>His speech was very ________ (persuade), and he managed to change their minds.</p>
+                <p class="practice-answer">정답: persuasive<br><strong>해설:</strong> <code class="code-inline">-ive</code> 접미사는 '그러한 경향이나 능력이 있는' 능동적 의미를 나타냅니다. '설득하는 힘이 있는' 연설을 의미합니다.</p>
+            </div>
+
+            <h5>D. 오류 수정하기 (해설 포함)</h5>
+            <div class="practice-question">
+                <p>오류 문장: *The view from the top was very amaze.</p>
+                <p class="practice-answer">수정 문장: The view from the top was very <span class="keyword">amazing</span>.<br><strong>해설:</strong> <code class="code-inline">amaze</code>는 동사입니다. 감정을 유발하는 주체를 설명할 때는 현재분사형 형용사 <code class="code-inline">amazing</code> (놀라움을 주는)을 사용합니다. 감정을 느끼는 주체를 설명할 때는 과거분사형 형용사 <code class="code-inline">amazed</code> (놀란)를 사용합니다. (예: "I was <span class="keyword">amazed</span> by the view.")</p>
+            </div>
+            <div class="practice-question">
+                <p>오류 문장: *She bought a furniture for her new apartment.</p>
+                <p class="practice-answer">수정 문장: She bought <span class="keyword">some furniture</span> / <span class="keyword">a piece of furniture</span> for her new apartment.<br><strong>해설:</strong> <code class="code-inline">Furniture</code>는 대표적인 불가산 명사로, 부정관사 'a'를 직접 붙이거나 복수형으로 만들 수 없습니다. 양을 나타낼 때는 <code class="code-inline">some</code>, <code class="code-inline">much</code>, <code class="code-inline">a lot of</code> 등을 사용하거나, <code class="code-inline">a piece of</code>, <code class="code-inline">an item of</code>와 같은 단위 명사를 사용합니다.</p>
+            </div>
+
+            <h5>E. 한국적 맥락 기반 문장 만들기 (심화)</h5>
+            <div class="practice-question">
+                <p>상황: "요즘 젊은 세대는 이전 세대와는 <span style="color:purple;">뚜렷이 다른</span> 가치관을 가지고 있어서, 기업들은 <span style="color:purple;">유연한</span> 조직 문화를 만드는 것이 <span style="color:purple;">중요하다</span>." 이 문장을 자연스러운 영어로 표현해보세요. (세 개의 형용사 활용)</p>
+                <p class="practice-answer">예시 답안: "Today's younger generation has values that are <span class="keyword">distinctly different</span> from previous generations, so it is <span class="keyword">important</span> for companies to create a <span class="keyword">flexible</span> organizational culture."<br>
+                <strong>추가 설명:</strong> '뚜렷이 다른'은 <code class="code-inline">distinctly different</code> 또는 <code class="code-inline">markedly different</code>. '유연한'은 <code class="code-inline">flexible</code>. '중요하다'는 <code class="code-inline">important</code>, <code class="code-inline">crucial</code>, <code class="code-inline">vital</code> 등 사용 가능.</p>
+            </div>
+        </section>
+
+        <div class="summary-box" style="margin-top: 50px;">
+            <h3>X. 형용사 마스터를 위한 최종 요약 및 제언 🌟</h3>
+            <ul>
+                <li><strong>형용사의 본질:</strong> 명사에 색채, 질감, 감정, 평가를 더하여 세계를 정교하게 인식하고 표현하는 핵심 도구.</li>
+                <li><strong>주요 용법:</strong> 한정적 (명사 수식 - 어순 중요), 서술적 (보어 역할 - A-형용사 등 유의), 명사화 (<code class="code-inline">the + 형용사</code>).</li>
+                <li><strong>의미론적 접근:</strong> 기술, 분류, 관계, 강조 형용사 등 기능에 따른 이해.</li>
+                <li><strong>관계 맺기:</strong> 특정 전치사와의 결합 (Collocations), 다른 단어들과의 자연스러운 어울림.</li>
+                <li><strong>형태와 생성:</strong> 접미사를 통한 파생 (능동/수동 뉘앙스 포함), 비교급/최상급 변화.</li>
+                <li><strong>심화 이해:</strong> 인지적 이미지, 코퍼스 데이터 활용, 문화적 뉘앙스, 문체적 효과 고려.</li>
+                <li><strong>특정 형용사 분석:</strong> "responsible"처럼 다의어 형용사의 용법과 Collocations 심층 학습.</li>
+            </ul>
+            <p><strong>최종 제언:</strong> 형용사는 영어 표현의 풍부함과 정확성을 결정짓는 매우 중요한 품사입니다. 단순히 개별 단어의 뜻을 암기하는 것을 넘어, <span class="highlight">각 형용사가 문맥 속에서 어떤 기능을 하고 어떤 뉘앙스를 전달하는지</span>를 파악하는 것이 중요합니다. 다양한 예문을 접하고, 사전을 통해 용법 제한이나 함께 쓰이는 표현들을 꾸준히 확인하며, 실제 작문이나 회화에서 적극적으로 활용해 보세요. 특히, <strong class="keyword">인지언어학적 관점</strong>에서 형용사가 우리의 인식과 어떻게 연결되는지, <strong class="keyword">코퍼스 데이터</strong>를 통해 실제 사용 양상이 어떠한지를 참고하면 더욱 깊이 있는 학습이 가능할 것입니다. 이 가이드가 여러분의 형용사 마스터 여정에 든든한 동반자가 되기를 바랍니다!</p>
+        </div>
+
+        <footer>
+            <p style="text-align:center; margin-top: 60px; color: #334155; font-size:1.12em;">&copy; 형용사 마스터 가이드 (v2.0) - 이 가이드가 여러분의 영어 표현을 더욱 <span class="keyword">expressive</span>하고 <span class="keyword">accurate</span>하게 만드는 데 기여하기를 바랍니다! 🌈✨</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme: 'neutral'});</script>
+</body>
+</html>

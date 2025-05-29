@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수능 영어 독해 완전 정복: 3단계 통합 심층 전략 (v3.2 - 최종 수정)</title>
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        /* --- 기존 3단.html 스타일 유지 --- */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #4CAF50;
+        }
+        header h1 { color: #2E7D32; margin-bottom: 5px; }
+        header .subtitle { color: #666; font-style: italic; }
+        h2 { color: #1B5E20; border-bottom: 1px solid #a5d6a7; padding-bottom: 5px; margin-top: 40px; }
+        h3 { color: #388E3C; margin-top: 30px; }
+        h4 { color: #4CAF50; margin-top: 20px; font-weight: bold; }
+        strong, b { color: #c62828; }
+        em, i { color: #1565c0; font-style: normal; font-weight: bold; }
+        code { background-color: #e8f5e9; padding: 2px 5px; border-radius: 4px; font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace; }
+        blockquote { border-left: 4px solid #4CAF50; margin: 15px 0; padding: 10px 15px; background-color: #f9f9f9; font-style: italic; }
+        .example-analysis { margin-top: 5px; padding: 10px; border: 1px dashed #a5d6a7; background-color: #f0fff0; font-size: 0.95em; }
+        .example-analysis::before { content: "📊 분석: "; font-weight: bold; color: #388E3C; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; box-shadow: 0 2px 3px rgba(0,0,0,0.1); }
+        th, td { border: 1px solid #ddd; padding: 10px 12px; text-align: left; vertical-align: top; }
+        th { background-color: #4CAF50; color: white; font-weight: bold; }
+        tbody tr:nth-child(even) { background-color: #f9f9f9; }
+        tbody tr:hover { background-color: #e8f5e9; }
+        caption { caption-side: bottom; text-align: center; margin-top: 8px; font-size: 0.9em; color: #555; }
+        .table-container { overflow-x: auto; margin: 20px 0; }
+        dfn { font-style: normal; font-weight: bold; border-bottom: 1px dashed #007bff; cursor: help; position: relative; }
+        .quick-tip { background-color: #fff3e0; border: 1px solid #ffcc80; border-left: 5px solid #ff9800; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .quick-tip h4 { margin-top: 0; color: #e65100; }
+        .quick-tip ul { padding-left: 20px; margin-bottom: 0; }
+        .mermaid { text-align: center; margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px; border: 1px solid #dee2e6; display: flex; justify-content: center; align-items: center; overflow: auto; min-height: 200px; }
+        .important-note { background-color: #e3f2fd; border: 1px solid #90caf9; border-left: 5px solid #1976d2; padding: 15px; margin: 20px 0; border-radius: 5px; }
+        .important-note h4 { margin-top: 0; color: #1565c0; }
+        .mini-quiz details { margin-top: 10px; background-color: #f1f8e9; border: 1px solid #c5e1a5; border-radius: 4px; padding: 5px 10px; }
+        .mini-quiz summary { cursor: pointer; font-weight: bold; color: #558b2f; }
+        .mini-quiz .answer { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #c5e1a5; font-size: 0.95em; }
+        .step-indicator { display: inline-block; background-color: #4CAF50; color: white; border-radius: 50%; width: 25px; height: 25px; line-height: 25px; text-align: center; font-weight: bold; margin-right: 10px; font-size: 0.9em; }
+        .logic-signal { font-size: 1.2em; margin-right: 5px; vertical-align: middle; }
+
+        /* --- 추가된 인터랙션/시각화 스타일 --- */
+        .alpine-tabs .tab-buttons { display: flex; border-bottom: 2px solid #4CAF50; margin-bottom: 20px; }
+        .alpine-tabs .tab-buttons button { background-color: transparent; border: none; padding: 10px 18px; cursor: pointer; font-size: 1.05em; color: #555; transition: color 0.3s, border-bottom 0.3s; border-bottom: 3px solid transparent; margin-right: 5px; }
+        .alpine-tabs .tab-buttons button.active { color: #2E7D32; border-bottom-color: #2E7D32; font-weight: bold; }
+        .alpine-tabs .tab-content { padding: 10px 0; }
+
+        .accordion-item { margin-bottom: 10px; border: 1px solid #ddd; border-radius: 4px; }
+        .accordion-header { background-color: #f9f9f9; padding: 10px 15px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: bold; color: #388E3C; }
+        .accordion-header:hover { background-color: #f1f1f1; }
+        .accordion-content { padding: 15px; border-top: 1px solid #ddd; background-color: #fff; }
+        .accordion-icon { transition: transform 0.3s; }
+        .accordion-item[x-data*="open: true"] .accordion-icon { transform: rotate(180deg); }
+
+
+        dfn .custom-tooltip {
+            visibility: hidden; opacity: 0;
+            background-color: #333; color: #fff; text-align: left;
+            border-radius: 5px; padding: 8px 12px;
+            position: absolute; z-index: 100;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 200px;
+            max-width: 300px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: opacity 0.2s, visibility 0.2s;
+            font-size: 0.9em; line-height: 1.4; font-weight: normal;
+        }
+        dfn:hover .custom-tooltip { visibility: visible; opacity: 1; }
+
+        .chart-container { position: relative; margin: 30px auto; height:350px; width:90%; max-width:600px; padding:15px; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #fdfdfd;}
+        .chart-title { text-align: center; font-size: 1.1em; color: #1B5E20; margin-bottom: 15px; font-weight: bold;}
+
+        .mermaid-mindmap-container { margin: 30px 0; padding: 20px; background-color: #f0fff0; border-radius: 8px; border: 1px solid #a5d6a7; }
+        .mermaid-mindmap-container h4 { margin-top:0; color: #388E3C; text-align: center; margin-bottom: 15px;}
+    </style>
+</head>
+<body x-data>
+    <div class="container">
+        <!-- header, introduction, core-principle, strategy-map 섹션은 이전 답변과 동일하게 유지 -->
+        <header>
+            <h1>수능 영어 독해 완전 정복: 3단계 통합 심층 전략</h1>
+            <p class="subtitle">(최종 완전판 - Expert Feedback 반영 & 상세 내용 보강 & 인터랙티브 기능)</p>
+            <p>To. 영어 독해력의 비약적 향상을 통해 수능 고득점을 목표로 하는 학습자 여러분,</p>
+        </header>
+
+        <main>
+            <section id="introduction">
+                <h2>소개</h2>
+                <p>본 자료는 수능 영어 지문을 효과적으로 분석하고 정복하기 위한 체계적인 <strong>3단계 독해 전략</strong>을 제시합니다. 단순한 요령 암기가 아닌, 학문적 글쓰기의 원리에 기반한 심층 분석과 <strong>실전 적용 루틴</strong>을 통해, 여러분의 독해력을 근본적으로 향상시키고 어떤 난이도의 지문에도 흔들리지 않는 실력을 갖추도록 돕는 것을 목표로 합니다. 여러분의 학습 효과와 실전 활용도를 극대화하기 위해, 전문가의 피드백을 전면 수용하여 <strong>시각적 요약 자료(압축 맵), 실제 기출 적용 시뮬레이션 가이드, 논리 관계 빠른 감별법, 문제 유형별 전략 가중치</strong> 등을 포함하여 자료를 대폭 강화했습니다.</p>
+            </section>
+
+            <section id="core-principle">
+                <h2>🎯 핵심 원칙: "숲을 보고 나무를 분석하며, 다시 숲으로 돌아오라"</h2>
+                <p>수능 영어 고득점의 핵심은 정확한 이해와 논리적 사고입니다. 이를 위해 우리는 다음과 같은 3단계 접근법을 통해 지문을 체계적으로 분석할 것입니다. 이 직관적인 은유는 여러분에게 체계적인 사고 루틴을 심어줄 것입니다.</p>
+                <ol>
+                    <li>🔹 <strong>1단계 (<dfn x-data="{ tooltipText: '글 전체에서 세부 사항으로 내려가는 방식. 글의 큰 그림, 주제, 목적, 전반적인 구조를 먼저 파악하는 접근법입니다.' }">Top-Down<span class="custom-tooltip" x-text="tooltipText"></span></dfn>):</strong> 글의 전체 구조와 방향성 파악 - <strong>숲 전체를 조망하듯</strong> 글의 핵심 주제와 전개 방향을 예측합니다.</li>
+                    <li>🔹 <strong>2단계 (<dfn x-data="{ tooltipText: '문장과 문장 사이의 논리적 연결 관계에 집중하는 방식. 각 문장이 앞 문장과 어떻게 연결되는지(예: 원인-결과, 대조, 예시)를 파악합니다.' }">Mid-Range<span class="custom-tooltip" x-text="tooltipText"></span></dfn>):</strong> 문장 간 논리적 연결고리 분석 - <strong>나무와 나무 사이의 관계를 살피듯</strong> 문장들이 어떻게 유기적으로 연결되는지 파악합니다.</li>
+                    <li>🔹 <strong>3단계 (<dfn x-data="{ tooltipText: '개별 단어, 구, 문장 등 세부적인 정보에서 시작하여 점차 글 전체의 의미를 종합해나가는 방식입니다.' }">Bottom-Up<span class="custom-tooltip" x-text="tooltipText"></span></dfn> & <dfn x-data="{ tooltipText: '분석된 다양한 정보들을 모아 하나의 일관된 의미로 통합하고 결론을 도출하는 과정입니다.' }">Synthesis<span class="custom-tooltip" x-text="tooltipText"></span></dfn>):</strong> 세부 단서 활용 및 종합적 이해 - <strong>나뭇잎 하나하나의 의미(단서)를 정확히 파악하고, 이를 바탕으로 다시 숲 전체(글의 의미)를 완성</strong>합니다.</li>
+                </ol>
+                <p>이 3단계 전략을 통해 지문의 표면적 의미를 넘어 필자의 의도와 논리 구조까지 꿰뚫어 볼 수 있습니다.</p>
+            </section>
+
+            <section id="strategy-map">
+                 <h2>🧠 한눈에 보는 3단계 전략 압축 맵 (Flowchart)</h2>
+                 <p>(이 '압축 맵'은 본문 전체 논리를 시각적으로 요약한 것입니다. 반복 학습 시 뇌 속에 논리 구조를 각인시켜, 시험장에서도 전략이 떠오르도록 돕습니다.)</p>
+                 <div class="mermaid">
+graph TD
+    A["시작: 지문 읽기"] --> B{1단계: 첫 1-2 문장 분석};
+    B --> B1["주제(Topic) 예측"];
+    B --> B2["글의 방향성(Controlling Idea) 예측"];
+    B1 --> C{2단계: 문장 간 논리 관계 파악};
+    B2 --> C;
+    C --> C1["앞 문장과 동의성 관계인가? (부연, 예시, 인과 등)"];
+    C --> C2["앞 문장과 차이성 관계인가? (역접, 대조, 양보 등)"];
+    C1 --> D{3단계: 연결어 및 지시어 추적};
+    C2 --> D;
+    D --> D1["연결어 기능 명확히 파악"];
+    D --> D2["지시어의 선행사 정확히 확인"];
+    D1 --> E["문제 유형별 전략 적용"];
+    D2 --> E;
+    E --> F["종합적 이해 및 정답 선택"];
+    F --> G["검토 (시간 허락 시)"];
+
+    subgraph "1단계: Top-Down (숲 조망)"
+        B; B1; B2;
+    end
+    subgraph "2단계: Mid-Range (나무 연결)"
+        C; C1; C2;
+    end
+    subgraph "3단계: Bottom-Up & Synthesis (단서 종합)"
+        D; D1; D2;
+    end
+                 </div>
+                 <p style="text-align:center; font-size:0.9em; color:#777;">(위 플로우차트는 Mermaid.js로 렌더링됩니다.)</p>
+            </section>
+
+            <!-- Alpine.js 탭으로 주요 전략 섹션 구성 -->
+            <div x-data="{ activeTab: 'practical-routine' }" class="alpine-tabs">
+                <div class="tab-buttons">
+                    <button @click="activeTab = 'practical-routine'" :class="{ 'active': activeTab === 'practical-routine' }">실전 적용 루틴</button>
+                    <button @click="activeTab = 'step1-strategy'" :class="{ 'active': activeTab === 'step1-strategy' }">1단계 전략 상세</button>
+                    <button @click="activeTab = 'step2-strategy'" :class="{ 'active': activeTab === 'step2-strategy' }">2단계 전략 상세</button>
+                    <button @click="activeTab = 'step3-strategy'" :class="{ 'active': activeTab === 'step3-strategy' }">3단계 전략 상세</button>
+                </div>
+
+                <!-- 각 탭 내용 (이전 답변에서 복원된 내용 포함) -->
+                <div x-show="activeTab === 'practical-routine'" class="tab-content">
+                    <section id="practical-routine">
+                        <!-- 원문 내용 -->
+                        <h2>📖 실전 적용! 수능 영어 독해 기본 루틴 (실행 중심 업그레이드)</h2>
+                        <p>모든 지문을 접할 때, 다음 루틴을 따라 전략적으로 접근하는 습관을 들이세요. '아는 것'을 넘어 '실행'하는 것이 핵심입니다.</p>
+                        <ol>
+                            <li><p><span class="step-indicator">1</span><strong>[1단계 적용] 첫 1-2 문장 집중 분석 (숲 보기):</strong><br>
+                                최소 두 번 이상 정독하며 정확히 해석합니다. 글의 핵심 주제(Topic)와 중심 생각(Controlling Idea) 또는 전개 방향(정의, 문제 제기, 통념 소개 등)을 예측합니다. (➡️ <em>압축 맵 STEP 1 참고</em>) "이 글은 무엇에 대해, 어떤 방향으로 말할 것인가?" 잠정적인 가설을 세웁니다.</p>
+                            </li>
+                            <li><p><span class="step-indicator">2</span><strong>[2단계 적용] 문장 단위 논리 관계 파악 (나무 연결):</strong><br>
+                                각 문장을 읽으면서 바로 앞 문장과 어떤 논리적 관계(동의성? 차이성?)를 맺는지 확인합니다. (➡️ <em>아래 '5초 감별 팁' 적극 활용!</em>) 연결어가 있다면 적극 활용하고, 없다면 어휘/내용/구조 단서를 통해 추론합니다. (➡️ <em>압축 맵 STEP 2 참고</em>)</p>
+                            </li>
+                            <li><p><span class="step-indicator">3</span><strong>[3단계 적용] 연결어/지시어 정밀 추적 (나뭇잎 분석 → 다시 숲으로):</strong><br>
+                                <strong>연결어</strong>(However, Therefore 등)와 <strong>지시어</strong>(this, it, such 등)가 나오면 <strong>반드시 표시</strong>하고 그 기능(논리적 방향, 지칭 대상)을 명확히 파악합니다. <strong>지시어의 <dfn x-data="{ tooltipText: '지시어가 가리키는, 그보다 앞서 나온 명사, 구, 절, 또는 문장 내용입니다. 예를 들어, "I saw a cat. It was black."에서 "It"의 선행사는 "a cat"입니다.' }">선행사<span class="custom-tooltip" x-text="tooltipText"></span></dfn>를 반드시 확인</strong>하여 글의 <dfn x-data="{ tooltipText: '글의 각 부분이 문법적, 의미적으로 긴밀하게 연결되어 있는 정도를 말합니다. 응집성이 높은 글은 이해하기 쉽습니다.' }">응집성<span class="custom-tooltip" x-text="tooltipText"></span></dfn>을 놓치지 않습니다. 이것이 글의 흐름을 잡는 핵심입니다. (➡️ <em>압축 맵 STEP 3 참고</em>)</p>
+                            </li>
+                            <li><p><span class="step-indicator">4</span><strong>[문제 유형별 전략 적용] 문제 요구사항 확인 및 전략 가중치 적용:</strong><br>
+                                문제 유형(주제, 빈칸, 삽입, 순서 등)에 따라 어떤 전략(STEP 1, 2, 3)에 더 집중해야 할지 판단합니다. (➡️ <em>아래 '문제 유형별 전략 가중치 테이블' 참고</em>) "아, 이 문제는 전략 O과 O 위주로 봐야겠군!" 자동화된 사고를 목표로 합니다.</p>
+                            </li>
+                            <li><p><span class="step-indicator">5</span><strong>[종합] 정답 선택 및 검토:</strong><br>
+                                위 과정에서 파악한 정보와 논리적 근거를 바탕으로 가장 적절한 답을 선택합니다. 시간이 허락한다면, 선택한 답이 글 전체의 흐름 및 주제와 일관성이 있는지 빠르게 재확인합니다.</p>
+                            </li>
+                        </ol>
+                    </section>
+                </div>
+
+                <div x-show="activeTab === 'step1-strategy'" class="tab-content">
+                    <section id="step1-strategy">
+                        <!-- 원문 내용 + Chart.js -->
+                        <h2>🔹 1단계 전략: 첫 두 문장의 힘 (Top-Down: 숲 전체 조망하기)</h2>
+                        <h3>핵심 원칙</h3>
+                        <p>학문적 글(Academic Text)은 대부분 첫 1-2 문장에 글 전체의 주제, 범위, 방향성, 때로는 필자의 관점까지 압축적으로 제시합니다. 이 부분은 글 전체의 '청사진'과 같으므로, 여기서 방향을 제대로 잡는 것이 중요합니다.</p>
+                        <h3>수능 지문 시작 유형</h3>
+                        <p>개념 정의, 문제 제기, 연구 목적, 통념(반박 대상) 소개 등.</p>
+                        <h3>⚠️ 예외 상황 및 대처법</h3>
+                        <ul>
+                            <li><strong>Hook(흥미 유발 도입):</strong> 때로는 독자의 관심을 끌기 위해 질문, 일화, 놀라운 통계 등으로 시작하여 실제 핵심 주제는 그 뒤에 제시될 수 있습니다.</li>
+                            <li><strong>Delayed Thesis(후반부 주제 제시):</strong> 특히 논쟁적인 주제를 다룰 때, 필자는 반론이나 배경 설명을 먼저 충분히 제시한 후 글의 후반부에 자신의 핵심 주장을 드러낼 수 있습니다.</li>
+                            <li><strong>대처:</strong> 첫 두 문장을 통해 형성한 초기 가설(Hypothesis)은 <strong>잠정적인 것</strong>으로 간주해야 합니다. 글을 읽어 나가면서 연결어(특히 'However', 'But', 'Yet'과 같은 역접 연결어)나 내용의 흐름을 통해 이 가설을 지속적으로 확인하고 필요하다면 수정해야 합니다. 첫 문장만 보고 성급하게 결론 내리는 것은 오독의 지름길입니다.</li>
+                        </ul>
+
+                        <h4>표 1: "첫 두 문장" 전략의 수능 문제 유형별 효과성 및 활용 방안</h4>
+                        <div class="chart-container">
+                            <div class="chart-title">"첫 두 문장" 전략의 문제 유형별 효과성</div>
+                            <canvas id="step1EffectivenessChart"></canvas>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                               <thead>
+                                    <tr>
+                                        <th>수능 문제 유형</th>
+                                        <th>전략 효과성 등급</th>
+                                        <th>주요 적용 지침 및 유의사항</th>
+                                        <th>학문적 텍스트 특징 고려 (예시)</th>
+                                        <th>실제 적용 예시 (가상) & 분석</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>주제/요지/제목 찾기</td>
+                                        <td>높음</td>
+                                        <td>지문 전체 및 각 단락 첫 1-2 문장을 통해 핵심 주제와 중심 생각 신속 파악. 세부 사항에 초점을 맞춘 오답 주의. 후반부 반전 가능성 염두.</td>
+                                        <td>개념 정의("The term 'sustainability' refers to..."), 연구 목적 제시("This study aims to explore..."), 문제 제기("A significant challenge in modern urban planning is...")</td>
+                                        <td><strong>예시:</strong> "The phenomenon of 'confirmation bias' significantly impacts human decision-making. It describes our tendency to search for, interpret, favor, and recall information in a way that confirms or supports our preexisting beliefs or hypotheses." <br> <div class="example-analysis">두 번째 문장은 확증 편향을 구체적으로 정의. 이 글은 확증 편향의 개념과 영향에 대해 다룰 것임.</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>빈칸 추론 (주제 관련 빈칸)</td>
+                                        <td>중간</td>
+                                        <td>글의 핵심 방향성 예측, 빈칸 내용의 범위 설정에 도움. 단, 빈칸의 내용은 빈칸 주변 문장과의 직접적인 논리 관계에 의해 결정되는 경우가 더 많으므로 반드시 확인 필요.</td>
+                                        <td>문제 제기 후 해결책 암시("To address this issue, one potential approach is... [빈칸]"), 가설 제시 후 결과 예측("If this hypothesis holds true, then we would expect... [빈칸]")</td>
+                                        <td><strong>예시:</strong> "Social capital, broadly defined as the networks of relationships among people who live and work in a particular society, enables that society to function effectively. Communities with high levels of social capital often exhibit greater [빈칸] and collective efficacy." <br> <div class="example-analysis">첫 문장은 사회적 자본의 정의와 기능(사회 효과적 기능)을 설명. 빈칸은 사회적 자본이 높은 공동체의 긍정적 특성(예: 협력, 신뢰)을 나타낼 것임.</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>문맥상 어휘 추론</td>
+                                        <td>낮음</td>
+                                        <td>글의 전반적인 톤(Tone)과 주제 파악에 간접적 도움. 어휘의 방향성(긍정/부정) 예측 가능. 어휘의 의미는 궁극적으로 해당 어휘가 사용된 문장과 그 주변 문맥에 의해 결정됨. 문맥 특수성, 다의어 함정 주의.</td>
+                                        <td>긍정/부정적 가치 판단 내포 어휘(예: 'a promising avenue for research', 'a problematic assumption'), 객관적 서술 속 미묘한 뉘앙스 파악.</td>
+                                        <td><strong>예시:</strong> "The theory of punctuated equilibrium in evolutionary biology proposes that most species will exhibit little evolutionary change for most of their geological history, remaining in an extended state called stasis. When evolutionary change does occur, it is localized in rare, geologically rapid events of branching speciation, a stark ①<u>contrast</u> to the gradualism proposed by Darwin." <br> <div class="example-analysis">첫 문장은 단속평형설을 소개. 'contrast'는 다윈의 점진주의와 대조됨을 나타내며, 글 전체가 진화론의 다른 관점을 제시할 것임을 암시.</div></td>
+                                    </tr>
+                                     <tr>
+                                        <td>요약문 완성</td>
+                                        <td>높음</td>
+                                        <td>지문의 핵심 주제 및 주요 변수(원인/결과, 대립항 등) 파악에 결정적. 요약문의 빈칸 (A)와 (B)에 들어갈 내용을 예측하는 데 직접적 단서 제공. 세부 내용보다는 글의 전체적인 논리 구조 파악에 우선 활용.</td>
+                                        <td>연구의 주요 결과 암시("Our findings demonstrate that..."), 핵심 주장 요약("In essence, the argument posits that...")</td>
+                                        <td><strong>예시:</strong> "Technological advancements have dramatically increased agricultural productivity. However, this intensification has often come at the cost of environmental degradation, such as soil depletion and water pollution." <br> <strong>요약문:</strong> While technology has (A)________ agricultural output, it has also raised concerns about (B)________ sustainability. <br> <div class="example-analysis">첫 문장은 기술 발전이 농업 생산성을 '증가(increased)'시켰음을, 두 번째 문장은 환경 '악화(degradation)'를 야기했음을 보여줌. 이는 요약문의 (A), (B)에 대한 핵심 단서.</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>분위기/어조/필자의 태도</td>
+                                        <td>중간</td>
+                                        <td>첫 문장들이 초기 어조나 입장을 설정하는 경우가 많음 (비판적, 지지적, 객관적 등). 단, 글 중간의 어조 변화 가능성에 유의하며 전체적인 맥락 확인 필요.</td>
+                                        <td>필자의 명시적 입장 표명("It is imperative to understand..."), 문제의 심각성 강조("One of the most pressing issues facing humanity is...")</td>
+                                        <td><strong>예시:</strong> "The relentless pursuit of economic growth without considering its ecological footprint is a dangerous gamble. We are rapidly depleting natural resources and destabilizing the climate systems upon which our very survival depends." <br> <div class="example-analysis">첫 문장부터 'dangerous gamble'이라는 표현을 통해 경제 성장에 대한 비판적이고 우려 섞인 어조를 드러냄.</div></td>
+                                    </tr>
+                                     <tr>
+                                        <td>문장 삽입 (초기 평가 단계)</td>
+                                        <td>중간</td>
+                                        <td>삽입 위치 주변 단락들의 첫 문장을 통해 주제적 연관성 높은 영역 추정 가능. 그러나 최종 결정은 삽입 문장과 앞뒤 문장 간의 구체적인 논리적/응집적 연결에 기반해야 함.</td>
+                                        <td>각 단락의 소주제(Topic Sentence) 파악하여 삽입될 문장이 어떤 내용 그룹에 속할지 예측.</td>
+                                        <td><strong>예시:</strong> (지문 생략) 삽입될 문장이 "This psychological mechanism, however, can lead to biased judgments." 라면, '심리적 메커니즘'에 대한 설명이 있는 단락의 첫 문장들을 찾아보고, 그 메커니즘의 단점을 지적하는 부분이 이어질 만한 곳을 예측.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>글의 순서 배열 (초기 예측)</td>
+                                        <td>중간</td>
+                                        <td>각 단락의 첫 문장을 통해 전체적인 글의 논리적 흐름(예: 도입-본론-결론, 문제-해결, 시간 순서)을 예측하는 데 도움. 그러나 세부적인 순서는 연결어, 지시어, 내용의 논리적 연결이 더 중요.</td>
+                                        <td>일반적 진술 → 구체적 설명, 시간 순서, 원인 → 결과 등 학문적 글의 전형적인 구조 예측.</td>
+                                        <td><strong>예시:</strong> (A) "For example, the Industrial Revolution..." (B) "Technological innovations have always shaped human society." (C) "Furthermore, the current digital revolution..." <br> <div class="example-analysis">(B)가 일반적 진술로 시작, (A)가 과거 예시, (C)가 현재/추가 예시로 이어질 가능성 예측.</div></td>
+                                    </tr>
+                                    <tr>
+                                        <td>무관한 문장 찾기</td>
+                                        <td>높음</td>
+                                        <td>각 단락의 첫 문장(주제문)을 기준으로 해당 단락의 통일성을 해치는 문장을 식별하는 데 유용. 전체 글의 주제와 동떨어진 문장 파악에도 도움.</td>
+                                        <td>단락의 주제문(Topic Sentence)과 각 문장의 내용 일치 여부 판단.</td>
+                                        <td><strong>예시:</strong> 단락 첫 문장이 "Effective communication involves both verbal and nonverbal cues." 라면, 이후 문장들 중 갑자기 "The history of written language is fascinating."과 같이 비언어적 단서와 무관한 내용이 나오면 의심.</td>
+                                    </tr>
+                                </tbody>
+                                <caption>표 1: "첫 두 문장" 전략의 수능 문제 유형별 효과성 및 활용 방안</caption>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+
+                <div x-show="activeTab === 'step2-strategy'" class="tab-content">
+                    <section id="step2-strategy">
+                        <!-- 원문 내용 + 아코디언 + Mermaid 마인드맵 -->
+                        <!-- (이전 답변에서 복원된 step2-strategy의 전체 내용이 여기에 들어갑니다.) -->
+                        <!-- (길이 관계상 생략, 이전 답변의 해당 부분 참조) -->
+                        <h2>🔹 2단계 전략: 문장 간 논리적 관계 파악 (Mid-Range: 나무 사이 연결 보기)</h2>
+                        <p>⚙️ <strong>전략 2 시작!</strong> 첫 문장에서 글의 방향을 잡았다면, 이제 각 문장들이 어떻게 연결되어 필자의 주장을 구축해 나가는지 파악해야 합니다. 문장들은 독립적인 섬이 아니라, <strong>논리라는 다리</strong>로 연결되어 있습니다. 이 다리의 종류(논리 관계)를 정확히 파악하는 것이 심층적인 독해의 핵심입니다. 문장 간 관계는 크게 <strong>같은 방향으로 나아가는 '<dfn x-data="{ tooltipText: '앞선 내용과 논리적 방향이 같거나 유사한 관계입니다. 예를 들어, 부연 설명, 예시, 인과 관계(결과 제시) 등이 있습니다.' }">동의성(Equivalence)<span class="custom-tooltip" x-text="tooltipText"></span></dfn>'</strong>과 <strong>다른 방향으로 꺾이는 '<dfn x-data="{ tooltipText: '앞선 내용과 논리적 방향이 다르거나 반대되는 관계입니다. 예를 들어, 역접, 대조, 양보 등이 있습니다.' }">차이성(Difference)<span class="custom-tooltip" x-text="tooltipText"></span></dfn>'</strong>으로 나눌 수 있습니다.</p>
+                        <p>💡 <strong>학습 팁!</strong>: 각 문장을 읽을 때마다 "그래서?", "왜?", "예를 들면?", "하지만?"과 같은 질문을 던지며 앞 문장과의 관계를 능동적으로 추론하세요. 연결어가 없어도 숨겨진 논리적 연결고리를 찾는 연습이 중요합니다.</p>
+                        <div class="quick-tip">
+                            <h4>⚡ [NEW!] 동의성 vs. 차이성 5초 감별 팁 (실전에서 헷갈릴 때!)</h4>
+                            <p>수험생들이 "지금 문장이 차이성인지 동의성인지 헷갈려요"라고 가장 많이 묻습니다. 다음 팁으로 빠르게 감을 잡아보세요:</p>
+                            <ul>
+                                <li>✅ <strong>앞 문장과 톤(긍정/부정)이 바뀌면 → 차이성일 확률↑</strong> (예: 장점 언급 → 단점 언급)</li>
+                                <li>✅ <strong>앞 문장 단어가 반복/하위화(구체화)되면 → 동의성일 확률↑</strong> (예: 'Fruit' 언급 후 → 'Apples, Bananas' 등으로 구체화)</li>
+                                <li>✅ <strong>'예시/구체화' vs '반례/비판'으로 이어지는가?</strong>
+                                    <ul>
+                                        <li>앞 내용에 대한 <strong>구체적인 사례나 부연 설명</strong>이면 → <strong>동의성</strong> (예시, 상세화)</li>
+                                        <li>앞 내용에 대한 <strong>다른 관점, 문제점 지적, 예상과 다른 결과</strong>면 → <strong>차이성</strong> (반론, 역접, 문제 제기)</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                       <div class="mermaid-mindmap-container">
+                           <h4>논리 관계 유형 마인드맵</h4>
+                           <div class="mermaid">
+mindmap
+ root((논리 관계 유형))
+   (동의성 Equivalence)
+     ::icon(fas fa-check-circle)
+     (부연 설명 / 상세화)
+       (Indeed, In fact, Specifically, That is)
+     (환언 / 재진술)
+       (That is (to say), In other words)
+     (예시)
+       (For example, For instance, such as)
+     (인과 관계 - 결과 제시)
+       (Therefore, Thus, Consequently, As a result)
+     (강조)
+       (Indeed, In fact, Above all)
+     (열거 / 첨가)
+       (Moreover, Furthermore, In addition, Also)
+   (차이성 Difference)
+     ::icon(fas fa-times-circle)
+     (역접 - Strong Opposition)
+       (However, But, Yet, Nevertheless)
+     (대조 - Difference)
+       (In contrast, On the other hand, While)
+     (양보 - Concession)
+       (Although, Though, Despite)
+     (문제 제기 / 반론)
+       ((However), A critical issue is...)
+     (예외)
+       ((However), except for, unless)
+                           </div>
+                       </div>
+
+                       <h4>논리 관계 유형: 한눈에 보기 표</h4>
+                       <div class="table-container">
+                           <table>
+                               <thead>
+                                   <tr>
+                                       <th>대분류</th>
+                                       <th>소분류 (관계 유형)</th>
+                                       <th>핵심 의미/기능</th>
+                                       <th>대표 연결어 (예시)</th>
+                                       <th>연결어 없을 시 단서 (예시)</th>
+                                   </tr>
+                               </thead>
+                               <tbody>
+                                   <tr>
+                                       <td rowspan="6"><strong>동의성 (Equivalence)</strong> <br> (같은 방향)</td>
+                                       <td>부연 설명 (Elaboration) / 상세화 (Specification)</td>
+                                       <td>앞선 내용을 더 자세하고 구체적으로 풀어 설명</td>
+                                       <td>Indeed, In fact, Specifically, That is</td>
+                                       <td>일반적 진술 → 구체적 설명, 하위 개념 제시, 세부 사항 추가</td>
+                                   </tr>
+                                   <tr>
+                                       <td>환언 (Restatement) / 재진술 (Paraphrasing)</td>
+                                       <td>앞선 내용을 다른 단어나 표현을 사용하여 같은 의미로 다시 한번 설명</td>
+                                       <td>That is (to say), In other words, To put it differently</td>
+                                       <td>유사 어휘/구조 반복, 핵심 내용 다른 방식으로 표현</td>
+                                   </tr>
+                                   <tr>
+                                       <td>예시 (Exemplification)</td>
+                                       <td>앞선 일반적인 진술이나 주장에 대한 구체적인 사례를 제시</td>
+                                       <td>For example, For instance, To illustrate, such as, like</td>
+                                       <td>일반적 주장/개념 → 특정 인물, 사건, 사물, 연구 등 언급</td>
+                                   </tr>
+                                    <tr>
+                                       <td>인과 관계 (Causation - 결과 제시)</td>
+                                       <td>앞선 내용이 원인이 되어, 그로 인해 발생하는 결과를 뒷 문장에서 설명</td>
+                                       <td>Therefore, Thus, Consequently, As a result, Hence, Accordingly</td>
+                                       <td>내용상 명백한 원인 현상 → 결과 현상 제시</td>
+                                   </tr>
+                                   <tr>
+                                       <td>강조 (Emphasis)</td>
+                                       <td>앞 문장의 내용을 다른 표현이나 방식을 통해 더욱 중요하게 부각</td>
+                                       <td>Indeed, In fact, Above all, Most importantly, It is... that...</td>
+                                       <td>중요성 나타내는 형용사/부사, 수사적 표현, 반복</td>
+                                   </tr>
+                                    <tr>
+                                       <td>열거 (Enumeration) / 첨가 (Addition)</td>
+                                       <td>앞선 내용에 추가적인 정보나 항목을 나열</td>
+                                       <td>Moreover, Furthermore, In addition, Also, Besides, And, First(ly), Second(ly)</td>
+                                       <td>유사한 성격의 정보/항목 나열, 병렬 구조</td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="5"><strong>차이성 (Difference)</strong> <br> (다른 방향)</td>
+                                       <td>역접 (Contrast - Strong Opposition)</td>
+                                       <td>앞 문장의 내용이나 일반적으로 예상되는 흐름과 정반대되거나 직접적으로 상충하는 내용 제시</td>
+                                       <td>However, But, Yet, Nevertheless, Nonetheless, Still, In fact (때때로 반전)</td>
+                                       <td>통념/기대 → 예상 밖 결과/사실, 긍정↔부정 어조 전환, 직접적 반박</td>
+                                   </tr>
+                                   <tr>
+                                       <td>대조 (Comparison - Difference)</td>
+                                       <td>두 가지 이상의 대상, 아이디어, 상황, 관점 등을 나란히 놓고 그 차이점을 명확히 드러냄</td>
+                                       <td>In contrast, On the other hand, By contrast, Conversely, While, Whereas</td>
+                                       <td>두 대상의 상반되는 속성/특징 병렬 제시, 비교급 활용</td>
+                                   </tr>
+                                   <tr>
+                                       <td>양보 (Concession)</td>
+                                       <td>앞선 내용을 일부 인정하면서도, 그와 상반되거나 더 중요하다고 생각되는 다른 내용을 제시</td>
+                                       <td>Although, Though, Even though, While, Despite, In spite of, Admittedly, Granted</td>
+                                       <td>"A에도 불구하고 B하다" 구조, 긍정적 측면 인정 후 부정적/다른 측면 제시 (또는 그 반대)</td>
+                                   </tr>
+                                   <tr>
+                                       <td>문제 제기 (Problem Identification) / 반론 (Counter-argument)</td>
+                                       <td>앞 문장에서 제시된 내용에 대해 문제점을 지적하거나, 다른 시각에서의 반론을 제기</td>
+                                       <td>(However, But 등 역접 활용), A critical issue is..., One concern is..., Some argue against this...</td>
+                                       <td>기존 주장/상황 → 문제점/한계/비판 제시, 다른 관점 소개</td>
+                                   </tr>
+                                   <tr>
+                                       <td>예외 (Exception)</td>
+                                       <td>앞 문장에서 제시된 일반적인 규칙이나 상황에 대한 예외적인 경우를 언급</td>
+                                       <td>(However, But 등 역접 활용), except (for), unless, with the exception of</td>
+                                       <td>일반적 규칙/경향 → 벗어나는 특정 사례/조건 언급</td>
+                                   </tr>
+                               </tbody>
+                                <caption>논리 관계 유형 분류표</caption>
+                           </table>
+                       </div>
+
+                       <div x-data="{ openArticle: '' }">
+                           <article id="equivalence-relations" class="accordion-item" x-data="{ open: false }">
+                               <div class="accordion-header" @click="open = !open">
+                                   <span>A. 동일한 방향으로 나아가는 흐름 (동의성 관계, Equivalence): 주장에 살을 붙이는 방법들</span>
+                                   <span class="accordion-icon" x-text="open ? '−' : '+'"></span>
+                               </div>
+                               <div class="accordion-content" x-show="open" x-transition>
+                                   <p>앞선 내용과 유사하거나 동일한 방향으로 논리가 전개되며, 내용을 뒷받침하거나 명확히 하는 역할을 합니다.</p>
+                                   <h4>1. 부연 설명 (Elaboration) / 상세화 (Specification)</h4>
+                                   <p>앞선 내용을 더 자세하고 구체적으로 풀어 설명합니다.</p>
+                                   <blockquote><strong>예시 1 (과학 - 메커니즘 설명):</strong><br>
+                                       "Photosynthesis is the process by which green plants and some other organisms use sunlight to synthesize foods with the help of chlorophyll. This intricate biochemical pathway involves the conversion of light energy into chemical energy, stored in the bonds of glucose molecules, and the release of oxygen as a byproduct."
+                                   </blockquote>
+                                   <div class="example-analysis">두 번째 문장은 광합성이라는 일반적인 정의에 이어, 그 과정의 핵심적인 생화학적 경로(빛 에너지의 화학 에너지 전환, 포도당 생성, 산소 방출)를 상세하게 부연 설명합니다. 'by which'는 관계대명사로 앞의 process를 수식하며 방법을 나타냅니다. 'This intricate biochemical pathway'는 앞 문장의 photosynthesis를 지칭하며 상세 설명을 이어갑니다.</div>
+                                   <blockquote><strong>예시 2 (사회학 - 개념의 적용 범위 확장):</strong><br>
+                                       "Social stratification refers to a system by which a society ranks categories of people in a hierarchy. This hierarchical arrangement is not merely a reflection of individual differences but is a characteristic of society itself, persisting across generations and often justified by cultural beliefs."
+                                   </blockquote>
+                                   <div class="example-analysis">두 번째 문장은 사회 계층화의 정의에 더하여, 그것이 단순한 개인차가 아닌 사회적 특성이며 세대를 걸쳐 지속되고 문화적 신념에 의해 정당화된다는 점을 상세화하며 개념의 깊이를 더합니다.</div>
+                                   <h4>2. 환언 (Restatement) / 재진술 (Paraphrasing)</h4>
+                                   <p>앞선 내용을 다른 단어나 표현을 사용하여 같은 의미로 다시 한번 설명합니다.</p>
+                                   <blockquote><strong>예시 1 (철학 - 추상적 개념 명료화):</strong><br>
+                                       "Existentialist philosophy often emphasizes the concept of 'radical freedom,' which posits that individuals are entirely responsible for creating their own meaning in life. In essence, humans are condemned to be free, forced to make choices that define their existence without recourse to preordained values or divine guidance."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>In essence</code>를 사용하여 '급진적 자유'라는 철학적 개념을 '인간은 자유롭도록 선고받았으며, 미리 정해진 가치나 신의 인도 없이 자신의 존재를 정의하는 선택을 해야 한다'는 더 구체적이고 강렬한 표현으로 재진술합니다.</div>
+                                   <blockquote><strong>예시 2 (경제학 - 정책 목표 재확인):</strong><br>
+                                       "The central bank's primary objective is to maintain price stability within the economy. Put differently, its core mandate is to control inflation and prevent deflation, thereby fostering a predictable economic environment conducive to sustainable growth."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>Put differently</code>를 사용하여 중앙은행의 주요 목표인 '물가 안정'을 '인플레이션 통제 및 디플레이션 방지, 예측 가능한 경제 환경 조성'이라는 더 구체적인 정책 수행 방식으로 바꾸어 설명합니다.</div>
+                                   <h4>3. 예시 (Exemplification)</h4>
+                                   <p>앞선 일반적인 진술이나 주장에 대한 구체적인 사례를 제시합니다.</p>
+                                   <blockquote><strong>예시 1 (역사학 - 일반적 경향의 구체적 사례):</strong><br>
+                                       "Throughout history, major technological innovations have often led to profound societal transformations. The invention of the printing press in the 15th century, for example, dramatically accelerated the spread of knowledge, challenged established authorities, and played a pivotal role in movements such as the Renaissance and the Reformation."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>for example</code>을 사용하여 '기술 혁신이 사회 변혁을 이끈다'는 일반적 주장에 대해 '15세기 인쇄술 발명'이라는 구체적인 역사적 사례와 그 파급 효과를 제시합니다.</div>
+                                   <blockquote><strong>예시 2 (문학 - 문학적 기법의 실제 적용):</strong><br>
+                                       "Modernist literature frequently explores themes of alienation and fragmentation, reflecting the anxieties of a rapidly changing world. Virginia Woolf's novel Mrs. Dalloway, with its stream-of-consciousness narrative and fractured timeline, vividly portrays the characters' internal disarray and their struggle to find meaning in a post-war society."
+                                   </blockquote>
+                                   <div class="example-analysis">버지니아 울프의 소설을 구체적인 예로 들어, 모더니즘 문학의 일반적인 주제(소외, 분열)와 기법이 실제 작품에서 어떻게 구현되는지를 보여줍니다. (연결어는 없지만 내용상 예시)</div>
+                                   <h4>4. 인과 관계 (Causation - 결과 제시)</h4>
+                                   <p>앞선 내용이 원인이 되어, 그로 인해 발생하는 결과를 뒷 문장에서 설명합니다.</p>
+                                   <blockquote><strong>예시 1 (환경과학 - 환경 문제의 결과):</strong><br>
+                                       "The excessive emission of greenhouse gases, primarily carbon dioxide from burning fossil fuels, has led to a significant increase in global average temperatures. As a consequence, we are witnessing more frequent and intense heatwaves, rising sea levels, and disruptions to ecosystems worldwide."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>As a consequence</code>는 '온실가스 과다 배출로 인한 지구 평균 기온 상승'이라는 원인에 따른 '극심한 폭염, 해수면 상승, 생태계 교란'이라는 구체적인 결과들을 명확히 제시합니다.</div>
+                                   <blockquote><strong>예시 2 (심리학 - 특정 행동의 원인과 결과):</strong><br>
+                                       "Chronic stress can dysregulate the body's hypothalamic-pituitary-adrenal (HPA) axis, a critical neuroendocrine system. This dysregulation, in turn, can contribute to a host of health problems, including impaired immune function, cardiovascular disease, and mental health disorders such as depression and anxiety."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>This dysregulation, in turn,</code>은 만성 스트레스로 인한 HPA 축의 조절 장애(원인)가 면역 기능 저하, 심혈관 질환, 정신 건강 문제 등 다양한 건강 문제(결과)로 이어질 수 있음을 보여줍니다. 'This dysregulation'이 앞 내용(원인)을 받고, 'in turn'이 순차적 결과를 암시합니다.</div>
+                                   <h4>5. 강조 (Emphasis)</h4>
+                                   <p>앞 문장의 내용을 다른 표현이나 방식을 통해 더욱 중요하게 부각합니다.</p>
+                                   <blockquote><strong>예시 (정치학 - 핵심 원칙 강조):</strong><br>
+                                       "The principle of separation of powers is fundamental to the functioning of a democratic government. Indeed, it is this very division of authority among the legislative, executive, and judicial branches that serves as a crucial check against tyranny and the abuse of power."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>Indeed, it is this very... that...</code> 강조 구문을 사용하여 '권력 분립의 원칙'이 민주 정부 기능에 필수적이라는 앞 문장의 내용을, 그것이 독재와 권력 남용을 막는 핵심 장치임을 강조하며 그 중요성을 더욱 부각합니다.</div>
+                                   <h4>6. 열거 (Enumeration) / 첨가 (Addition)</h4>
+                                   <p>앞선 내용에 추가적인 정보나 항목을 나열합니다.</p>
+                                   <blockquote><strong>예시 (교육학 - 효과적인 학습 전략 나열):</strong><br>
+                                       "Several pedagogical strategies have been shown to enhance student engagement and learning outcomes. These include active learning techniques, collaborative projects, and the provision of timely and constructive feedback."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>These include</code>를 사용하여 효과적인 교수 전략으로 '능동적 학습 기법, 협력 프로젝트, 시의적절하고 건설적인 피드백 제공'이라는 여러 항목들을 추가적으로 열거합니다. 'These'는 앞 문장의 'Several pedagogical strategies'를 지칭합니다.</div>
+                               </div>
+                           </article>
+
+                           <article id="difference-relations" class="accordion-item" x-data="{ open: false }">
+                               <div class="accordion-header" @click="open = !open">
+                                   <span>B. 다른 방향으로 전환되는 흐름 (차이성 관계, Difference): 논리의 방향을 트는 방법들</span>
+                                   <span class="accordion-icon" x-text="open ? '−' : '+'"></span>
+                               </div>
+                               <div class="accordion-content" x-show="open" x-transition>
+                                   <p>앞선 내용과 다른 방향으로 논리가 전개되거나, 상반되는 내용을 제시하며 글에 새로운 국면을 도입합니다. 이 범주에는 역접, 대조, 양보, 문제 제기, 예외 등 다양한 관계가 포함됩니다.</p>
+                                   <h4>1. 역접 (Contrast - Strong Opposition): 예상과 다른 반전, 직접적인 반박</h4>
+                                   <p><strong>개념:</strong> 앞 문장의 내용이나 일반적으로 예상되는 흐름과 <strong>정반대</strong>되거나 <strong>직접적으로 상충</strong>하는 내용을 제시하여, 독자의 예상을 깨고 강한 반전이나 논점의 전환을 이끌어냅니다. "그러나", "하지만", "그럼에도 불구하고"와 같이 앞선 내용을 부정하거나 그와는 전혀 다른 상황을 제시하는 데 중점을 둡니다. 하나의 주제나 상황 내에서의 예상치 못한 반대 결과나 상황을 나타내는 경우가 많습니다.</p>
+                                   <p><strong>주요 연결어:</strong> <code>However</code>, <code>But</code>, <code>Yet</code>, <code>Nevertheless</code>, <code>Nonetheless</code>, <code>Still</code>, <code>Despite that</code>, <code>In spite of that</code>.</p>
+                                   <blockquote><strong>예시 1 (경제학 - 이론과 현실의 직접적 충돌):</strong><br>
+                                       "Classical economic theory posits that markets are inherently self-regulating and tend towards equilibrium, efficiently allocating resources. However, the Great Depression of the 1930s starkly demonstrated that markets could fail catastrophically, leading to prolonged periods of high unemployment and economic stagnation, directly contradicting the notion of automatic self-correction."
+                                   </blockquote>
+                                   <div class="example-analysis">고전 경제 이론의 '시장 자율 규제'라는 긍정적 가정에 대해, <code>However</code>를 사용하여 대공황이라는 역사적 사건을 통해 시장이 '파멸적으로 실패할 수 있다'는 정반대의 현실을 제시하며 이론을 직접적으로 반박합니다.</div>
+                                   <blockquote><strong>예시 2 (의학 - 기대와 다른 치료 결과):</strong><br>
+                                       "The initial laboratory tests for the new antiviral drug showed exceptionally promising results, inhibiting viral replication by over 90%. Yet, in subsequent human clinical trials, the drug failed to produce any statistically significant improvement in patient outcomes compared to a placebo, and in some cases, worsened their condition."
+                                   </blockquote>
+                                   <div class="example-analysis">실험실 테스트에서의 '매우 유망한 결과'라는 긍정적 기대와는 정반대로, <code>Yet</code>을 사용하여 실제 임상 시험에서는 '통계적으로 유의미한 개선 없음' 또는 '상태 악화'라는 완전히 상반되는 결과를 제시합니다.</div>
+                                   <blockquote><strong>예시 3 (사회학 - 일반적 통념에 대한 반박):</strong><br>
+                                       "It is often assumed that technological progress inevitably leads to a higher quality of life for all members of society. Nevertheless, extensive sociological research indicates that while technology can bring numerous benefits, its unequal distribution and access can exacerbate existing social inequalities, creating a digital divide that marginalizes vulnerable populations."
+                                   </blockquote>
+                                   <div class="example-analysis">'기술 발전이 모두의 삶의 질을 향상시킨다'는 일반적인 긍정적 통념에 대해, <code>Nevertheless</code>를 사용하여 기술이 오히려 '사회적 불평등을 심화시킬 수 있다'는 반대되는 연구 결과를 제시하며 통념을 반박합니다.</div>
+                                   <h4>2. 대조 (Comparison - Difference): 두 대상/관점의 차이점 부각, 병렬적 비교</h4>
+                                   <p><strong>개념:</strong> 두 가지 이상의 대상, 아이디어, 상황, 관점 등을 <strong>나란히 놓고 그 차이점</strong>을 명확히 드러내는 데 초점을 맞춥니다. 반드시 한쪽이 다른 쪽을 부정하거나 반박하는 것은 아니며, 각각의 고유한 특징을 비교하여 보여주는 방식입니다. "반면에", "~와는 달리"와 같이 서로 다른 속성을 병렬적으로 제시하는 경우가 많습니다. 서로 다른 두 개 이상의 독립적인 대상이나 측면을 비교하는 데 주로 사용됩니다.</p>
+                                   <p><strong>주요 연결어:</strong> <code>In contrast</code>, <code>On the other hand</code>, <code>By contrast</code>, <code>Conversely</code>, <code>While</code>, <code>Whereas</code>.</p>
+                                   <blockquote><strong>예시 1 (문화인류학 - 두 문화의 가치관 비교):</strong><br>
+                                       "Individualistic cultures, prevalent in many Western societies such as the United States, tend to emphasize personal achievement, autonomy, and self-reliance, with individuals expected to prioritize their own goals. In contrast, collectivistic cultures, common in many East Asian societies like Japan and Korea, prioritize group harmony, interdependence, and the needs of the in-group (e.g., family, company) over individual desires, with loyalty and conformity often highly valued."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>In contrast</code>를 사용하여 개인주의 문화와 집단주의 문화라는 두 가지 다른 문화 유형을 병렬적으로 놓고, 각각의 핵심 가치관(개인 성취 vs. 집단 조화, 자율성 vs. 상호의존)의 차이점을 명확하게 보여줍니다.</div>
+                                   <blockquote><strong>예시 2 (정치학 - 두 정치 체제의 특징 비교):</strong><br>
+                                       "A parliamentary system of government, as seen in the United Kingdom, typically features a fusion of executive and legislative powers, where the Prime Minister and cabinet members are also members of the legislature and accountable to it. On the other hand, a presidential system, exemplified by the United States, is characterized by a clear separation of powers between the executive, legislative, and judicial branches, with the President being independently elected and not a member of Congress."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>On the other hand</code>를 사용하여 의원내각제와 대통령제라는 두 가지 다른 정치 체제를 비교하며, 권력 구조(융합 vs. 분립)와 행정부 수장의 지위 등에서 나타나는 주요 차이점들을 나란히 제시합니다.</div>
+                                   <blockquote><strong>예시 3 (생물학 - 두 종의 생존 전략 비교):</strong><br>
+                                       "The cheetah relies on its incredible speed and agility to chase down prey in open grasslands, a strategy requiring bursts of intense energy. Conversely, the leopard, often inhabiting more wooded areas, employs stealth and ambush tactics, patiently stalking its prey before a sudden attack, a method emphasizing patience and surprise over sheer velocity."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>Conversely</code>를 사용하여 치타와 표범이라는 두 포식자의 사냥 전략을 비교합니다. 치타의 '속도와 민첩성' 전략과 표범의 '은신과 매복' 전략이라는 서로 다른 생존 방식을 대조적으로 보여줍니다.</div>
+                                   <h4>3. 양보 (Concession)</h4>
+                                   <p>앞선 내용을 일부 인정하면서도, 그와 상반되거나 더 중요하다고 생각되는 다른 내용을 제시합니다.</p>
+                                   <blockquote><strong>예시 1 (기술 발전의 양면성):</strong><br>
+                                       "<code>While</code> the internet has undeniably democratized access to information and facilitated global communication, it has also created new avenues for the spread of misinformation and the erosion of privacy."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>While</code> 절을 통해 인터넷의 긍정적 측면(정보 접근 민주화, 글로벌 소통 촉진)을 인정하면서도, 주절에서는 그 이면에 있는 부정적 측면(잘못된 정보 확산, 사생활 침해)을 제시하며 균형 잡힌 시각을 보여줍니다.</div>
+                                   <blockquote><strong>예시 2 (연구 결과의 한계 인정):</strong><br>
+                                       "<code>Despite</code> the statistically significant findings of this study, it is important to acknowledge certain limitations, such as the relatively small sample size and the specific demographic characteristics of the participants, which may restrict the generalizability of the results."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>Despite</code>를 사용하여 연구의 통계적으로 유의미한 결과를 인정하면서도, 표본 크기나 인구 통계학적 특성으로 인한 연구 결과 일반화의 한계점을 지적하며 논의의 신중함을 더합니다.</div>
+                                   <h4>4. 문제 제기 (Problem Identification) / 반론 (Counter-argument)</h4>
+                                   <p>앞 문장에서 제시된 내용에 대해 문제점을 지적하거나, 다른 시각에서의 반론을 제기합니다.</p>
+                                   <blockquote><strong>예시 1 (사회 정책의 의도치 않은 결과):</strong><br>
+                                       "The new urban renewal project was designed to revitalize a neglected neighborhood and improve the quality of life for its residents. A critical concern, <code>however</code>, is the potential for gentrification, which could displace long-term, low-income residents as property values and rents increase."
+                                   </blockquote>
+                                   <div class="example-analysis">도시 재생 프로젝트의 긍정적인 설계 의도에도 불구하고, <code>however</code> 이후에 젠트리피케이션으로 인한 기존 저소득층 주민의 이주 가능성이라는 잠재적인 문제점을 제기합니다. 'A critical concern'이라는 표현도 문제 제기를 명확히 합니다.</div>
+                                   <blockquote><strong>예시 2 (일반적 통념에 대한 도전):</strong><br>
+                                       "It is a widely held belief that increased economic growth automatically leads to greater societal well-being. <code>Nevertheless</code>, a growing body of research challenges this assumption, highlighting that factors such as income inequality, environmental degradation, and social cohesion also play crucial roles in determining overall quality of life."
+                                   </blockquote>
+                                   <div class="example-analysis"><code>Nevertheless</code>를 사용하여 '경제 성장이 곧 사회적 행복'이라는 일반적인 통념에 대해, 소득 불평등, 환경 파괴, 사회적 결속력 등 다른 중요한 요소들을 지적하며 반론을 제기합니다. 'challenges this assumption'이 반론임을 분명히 합니다.</div>
+                                   <h4>5. 예외 (Exception)</h4>
+                                   <p>앞 문장에서 제시된 일반적인 규칙이나 상황에 대한 예외적인 경우를 언급합니다.</p>
+                                   <blockquote><strong>예시 (생물학 - 일반적 규칙과 예외):</strong><br>
+                                       "Most mammals are viviparous, meaning they give birth to live young. The platypus and echidna, <code>however</code>, stand as notable exceptions, as these monotremes lay eggs."
+                                   </blockquote>
+                                   <div class="example-analysis">대부분의 포유류가 태생이라는 일반적인 규칙을 제시한 후, <code>however</code>를 사용하여 알을 낳는 단공류인 오리너구리와 가시두더지가 이 규칙의 주목할 만한 예외임을 명시합니다. 'notable exceptions'라는 표현도 이를 뒷받침합니다.</div>
+                               </div>
+                           </article>
+
+                           <article id="inference-without-connectors" class="accordion-item" x-data="{ open: false }">
+                               <div class="accordion-header" @click="open = !open">
+                                   <span>학습 전략: 연결어 없는 논리 추론 심화</span>
+                                   <span class="accordion-icon" x-text="open ? '−' : '+'"></span>
+                               </div>
+                               <div class="accordion-content" x-show="open" x-transition>
+                                   <p>연결어는 친절한 안내 표지판이지만, 능숙한 필자는 때로 연결어 없이도 문맥만으로 논리적 흐름을 전달합니다. 이때 숨겨진 관계를 파악하는 능력이 중요합니다. 특히 연결어가 없는 경우, 문장 간의 논리적 관계를 파악하는 것은 고도의 독해 능력을 요구합니다. 이때 다음과 같은 단서들을 활용하여 관계를 추론하는 연습이 필요합니다.</p>
+                                   <ul>
+                                       <li><p><strong>어휘적 단서 (Lexical Clues):</strong></p>
+                                           <ul>
+                                               <li><strong>유사어/반의어:</strong> 앞 문장의 핵심 어휘와 유사한 의미의 단어가 사용되면 동의성 관계일 가능성이 높고, 반대 의미의 단어가 사용되면 차이성 관계일 가능성이 높습니다.
+                                                   <blockquote><strong>예시 (유사어 - 동의성):</strong><br>"The research methodology employed in this study was rigorous and systematic. Every step of the data collection and analysis process was meticulously planned and executed to ensure reliability."</blockquote>
+                                                   <blockquote><strong>예시 (반의어 - 차이성, 특히 대조):</strong><br>"Early theories posited that the universe was static and unchanging. Subsequent astronomical observations revealed an expanding cosmos, constantly evolving."</blockquote>
+                                               </li>
+                                               <li><strong>관련어:</strong> 앞 문장의 핵심어와 상위/하위 개념어, 또는 밀접하게 관련된 어휘가 사용되면 부연/예시 또는 내용적 연결을 암시합니다.</li>
+                                           </ul>
+                                       </li>
+                                       <li><p><strong>내용의 흐름 및 전개 방식 (Content Flow and Development):</strong></p>
+                                            <ul>
+                                               <li><strong>일반적 진술 → 구체적 사례/설명:</strong> 앞 문장이 일반적이거나 추상적인 내용을 담고 있고, 뒷 문장이 이를 구체화하거나 예시를 든다면 동의성 관계(예시, 부연)입니다.
+                                                   <blockquote><strong>예시:</strong><br>"The phenomenon of cultural diffusion has shaped human societies throughout history. The spread of culinary traditions, architectural styles, and religious beliefs across different regions exemplifies this process."</blockquote>
+                                               </li>
+                                               <li><strong>원인 → 결과 / 문제점 → 해결책 (또는 그 반대):</strong> 내용상 인과 관계나 문제-해결 구조가 파악되면 해당 논리 관계를 적용할 수 있습니다.
+                                                   <blockquote><strong>예시 (문제점 → 해결책 모색 암시):</strong><br>"Plastic pollution in the oceans has reached alarming levels, posing a severe threat to marine ecosystems and human health. Developing biodegradable alternatives and implementing effective waste management strategies are crucial steps to mitigate this crisis."</blockquote>
+                                               </li>
+                                               <li><strong>시간적 순서 / 과정 설명:</strong> 사건이나 과정이 시간 순서대로 나열되면 순차적 관계(동의성의 일종)입니다.
+                                                    <blockquote><strong>예시:</strong><br>"The experiment involved several key stages. First, a representative sample group was selected. Then, pre-test measurements were taken before the intervention was introduced."</blockquote>
+                                               </li>
+                                           </ul>
+                                       </li>
+                                        <li><p><strong>문장 구조의 유사성 또는 대조성 (Syntactic Parallels or Contrasts):</strong></p>
+                                            <ul>
+                                               <li>유사한 문장 구조가 반복되면 내용상 병렬적이거나 강조하는 동의성 관계일 수 있습니다. 반대로, 대조적인 내용을 담기 위해 의도적으로 문장 구조를 다르게 가져갈 수도 있습니다.
+                                                   <blockquote><strong>예시 (구조적 병렬 - 동의성 강조):</strong><br>"Effective leadership requires clear vision. It also demands strong communication skills and the ability to inspire others."</blockquote>
+                                               </li>
+                                           </ul>
+                                       </li>
+                                        <li><p><strong>필자의 어조나 관점 변화 (Shift in Tone or Perspective):</strong></p>
+                                            <ul>
+                                               <li>객관적인 사실을 전달하다가 갑자기 비판적인 어조로 바뀌거나, 긍정적인 전망을 제시하다가 우려를 표명하는 등 필자의 어조나 관점의 변화는 차이성 관계(역접, 문제 제기 등)를 암시할 수 있습니다.
+                                                   <blockquote><strong>예시:</strong><br>"Technological innovations have undoubtedly improved the quality of life for many. One cannot ignore, however, the growing digital divide that exacerbates existing social inequalities." (여기서는 'however'가 있지만, 연결어 없이도 어조 변화로 추론 가능)</blockquote>
+                                               </li>
+                                           </ul>
+                                       </li>
+                                       <li><p><strong>배경지식 활용 (Background Knowledge):</strong> (주의: 과도한 의존 금물)</p>
+                                           <ul>
+                                               <li>해당 주제에 대한 기본적인 배경지식은 논리 관계 추론에 도움이 될 수 있지만, 반드시 지문 내 정보에 근거해야 합니다. 지문이 제시하는 논리를 우선해야 합니다.</li>
+                                           </ul>
+                                       </li>
+                                   </ul>
+                                    <p>연결어가 없는 문장 간의 관계를 파악하는 연습은 마치 숨은 그림 찾기와 같습니다. 문맥 속에 숨겨진 논리적 연결고리를 어휘, 내용, 구조, 어조 등 다양한 단서를 통해 찾아내는 훈련을 꾸준히 한다면, 더욱 정교하고 깊이 있는 독해가 가능해질 것입니다. 다양한 글을 읽으며 의도적으로 연결어를 가리고 문맥만으로 관계를 추론하는 연습을 하세요. 왜 그렇게 생각했는지 근거(어휘, 내용, 구조 등)를 명확히 설명하는 습관을 들이면 논리적 사고력이 크게 향상됩니다.</p>
+                               </div>
+                           </article>
+                       </div>
+                    </section>
+                </div>
+
+                <div x-show="activeTab === 'step3-strategy'" class="tab-content">
+                    <section id="step3-strategy">
+                        <!-- 원문 내용 -->
+                        <!-- (이전 답변에서 복원된 step3-strategy의 전체 내용이 여기에 들어갑니다.) -->
+                        <!-- (길이 관계상 생략, 이전 답변의 해당 부분 참조) -->
+                        <h2>🔹 3단계 전략: 연결어와 지시어 활용 (Bottom-Up & Synthesis: 단서로 전체 완성하기)</h2>
+                        <p>⚙️ <strong>전략 3 시작!</strong> 글의 세부적인 논리 흐름과 응집성을 파악하기 위해 <strong><dfn x-data="{ tooltipText: '문장이나 단락 간의 논리적 관계(예: 인과, 대조, 예시)를 나타내는 단어나 구입니다. 예: However, Therefore, For example.' }">연결어(Connectors)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></strong>와 <strong><dfn x-data="{ tooltipText: '앞에서 언급된 특정 정보(선행사)를 다시 가리키는 단어입니다. 예: this, it, such, they.' }">지시어(Referring Words)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></strong>라는 명시적인 단서를 적극적으로 활용해야 합니다. 특히 글의 구조가 중요한 <strong>빈칸 추론, 문장 삽입, 순서 배열 문제 해결에 결정적인 역할</strong>을 합니다. 이 단서들은 필자가 독자를 위해 남겨둔 '보물찾기 지도'의 표식과 같습니다.</p>
+                        <p>💡 <strong>학습 팁!</strong>: 연결어와 지시어는 필자가 독자를 위해 남겨둔 '보물찾기 지도'의 표식과 같습니다. 이 표식들을 놓치지 않고 따라가면 글의 숨겨진 구조와 정답에 도달할 수 있습니다.</p>
+                        <ul>
+                            <li><strong>연결어(Connectors):</strong> 문장 간의 논리적 관계의 성격(예: 원인, 결과, 대조, 예시)을 명시적으로 보여줍니다. (위 '논리 관계 유형: 한눈에 보기' 표 참고)</li>
+                            <li><strong>지시어(Referring Words):</strong> 앞에서 언급된 특정 정보(<strong><dfn x-data="{ tooltipText: '지시어가 가리키는, 그보다 앞서 나온 명사, 구, 절, 또는 문장 내용입니다.' }">선행사<span class="custom-tooltip" x-text="tooltipText"></span></dfn></strong>)를 다시 가리켜(<code>this</code>, <code>that</code>, <code>these</code>, <code>those</code>, <code>it</code>, <code>they</code>, <code>such</code> 등) 글의 흐름을 매끄럽게 이어주는 <strong><dfn x-data="{ tooltipText: '글의 각 부분이 문법적, 의미적으로 긴밀하게 연결되어 있는 정도입니다.' }">응집성(Cohesion)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></strong>을 만듭니다. <strong>선행사를 정확히 찾는 것이 핵심!</strong></li>
+                        </ul>
+                         <h3>수능 문제 유형별 적용 방안 (문장 삽입/순서 문제 해결에 대한 강조 강화)</h3>
+                        <ul>
+                            <li><strong>빈칸 추론 (연결어 빈칸):</strong> 가장 직접적인 적용 사례입니다. 빈칸 앞뒤 문장의 논리적 관계를 파악하여 그 관계를 가장 잘 나타내는 연결어를 선택합니다.</li>
+                            <li><strong>문장 삽입:</strong>
+                                <ul>
+                                    <li><strong>삽입될 문장 분석 (3단계 전략 집중!):</strong> 문장 자체에 포함된 <strong>연결어</strong>(예: "<code>However</code>, this approach...")나 <strong>지시어</strong>('<code>this</code> approach', '<code>it</code>')가 <strong>결정적인 단서</strong>입니다. 'However'는 앞 내용과 반대되는 내용이 나올 위치를, 'this approach'는 이 접근법이 처음 소개된 직후 위치를 암시합니다. <strong>이 단서들의 의미를 정확히 파악하는 것이 첫걸음입니다.</strong></li>
+                                    <li><strong>삽입 위치 주변 분석:</strong> 빈칸 앞뒤 문장에 있는 연결어나 지시어도 중요합니다. 삽입될 문장이 들어갔을 때 앞뒤 문장과의 논리적 연결(2단계 전략 활용)과 지시어-선행사 관계(응집성)가 모두 자연스러워야 합니다.</li>
+                                </ul>
+                            </li>
+                            <li><strong>글의 순서 배열:</strong>
+                                 <ul>
+                                    <li><strong>연결어 활용 (강력한 단서!):</strong> <code>First</code>, <code>Next</code>, <code>Finally</code> 등 순서/시간 연결어, <code>However</code>, <code>In contrast</code> 등 대조/역접 연결어, <code>Therefore</code>, <code>As a result</code> 등 인과 연결어는 단락 순서를 정하는 <strong>강력한 신호</strong>입니다.</li>
+                                    <li><strong>지시어 활용 (핵심 방법!):</strong> 대명사(<code>it</code>, <code>they</code>)나 지시사(<code>this</code>, <code>that</code>, <code>these</code>, <code>those</code>, <code>such</code>)가 가리키는 대상(<strong>선행사</strong>)을 따라가는 것은 문장/단락 간의 연결 고리를 찾는 <strong>핵심적인 방법</strong>입니다. (예: "a new theory" → "<code>This</code> theory" → "<code>It</code> suggests...") 선행사가 명확하지 않거나 수/의미가 일치하지 않으면 잘못된 순서입니다. <strong>지시어 추적은 실제 점수로 직결됩니다.</strong></li>
+                                </ul>
+                            </li>
+                            <li><strong>추론 문제:</strong> 연결어는 추론의 방향을 제시합니다. <code>Therefore</code>는 앞선 내용을 근거로 한 논리적 결론을, <code>Although</code>는 양보절의 내용과 반대되는 주절의 내용을 암시합니다.</li>
+                            <li><strong>주제/요지:</strong> <code>In conclusion</code>, <code>In summary</code> 등 결론 연결어는 글의 핵심 내용을 요약하는 부분을 나타낼 수 있습니다. <code>However</code>, <code>Nevertheless</code> 뒤에는 필자의 진짜 주장이 강조될 가능성이 높습니다.</li>
+                        </ul>
+                        <h3>심화 학습: 문장 삽입/순서 배열 정복을 위한 논리 신호 탐지법 (수험생 체감 효과 극대화)</h3>
+                        <p>수험생들이 가장 어려워하는 삽입/순서 유형, 다음 신호들에 집중하면 정복할 수 있습니다! 이 방법론은 <strong>실제 점수로 직결되는 노하우</strong>입니다.</p>
+                        <ol>
+                            <li><p><span class="logic-signal">📍</span><strong>지시어 (The Golden Link):</strong> <code>this</code>, <code>that</code>, <code>these</code>, <code>those</code>, <code>such</code>, <code>it</code>, <code>they</code> 등</p>
+                                <ul>
+                                    <li><strong>핵심:</strong> 이 단어들은 <strong>반드시 앞에 가리킬 대상(선행사)이 있어야 합니다.</strong></li>
+                                    <li><strong>체크 포인트:</strong> 삽입/배열했을 때, 지시어가 명확하고 자연스럽게 앞 내용(단어, 구, 절, 문장 전체)을 가리키는가? <strong>선행사가 없거나 모호하면 오답!</strong> 수 일치(this/these, it/they)도 확인!</li>
+                                    <li>예: "<code>This</code> phenomenon" 앞에는 반드시 이 현상에 대한 설명이 있어야 함. "<code>Such</code> a strategy" 앞에는 해당 전략에 대한 언급이 있어야 함.</li>
+                                </ul>
+                            </li>
+                             <li><p><span class="logic-signal">🔗</span><strong>연결어 (The Signpost):</strong> <code>However</code>, <code>Therefore</code>, <code>For example</code>, <code>First</code>, <code>Then</code>, <code>In addition</code> 등</p>
+                                <ul>
+                                    <li><strong>핵심:</strong> 문장/단락 간의 논리적 관계를 명시적으로 보여줍니다.</li>
+                                    <li><strong>체크 포인트:</strong> 연결어의 의미에 맞게 앞뒤 내용이 논리적으로 연결되는가? (예: However 앞뒤는 반대 내용, Therefore 앞은 원인, 뒤는 결과, In addition 앞뒤는 유사/병렬 내용)</li>
+                                </ul>
+                            </li>
+                             <li><p><span class="logic-signal">⏱️</span><strong>시제/시간 표현 (The Timeline):</strong></p>
+                                <ul>
+                                    <li><strong>핵심:</strong> 글이 시간 순서로 전개될 경우, 시제 변화나 시간 부사(구)가 중요한 단서가 됩니다.</li>
+                                    <li><strong>체크 포인트:</strong> 과거 → 현재 → 미래 순서, 특정 연도나 시기 언급, <code>Before</code>/<code>After</code>/<code>Then</code>/<code>Subsequently</code> 등의 시간 연결어. 갑작스러운 시제 변화는 문맥 전환의 신호일 수 있습니다.</li>
+                                </ul>
+                            </li>
+                            <li><p><span class="logic-signal">🔑</span><strong>핵심 어휘/개념 반복 및 연결 (Lexical Cohesion):</strong></p>
+                                 <ul>
+                                    <li><strong>핵심:</strong> 같은 주제를 다루는 문장들은 핵심 어휘나 관련 개념어를 공유하며 연결됩니다. 단순 반복뿐 아니라 유의어, 반의어, 상위어, 하위어 관계도 중요합니다.</li>
+                                    <li><strong>체크 포인트:</strong> 특정 단어의 반복, 유의어/반의어 사용, 상위어/하위어 관계 등을 통해 내용적 연결성을 확인합니다. 갑자기 생뚱맞은 어휘나 주제가 등장하면 흐름이 끊겼을 가능성. (예: 'environmental pollution' → 'air contamination', 'water pollution' 등 구체화 또는 'ecological crisis' 등 일반화)</li>
+                                </ul>
+                            </li>
+                            <li><p><span class="logic-signal">❓</span><strong>질문과 답변 구조:</strong></p>
+                                <ul>
+                                    <li><strong>핵심:</strong> 질문이 제시되면 그에 대한 답변이 뒤따라오는 경우가 많습니다.</li>
+                                    <li><strong>체크 포인트:</strong> 의문문과 그에 대한 설명/해결책/답변이 논리적으로 연결되는지 확인합니다. 때로는 수사적 질문으로 특정 주장을 강조하기도 합니다.</li>
+                                </ul>
+                            </li>
+                        </ol>
+
+                         <h4>표 3: 핵심 연결어 및 지시어: 기능, 신호, 수능 관련성</h4>
+                         <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>기능 범주</th>
+                                        <th>구체적 예시 (일부)</th>
+                                        <th>텍스트 내 역할</th>
+                                        <th>주로 영향받는 수능 문제 유형</th>
+                                        <th>전략적 팁</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>역접 (강한 반대)</td>
+                                        <td><code>However</code>, <code>But</code>, <code>Yet</code>, <code>Nevertheless</code>, <code>Nonetheless</code>, <code>Still</code></td>
+                                        <td>아이디어 간의 예상치 못한 반전, 직접적 반박, 논점 전환, 앞 내용의 중요성 약화</td>
+                                        <td>빈칸(연결어), 삽입, 순서, 추론, 주제/요지</td>
+                                        <td>앞 내용과 정반대되는 내용을 찾고, 필자의 진짜 주장이 무엇인지 파악한다. 역접 뒤에 필자의 핵심 주장이 오는 경우가 많음.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>대조 (차이점 비교)</td>
+                                        <td><code>In contrast</code>, <code>On the other hand</code>, <code>While</code>, <code>Whereas</code>, <code>Conversely</code>, <code>By comparison</code></td>
+                                        <td>두 대상/관점의 차이점을 병렬적으로 부각하여 각각의 특징을 명확히 함</td>
+                                        <td>빈칸(연결어), 삽입, 순서, 추론, 주제/요지</td>
+                                        <td>대조되는 두 대상과 그 속성들을 명확히 구분하고, 차이점에 초점을 맞춘다. 각 대상에 대한 설명이 균형 있게 제시되는지 확인.</td>
+                                    </tr>
+                                     <tr>
+                                        <td>양보 (일부 인정)</td>
+                                        <td><code>Although</code>, <code>Though</code>, <code>Even though</code>, <code>While</code>, <code>Despite</code>, <code>In spite of</code>, <code>Admittedly</code>, <code>Granted</code></td>
+                                        <td>일부 사실을 인정하면서 다른/반대 측면 강조. 주절의 내용이 더 중요함</td>
+                                        <td>주제/요지, 추론, 빈칸, 삽입</td>
+                                        <td>인정하는 부분(부사절/구)과 필자가 강조하려는 부분(주절)을 구별하여 필자의 최종 입장을 파악한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>인과/결과/이유</td>
+                                        <td><code>Therefore</code>, <code>Thus</code>, <code>Consequently</code>, <code>As a result</code>, <code>Hence</code>, <code>Accordingly</code>, <code>Because (of)</code>, <code>Since</code>, <code>As</code>, <code>For</code></td>
+                                        <td>원인-결과, 이유-결론 관계 명시. 논리적 귀결이나 근거 제시</td>
+                                        <td>빈칸(연결어), 추론, 삽입, 순서</td>
+                                        <td>인과 관계의 방향(원인→결과 / 결과←원인)을 정확히 파악하고 논리적 타당성을 검토한다. 결과에 대한 원인, 주장에 대한 근거를 찾는다.</td>
+                                    </tr>
+                                     <tr>
+                                        <td>첨가/열거</td>
+                                        <td><code>Moreover</code>, <code>Furthermore</code>, <code>In addition</code>, <code>Also</code>, <code>Besides</code>, <code>And</code>, <code>First(ly)</code>, <code>Second(ly)</code>, <code>Next</code>, <code>Finally</code></td>
+                                        <td>유사한 정보나 항목을 덧붙이거나 순서대로 나열. 아이디어 확장</td>
+                                        <td>순서, 내용 일치, 빈칸, 삽입</td>
+                                        <td>추가되는 정보가 앞 내용과 어떤 점에서 유사하거나 병렬적인지 확인한다. 열거되는 항목들의 공통된 상위 개념을 파악한다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>예시/상술</td>
+                                        <td><code>For example</code>, <code>For instance</code>, <code>To illustrate</code>, <code>In particular</code>, <code>Specifically</code>, <code>Namely</code>, <code>such as</code>, <code>like</code></td>
+                                        <td>일반적 진술을 구체화하거나 뒷받침하는 사례/세부 정보 제시. 개념 명료화</td>
+                                        <td>빈칸, 삽입, 순서, 추론</td>
+                                        <td>예시가 설명하거나 뒷받침하는 일반적 개념/주장이 무엇인지 명확히 연결한다. 예시를 통해 일반적 진술의 의미를 구체적으로 이해한다.</td>
+                                    </tr>
+                                     <tr>
+                                        <td>순서/시간</td>
+                                        <td><code>First(ly)</code>, <code>Second(ly)</code>, <code>Next</code>, <code>Then</code>, <code>Finally</code>, <code>Meanwhile</code>, <code>Subsequently</code>, <code>Previously</code>, <code>Before</code>, <code>After</code></td>
+                                        <td>사건이나 단계의 순서 또는 시간 관계 표시. 과정 설명</td>
+                                        <td>순서, 내용 일치</td>
+                                        <td>시간/순서 표지를 따라가며 정보의 배열 순서를 재구성하거나 확인한다. 시간의 흐름이나 과정의 단계를 시각화한다.</td>
+                                    </tr>
+                                     <tr>
+                                        <td>강조/환언</td>
+                                        <td><code>Indeed</code>, <code>In fact</code>, <code>That is (to say)</code>, <code>In other words</code>, <code>To put it differently</code>, <code>Above all</code>, <code>Most importantly</code></td>
+                                        <td>특정 내용 강조 또는 다른 말로 쉽게 풀어 설명. 핵심 내용 재확인</td>
+                                        <td>추론, 내용 일치, 빈칸</td>
+                                        <td>강조되거나 재진술되는 내용의 핵심 의미를 파악하고, 필자가 중요하게 생각하는 포인트를 확인한다. 환언은 어려운 내용을 쉽게 이해하도록 돕는다.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>참조 (지시사)</td>
+                                        <td><code>this</code>, <code>that</code>, <code>these</code>, <code>those</code>, <code>such</code> (명사 앞 또는 단독 사용)</td>
+                                        <td>바로 앞의 명사, 구, 절, 또는 문장 전체 지칭 (선행사 필요). 글의 응집성 강화</td>
+                                        <td>삽입, 순서 (매우 중요), 추론, 빈칸</td>
+                                        <td>지시어가 무엇을 가리키는지(선행사) 명확히 찾아 문맥 연결의 자연스러움 확인. 선행사가 없거나 모호하면 오답 가능성 높음. 수 일치(단수/복수) 확인.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>참조 (대명사)</td>
+                                        <td><code>it</code>, <code>they</code>, <code>he</code>, <code>she</code>, <code>them</code>, <code>its</code>, <code>their</code>, <code>one</code>, <code>ones</code></td>
+                                        <td>이전에 언급된 명사(선행사)를 대신함 (수, 성, 격 일치 확인). 반복 회피</td>
+                                        <td>삽입, 순서 (매우 중요), 내용 일치, 추론</td>
+                                        <td>대명사가 가리키는 선행사를 정확히 찾아 수/성/격 일치 및 의미적 연결성 확인. 지칭 대상 혼동 주의. 여러 대상이 있을 경우 명확히 구분.</td>
+                                    </tr>
+                                </tbody>
+                                 <caption>표 3: 핵심 연결어 및 지시어 분류</caption>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <section id="integrated-application">
+                 <!-- 원문 내용 -->
+                 <h2>🚀 통합적 적용: 세 가지 전략의 시너지 활용</h2>
+                 <p>개별 전략을 아는 것을 넘어, 실제 문제 풀이에서 이들을 유기적으로 통합하여 활용하는 것이 중요합니다. 특히 고난도 문항일수록 여러 전략을 복합적으로 사용해야 해결의 실마리를 찾을 수 있습니다.</p>
+                 <h3>통합적 독해 프로세스 (예시)</h3>
+                 <ol>
+                     <li><strong>(1단계: 첫 문장 분석)</strong> 지문/단락 첫 1-2 문장을 읽고 핵심 주제와 방향성 예측. (예: "이 글은 AI의 윤리적 문제에 대해 논할 것 같다.")</li>
+                     <li><strong>(2단계: 문장 간 논리 연결)</strong> 문장을 읽어 나가며 앞 문장과의 논리적 관계(동의성/차이성) 지속적 파악. (예: "앞 문장은 AI의 장점을 말했는데, 이 문장은 'However'로 시작하니 단점을 말하겠군.")</li>
+                     <li><strong>(3단계: 단서 정밀 추적)</strong> 연결어/지시어 등장 시, 이를 명시적 단서로 활용하여 논리 관계 재확인 및 예측 강화. 지시어의 선행사 반드시 확인. (예: "'This issue'는 앞 문장에서 언급된 AI의 편향성 문제를 가리키는구나.")</li>
+                     <li><strong>(1+2단계: 전체 구조 파악)</strong> 글 전체의 구조(서론-본론-결론, 통념-반박, 문제-해결 등)를 파악하며 핵심 내용 재구성. 각 단락의 첫 문장(주제문)들이 어떻게 연결되는지 확인. (예: "첫 단락은 AI의 발전, 두 번째 단락은 윤리적 문제 제기, 세 번째 단락은 해결 방안 모색으로 이어지는군.")</li>
+                     <li><strong>(문제 유형별 전략 적용)</strong> 문제의 요구사항(주제 찾기, 빈칸 추론, 순서 배열 등)에 맞춰 위 과정에서 얻은 정보를 바탕으로 가장 논리적이고 근거 있는 정답 선택.</li>
+                 </ol>
+                <h3>고난도 문항 적용 시뮬레이션 (가상 - 문장 삽입)</h3>
+                 <article>
+                    <p><strong>[주어진 문장]:</strong> "Furthermore, such a shift in perspective allows for more innovative solutions to emerge."</p>
+                    <ol>
+                        <li><strong>(1단계: 주어진 문장 분석 - 3단계 전략)</strong>
+                            <ul>
+                                <li><code>Furthermore</code>(첨가 연결어): 앞 내용에 추가적인 정보나 유사한 성격의 주장이 나와야 함.</li>
+                                <li><code>such a shift in perspective</code>(지시어+명사구): 바로 앞 문맥에서 '관점의 전환(a shift in perspective)'에 대한 언급이 있어야 함.</li>
+                                <li>내용: 이러한 관점 전환이 '더 혁신적인 해결책'을 가능하게 한다는 긍정적 결과.</li>
+                            </ul>
+                        </li>
+                        <li><strong>(2단계: 지문 읽으며 후보 위치 탐색 - 1, 2단계 전략)</strong>
+                            <ul>
+                                <li>각 단락 첫 문장으로 대략적인 내용 흐름 파악.</li>
+                                <li>지문 내용 중 '관점의 전환'을 시사하거나, 어떤 문제에 대한 기존 접근법에서 새로운 접근법으로 넘어가는 부분을 찾는다.</li>
+                                <li>그 '관점의 전환'에 대한 설명이 끝나는 부분, 그리고 그 전환의 추가적인 긍정적 결과를 언급할 만한 위치를 물색한다.</li>
+                            </ul>
+                        </li>
+                         <li><strong>(3단계: 후보 위치 검증 - 2, 3단계 전략)</strong>
+                            <ul>
+                                <li><strong>후보 1:</strong> (앞 문장) "Rethinking the problem from a different angle can be beneficial." <strong>(주어진 문장 삽입)</strong> (뒷 문장) "These solutions often challenge existing paradigms."
+                                    <ul>
+                                        <li><strong>검증:</strong> 'Rethinking the problem from a different angle'이 '<code>such a shift in perspective</code>'의 훌륭한 선행사가 됨. '<code>Furthermore</code>'로 앞 문장의 긍정적 측면(beneficial)에 추가적인 긍정적 결과(innovative solutions)를 더하는 것이 자연스러움. 뒷 문장의 '<code>These</code> solutions'는 주어진 문장의 'innovative solutions'를 잘 받아줌. 논리적/응집적 연결 매우 좋음.</li>
+                                    </ul>
+                                </li>
+                                <li><strong>후보 2:</strong> (앞 문장) "Traditional methods have proven ineffective." <strong>(주어진 문장 삽입)</strong> (뒷 문장) "Therefore, new approaches are urgently needed."
+                                     <ul>
+                                        <li><strong>검증:</strong> '<code>such a shift in perspective</code>'의 직접적인 선행사가 부족함. '<code>Furthermore</code>'로 연결하기에는 앞 문장(전통 방법의 비효율성)과 주어진 문장(관점 전환의 혁신적 해결책) 간의 내용적 간극이 있음. 연결 부자연스러움.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                         <li><strong>(4단계: 최종 결정)</strong> 후보 1이 논리적 흐름과 응집성 측면에서 가장 적절하므로 정답으로 선택.</li>
+                    </ol>
+                 </article>
+                <div class="important-note">
+                    <h4>🔥 [NEW!] 실제 수능 기출 적용 시뮬레이션 가이드 (자료 신뢰도 1.5배 상승!)</h4>
+                    <p>지금까지의 예시들은 이해를 돕기 위한 가상 예시였습니다. 하지만 학습자 입장에서 "이 전략이 실제 <strong>수능 기출</strong>에서 이렇게 통했구나!"라는 확신을 얻는 것은 매우 중요합니다. 이는 자료의 신뢰도를 크게 높이고, 여러분의 실전 적용 능력을 비약적으로 향상시킬 것입니다.</p>
+                    <p><strong>제안:</strong> 본 자료를 학습한 후, 최근 1~2개년 수능 기출문제 중 <strong>빈칸 추론, 문장 삽입, 또는 글의 순서 배열</strong> 유형에서 스스로 대표 사례를 선정하여 아래 단계에 따라 3단계 전략을 적용해 보세요. 이 과정을 통해 전략이 실제 문제 해결에 어떻게 기여하는지 <strong>step by step</strong>으로 체감할 수 있습니다.</p>
+                     <h5>시뮬레이션 단계 (예시):</h5>
+                    <ol>
+                        <li><strong>문제 선정:</strong> 최근 수능 기출문제 중 고난도 빈칸/삽입/순서 문제 선택.</li>
+                        <li><strong>[1단계 전략 적용]:</strong> 지문(또는 각 단락)의 첫 1-2 문장을 분석하여 핵심 주제와 방향성을 예측하고 기록합니다. "이 글/단락은 OOO에 대해 이야기할 것 같다."</li>
+                        <li><strong>[2단계 전략 적용]:</strong>
+                            <ul>
+                                <li>(빈칸) 빈칸 주변 문장 간의 논리 관계(동의성/차이성)를 분석합니다. 연결어, 5초 감별 팁 등을 활용합니다.</li>
+                                <li>(삽입/순서) 각 문장/단락 간의 논리적 연결고리를 파악합니다. "앞 문장과 뒷 문장은 OOO 관계이다."</li>
+                            </ul>
+                        </li>
+                        <li><strong>[3단계 전략 적용]:</strong>
+                             <ul>
+                                <li>(빈칸) 빈칸 주변의 결정적인 연결어, 지시어(선행사 확인!)를 찾아 그 기능을 분석합니다.</li>
+                                <li>(삽입) 주어진 문장의 연결어/지시어를 분석하고, 지문 내에서 이와 호응하는 부분을 찾습니다. 각 번호 앞뒤 응집성을 점검합니다.</li>
+                                <li>(순서) 각 단락의 연결어, 지시어(선행사 추적!), 핵심 어휘 반복 등을 통해 논리적 순서를 재구성합니다.</li>
+                            </ul>
+                        </li>
+                        <li><strong>[종합 및 정답 도출]:</strong> 위 분석 결과를 종합하여 가장 논리적인 정답을 선택하고, 왜 다른 선택지는 답이 될 수 없는지 근거를 설명합니다.</li>
+                    </ol>
+                     <p><em>(참고: 저작권 문제로 본 자료에 실제 기출 지문을 직접 포함하기는 어렵습니다. 하지만 위 가이드에 따라 학습자 스스로 실제 기출문제를 분석하는 연습을 반드시 병행하시기 바랍니다. 이 과정이 여러분의 실력을 '압도적으로' 끌어올릴 것입니다.)</em></p>
+                </div>
+            </section>
+
+            <section id="strategy-weight-table">
+                <!-- 원문 내용 + Chart.js -->
+                <h2>📊 [NEW!] 문제 유형별 전략 가중치 테이블 (자동화된 사고를 위한 힌트!)</h2>
+                <p>(각 문제 유형을 접했을 때, 어떤 전략에 더 집중해야 할지 빠르게 판단하여 효율적인 문제 풀이를 하세요!)</p>
+                <div class="chart-container">
+                    <div class="chart-title">문제 유형별 전략 가중치 (Radar Chart)</div>
+                    <canvas id="strategyWeightChart"></canvas>
+                </div>
+                 <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>문제 유형</th>
+                                <th>STEP 1 중요도 (방향 설정)</th>
+                                <th>STEP 2 중요도 (논리 연결)</th>
+                                <th>STEP 3 중요도 (단서 추적)</th>
+                                <th>핵심 공략 포인트 (이것만은 기억하자!)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>주제/요지/제목/요약</strong></td>
+                                <td>★★★★☆</td>
+                                <td>★★★☆☆</td>
+                                <td>★★☆☆☆</td>
+                                <td><strong>1단계(첫 문장, 전체 구조)</strong> + 2단계(핵심 논리 흐름)가 핵심.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>빈칸 추론</strong></td>
+                                <td>★★★☆☆</td>
+                                <td>★★★★★</td>
+                                <td>★★★★☆</td>
+                                <td><strong>2단계(빈칸 주변 논리)</strong>가 절대적. 1, 3단계가 보조.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>문장 삽입/순서 배열</strong></td>
+                                <td>★★☆☆☆</td>
+                                <td>★★★★☆</td>
+                                <td>★★★★★</td>
+                                <td><strong>3단계(연결어/지시어)</strong>와 <strong>2단계(문장 간 논리)</strong>가 결정적!</td>
+                            </tr>
+                             <tr>
+                                <td><strong>무관한 문장 찾기</strong></td>
+                                <td>★★★★☆</td>
+                                <td>★★★☆☆</td>
+                                <td>★★☆☆☆</td>
+                                <td><strong>1단계(글/단락 주제)</strong>를 기준으로 일관성 판단.</td>
+                            </tr>
+                             <tr>
+                                <td><strong>어휘 추론</strong></td>
+                                <td>★★☆☆☆</td>
+                                <td>★★★☆☆</td>
+                                <td>★★★☆☆</td>
+                                <td>해당 문장과 <strong>주변 문맥(2, 3단계)</strong>의 정확한 해석이 관건.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>분위기/어조/태도</strong></td>
+                                <td>★★★☆☆</td>
+                                <td>★★☆☆☆</td>
+                                <td>★★☆☆☆</td>
+                                <td>1단계(초기 설정) + 글 전체의 <strong>뉘앙스/어휘</strong> 파악.</td>
+                            </tr>
+                        </tbody>
+                        <caption>문제 유형별 전략 가중치 (★: 중요도)</caption>
+                    </table>
+                </div>
+            </section>
+
+            <section id="glossary">
+                <!-- 원문 내용 + 커스텀 툴팁 -->
+                <h2>📚 주요 학습 용어 해설 (복습)</h2>
+                <dl>
+                    <dt><dfn x-data="{ tooltipText: '글의 흐름이 앞 내용과 같은 방향(부연, 예시, 인과 등)으로 나아가는 관계입니다. 내용이 확장되거나 구체화됩니다.' }">동의성(Equivalence)<span class="custom-tooltip" x-text="tooltipText"></span></dfn> vs. <dfn x-data="{ tooltipText: '글의 흐름이 앞 내용과 다른 방향(역접, 대조, 양보 등)으로 전환되는 관계입니다. 내용에 반전이나 비교가 일어납니다.' }">차이성(Difference)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></dt>
+                    <dd>글의 흐름이 앞 내용과 같은 방향으로 나아가는지, 아니면 다른 방향으로 전환되는지를 나타내는 분석적 틀입니다.</dd>
+                    <dt><dfn x-data="{ tooltipText: '문장과 문장, 또는 단락과 단락 사이의 논리적 관계(예: 인과, 대조, 예시, 첨가, 시간 순서 등)를 명시적으로 나타내는 단어나 구입니다. (예: However, Therefore, For example)' }">연결어(Connectives / Transition Words)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></dt>
+                    <dd>문장과 문장, 또는 단락과 단락 사이의 논리적 관계를 명시적으로 나타내는 단어나 구입니다.</dd>
+                    <dt><dfn x-data="{ tooltipText: '주로 대명사(it, they, this, that)나 한정사(such) 등의 형태로, 문맥상 특정 명사, 구, 절, 또는 문장 전체(선행사)를 가리켜 반복을 피하고 글의 응집성을 높이는 역할입니다.' }">지시어(Referring Words / Demonstratives)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></dt>
+                    <dd>주로 대명사나 한정사 등의 형태로, 문맥상 특정 정보(선행사)를 가리켜 글의 응집성을 높이는 역할을 합니다.</dd>
+                    <dt><dfn x-data="{ tooltipText: '지시어가 가리키는, 그보다 앞서 나온 명사, 구, 절, 또는 문장 내용입니다. 지시어의 의미를 명확히 하기 위해 반드시 찾아야 합니다.' }">선행사(Antecedent)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></dt>
+                    <dd>지시어가 가리키는, 그보다 앞서 나온 명사, 구, 절, 또는 문장 내용입니다. 지시어의 의미를 명확히 하기 위해 반드시 찾아야 합니다.</dd>
+                    <dt><dfn x-data="{ tooltipText: '지시어, 연결어, 어휘 반복 및 관련어 사용 등을 통해 글의 각 부분이 문법적, 의미적으로 긴밀하게 연결되어 있는 정도입니다.' }">응집성(Cohesion)<span class="custom-tooltip" x-text="tooltipText"></span></dfn></dt>
+                    <dd>지시어, 연결어, 어휘 반복 등을 통해 글의 각 부분이 긴밀하게 연결되어 있는 정도를 말합니다. 응집성이 높은 글은 이해하기 쉽습니다.</dd>
+                </dl>
+            </section>
+
+            <section id="mini-quiz" class="mini-quiz">
+                 <!-- 원문 내용 -->
+                 <h2>📝 Mini Quiz (실력 점검)</h2>
+                 <p>다음 문장 쌍에서 두 번째 문장이 첫 번째 문장과 어떤 논리적 관계를 맺고 있는지 판단하고, 가능하다면 적절한 연결어를 넣어보세요.</p>
+                 <ol>
+                    <li>
+                        <p>The company invested heavily in research and development. Its profits increased significantly in the following year.</p>
+                        <p>관계: ________________ (예상 연결어: ________________)</p>
+                        <details>
+                            <summary>정답 확인</summary>
+                            <div class="answer">
+                                <p><strong>관계:</strong> 인과 (Causation)</p>
+                                <p><strong>예상 연결어:</strong> As a result, Consequently, Therefore, Thus, Hence</p>
+                                <p><strong>해설:</strong> 연구 개발에 대한 많은 투자가 원인이 되어, 그 결과로 다음 해 이익이 크게 증가했습니다.</p>
+                            </div>
+                        </details>
+                    </li>
+                     <li>
+                        <p>Many people believe that talent is innate. Hard work and perseverance often play a more crucial role in achieving success.</p>
+                        <p>관계: ________________ (예상 연결어: ________________)</p>
+                        <details>
+                            <summary>정답 확인</summary>
+                             <div class="answer">
+                                <p><strong>관계:</strong> 역접 (Contrast - Strong Opposition) 또는 대조 (Comparison - Difference) (일반적 통념에 대한 반박이므로 역접의 성격이 강함)</p>
+                                <p><strong>예상 연결어:</strong> However, Nevertheless, Yet, But / 또는 차이점을 부각하는 While, In contrast, On the other hand도 가능</p>
+                                <p><strong>해설:</strong> 많은 사람들이 재능이 선천적이라고 믿는다는 통념(또는 한쪽 의견)에 대해, 노력과 인내가 성공에 더 중요하다는 반대되는 또는 다른 측면의 주장을 제시하고 있습니다.</p>
+                            </div>
+                        </details>
+                    </li>
+                     <li>
+                        <p>The new software is designed to be user-friendly. It features a simplified interface and intuitive navigation.</p>
+                        <p>관계: ________________ (예상 연결어: ________________)</p>
+                        <details>
+                            <summary>정답 확인</summary>
+                             <div class="answer">
+                                <p><strong>관계:</strong> 부연/상세화 (Elaboration/Specification) 또는 예시 (Exemplification) (User-friendly하다는 일반적 진술을 구체적인 특징들로 뒷받침함)</p>
+                                <p><strong>예상 연결어:</strong> For example, Specifically, In fact, That is, To be more specific</p>
+                                <p><strong>해설:</strong> 새로운 소프트웨어가 사용자 친화적으로 설계되었다는 일반적인 특징에 대해, 단순화된 인터페이스와 직관적인 내비게이션이라는 구체적인 세부 사항이나 예시를 들어 설명하고 있습니다.</p>
+                            </div>
+                        </details>
+                    </li>
+                 </ol>
+            </section>
+
+            <section id="conclusion">
+                <!-- 원문 내용 -->
+                <h2>🏆 결론 및 학습 제언: 전략적 독해 습관으로 완전 정복! (최종 업그레이드)</h2>
+                <p>본 자료에서 제시된, 전문가의 피드백을 전면 반영하여 <strong>대폭 업그레이드된 3단계 독해 전략과 실전 적용 루틴</strong>은 여러분이 수능 영어 지문을 분석적으로 이해하고 문제 해결 능력을 극대화하는 데 그 어떤 자료보다 강력한 도구가 될 것입니다. 중요한 것은 이 전략들을 꾸준히 연습하여 자신의 것으로 <strong>완벽하게 체화</strong>하는 것입니다. 단순한 지식 습득을 넘어, 실제 문제 풀이 상황에서 자연스럽게 전략을 꺼내 쓸 수 있도록 반복적인 훈련이 필요합니다.</p>
+                <h3>성공적인 학습을 위한 최종 제언:</h3>
+                <ol>
+                    <li><strong>루틴 내재화 & 압축 맵 활용:</strong> 제시된 '독해 기본 루틴'을 모든 지문에 의식적으로 적용하고, <strong>'3단계 전략 압축 맵'</strong>을 수시로 보며 뇌 속에 각인시키세요.</li>
+                    <li><strong>전략적 오답 분석:</strong> 틀린 문제를 단순히 답만 확인하고 넘어가지 마세요. <strong>어떤 단계(1단계 방향 설정 오류, 2단계 논리 관계 오판/감별 실패, 3단계 단서 누락/오해석 등)에서 문제가 발생했는지 구체적으로 분석</strong>하고, 동일한 실수를 반복하지 않도록 약점을 집중 보완해야 합니다.</li>
+                    <li><strong>유형별 집중 훈련 & 가중치 테이블 활용:</strong> 자신이 특히 취약하다고 느끼는 문제 유형이 있다면, <strong>'문제 유형별 전략 가중치 테이블'</strong>을 참고하여 해당 유형 풀이에 특히 효과적인 전략(예: 삽입/순서 유형의 경우 3단계 심화 팁과 연결어/지시어 추적)을 집중적으로 연마하세요.</li>
+                    <li><strong>능동적 사고 함양 & 빠른 감별법 적용:</strong> 글을 읽을 때 수동적으로 정보를 받아들이는 것이 아니라, "왜 필자는 이 단어를 사용했을까?", "이 문장의 기능은 무엇일까?", "다음에는 어떤 내용이 나올까?" 등 끊임없이 질문하고 예측하며 필자의 의도와 글의 구조를 파악하려는 적극적인 자세가 중요합니다. <strong>'5초 감별 팁'</strong>을 활용하여 논리 관계 판단 속도와 정확도를 높이세요.</li>
+                    <li><strong>다양한 지문 경험 & 실제 기출 시뮬레이션:</strong> 다양한 주제와 난이도의 학문적 텍스트를 접하면서 전략 적용 능력을 넓히고, <strong>반드시 실제 수능 기출문제로 위에서 안내한 '적용 시뮬레이션'을 직접 수행</strong>해 보세요. 익숙하지 않은 분야의 지문일수록 기본적인 독해 전략이 더욱 중요해집니다.</li>
+                </ol>
+                <p>이 전략들을 꾸준히 실천하여 수능 영어 독해에 대한 확고한 자신감을 키우고, 여러분이 목표하는 성과를 반드시 달성하시기를 진심으로 응원합니다! 이 자료가 여러분의 "상위 1%급" 독해력 달성에 기여하길 바랍니다.</p>
+            </section>
+        </main>
+
+        <footer>
+            <hr>
+            <p style="text-align:center; font-size:0.8em; color:#777;">수능 영어 독해 전략 가이드 - HTML 버전 (v3.2 인터랙티브 최종)</p>
+        </footer>
+
+    </div> <!-- .container 닫는 태그 -->
+
+    <script type="module">
+      // Mermaid.js ESM 모듈로 가져오기
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+
+      document.addEventListener('DOMContentLoaded', function () {
+        try {
+          // Mermaid 초기화
+          mermaid.initialize({
+            startOnLoad: true,
+            theme: "default",
+          });
+        } catch (error) {
+          console.error("Mermaid initialization failed:", error);
+          const mermaidDivs = document.querySelectorAll('.mermaid');
+          mermaidDivs.forEach(div => {
+            div.innerHTML = "다이어그램 로드 실패. 브라우저 콘솔을 확인하세요.";
+            div.style.color = 'red';
+            div.style.textAlign = 'center';
+            div.style.padding = '20px';
+            div.style.border = '1px dashed red';
+          });
+        }
+
+        // Chart.js 인스턴스 생성
+        const ctxStep1 = document.getElementById('step1EffectivenessChart')?.getContext('2d');
+        if (ctxStep1) {
+            new Chart(ctxStep1, {
+                type: 'bar',
+                data: {
+                    labels: ['주제/요지', '빈칸(주제)', '어휘', '요약문', '분위기/어조', '삽입(초기)', '순서(초기)', '무관한 문장'],
+                    datasets: [{
+                        label: '효과성 등급 (3:높음, 2:중간, 1:낮음)',
+                        data: [3, 2, 1, 3, 2, 2, 2, 3],
+                        backgroundColor: [
+                            'rgba(75, 192, 192, 0.7)', 'rgba(153, 102, 255, 0.7)', 'rgba(255, 159, 64, 0.7)',
+                            'rgba(255, 99, 132, 0.7)', 'rgba(54, 162, 235, 0.7)', 'rgba(255, 206, 86, 0.7)',
+                            'rgba(100, 220, 130, 0.7)', 'rgba(201, 203, 207, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(75, 192, 192, 1)', 'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)',
+                            'rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)',
+                            'rgba(100, 220, 130, 1)', 'rgba(201, 203, 207, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: { beginAtZero: true, max: 3, ticks: { stepSize: 1 } }
+                    },
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    if (context.parsed.x !== null) {
+                                        const val = context.parsed.x;
+                                        if (val === 3) label += '높음';
+                                        else if (val === 2) label += '중간';
+                                        else if (val === 1) label += '낮음';
+                                        else label += val;
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        const ctxWeight = document.getElementById('strategyWeightChart')?.getContext('2d');
+        if (ctxWeight) {
+            new Chart(ctxWeight, {
+                type: 'radar',
+                data: {
+                    labels: ['STEP 1 (방향 설정)', 'STEP 2 (논리 연결)', 'STEP 3 (단서 추적)'],
+                    datasets: [
+                        {
+                            label: '주제/요지/제목/요약',
+                            data: [4, 3, 2],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgb(255, 99, 132)',
+                            pointBackgroundColor: 'rgb(255, 99, 132)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(255, 99, 132)'
+                        },
+                        {
+                            label: '빈칸 추론',
+                            data: [3, 5, 4],
+                            fill: true,
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgb(54, 162, 235)',
+                            pointBackgroundColor: 'rgb(54, 162, 235)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(54, 162, 235)'
+                        },
+                        {
+                            label: '문장 삽입/순서 배열',
+                            data: [2, 4, 5],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 205, 86, 0.2)',
+                            borderColor: 'rgb(255, 205, 86)',
+                            pointBackgroundColor: 'rgb(255, 205, 86)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(255, 205, 86)'
+                        },
+                         {
+                            label: '무관한 문장 찾기',
+                            data: [4, 3, 2],
+                            fill: true,
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            borderColor: 'rgb(75, 192, 192)',
+                            pointBackgroundColor: 'rgb(75, 192, 192)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(75, 192, 192)'
+                        },
+                        {
+                            label: '어휘 추론',
+                            data: [2, 3, 3],
+                            fill: true,
+                            backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                            borderColor: 'rgb(153, 102, 255)',
+                            pointBackgroundColor: 'rgb(153, 102, 255)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(153, 102, 255)'
+                        },
+                        {
+                            label: '분위기/어조/태도',
+                            data: [3, 2, 2],
+                            fill: true,
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            borderColor: 'rgb(255, 159, 64)',
+                            pointBackgroundColor: 'rgb(255, 159, 64)',
+                            pointBorderColor: '#fff',
+                            pointHoverBackgroundColor: '#fff',
+                            pointHoverBorderColor: 'rgb(255, 159, 64)'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: {
+                        line: { borderWidth: 2 }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 5,
+                            ticks: { stepSize: 1 }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top', },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) { label += ': '; }
+                                    label += context.formattedValue + '점';
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+      });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수능 영어 독해 정보 선별 전략 (AI 분석)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .content-section { display: none; }
+        .content-section.active { display: block; }
+        .subsection-title { cursor: pointer; }
+        .subsection-content { display: none; }
+        .subsection-content.open { display: block; }
+        .table-container table { width: 100%; border-collapse: collapse; }
+        .table-container th, .table-container td { border: 1px solid #e2e8f0; padding: 8px; text-align: left; }
+        .table-container th { background-color: #f1f5f9; }
+        .nav-link.active { background-color: #2563eb; color: white; }
+        .sub-nav-link.active { background-color: #60a5fa; color: white; }
+        .example-box { background-color: #f0f9ff; border-left: 4px solid #3b82f6; padding: 1rem; margin-top: 0.5rem; margin-bottom: 1rem; border-radius: 0.25rem;}
+        .key-point { color: #1d4ed8; font-weight: 600; }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3b82f6;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 50; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgb(0,0,0); /* Fallback color */
+            background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            max-width: 700px;
+            border-radius: 8px;
+        }
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close-button:hover,
+        .close-button:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        @media (max-width: 768px) {
+            .sidebar { position: fixed; transform: translateX(-100%); transition: transform 0.3s ease-in-out; z-index: 40;}
+            .sidebar.open { transform: translateX(0); }
+            .main-content { margin-left: 0; }
+            .menu-button { display: block; }
+            .modal-content { margin: 20% auto; width: 90%;}
+        }
+        @media (min-width: 769px) {
+            .menu-button { display: none; }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    <div class="flex h-screen">
+        <aside class="sidebar w-64 bg-slate-800 text-white p-5 space-y-2 fixed md:static inset-y-0 left-0 transform md:translate-x-0 -translate-x-full transition-transform duration-300 ease-in-out z-40 h-full overflow-y-auto">
+            <h1 class="text-xl font-semibold mb-6">독해 전략 마스터</h1>
+            <nav>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section1">I. 정보 선별 대원칙</a>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section2">II. 핵심 정보 식별</a>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section3">III. 덜 중요한 정보 처리</a>
+                <div>
+                    <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section4">IV. 문제 유형별 전략</a>
+                    <div id="section4-subnav" class="ml-4 mt-1 space-y-1 hidden">
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_intro">개요</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_1">주제·제목·요지</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_2">빈칸 추론</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_3">밑줄 의미 추론</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_4">어법·어휘</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_5">무관한 문장</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_6">순서·삽입</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_7">요약문 완성</a>
+                        <a href="#" class="sub-nav-link block py-1.5 px-3 text-sm rounded hover:bg-slate-600" data-subtarget="s4_8">내용 일치·불일치</a>
+                    </div>
+                </div>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section5">V. 실전 적용 및 훈련</a>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section6">VI. 결론</a>
+                <a href="#" class="nav-link block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700" data-target="section7">VII. ✨ AI 지문 분석</a>
+            </nav>
+        </aside>
+
+        <main class="main-content flex-1 p-6 md:p-10 overflow-y-auto h-screen">
+            <button class="menu-button md:hidden fixed top-4 left-4 z-50 bg-slate-700 text-white p-2 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+
+            <div id="section1" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">I. 정보 선별의 대원칙: 하향식 접근법 (Top-Down Approach Revisited)</h2>
+                <p class="text-lg leading-relaxed">수능 영어 독해에서 제한된 시간 안에 높은 정확도로 문제를 해결하기 위해서는 지문의 모든 정보를 동일한 비중으로 처리하려는 생각에서 벗어나, 핵심 정보와 부수적인 정보를 효과적으로 선별하는 능력이 필수적입니다. 이러한 정보 선별 능력의 기초가 되는 것이 바로 <span class="key-point">하향식 접근법(Top-Down Approach)</span>입니다. 이 접근법은 "숲을 먼저 보고 나무를 보라"는 말처럼, 글 전체의 맥락과 중심 생각을 먼저 파악한 후 세부 사항으로 나아가는 독해 방식입니다.</p>
+                
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        A. 이론적 근거: "숲을 먼저 보고 나무를 보라" – 인지적 관점
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>하향식 접근법은 독자가 단순히 글자나 단어의 의미를 해독하는 것을 넘어, 자신의 배경지식과 경험을 적극적으로 활용하여 글의 의미를 구성해 나가는 능동적인 독해 과정입니다. 이러한 접근 방식의 효과는 여러 인지 이론을 통해 설명될 수 있습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 스키마 이론 (Schema Theory)</h4>
+                        <p><span class="key-point">스키마(Schema)</span>란 특정 주제, 상황, 문화, 텍스트 유형 등에 대해 개인이 기존에 가지고 있는 배경지식의 구조화된 체계를 의미합니다. 독자는 글을 읽을 때 관련된 스키마를 활성화하여 새로운 정보를 이해하고, 빠진 정보를 추론하며, 글의 내용을 예측합니다. 수능 영어 지문은 다양한 분야를 다루므로, 평소 다양한 글을 읽으며 폭넓은 스키마를 형성하는 것이 중요합니다.</p>
+                        <p>이러한 스키마 이론에 기반한 하향식 접근은 인지적으로 매우 효율적입니다. 제한된 시간 안에 방대한 정보를 처리해야 하는 수능 시험의 특성상, 스키마를 활용한 하향식 접근은 독자가 이미 알고 있는 지식 체계를 바탕으로 빠르게 글의 전체적인 의미를 파악하도록 도와 인지적 부담을 줄여줍니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 예측하며 읽기 (Predictive Reading)</h4>
+                        <p>예측하며 읽기는 스키마 활성화에서 비롯되는 능동적인 독해 전략입니다. 독자는 글의 제목, 도입부, 특정 단서 등을 바탕으로 앞으로 전개될 내용이나 필자의 주장을 미리 예측합니다. 이러한 예측은 독해의 방향을 설정하고 주의를 집중시키는 역할을 합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 하향식 모형 vs. 상향식 모형 (Top-Down vs. Bottom-Up Models)</h4>
+                        <p><span class="key-point">상향식 접근법(Bottom-Up Approach)</span>은 개별 단어의 의미를 파악하고, 이것들이 모여 문장과 단락의 의미를 이룬다고 보는 방식입니다. 반면, <span class="key-point">하향식 접근법</span>은 독자의 배경지식과 전체적인 문맥을 통해 의미를 파악하는 데 중점을 둡니다. 수능 영어 독해에서는 두 가지 접근법 모두 필요하지만, 시간 제약 하에서 효율적으로 글의 핵심을 파악하기 위해서는 하향식 접근법을 우선적으로 활용하는 것이 유리합니다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        B. 수능 적용 예시: 첫 문장/마지막 문장, 단락별 주제문의 역할
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>하향식 접근법은 수능 영어 지문에서 특정 부분에 주목함으로써 구체적으로 적용될 수 있습니다. 특히 지문의 첫 문장과 마지막 문장, 그리고 각 단락의 주제문은 글 전체의 구조와 핵심 내용을 파악하는 데 중요한 단서가 됩니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 첫 문장의 중요성</h4>
+                        <p>지문의 <span class="key-point">첫 문장</span> 또는 첫 단락의 문장들은 글의 주제를 소개하거나 배경을 설정하며, 때로는 단락의 중심 생각(주제문)을 직접적으로 제시하기도 합니다. 이 부분을 통해 독자는 관련 스키마를 활성화하고 글의 전개 방향을 예측할 수 있습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 마지막 문장의 중요성</h4>
+                        <p>단락의 <span class="key-point">마지막 문장</span>은 해당 단락의 내용을 요약하거나 결론을 내리며, 다음 단락으로의 연결고리 역할을 하기도 합니다. 특히 글 전체의 마지막 문장(들)은 설득적이거나 논증적인 글에서 글 전체의 요지나 핵심 주장을 담고 있는 경우가 많습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 단락별 주제문</h4>
+                        <p>하나의 단락은 보통 하나의 중심 생각을 다루며, 이 중심 생각은 <span class="key-point">주제문(Topic Sentence)</span>에 명확하게 나타나는 경우가 많습니다. 각 단락의 주제문을 파악하면 글 전체의 구조를 이해하고 필자의 주장이 어떻게 전개되는지 따라가는 데 도움이 됩니다.</p>
+                        <div class="example-box">
+                            <h5 class="text-lg font-semibold text-slate-700">수능 적용 예시 분석:</h5>
+                            <p class="mt-1"><strong>예시 지문:</strong> "The rapid advancement of artificial intelligence (AI) presents both unprecedented opportunities and significant challenges. Many industries anticipate transformative effects, from healthcare to transportation. However, concerns about job displacement and ethical considerations are also growing. Therefore, a balanced approach to AI development and regulation is crucial for harnessing its benefits while mitigating potential risks."</p>
+                            <p class="mt-2"><strong>분석:</strong></p>
+                            <ul class="list-disc list-inside ml-4">
+                                <li><strong>첫 문장:</strong> "The rapid advancement of artificial intelligence (AI) presents both unprecedented opportunities and significant challenges." – 이 문장은 AI의 양면성(기회와 도전)이라는 주제를 명확히 제시하는 주제문입니다.</li>
+                                <li><strong>마지막 문장:</strong> "Therefore, a balanced approach to AI development and regulation is crucial for harnessing its benefits while mitigating potential risks." – 이 문장은 지문의 핵심 주장, 즉 균형 잡힌 접근의 필요성을 요약하며 결론을 내리고 있습니다.</li>
+                            </ul>
+                            <p class="mt-2">첫 문장과 마지막 문장은 전략적인 속독(skimming)을 위한 <span class="key-point">기준점(anchor points)</span> 역할을 합니다. 각 단락의 주제문을 파악하는 것은 지문의 내용을 계속해서 <span class="key-point">정신적으로 요약(running mental summary)</span>하는 것과 같습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        C. 실천 가이드: 단계별 적용 지침
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>하향식 접근법을 실제 독해 과정에 효과적으로 통합하기 위한 단계별 지침은 다음과 같습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 읽기 전 (Before Reading):</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>제목/출처 확인 (가능하다면):</strong> 글의 주제 예측, 배경지식(스키마) 활성화.</li>
+                            <li><strong>첫 문장 집중 읽기:</strong> 핵심 토픽, 글의 전반적인 방향 파악.</li>
+                        </ul>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 읽는 중 (During Reading):</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>단락별 첫/마지막 문장 주목:</strong> 단락 주제 신속 파악.</li>
+                            <li><strong>예측하며 읽기 지속:</strong> 능동적 읽기.</li>
+                            <li><strong>연결어/시그널 단어 포착:</strong> 역접, 예시, 결론 등 주목.</li>
+                            <li><strong>전체적 흐름 유지:</strong> "숲"을 보려는 노력 지속.</li>
+                        </ul>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 읽은 후 (After Reading):</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>주요 내용 요약:</strong> 자신의 말로 요약.</li>
+                            <li><strong>초기 예측과 비교:</strong> 이해도 점검.</li>
+                        </ul>
+                        <p>이러한 단계는 독해를 <span class="key-point">능동적인 전략적 과정</span>으로 변화시키고, <span class="key-point">메타인지적 자각(metacognitive awareness)</span>을 발달시켜 독해 기술 개선에 중요합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section2" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">II. 핵심 정보 식별을 위한 시그널 분석</h2>
+                <p class="text-lg leading-relaxed">수능 영어 지문 내에서 필자의 주장이나 글의 요지를 효과적으로 파악하기 위해서는 특정 단어나 표현, 즉 <span class="key-point">시그널(signal)</span>에 주목하는 훈련이 필요합니다. 이러한 시그널들은 필자가 어떤 정보를 중요하게 생각하는지 알려주는 이정표와 같습니다.</p>
+                
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        A. 주제문/요지 암시 표현
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 강조/당위성 표현</h4>
+                        <p><strong>(e.g., should, must, important, crucial, vital, essential, a key point is, the main idea is)</strong></p>
+                        <p>이러한 표현들은 필자가 매우 중요한 정보, 즉 핵심 주장이나 핵심 근거를 제시하려 할 때 사용됩니다. 뒤따르는 내용에 집중해야 합니다.</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><code class="bg-slate-200 px-1 rounded">should, must, need to, have to</code>: 의무, 필요성, 강한 권고. 필자의 의견이나 행동 촉구 반영.</li>
+                            <li><code class="bg-slate-200 px-1 rounded">important, crucial, vital, essential, key, necessary</code>: 뒤따르는 정보의 중요성 직접 강조.</li>
+                        </ul>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> "It is <span class="key-point">important</span> to recognize that cultural context significantly influences communication styles. Therefore, effective cross-cultural interaction <span class="key-point">must</span> involve an awareness of these differences."</p>
+                        </div>
+                        <p>이러한 표현은 필자가 "이것이 중요하다!"라고 직접적으로 알려주는 <span class="key-point">명확한 신호</span>입니다.</p>
+
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 결론/요약 연결어</h4>
+                        <p><strong>(e.g., Therefore, Thus, Consequently, In conclusion, In short, As a result, To sum up)</strong></p>
+                        <p>뒤따르는 문장이나 절이 앞서 언급된 내용들을 요약하거나 논리적인 결과를 진술할 것임을 나타냅니다. 글의 중심 생각이나 중요한 결론이 위치할 가능성이 매우 높습니다.</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><code class="bg-slate-200 px-1 rounded">Therefore, Thus, Consequently, As a result, So</code>: 논리적 결과나 귀결.</li>
+                            <li><code class="bg-slate-200 px-1 rounded">In conclusion, In short, To sum up, In summary</code>: 요약이나 결론 명시.</li>
+                        </ul>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> "The study showed a significant correlation between regular exercise and improved cognitive function in older adults. <span class="key-point">Therefore</span>, promoting physical activity could be a key strategy for maintaining mental sharpness in aging populations."</p>
+                        </div>
+                        <p>결론/요약 연결어는 논리적 추론의 <span class="key-point">정점</span> 또는 증거 요약 지점을 표시합니다.</p>
+
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 역접/대조 연결어</h4>
+                        <p><strong>(e.g., However, But, Yet, Nevertheless, Nonetheless, On the other hand, In contrast, While)</strong></p>
+                        <p>주장의 전환이나 대조를 알립니다. 역접 연결어 뒤에 오는 정보는 종종 이전에 언급된 생각을 반박하거나 수정하면서 필자의 핵심 주장을 담고 있는 경우가 많습니다.</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><code class="bg-slate-200 px-1 rounded">However, But, Yet</code>: 직접적인 대조나 전환. 뒤의 절이 더 큰 비중.</li>
+                            <li><code class="bg-slate-200 px-1 rounded">Nevertheless, Nonetheless</code>: 그럼에도 불구하고 대조적 상황.</li>
+                            <li><code class="bg-slate-200 px-1 rounded">On the other hand, In contrast, While</code>: 반대 관점이나 다른 측면 소개.</li>
+                        </ul>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> "Many people believe that technology isolates individuals. <span class="key-point">However</span>, recent studies suggest that online communities can foster strong social bonds and a sense of belonging."</p>
+                        </div>
+                        <p>이러한 단어들은 주장의 <span class="key-point">"방향 지시등"</span>과 같습니다. 새로운 방향이 종종 필자가 진정으로 말하고자 하는 바입니다.</p>
+                        
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">4. 질문-답변 구조</h4>
+                        <p>필자가 질문을 던지고 스스로 답하는 구조가 나타날 때, 그 답변(또는 답변으로 이어지는 논의)은 거의 항상 지문의 중심 생각이나 목적의 핵심이 됩니다.</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>질문의 역할:</strong> 다루려는 문제나 주제의 틀 설정.</li>
+                            <li><strong>답변의 중요성:</strong> 핵심 메시지나 해결책 포함. 답변 부분에 더 큰 비중.</li>
+                        </ul>
+                        <div class="example-box">
+                             <p><strong>예시:</strong> "Why do some individuals thrive under pressure while others crumble? <span class="key-point">The answer lies not just in innate talent, but significantly in their mindset and coping strategies.</span> Research shows that those with a growth mindset..."</p>
+                        </div>
+                        <p>질문-답변 구조는 필자가 독자의 주의를 핵심 쟁점으로 직접 이끌기 위한 <span class="key-point">의도적인 수사 전략</span>입니다.</p>
+
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">5. 반복 어휘 및 Paraphrasing</h4>
+                        <p>핵심 개념이나 주장은 지문 전체에 걸쳐 반복되는 경우가 많습니다. 때로는 동일한 단어가 사용되지만, 더 자주 <span class="key-point">패러프레이징(paraphrasing)</span>, 즉 같은 아이디어를 다른 단어나 표현으로 바꾸어 말하는 방식을 통해 반복됩니다. 이러한 반복을 식별하는 것은 중심 생각을 확인하는 데 매우 중요합니다.</p>
+                        <ul class="list-disc list-inside ml-4">
+                            <li><strong>반복 어휘:</strong> 중심 주제와 관련된 특정 명사, 동사, 형용사 등의 반복.</li>
+                            <li><strong>Paraphrasing 식별:</strong> 서로 다른 단어나 문장 구조가 동일한 의미를 전달하는 경우 인식.</li>
+                        </ul>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> 지문에서 처음에 "The <span class="key-point">detrimental effects</span> of sleep deprivation are well-documented."라고 언급한 후, 나중에 "Lack of adequate rest can lead to <span class="key-point">negative consequences</span> for cognitive function and physical health."라고 표현할 수 있습니다.</p>
+                        </div>
+                        <p>반복, 특히 패러프레이징을 통한 반복은 필자가 자신의 중심 주장을 <span class="key-point">강화하고 강조</span>하는 핵심적인 방법입니다. 수능 문제의 <span class="key-point">선택지는 거의 항상 지문에 있는 정보의 패러프레이징</span>입니다.</p>
+                    </div>
+                </div>
+                <div class="table-container mt-6">
+                    <h4 class="text-xl font-semibold text-slate-700 mb-3">표 1: 핵심 정보 식별을 위한 시그널: 주요 표현 및 기능 분석</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>시그널 유형</th>
+                                <th>주요 표현</th>
+                                <th>기능 및 주목할 점</th>
+                                <th>수능 지문 활용 예시</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>강조/당위성</strong></td>
+                                <td><code>must, should, important, crucial, essential</code> 등</td>
+                                <td>필자의 강력한 주장이나 필수 조건 제시, 주제문 가능성 높음.</td>
+                                <td>"It is <strong>essential</strong> for students to develop critical thinking skills."</td>
+                            </tr>
+                            <tr>
+                                <td><strong>결론/요약</strong></td>
+                                <td><code>Therefore, Thus, In conclusion, As a result</code> 등</td>
+                                <td>앞 내용의 논리적 결과 또는 요약, 핵심 결론일 확률 높음.</td>
+                                <td>"The evidence overwhelmingly supports this theory. <strong>Thus</strong>, we can conclude that..."</td>
+                            </tr>
+                            <tr>
+                                <td><strong>역접/대조</strong></td>
+                                <td><code>However, But, Yet, In contrast, While</code> 등</td>
+                                <td>글의 흐름 전환, 전환된 내용이 필자의 실제 주장일 가능성 매우 높음.</td>
+                                <td>"Many believe X to be true. <strong>However</strong>, recent findings suggest Y."</td>
+                            </tr>
+                            <tr>
+                                <td><strong>질문-답변</strong></td>
+                                <td><code>Why...? / The answer is...</code> 등</td>
+                                <td>질문이 주제를 설정하고, 답변이 핵심 내용을 제공. 답변 부분에 집중.</td>
+                                <td>"<strong>What causes this phenomenon?</strong> Extensive research points to..."</td>
+                            </tr>
+                            <tr>
+                                <td><strong>반복/패러프레이징</strong></td>
+                                <td>핵심 개념/어휘의 반복 또는 다른 표현으로 재진술</td>
+                                <td>중심 생각이나 주장을 다른 방식으로 반복 강조, 주제 파악의 핵심 단서.</td>
+                                <td>"Effective communication is vital.... <strong>The ability to convey ideas clearly</strong> is a cornerstone..."</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="section3" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">III. 상대적으로 덜 중요한 정보의 효율적 처리 전략</h2>
+                <p class="text-lg leading-relaxed">모든 정보를 동일한 중요도로 읽는 것은 시간 제약이 있는 수능 영어 독해에서 비효율적입니다. 핵심 내용을 파악했다면, 상대적으로 덜 중요한 정보는 빠르게 처리하거나 건너뛰는 유연성이 필요합니다.</p>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        A. 구체적 예시의 역할과 처리
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>구체적인 예시들(<code>for example</code>, <code>for instance</code> 등)은 주로 이미 진술된 일반적인 주장이나 주제문을 <span class="key-point">설명, 뒷받침, 명료화</span>하는 기능을 합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 기능 이해</h4>
+                        <p>수험생은 예시 자체가 아니라 예시가 <span class="key-point">무엇을 뒷받침하는지</span>, 즉 예시가 설명하려는 <span class="key-point">핵심 주장</span>이 무엇인지 먼저 파악해야 합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 효율적 처리</h4>
+                        <p>예시가 뒷받침하는 핵심 주장을 이해했다면, 예시의 세부 내용은 <span class="key-point">빠르게 훑어보거나(skim/scan)</span> 넘어갈 수 있습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 언제 건너뛸 수 있는가</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>예시 앞의 주제문이나 핵심 주장이 명확하게 이해되었을 때</li>
+                            <li>시간이 매우 촉박하고 문제가 세부 내용이 아닌 주제와 관련된 것일 때</li>
+                            <li>예시가 매우 길거나 복잡하여 전체적인 이해를 방해한다고 느껴질 때</li>
+                            <li><strong>주의:</strong> <span class="key-point">내용 일치/불일치 유형</span>에서는 예시의 세부 내용이 질문의 대상이 될 수 있으므로 주의.</li>
+                        </ul>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> "Many animals exhibit complex social behaviors. <span class="key-point">For instance, elephants live in matriarchal herds, where older females lead the group, protect calves, and pass down knowledge of watering holes.</span> This social structure is vital for their survival."</p>
+                            <p class="mt-1"><strong>처리:</strong> 핵심 주장은 "많은 동물은 복잡한 사회적 행동을 보인다"입니다. 코끼리 예시는 이를 구체화합니다. 특정 세부 질문이 없다면 코끼리가 사회 구조를 가지고 있다는 점만 빠르게 파악하고 넘어갈 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        B. 부연 설명 및 세부 묘사 처리
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>부연 설명이나 세부 묘사는 이미 언급된 아이디어를 확장하거나, 추가적인 세부 정보를 제공하는 부분을 말합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 식별 방법</h4>
+                        <p>종종 명확한 주장 진술 뒤에 이어지며, 특징들의 나열, 묘사적인 형용사 등을 포함할 수 있습니다. <span class="key-point">주요 주장을 진전시키는 것이 아니라 하위 요점을 구체화</span>합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 처리 전략</h4>
+                        <p>핵심 아이디어를 이해했다면, 이러한 부분들은 종종 더 빠르게 읽거나 훑어볼 수 있습니다. <span class="key-point">무엇이 설명되거나 묘사되는지에 초점</span>을 맞춰야 합니다.</p>
+                        <div class="example-box">
+                            <p><strong>예시:</strong> "The ancient castle stood atop the hill. <span class="key-point">Its grey stones were weathered by centuries of wind and rain, ivy crept up its western wall, and the narrow windows looked like dark eyes staring out over the valley.</span> This imposing structure had witnessed countless historical events."</p>
+                            <p class="mt-1"><strong>처리:</strong> 핵심은 성의 존재입니다. 굵게 표시된 부분은 세부 묘사입니다. "오래되고, 풍화되었으며, 위풍당당하다"는 느낌을 빠르게 흡수하고 넘어갈 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        C. 일반적 배경지식 또는 도입부 정보 처리 속도 조절
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>지문의 초기 부분은 일반적인 배경 정보를 제공할 수 있습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 식별 방법</h4>
+                        <p>광범위한 용어, 역사적 개요 또는 일반적으로 받아들여지는 사실들을 사용합니다. 아직 필자의 구체적인 주장을 포함하지 않을 수 있습니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 처리 전략</h4>
+                        <p>이러한 부분들은 맥락에 대한 일반적인 감을 잡기 위해 종종 <span class="key-point">더 빠르게 읽을 수 있습니다</span>. 지문이 일반적인 배경에서 특정 초점으로 전환되는 지점에 유의해야 합니다.</p>
+                        <div class="example-box">
+                             <p><strong>예시:</strong> "Throughout human history, communication has been a fundamental aspect of societal development. From cave paintings to the printing press, each innovation has reshaped how information is shared. <span class="key-point">In the 21st century, however, the rise of the internet and social media has introduced a new paradigm of instant, global communication, bringing with it a unique set of societal impacts that this passage will explore.</span>"</p>
+                             <p class="mt-1"><strong>처리:</strong> 처음 두 문장은 일반적인 배경으로 빠르게 읽고, 굵게 표시된 문장부터 읽기 속도와 주의력을 높여야 합니다.</p>
+                        </div>
+                        <p>많은 학술 텍스트는 <span class="key-point">"깔때기 구조(funnel structure)"</span>를 따릅니다. 이에 따라 읽기 속도를 조절할 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section4" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">IV. 수능 문제 유형별 최적화된 정보 선별 전략</h2>
+                <p class="text-lg leading-relaxed mb-4">수능 영어의 다양한 문제 유형들은 각각 요구하는 정보의 종류와 처리 방식이 다릅니다. 따라서 문제 유형별로 어떤 정보에 집중하고 어떤 정보를 효율적으로 처리할지 아는 것이 중요합니다.</p>
+                
+                <div id="s4_intro" class="subsection-content open space-y-3">
+                    <p>아래 표는 각 유형별 정보 처리 전략의 개요를 보여줍니다. 왼쪽 네비게이션 바에서 특정 문제 유형을 선택하여 자세한 전략을 확인하세요.</p>
+                    <div class="table-container mt-6">
+                        <h4 class="text-xl font-semibold text-slate-700 mb-3">표 2: 수능 영어 문제 유형별 정보 집중 및 효율화 전략</h4>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>문제 유형</th>
+                                    <th>집중해야 할 정보</th>
+                                    <th>효율적으로 처리할 정보</th>
+                                    <th>핵심 전략</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>주제, 제목, 요지, 주장, 목적 파악</strong></td><td>첫/마지막 문장/단락, 주제문, 반복/패러프레이징된 핵심어, 강조/당위성/결론/역접 연결어 뒤 내용, 질문-답변 구조의 답변</td><td>명확한 주제를 뒷받침하는 세부 예시, 긴 부연 설명, 주제와 직접 관련 없는 기술적 세부 사항</td><td>"숲을 먼저 보고, 핵심 시그널을 찾아라."</td></tr>
+                                <tr><td><strong>빈칸 추론 (단어, 구, 절)</strong></td><td>빈칸 주변 문맥, 빈칸 문장의 논리 구조, 지문 전체 주제 및 핵심 논리, 반복/패러프레이징된 개념, 연결어/지시어/대명사</td><td>주제와 직접 관련 적은 세부 사항, 빈칸 논점과 무관한 배경 설명</td><td>"빈칸은 지문의 유기적 일부, 주변과 전체에서 단서를 찾아라."</td></tr>
+                                <tr><td><strong>밑줄 친 부분의 의미 추론 (함축 의미)</strong></td><td>밑줄 자체의 문자적/문맥적 의미, 밑줄 문장과 그 앞뒤 문맥, 지문 전체 주제/필자의 주장, 대명사/지시어 지칭 대상</td><td>주제와 거리가 먼 세부 사항이나 배경 정보</td><td>"문맥 속에서 숨은 의미를 찾아, 주제와 연결하라."</td></tr>
+                                <tr><td><strong>어법/어휘 판단</strong></td><td>밑줄 친 부분과 직접 관련된 문법 구조(수일치, 시제, 태, 관계사 등), 밑줄 어휘의 문맥상 의미, 문장 전체 의미와 논리적 흐름</td><td>밑줄 부분과 직접 관련 없는 문장 내용 (단, 전체 주제 이해가 간접적으로 도움될 수 있음)</td><td>"문법 규칙과 문맥을 동시에 고려하여 판단하라."</td></tr>
+                                <tr><td><strong>무관한 문장 고르기</strong></td><td>첫 문장(주제문 가능성), 각 문장과 전체 주제/핵심 소재와의 일관성, 문장 간 논리적 연결성(지시어, 연결어), 핵심어는 같으나 다른 관점/주제 문장</td><td>일단 주제와 긴밀히 연결되는 문장들</td><td>"주제에서 벗어난 '이질적인' 문장을 찾아내라."</td></tr>
+                                <tr><td><strong>글의 순서 배열 / 주어진 문장 넣기</strong></td><td>주어진 문장/첫 단락 핵심 내용, 연결어, 지시어, 대명사, 시간적/논리적 흐름, 반복/패러프레이징된 핵심 개념</td><td>각 단락/문장의 모든 세부 내용보다는 '연결 고리'에 집중</td><td>"연결고리(지시어, 연결어, 대명사)를 찾아 논리적으로 재구성하라."</td></tr>
+                                <tr><td><strong>요약문 완성</strong></td><td>지문의 전반적 주제와 핵심 주장/결론, 요약문 빈칸 (A), (B)와 관련된 지문 특정 부분, 선택지 단어와 지문 어휘/개념 간 패러프레이징 관계</td><td>지엽적인 세부 사항이나 예시 (요약문은 핵심만 담음)</td><td>"지문의 핵심 내용을 압축하고, 선택지 어휘와의 패러프레이징을 찾아라."</td></tr>
+                                <tr><td><strong>내용 일치/불일치</strong></td><td>선택지의 키워드, 지문에서 선택지 내용과 관련된 특정 부분, 부정어/한정어/비교급/최상급 표현</td><td>선택지와 직접 관련 없는 지문의 다른 부분들</td><td>"선택지를 먼저 읽고, 지문과 꼼꼼히 대조하여 '사실'을 확인하라."</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="s4_1" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">1. 주제, 제목, 요지, 주장, 목적 파악</h3>
+                    <p>이 유형의 문제들은 글의 전반적인 핵심 메시지를 파악하는 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">첫 문장과 마지막 문장/단락</span></li>
+                        <li><span class="key-point">주제문(Topic Sentences)</span></li>
+                        <li><span class="key-point">반복되는 핵심 어휘 및 Paraphrased된 개념</span></li>
+                        <li><span class="key-point">강조/당위성 표현</span> (<code>important, must, should</code> 등)</li>
+                        <li><span class="key-point">결론/요약 연결어</span> (<code>Therefore, In conclusion</code> 등)</li>
+                        <li><span class="key-point">역접 연결어</span> (<code>However, But</code> 등) 뒤의 내용</li>
+                        <li><span class="key-point">질문-답변 구조에서의 답변 부분</span></li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>세부적인 예시 (요점 파악 후)</li>
+                        <li>긴 부연 설명 (핵심 아이디어 파악 후)</li>
+                        <li>지나치게 전문적이거나 기술적인 세부 사항 (핵심 주장과 무관 시)</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이 (2023학년도 수능 영어 23번)</h5>
+                        <p class="mt-1"><strong>지문 요약:</strong> 우리가 시간을 인식하는 방식("현재" 대 "과거")이 기후 변화에 대한 책임감에 어떤 영향을 미치는지를 다룹니다.</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 당면한 문제와 시간적으로 멀리 떨어진 장기적 문제(기후 변화)를 다르게 인식하는 대조. "우리 조상들이 한 일이고, 우리는 책임이 없다"는 생각, 시간적 틀에 의해 "책임의 범위"가 가려진다는 아이디어.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>첫 부분 읽기: 시간 인식과 책임의 관계 암시.</li>
+                            <li>핵심어 반복/Paraphrasing 확인: '시간', '책임', '기후 변화', '인식' 등.</li>
+                            <li>대조점 파악: 현재 문제와 미래/과거 문제에 대한 다른 태도.</li>
+                            <li>주제문/결론적 진술 파악: "지금 살아 있는 우리들의 책임 범위를 시야로부터 숨겨왔다"는 문장이 핵심.</li>
+                            <li>선택지 연결: 시간적 관점이 기후 변화 책임을 모호하게 만드는 내용.</li>
+                        </ol>
+                    </div>
+                    <p>이 유형은 정보를 <span class="key-point">종합하는 능력</span>을 요구합니다. 글의 앞부분에서 주제를 잡고 유지하며 읽는 것이 중요합니다.</p>
+                </div>
+
+                <div id="s4_2" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">2. 빈칸 추론 (단어, 구, 절)</h3>
+                    <p>지문의 논리적 흐름과 의미를 정확히 이해하고, 빈칸에 가장 적절한 내용을 추론하는 능력을 평가합니다.</p>
+                     <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">빈칸 주변 문맥</span> (바로 앞뒤 문장)</li>
+                        <li><span class="key-point">빈칸 문장 자체의 논리 구조</span> (원인, 결과, 예시, 대조 등)</li>
+                        <li><span class="key-point">지문 전체의 주제 및 핵심 논리</span></li>
+                        <li><span class="key-point">반복되는 핵심 어휘 또는 Paraphrased된 개념</span></li>
+                        <li><span class="key-point">연결어, 지시어, 대명사</span></li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>주제와 직접적 관련이 적은 세부 사항</li>
+                        <li>빈칸의 논점과 무관한 배경 설명</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이 (2023학년도 수능 영어 33번)</h5>
+                        <p class="mt-1"><strong>지문 요약:</strong> 꿀벌 군락이 물을 내려놓는 시간에 따라 행동(춤 또는 포기)을 조절하며 군락 전체의 물 필요를 반영한다는 내용. 빈칸은 지역 정보에 반응하여 행동을 바꾸는 개체들이 _______ 하는지에 대한 예시.</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 핵심 메커니즘: 물 내려놓는 시간(지역 정보) → 조달자의 결정(개별 행동 변화) → 군락의 물 수집 조절. "개별 물 조달자의 물 내려놓는 시간에 대한 반응은 군락의 필요에 따라 물 수집을 조절한다"는 문장.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>빈칸 문장 분석: "지역 정보에 반응하여 자신의 행동을 바꾸는 개체들이 [빈칸]."</li>
+                            <li>핵심 예시 분석 (꿀벌): 물 조달자가 물 전달 시간에 따라 춤(노동력 증가) 또는 포기(노동력 감소)하며 군집 전체의 물 필요 조절.</li>
+                            <li>주제 연결: 개별 행동 변화가 군집 전체의 '노동력(workforce)'을 '조절(regulate)'하는 결과.</li>
+                            <li>선택지 분석: ① "allow the colony to regulate its workforce" (군집이 노동력을 조절하도록 허용한다)가 적절.</li>
+                        </ol>
+                    </div>
+                    <p>빈칸 추론은 <span class="key-point">미시-거시적 연결</span>을 파악하는 능력을 시험합니다. 빈칸 주변(지역적 단서)과 지문 전체(전체적 단서)에서 단서를 찾아야 합니다.</p>
+                </div>
+                
+                <div id="s4_3" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">3. 밑줄 친 부분의 의미 추론 (함축 의미)</h3>
+                    <p>밑줄 친 어구나 절이 문맥 속에서 갖는 함축적인 의미를 파악하는 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">밑줄 친 부분 자체의 문자적/문맥적 의미</span></li>
+                        <li><span class="key-point">밑줄 친 문장과 그 앞뒤 문장들</span></li>
+                        <li><span class="key-point">지문의 전체 주제 또는 필자의 주장</span></li>
+                        <li><span class="key-point">대명사, 지시어가 가리키는 대상</span></li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>주제와 거리가 먼 세부 사항이나 배경 정보</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이 (2023학년도 수능 영어 21번)</h5>
+                        <p class="mt-1"><strong>밑줄 친 표현:</strong> "make oneself public to oneself"</p>
+                        <p class="mt-1"><strong>지문 요약:</strong> 18-19세기 일기가 자아 성찰과 비판의 수단으로서의 역할을 다룸.</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 일기는 "사적인 영역"이지만, 그 안에서 "자신은 또한 자아 성찰과 자아 비판의 대상이 되었다"는 내용. 즉, 사적인 일기 쓰기를 통해 자신을 객관화하고 성찰하는 행위.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>밑줄 친 표현 분석: "make oneself public to oneself" - 자신을 자신에게 공개한다?</li>
+                            <li>문맥 확인: "사적인 영역에서 자신을 공개함으로써(객관화함으로써), 자신은 또한 자아 성찰과 자아 비판의 대상이 되었다."</li>
+                            <li>주제 연결: 일기는 자아 성찰의 도구.</li>
+                            <li>선택지 분석: ① "use writing as a means of reflecting on oneself" (글쓰기를 자신을 성찰하는 수단으로 사용하다)가 적절.</li>
+                        </ol>
+                    </div>
+                    <p>이 유형은 종종 <span class="key-point">비유적 표현, 은유 또는 관용적 표현</span>을 대상으로 합니다. 문맥적 단서를 사용하여 그 의미를 풀어내야 합니다.</p>
+                </div>
+
+                <div id="s4_4" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">4. 어법/어휘 판단</h3>
+                    <p>문장 구조의 정확성이나 문맥에 맞는 어휘 사용 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">밑줄 친 부분과 직접적으로 관련된 문법 구조</span> (수일치, 시제, 태, 관계사 등)</li>
+                        <li><span class="key-point">밑줄 친 어휘의 문맥상 의미</span> (적절성, 반의어, 혼동 어휘)</li>
+                        <li><span class="key-point">문장 전체의 의미와 논리적 흐름</span></li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>밑줄 친 부분과 직접적인 관련이 없는 문장 내용 (단, 전체 주제 이해가 간접적으로 도움될 수 있음)</li>
+                    </ul>
+                     <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이:</h5>
+                        <p class="mt-1"><strong>예시 문장:</strong> "The number of students [<strong>which</strong> / who] enroll in online courses have increased dramatically."</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 선행사 'students'(사람), 관계대명사의 격(주격 필요), 동사 'have increased'와의 수일치('The number'가 주어이므로 'has'가 와야 함).</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>밑줄 (선택) 부분 확인: 관계대명사 <code>which</code> 대 <code>who</code>.</li>
+                            <li>선행사 확인: 'students'는 사람이므로 <code>who</code>가 적절.</li>
+                            <li>다른 어법 요소 점검 (추가적): 이 문장의 주어는 'The number'이므로 단수 취급. 동사는 'has increased'가 되어야 함.</li>
+                        </ol>
+                    </div>
+                    <p>수능 어법 문제는 종종 <span class="key-point">반복적으로 출제되는 문법 원리</span>들을 시험합니다. 빈출 오류 패턴에 집중하여 학습하는 것이 효율적입니다.</p>
+                </div>
+
+                <div id="s4_5" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">5. 무관한 문장 고르기</h3>
+                    <p>단락의 통일성을 해치는, 즉 전체 주제에서 벗어나는 문장을 찾는 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">첫 문장 (주제문일 가능성 높음)</span>: 전체 주제와 핵심 소재 파악.</li>
+                        <li><span class="key-point">각 문장과 전체 주제/핵심 소재와의 일관성</span>.</li>
+                        <li><span class="key-point">문장 간의 논리적 연결성</span> (지시어, 연결어, 대명사).</li>
+                        <li><span class="key-point">핵심어는 유지하되 다른 관점/주제를 이야기하는 문장</span>.</li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>일단 주제와 긴밀히 연결되는 문장들.</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이:</h5>
+                        <p class="mt-1"><strong>예시 지문 일부:</strong><br>(주제문) Effective time management is crucial for academic success. ① It allows students to prioritize tasks and reduce stress. ② Many successful students utilize daily planners. ③ <em>Smartphones, however, offer various entertainment apps that can be distracting.</em> ④ Furthermore, allocating specific time blocks for studying and breaks can improve focus. ⑤ Consistent effort in managing time yields better grades.</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 주제: 학업 성공을 위한 효과적인 시간 관리.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>주제 파악: 첫 문장 - "Effective time management is crucial for academic success."</li>
+                            <li>문장별 검토: ③번 문장(스마트폰 오락 앱)은 시간 관리의 '저해' 요소로 주제에서 벗어남.</li>
+                            <li>무관한 문장 선택: ③</li>
+                            <li>검증: ③번 문장을 제외하고 자연스럽게 이어지는지 확인.</li>
+                        </ol>
+                    </div>
+                    <p>이 문제 유형은 단락의 <span class="key-point">통일성(unity)</span>과 <span class="key-point">일관성(coherence)</span>을 시험합니다. 글의 '단절' 지점을 찾는 것이 중요합니다.</p>
+                </div>
+
+                <div id="s4_6" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">6. 글의 순서 배열 / 주어진 문장 넣기</h3>
+                    <p>문장이나 단락 간의 논리적 관계를 파악하여 글 전체를 일관성 있게 재구성하는 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">주어진 문장 (문장 넣기) / 첫 단락 (순서 배열)</span>: 핵심 내용, 키워드 파악.</li>
+                        <li><span class="key-point">연결어</span> (<code>However, Therefore, For example</code> 등).</li>
+                        <li><span class="key-point">지시어</span> (<code>this, that, these, such</code> 등).</li>
+                        <li><span class="key-point">대명사</span> (<code>it, they, he</code> 등)와 그 선행사.</li>
+                        <li><span class="key-point">시간적/논리적 흐름</span> (사건 순서, 원인-결과 등).</li>
+                        <li><span class="key-point">반복 어휘 또는 Paraphrased된 핵심 개념</span>.</li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>각 단락/문장의 모든 세부 내용보다는 <span class="key-point">'연결 고리'</span>에 집중.</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이 (문장 삽입):</h5>
+                        <p class="mt-1"><strong>주어진 문장:</strong> "However, this traditional view is now being challenged by new research."</p>
+                        <p class="mt-1"><strong>지문 일부:</strong> ... (전통적 관점 설명). [ ① ] This new research suggests that... [ ② ] For example...</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 주어진 문장의 'However'(역접), 'this traditional view'(앞 내용 지칭). 지문에서 "전통적 관점" 설명 후 "새로운 연구" 언급 지점 찾기.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>주어진 문장 분석: 'However'는 역접, 'this traditional view'는 앞 내용이 전통적 관점이어야 함을 시사.</li>
+                            <li>지문 탐색: 'traditional view' 내용 찾기.</li>
+                            <li>삽입 위치 모색: 전통적 관점 설명이 끝나고 새로운 연구 언급이 시작되는 사이. [ ① ] 뒤에 "This new research suggests..."가 있으므로 [ ① ]이 적절.</li>
+                        </ol>
+                    </div>
+                    <p>이러한 문제들은 텍스트의 <span class="key-point">결속(cohesion)</span>과 <span class="key-point">일관(coherence)</span>에 관한 것입니다. 문장과 단락 사이의 연결고리를 찾아야 합니다.</p>
+                </div>
+
+                <div id="s4_7" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">7. 요약문 완성</h3>
+                    <p>지문의 핵심 내용을 정확히 파악하여 주어진 요약문의 빈칸을 채우는 유형입니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">지문의 전반적인 주제와 핵심 주장/결론</span>.</li>
+                        <li><span class="key-point">요약문의 빈칸 (A)와 (B)에 들어갈 내용과 관련된 지문의 특정 부분</span>.</li>
+                        <li><span class="key-point">선택지의 단어들이 지문의 어떤 어휘/개념과 Paraphrase 관계에 있는지</span>.</li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>지엽적인 세부 사항이나 예시 (요약문은 핵심만 담음).</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이:</h5>
+                        <p class="mt-1"><strong>가상 지문 핵심 아이디어:</strong> 기술은 많은 이점을 제공하지만, 과도한 의존은 비판적 사고 능력 저하로 이어질 수 있음.</p>
+                        <p class="mt-1"><strong>요약문:</strong> "According to the passage, while technology provides various (A)__________, overdependence on it may (B)__________ our cognitive abilities."</p>
+                        <p class="mt-1"><strong>중요 정보:</strong> 기술의 양면성 - 이점과 비판적 사고/인지 능력에 대한 부정적 영향.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>지문 전체 주제 파악: 기술의 양면성.</li>
+                            <li>요약문 (A) 분석: 기술이 제공하는 긍정적인 것 (예: benefits, efficiency).</li>
+                            <li>요약문 (B) 분석: 과도한 의존이 인지 능력에 미치는 부정적 영향 (예: decline in critical thinking).</li>
+                            <li>선택지에서 Paraphrase 찾기: (A) 'advantages', (B) 'weaken', 'impair' 등.</li>
+                        </ol>
+                    </div>
+                    <p>이 과제는 지문의 핵심 메시지를 미리 정해진 구조로 <span class="key-point">정제하는 능력</span>을 요구합니다.</p>
+                </div>
+
+                <div id="s4_8" class="subsection-content space-y-3">
+                    <h3 class="text-2xl font-semibold text-blue-500 mt-4 mb-2">8. 내용 일치/불일치</h3>
+                    <p>지문에 제시된 특정 정보와 선택지의 내용이 일치하는지 혹은 불일치하는지를 판단하는 능력을 평가합니다.</p>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">가장 집중해야 할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><span class="key-point">선택지의 키워드</span> (주어, 동사, 목적어, 수식어구 등).</li>
+                        <li><span class="key-point">지문에서 선택지 내용과 관련된 특정 부분</span>.</li>
+                        <li><span class="key-point">부정어, 한정어, 비교급, 최상급 표현</span> (의미 왜곡 주의).</li>
+                    </ul>
+                    <h4 class="text-xl font-medium text-slate-700 mt-2">효율적으로 처리할 정보:</h4>
+                    <ul class="list-disc list-inside ml-4">
+                        <li>선택지와 직접 관련 없는 지문의 다른 부분들.</li>
+                    </ul>
+                    <div class="example-box">
+                        <h5 class="text-lg font-semibold text-slate-700">실제 수능형 예시 및 풀이:</h5>
+                        <p class="mt-1"><strong>지문 일부:</strong> "The Atacama Desert, primarily located in Chile, is considered one of the driest places on Earth. Some areas receive less than 1 millimeter of rainfall per year. Despite its aridity, certain species of cacti and hardy insects have adapted to survive there."</p>
+                        <p class="mt-1"><strong>질문:</strong> Which of the following is TRUE according to the passage?</p>
+                        <p class="mt-1"><strong>선택지 예시:</strong> (d) Some insects can live in the Atacama Desert.</p>
+                        <p class="mt-1"><strong>풀이 과정:</strong></p>
+                        <ol class="list-decimal list-inside ml-4">
+                            <li>선택지 (d) 분석: "Some insects can live..."</li>
+                            <li>지문 대조: "hardy insects have adapted to survive there." (일치)</li>
+                        </ol>
+                    </div>
+                    <p>이 유형은 <span class="key-point">정밀성과 세부 사항에 대한 주의력</span>을 요구합니다. 지문과 선택지 사이의 미묘한 단어 차이에 유의해야 합니다.</p>
+                </div>
+            </div>
+
+            <div id="section5" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">V. 실전 적용 및 훈련 가이드</h2>
+                <p class="text-lg leading-relaxed">정보 선별 전략들을 실제 수능 시험에서 효과적으로 활용하기 위해서는 꾸준한 연습과 올바른 훈련 습관이 중요합니다.</p>
+                
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        A. 능동적 읽기 습관 형성
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>수동적으로 글자를 따라가는 읽기에서 벗어나, 적극적으로 의미를 구성하는 능동적 읽기 습관을 형성해야 합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 예측하며 읽기</h4>
+                        <p>제목, 첫 문장, 연결어 등을 단서로 다음에 나올 내용, 필자의 주장을 계속해서 예측합니다. "다음에는 어떤 내용이 이어질까?"</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 질문하며 읽기</h4>
+                        <p>글을 읽는 동안 "필자의 핵심 주장은?", "왜 이 예시를 사용했을까?", "이전 내용과 어떻게 연결될까?" 등 비판적으로 사고합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. 핵심 내용 요약하며 읽기</h4>
+                        <p>각 단락 또는 전체 지문을 읽은 후 주요 내용을 한두 문장으로 자신의 말로 요약해봅니다. 기호나 화살표를 사용한 시각적 정리도 좋습니다.</p>
+                        <p>이러한 능동적 읽기 전략은 텍스트와의 <span class="key-point">참여도를 높여</span> 더 깊이 있는 정보 처리와 이해를 가능하게 합니다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        B. 시간 관리와 정보 선별
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>제한된 시간 내에 모든 문제를 풀어야 하는 수능 시험에서 시간 관리는 매우 중요합니다. 정보 선별 능력은 효과적인 시간 관리의 핵심입니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">1. 문제 유형별 시간 배분 전략</h4>
+                        <p>어떤 유형에 시간을 더 투자하고, 어떤 유형을 빠르게 풀어야 하는지 미리 인지합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">2. 정보의 중요도에 따른 읽기 속도 조절</h4>
+                        <p>핵심 정보는 정독, 부수적인 정보(예시, 부연 설명 등)는 속독하거나 훑어 읽으며 읽기 속도를 유연하게 조절합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">3. "모르는 부분은 건너뛰기"의 전략적 활용</h4>
+                        <p>특정 단어나 문장 해석에 막혔을 때, 전체 흐름에 큰 지장이 없다면 일단 표시 후 넘어가고, 시간 남으면 다시 해결합니다.</p>
+                        <p>효과적인 시간 관리는 <span class="key-point">전략적인 속도 조절(strategic pacing)</span>에 관한 것입니다.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        C. 오답 노트 활용법 (정보 선별 관점에서)
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>틀린 문제를 분석할 때는 단순히 정답과 해설을 확인하는 것을 넘어, 정보 선별의 관점에서 자신의 실수를 깊이 있게 분석해야 합니다.</p>
+                        <h4 class="text-xl font-medium text-slate-700 mt-2">오답 분석 질문:</h4>
+                        <ul class="list-disc list-inside ml-4">
+                            <li>"나는 왜 이 정보를 중요하다고 (또는 중요하지 않다고) 판단했을까?"</li>
+                            <li>"어떤 핵심 시그널(연결어, 강조 표현 등)을 놓쳤는가? 또는 잘못 해석했는가?"</li>
+                            <li>"핵심 정보와 부수적 정보를 구분하는 과정에서 어떤 판단 착오가 있었는가?"</li>
+                            <li>"이 특정 문제 유형에서 정보 선별 전략을 제대로 적용했는가?"</li>
+                            <li>"정답의 근거가 되는 핵심 문장을 왜 찾지 못했는가? 또는 그 중요성을 왜 잘못 판단했는가?"</li>
+                        </ul>
+                        <p>이러한 질문에 답하면서 오답 노트를 작성하면, 자신의 약점을 구체적으로 파악하고 개선 방안을 모색할 수 있습니다.</p>
+                        <button id="aiErrorAnalysisBtn" class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-150 ease-in-out">
+                            ✨ AI 오답 분석 도움받기
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="subsection-title text-2xl font-semibold text-blue-500 mt-4 mb-2 flex justify-between items-center">
+                        D. 흔한 오해와 함정 (및 해결책)
+                        <span class="toggle-icon text-xl transform transition-transform duration-300">▼</span>
+                    </h3>
+                    <div class="subsection-content ml-4 space-y-3">
+                        <p>수험생들이 정보 선별 과정에서 흔히 저지르는 실수나 오해는 다음과 같습니다.</p>
+                        <ol class="list-decimal list-inside ml-4 space-y-2">
+                            <li><strong>오해 1: 모든 문장을 똑같은 속도와 중요도로 읽어야 한다고 생각하는 것.</strong><br><strong>해결책:</strong> 정보의 중요도에 따라 읽기 속도와 집중도를 조절하는 훈련을 지속합니다.</li>
+                            <li><strong>오해 2: 예시는 무조건 꼼꼼히 다 읽어야 한다고 생각하는 것.</strong><br><strong>해결책:</strong> 예시가 뒷받침하는 주제문을 먼저 파악하고, 주제문이 이해되면 예시는 빠르게 훑어보거나 핵심만 파악합니다.</li>
+                            <li><strong>오해 3: 연결어의 기능을 단순 암기하고 문맥적 의미를 제대로 파악하지 못하는 것.</strong><br><strong>해결책:</strong> 연결어가 문장 간, 단락 간에 어떤 논리적 관계를 맺는지 다양한 예문을 통해 깊이 있게 학습합니다.</li>
+                            <li><strong>오해 4: 어려운 단어 하나에 막혀 전체 지문 이해를 포기하는 것.</strong><br><strong>해결책:</strong> 모르는 단어는 문맥 속에서 의미를 추론하려 노력하되, 핵심 내용 파악에 큰 지장이 없다면 일단 넘어가고 문제 풀이에 집중합니다.</li>
+                            <li><strong>오해 5: 빈칸 추론 시 빈칸 주변만 보고 지문 전체의 흐름을 무시하는 것.</strong><br><strong>해결책:</strong> 빈칸은 지문 전체의 유기적인 일부임을 인지하고, 글의 주제와 핵심 논리를 바탕으로 추론해야 합니다.</li>
+                        </ol>
+                        <p>이러한 오해들은 종종 "좋은 독해"란 무엇인가에 대한 잘못된 <span class="key-point">정신 모델(mental models)</span>에서 비롯됩니다. 비효율적인 모델을 보다 전략적이고 유연한 접근 방식으로 대체하는 것을 목표로 합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section6" class="content-section space-y-4">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">VI. 결론</h2>
+                <p class="text-lg leading-relaxed">수능 영어 독해에서 시간 제약 하에 정확도와 효율성을 극대화하기 위해서는 지문 내 정보의 중요도를 판별하고, 핵심 정보에 집중하며 부수적인 정보는 효율적으로 처리하는 <span class="key-point">전략적 정보 선별 능력</span>이 무엇보다 중요합니다.</p>
+                <p class="leading-relaxed">본 보고서에서 제시된 바와 같이, <span class="key-point">하향식 접근법</span>을 기반으로 스키마를 활성화하고 예측하며 읽는 습관은 글 전체의 맥락을 빠르게 파악하는 데 효과적입니다. 첫 문장, 마지막 문장, 단락별 주제문은 이러한 접근의 핵심적인 길잡이 역할을 합니다.</p>
+                <p class="leading-relaxed">또한, <span class="key-point">강조/당위성 표현, 결론/요약 연결어, 역접/대조 연결어, 질문-답변 구조, 반복 어휘 및 패러프레이징</span>과 같은 다양한 <span class="key-point">시그널</span>들은 필자의 의도와 글의 핵심 내용을 명확히 알려주는 중요한 단서들입니다. 이러한 시그널을 정확히 인지하고 반응하는 훈련은 정보 선별 능력을 크게 향상시킬 것입니다.</p>
+                <p class="leading-relaxed">상대적으로 덜 중요한 정보인 <span class="key-point">구체적 예시, 부연 설명, 세부 묘사, 일반적 배경지식</span> 등은 그것들이 뒷받침하는 핵심 내용을 파악한 후에는 과감히 속도를 높여 처리하거나 필요한 부분만 선별적으로 읽는 유연성이 요구됩니다.</p>
+                <p class="leading-relaxed">가장 중요한 것은 이러한 전략들을 <span class="key-point">각 수능 문제 유형의 특성에 맞게 최적화하여 적용</span>하는 것입니다. 주제 찾기부터 내용 일치/불일치에 이르기까지 각 유형별로 집중해야 할 정보와 효율적으로 처리할 정보는 분명히 다르며, 이를 인지하고 문제에 접근해야 합니다.</p>
+                
+                <h3 class="text-2xl font-semibold text-blue-500 mt-6 mb-3">수험생 여러분께 드리는 최종 조언:</h3>
+                <ol class="list-decimal list-inside ml-4 space-y-2 text-lg">
+                    <li><strong>능동적인 독해자가 되십시오:</strong> 단순히 글자를 읽는 것을 넘어 예측하고, 질문하고, 요약하며 적극적으로 지문과 상호작용하십시오.</li>
+                    <li><strong>전략적 시간 배분을 연습하십시오:</strong> 모든 지문과 문제를 동일한 속도와 노력으로 대하지 말고, 정보의 중요도와 문제 유형에 따라 유연하게 대처하십시오.</li>
+                    <li><strong>오답 분석을 철저히 하십시오:</strong> 틀린 문제에 대해 '왜 이 정보를 놓쳤을까?', '어떤 정보 선별 오류가 있었을까?'를 끊임없이 자문하며 개선점을 찾으십시오.</li>
+                    <li><strong>꾸준히 연습하고 체화하십시오:</strong> 제시된 전략들은 하루아침에 완성되지 않습니다. 꾸준한 연습을 통해 자신만의 정보 선별 감각과 문제 해결 능력을 길러야 합니다.</li>
+                </ol>
+                <p class="mt-4 text-lg leading-relaxed">이 보고서가 제시하는 심층적이고 실용적인 가이드라인을 통해 수험생 여러분 모두가 수능 영어 독해 지문을 만났을 때 자신감을 가지고 정보의 중요도를 판단하며 효율적으로 문제를 해결하여 원하는 목표를 달성하시기를 바랍니다.</p>
+            </div>
+
+            <div id="section7" class="content-section space-y-6">
+                <h2 class="text-3xl font-bold text-blue-600 mb-6">VII. ✨ AI 지문 분석 도구</h2>
+                <p class="text-lg leading-relaxed">이 도구를 사용하여 영어 지문을 입력하면 AI가 한국어 요약과 핵심 어휘를 추출해 드립니다. 학습에 활용해 보세요!</p>
+                
+                <div>
+                    <label for="passageInput" class="block text-xl font-medium text-slate-700 mb-2">영어 지문 입력:</label>
+                    <textarea id="passageInput" rows="10" class="w-full p-3 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="여기에 분석할 영어 지문을 붙여넣으세요..."></textarea>
+                </div>
+                
+                <button id="analyzePassageBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-6 rounded-md transition duration-150 ease-in-out">
+                    분석하기 ✨
+                </button>
+
+                <div id="passageAnalysisLoader" class="loader hidden"></div>
+                <div id="passageAnalysisError" class="text-red-600 hidden mt-4"></div>
+
+                <div id="analysisResultsContainer" class="space-y-6 hidden">
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-500 mb-3">AI 생성 요약 (한국어)</h3>
+                        <div id="aiSummaryOutput" class="p-4 bg-blue-50 border border-blue-200 rounded-md min-h-[100px] whitespace-pre-wrap"></div>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-semibold text-blue-500 mb-3">AI 추천 핵심 어휘</h3>
+                        <div id="aiVocabOutput" class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>영어 어휘</th>
+                                        <th>한국어 뜻</th>
+                                        <th>지문 내 예문</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="vocabTableBody">
+                                </tbody>
+                            </table>
+                        </div>
+                         <p id="noVocabMessage" class="text-slate-500 hidden">추출된 어휘가 없습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="aiErrorModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeErrorModalBtn">&times;</span>
+            <h2 class="text-2xl font-bold text-blue-600 mb-6">✨ AI 오답 분석 도우미</h2>
+            <div class="space-y-4">
+                <div>
+                    <label for="errorPassageInput" class="block text-sm font-medium text-slate-700">영어 지문:</label>
+                    <textarea id="errorPassageInput" rows="5" class="mt-1 w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="틀린 문제의 영어 지문을 입력하세요..."></textarea>
+                </div>
+                <div>
+                    <label for="errorQuestionInput" class="block text-sm font-medium text-slate-700">문제:</label>
+                    <input type="text" id="errorQuestionInput" class="mt-1 w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="문제 내용을 입력하세요...">
+                </div>
+                <div>
+                    <label for="errorMyAnswerInput" class="block text-sm font-medium text-slate-700">내가 선택한 답:</label>
+                    <input type="text" id="errorMyAnswerInput" class="mt-1 w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="내가 선택한 답을 입력하세요...">
+                </div>
+                <div>
+                    <label for="errorCorrectAnswerInput" class="block text-sm font-medium text-slate-700">정답:</label>
+                    <input type="text" id="errorCorrectAnswerInput" class="mt-1 w-full p-2 border border-slate-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500" placeholder="정답을 입력하세요...">
+                </div>
+                <button id="requestErrorAnalysisBtn" class="w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md transition duration-150 ease-in-out">
+                    분석 요청 ✨
+                </button>
+                <div id="errorAnalysisLoader" class="loader hidden"></div>
+                <div id="errorAnalysisMsg" class="text-red-600 hidden mt-2"></div>
+                <div>
+                    <h3 class="text-xl font-semibold text-blue-500 mt-4 mb-2">AI 분석 및 조언:</h3>
+                    <div id="aiErrorAnalysisOutput" class="p-3 bg-orange-50 border border-orange-200 rounded-md min-h-[100px] whitespace-pre-wrap"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const navLinks = document.querySelectorAll('.nav-link');
+        const subNavLinks = document.querySelectorAll('.sub-nav-link');
+        const contentSections = document.querySelectorAll('.content-section');
+        const subsectionTitles = document.querySelectorAll('.subsection-title');
+        const menuButton = document.querySelector('.menu-button');
+        const sidebar = document.querySelector('.sidebar');
+        const section4SubNav = document.getElementById('section4-subnav');
+
+        // Gemini API related elements
+        const passageInput = document.getElementById('passageInput');
+        const analyzePassageBtn = document.getElementById('analyzePassageBtn');
+        const passageAnalysisLoader = document.getElementById('passageAnalysisLoader');
+        const passageAnalysisError = document.getElementById('passageAnalysisError');
+        const analysisResultsContainer = document.getElementById('analysisResultsContainer');
+        const aiSummaryOutput = document.getElementById('aiSummaryOutput');
+        const vocabTableBody = document.getElementById('vocabTableBody');
+        const noVocabMessage = document.getElementById('noVocabMessage');
+
+        const aiErrorAnalysisBtn = document.getElementById('aiErrorAnalysisBtn');
+        const aiErrorModal = document.getElementById('aiErrorModal');
+        const closeErrorModalBtn = document.getElementById('closeErrorModalBtn');
+        const errorPassageInput = document.getElementById('errorPassageInput');
+        const errorQuestionInput = document.getElementById('errorQuestionInput');
+        const errorMyAnswerInput = document.getElementById('errorMyAnswerInput');
+        const errorCorrectAnswerInput = document.getElementById('errorCorrectAnswerInput');
+        const requestErrorAnalysisBtn = document.getElementById('requestErrorAnalysisBtn');
+        const errorAnalysisLoader = document.getElementById('errorAnalysisLoader');
+        const errorAnalysisMsg = document.getElementById('errorAnalysisMsg');
+        const aiErrorAnalysisOutput = document.getElementById('aiErrorAnalysisOutput');
+
+        const API_KEY = ""; // Provided by Canvas environment
+
+        async function callGeminiAPI(prompt, isStructured = false, schema = null) {
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`;
+            
+            let payload = {
+                contents: [{ role: "user", parts: [{ text: prompt }] }]
+            };
+
+            if (isStructured && schema) {
+                payload.generationConfig = {
+                    responseMimeType: "application/json",
+                    responseSchema: schema
+                };
+            }
+            
+            try {
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error("API Error Response:", errorData);
+                    throw new Error(`API 요청 실패: ${response.status} ${response.statusText}. ${errorData?.error?.message || ''}`);
+                }
+
+                const result = await response.json();
+
+                if (result.candidates && result.candidates.length > 0 &&
+                    result.candidates[0].content && result.candidates[0].content.parts &&
+                    result.candidates[0].content.parts.length > 0) {
+                    return result.candidates[0].content.parts[0].text;
+                } else {
+                    console.error("Unexpected API response structure:", result);
+                    throw new Error("API 응답에서 텍스트를 찾을 수 없습니다.");
+                }
+            } catch (error) {
+                console.error("Gemini API 호출 중 오류 발생:", error);
+                throw error; // Re-throw for the caller to handle
+            }
+        }
+
+
+        if (analyzePassageBtn) {
+            analyzePassageBtn.addEventListener('click', async () => {
+                const passage = passageInput.value.trim();
+                if (!passage) {
+                    passageAnalysisError.textContent = "분석할 영어 지문을 입력해주세요.";
+                    passageAnalysisError.classList.remove('hidden');
+                    return;
+                }
+
+                passageAnalysisLoader.classList.remove('hidden');
+                passageAnalysisError.classList.add('hidden');
+                analysisResultsContainer.classList.add('hidden');
+                aiSummaryOutput.textContent = "";
+                vocabTableBody.innerHTML = "";
+                noVocabMessage.classList.add('hidden');
+
+                try {
+                    // 1. Get Summary
+                    const summaryPrompt = `다음 영어 지문을 한국어로 간결하게 요약해 주세요:\n\n${passage}`;
+                    const summary = await callGeminiAPI(summaryPrompt);
+                    aiSummaryOutput.textContent = summary;
+
+                    // 2. Get Key Vocabulary (Structured)
+                    const vocabSchema = {
+                        type: "ARRAY",
+                        items: {
+                            type: "OBJECT",
+                            properties: {
+                                "english_word": { "type": "STRING", description: "추출된 영어 어휘" },
+                                "korean_meaning": { "type": "STRING", description: "해당 어휘의 한국어 뜻" },
+                                "example_sentence": { "type": "STRING", description: "해당 어휘가 사용된 지문 내 원본 예문" }
+                            },
+                            required: ["english_word", "korean_meaning", "example_sentence"]
+                        }
+                    };
+                    const vocabPrompt = `다음 영어 지문에서 수능 학습에 중요하다고 생각되는 핵심 영어 어휘를 최대 5개까지 선정하고, 각 어휘의 한국어 뜻과 해당 어휘가 사용된 지문 내 예문을 함께 제시해주세요. 반드시 다음 JSON 스키마 형식으로 응답해주세요.:\n\n${passage}`;
+                    
+                    const vocabJsonString = await callGeminiAPI(vocabPrompt, true, vocabSchema);
+                    const vocabData = JSON.parse(vocabJsonString);
+
+                    if (vocabData && vocabData.length > 0) {
+                        vocabData.forEach(item => {
+                            const row = vocabTableBody.insertRow();
+                            row.insertCell().textContent = item.english_word;
+                            row.insertCell().textContent = item.korean_meaning;
+                            row.insertCell().textContent = item.example_sentence;
+                        });
+                    } else {
+                        noVocabMessage.classList.remove('hidden');
+                    }
+                    
+                    analysisResultsContainer.classList.remove('hidden');
+
+                } catch (error) {
+                    passageAnalysisError.textContent = `오류 발생: ${error.message}`;
+                    passageAnalysisError.classList.remove('hidden');
+                } finally {
+                    passageAnalysisLoader.classList.add('hidden');
+                }
+            });
+        }
+
+        if (aiErrorAnalysisBtn) {
+            aiErrorAnalysisBtn.addEventListener('click', () => {
+                aiErrorModal.style.display = "block";
+                aiErrorAnalysisOutput.textContent = "";
+                errorAnalysisMsg.classList.add('hidden');
+            });
+        }
+
+        if (closeErrorModalBtn) {
+            closeErrorModalBtn.addEventListener('click', () => {
+                aiErrorModal.style.display = "none";
+            });
+        }
+        
+        window.addEventListener('click', (event) => {
+            if (event.target == aiErrorModal) {
+                aiErrorModal.style.display = "none";
+            }
+        });
+
+        if (requestErrorAnalysisBtn) {
+            requestErrorAnalysisBtn.addEventListener('click', async () => {
+                const passage = errorPassageInput.value.trim();
+                const question = errorQuestionInput.value.trim();
+                const myAnswer = errorMyAnswerInput.value.trim();
+                const correctAnswer = errorCorrectAnswerInput.value.trim();
+
+                if (!passage || !question || !myAnswer || !correctAnswer) {
+                    errorAnalysisMsg.textContent = "모든 필드를 입력해주세요.";
+                    errorAnalysisMsg.classList.remove('hidden');
+                    return;
+                }
+
+                errorAnalysisLoader.classList.remove('hidden');
+                errorAnalysisMsg.classList.add('hidden');
+                aiErrorAnalysisOutput.textContent = "";
+
+                const prompt = `
+당신은 수능 영어 독해 전략 전문가입니다. 다음은 학생이 틀린 문제에 대한 정보입니다.
+학생이 어떤 정보 선별 전략(예: 주제문 파악 실패, 역접 뒤 내용 간과, 예시의 세부사항에 매몰 등)에서 실수를 했을 가능성이 높은지 분석하고, 이 앱에 있는 학습 전략(I. 정보 선별 대원칙, II. 핵심 정보 식별, III. 덜 중요한 정보 처리, IV. 문제 유형별 전략, V. 실전 적용 및 훈련 가이드 참고)과 연결하여 구체적인 조언을 한국어로 해주세요. 친절하고 상세하게 설명해주세요.
+
+영어 지문:
+${passage}
+
+문제:
+${question}
+
+학생이 선택한 답:
+${myAnswer}
+
+정답:
+${correctAnswer}
+
+분석 및 조언:
+`;
+                try {
+                    const analysisResult = await callGeminiAPI(prompt);
+                    aiErrorAnalysisOutput.textContent = analysisResult;
+                } catch (error) {
+                    errorAnalysisMsg.textContent = `오류 발생: ${error.message}`;
+                    errorAnalysisMsg.classList.remove('hidden');
+                } finally {
+                    errorAnalysisLoader.classList.add('hidden');
+                }
+            });
+        }
+
+
+        function updateActiveNav(targetId, isSubNav = false) {
+            const linksToUpdate = isSubNav ? subNavLinks : navLinks;
+            linksToUpdate.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.target === targetId || link.dataset.subtarget === targetId) {
+                    link.classList.add('active');
+                }
+            });
+            if (!isSubNav) {
+                subNavLinks.forEach(link => link.classList.remove('active'));
+            }
+        }
+        
+        function showSection(targetId, isSubNav = false) {
+            contentSections.forEach(section => section.classList.remove('active'));
+            
+            let mainSectionId = targetId;
+            if (isSubNav) {
+                mainSectionId = 'section4'; 
+                const section4Div = document.getElementById('section4');
+                if (section4Div) {
+                    section4Div.querySelectorAll('.subsection-content').forEach(subContent => {
+                        subContent.style.display = 'none'; 
+                        subContent.classList.remove('open'); 
+                    });
+                    const targetSubSection = document.getElementById(targetId);
+                    if (targetSubSection) {
+                        targetSubSection.style.display = 'block'; 
+                        targetSubSection.classList.add('open'); 
+                    }
+                }
+            }
+            
+            const activeSection = document.getElementById(mainSectionId);
+            if (activeSection) {
+                activeSection.classList.add('active');
+                activeSection.scrollTop = 0; 
+                document.querySelector('.main-content').scrollTop = 0;
+            }
+            updateActiveNav(targetId, isSubNav);
+
+            if (mainSectionId === 'section4') {
+                section4SubNav.classList.remove('hidden');
+            } else {
+                section4SubNav.classList.add('hidden');
+            }
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.dataset.target;
+                showSection(targetId);
+                if (targetId === 'section4') {
+                    showSection('s4_intro', true); 
+                    subNavLinks.forEach(slink => slink.classList.remove('active'));
+                    const introSubNavLink = document.querySelector('.sub-nav-link[data-subtarget="s4_intro"]');
+                    if (introSubNavLink) introSubNavLink.classList.add('active');
+                }
+                 if (window.innerWidth < 768) { 
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+
+        subNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const subTargetId = link.dataset.subtarget;
+                showSection(subTargetId, true);
+                 if (window.innerWidth < 768) { 
+                    sidebar.classList.remove('open');
+                }
+            });
+        });
+        
+        subsectionTitles.forEach(title => {
+            title.addEventListener('click', () => {
+                const content = title.nextElementSibling;
+                const icon = title.querySelector('.toggle-icon');
+                if (content && content.classList.contains('subsection-content')) { // Ensure content exists and is a subsection
+                    content.classList.toggle('open');
+                    if (content.classList.contains('open')) {
+                        content.style.display = 'block';
+                        if(icon) icon.style.transform = 'rotate(180deg)';
+                    } else {
+                        content.style.display = 'none';
+                        if(icon) icon.style.transform = 'rotate(0deg)';
+                    }
+                }
+            });
+        });
+
+        if (menuButton) {
+            menuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+        }
+        
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth < 768 && sidebar.classList.contains('open')) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickOnMenuButton = menuButton && menuButton.contains(event.target);
+                if (!isClickInsideSidebar && !isClickOnMenuButton) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        });
+
+        showSection('section1');
+        const firstSectionFirstSubsectionTitle = document.querySelector('#section1 .subsection-title');
+        if (firstSectionFirstSubsectionTitle) {
+            const content = firstSectionFirstSubsectionTitle.nextElementSibling;
+            const icon = firstSectionFirstSubsectionTitle.querySelector('.toggle-icon');
+            if (content && content.classList.contains('subsection-content')) {
+                content.classList.add('open');
+                content.style.display = 'block';
+                if(icon) icon.style.transform = 'rotate(180deg)';
+            }
+        }
+    </script>
+</body>
+</html>

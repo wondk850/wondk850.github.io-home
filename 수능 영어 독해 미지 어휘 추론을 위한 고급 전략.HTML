@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수능 영어 독해 미지 어휘 추론을 위한 고급 전략: 심층 연구 가이드 (2017-2024 평가원 기출 기반)</title>
+    
+    <!-- CSS Dependencies -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #2563eb; /* 파란색 계열 */
+            --secondary-color: #64748b; /* 회색 계열 */
+            --accent-color: #f59e0b; /* 주황색 계열 (강조) */
+            --success-color: #10b981; /* 녹색 계열 */
+            --light-bg: #f8fafc; /* 매우 연한 회색 배경 */
+            --text-primary: #1e293b; /* 기본 텍스트 (어두운 회색) */
+            --text-secondary: #475569; /* 보조 텍스트 (중간 회색) */
+            --border-color: #e2e8f0; /* 테두리 색상 */
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            color: var(--text-primary);
+            background-color: #f0f4f8; /* 전체 페이지 배경색 */
+            margin: 0;
+            padding-top: 80px; /* 고정 네비게이션 바 높이만큼 패딩 */
+        }
+
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-color), #1d4ed8);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.3rem; /* 브랜드 폰트 크기 증가 */
+        }
+        .nav-link {
+            font-weight: 500;
+        }
+
+        .main-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 100%);
+            color: white;
+            padding: 5rem 0; /* 헤더 패딩 증가 */
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .main-header h1 {
+            font-size: 3rem; /* 메인 타이틀 크기 증가 */
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        .main-header p.lead {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+
+        .container-main {
+            max-width: 1200px; /* 콘텐츠 최대 너비 증가 */
+            margin: 2rem auto;
+            padding: 0 15px;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 12px; /* 모서리 둥글기 증가 */
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07); /* 그림자 강화 */
+            margin-bottom: 2.5rem; /* 섹션 간 간격 증가 */
+            overflow: hidden;
+        }
+
+        .section-header {
+            background-color: var(--light-bg);
+            padding: 1.75rem 2rem; /* 섹션 헤더 패딩 증가 */
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.8rem; /* 섹션 제목 크기 증가 */
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .section-title i {
+            margin-right: 0.75rem;
+            font-size: 1.3em;
+        }
+
+        .content-section {
+            padding: 2.5rem; /* 내용 패딩 증가 */
+        }
+
+        .strategy-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px; /* 전략 카드 모서리 둥글기 */
+            margin-bottom: 2rem; /* 전략 카드 간 간격 증가 */
+            overflow: hidden;
+        }
+        
+        .collapsible {
+            background-color: var(--primary-color);
+            color: white;
+            cursor: pointer;
+            padding: 1rem 1.5rem;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1.25rem; /* 버튼 폰트 크기 증가 */
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            border-radius: 10px 10px 0 0; /* 상단 모서리만 둥글게 */
+        }
+
+        .collapsible:hover {
+            background-color: #1e40af; /* 호버 시 더 진한 파랑 */
+        }
+
+        .collapsible:after {
+            content: '\\f078'; /* Font Awesome chevron-down */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            font-size: 0.9em;
+            color: white;
+            float: right;
+            transition: transform 0.3s ease;
+        }
+
+        .collapsible.active:after {
+            transform: rotate(-180deg);
+        }
+
+        .content-collapsible {
+            padding: 1.5rem 2rem; /* 펼쳐지는 내용 패딩 증가 */
+            display: none;
+            overflow: hidden;
+            background-color: #fdfdfd; /* 내용 배경색 (아주 약간의 회색) */
+            border: 1px solid var(--border-color);
+            border-top: none;
+            border-radius: 0 0 10px 10px; /* 하단 모서리만 둥글게 */
+            margin-bottom: 1.5rem; /* 각 항목 간 여백 */
+        }
+        .content-collapsible h4 { /* 펼쳐지는 내용 안의 소제목 */
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.5rem;
+        }
+         .content-collapsible h5 { /* 예시 제목 */
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-top: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .content-collapsible p, .content-collapsible ul, .content-collapsible ol {
+            font-size: 1rem; /* 내용 폰트 크기 조정 */
+            color: var(--text-secondary);
+        }
+        .content-collapsible ul li, .content-collapsible ol li {
+            margin-bottom: 0.4em;
+        }
+
+        .quote-box {
+            background-color: #e9ecef; /* 인용 박스 배경색 (연한 회색) */
+            border-left: 4px solid var(--secondary-color);
+            padding: 0.8rem 1.2rem; /* 인용 박스 패딩 조정 */
+            margin: 1rem 0;
+            font-style: italic;
+            color: #495057; /* 인용 텍스트 색상 */
+            border-radius: 4px;
+        }
+        .quote-box p {
+            margin-bottom: 0.3em;
+            font-size: 0.95em;
+        }
+
+        .vocab-highlight {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 0.1em 0.4em;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .inference-process {
+            background: #f0f9ff; /* 추론 과정 배경색 (연한 하늘색) */
+            border: 1px solid #cce7ff; /* 추론 과정 테두리 */
+            border-radius: 8px;
+            padding: 1.2rem; /* 추론 과정 패딩 증가 */
+            margin: 1.2rem 0;
+        }
+        .inference-process h6 {
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 0.8rem;
+        }
+        .inference-process ul, .inference-process ol {
+            padding-left: 20px;
+        }
+
+        .inferred-meaning {
+            background: var(--success-color);
+            color: white;
+            padding: 0.8rem 1.2rem; /* 추론된 의미 박스 패딩 조정 */
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 1.2rem;
+            display: inline-block; /* 내용만큼만 너비 차지 */
+        }
+        .inferred-meaning i {
+            margin-right: 0.5rem;
+        }
+
+        .toc {
+            position: sticky;
+            top: 100px; /* 네비게이션 바 높이 고려 */
+            max-height: calc(100vh - 140px); /* 화면 높이에서 여유 공간 확보 */
+            overflow-y: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+        .toc-item {
+            padding: 0.6rem 0; /* 목차 항목 패딩 조정 */
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+        .toc-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem; /* 목차 링크 폰트 크기 */
+            transition: color 0.2s ease, padding-left 0.2s ease;
+            display: block; /* 전체 영역 클릭 가능 */
+        }
+        .toc-link:hover, .toc-link.active {
+            color: var(--primary-color);
+            font-weight: 600;
+            padding-left: 5px; /* 활성/호버 시 약간 들여쓰기 */
+        }
+        .toc .ms-3 .toc-link { /* 하위 목차 스타일 */
+            font-size: 0.85rem;
+            color: #52667d;
+        }
+        .toc .ms-3 .toc-link:hover, .toc .ms-3 .toc-link.active {
+            color: var(--accent-color);
+        }
+
+
+        .table-custom {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            margin-top: 1.5rem;
+        }
+        .table-custom th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            padding: 1rem 1.2rem; /* 테이블 헤더 패딩 조정 */
+            border: none;
+        }
+        .table-custom td {
+            padding: 1rem 1.2rem; /* 테이블 셀 패딩 조정 */
+            border-color: var(--border-color);
+            vertical-align: top;
+            font-size: 0.95em;
+        }
+
+        .flowchart-container {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin: 2rem 0;
+            text-align: center; /* 내부 mermaid 차트 가운데 정렬 */
+        }
+        .flowchart-container h4 {
+            margin-bottom: 1.5rem;
+        }
+        .mermaid svg { /* Mermaid 차트 크기 조정 */
+            max-width: 100%;
+            height: auto;
+        }
+
+        .highlight-box {
+            background: #fffbeb; /* 연한 노랑 배경 */
+            border-radius: 8px;
+            padding: 1.5rem; /* 패딩 증가 */
+            margin: 1.5rem 0;
+            border-left: 5px solid var(--accent-color); /* 강조선 두껍게 */
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+        }
+        .highlight-box h4 {
+            color: #d97706; /* 어두운 주황 */
+            margin-top:0;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .back-to-top:hover {
+            background-color: #1e40af;
+            transform: translateY(-3px);
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                padding-top: 0;
+                font-size: 11pt; /* 인쇄 시 폰트 크기 조정 */
+                background-color: white;
+            }
+            .navbar, .toc, .back-to-top, .progress-container, .main-header .row .col-lg-4 /* 통계 카드 숨김 */ {
+                display: none !important;
+            }
+            .container, .container-main {
+                max-width: 100% !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            .section-card, .strategy-card, .example-box, .inference-process, .inferred-meaning, .highlight-box, .flowchart-container, .table-custom {
+                box-shadow: none !important;
+                border: 1px solid #ccc !important;
+                border-radius: 0 !important;
+                page-break-inside: avoid; /* 페이지 넘어가지 않도록 */
+            }
+            .main-header {
+                background: none !important;
+                color: black !important;
+                padding: 1rem 0 !important;
+                text-align: left;
+            }
+            .main-header h1 {
+                font-size: 2em;
+                text-shadow: none;
+            }
+            .main-header p.lead {
+                font-size: 1em;
+                opacity: 1;
+            }
+            .badge-custom {
+                background: #eee !important;
+                color: black !important;
+                border: 1px solid #ccc;
+            }
+            .collapsible { /* 인쇄 시에는 펼쳐진 상태로 보이도록 */
+                background-color: #eee !important;
+                color: black !important;
+                border-bottom: 1px solid #ccc;
+            }
+            .collapsible:after {
+                content: ""; /* 화살표 제거 */
+            }
+            .content-collapsible {
+                display: block !important; /* 항상 보이도록 */
+                border: none !important;
+                padding: 10px 0;
+            }
+            .quote-box {
+                border-left-color: #888;
+            }
+            .inferred-meaning {
+                background: #e8f5e8 !important;
+                color: #1b5e20 !important;
+                border: 1px solid #a5d6a7;
+            }
+            #mermaid-flowchart svg { /* 인쇄 시 SVG 크기 문제 해결 시도 */
+                width: 100% !important;
+                max-width: 600px !important; /* 인쇄 영역에 맞게 조정 */
+                height: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#top">
+                <i class="fas fa-search-location me-2"></i>
+                수능 영어 어휘 추론 가이드
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#introduction">I. 서론</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownStrategies" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            II. 핵심 전략
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownStrategies">
+                            <li><a class="dropdown-item" href="#context-clues">A. 문맥 단서</a></li>
+                            <li><a class="dropdown-item" href="#morphological">B. 형태론적 분석</a></li>
+                            <li><a class="dropdown-item" href="#grammatical">C. 문법적 단서</a></li>
+                            <li><a class="dropdown-item" href="#logical">D. 논리적 추론</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#integration">III. 통합적 접근</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#flowchart">IV. 추론 흐름도</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#glossary">V. 용어집</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#conclusion">VI. 결론</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Header -->
+    <header class="main-header" id="top">
+        <div class="container">
+            <h1>수능 영어 독해 미지 어휘 추론을 위한 고급 전략</h1>
+            <p class="lead">심층 연구 가이드 (2017-2024 평가원 기출 기반)</p>
+            <div>
+                <span class="badge-custom"><i class="fas fa-calendar-alt me-1"></i>2017-2024 기출 분석</span>
+                <span class="badge-custom"><i class="fas fa-brain me-1"></i>고급 추론 전략</span>
+                <span class="badge-custom"><i class="fas fa-check-double me-1"></i>실전 적용</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <div class="container-main">
+        <div class="row">
+            <!-- Table of Contents (Sticky) -->
+            <div class="col-lg-3 d-none d-lg-block">
+                <nav class="toc">
+                    <h5 class="fw-bold mb-3 text-primary"><i class="fas fa-compass me-2"></i>가이드 목차</h5>
+                    <div class="toc-item"><a href="#introduction" class="toc-link">I. 서론 및 필요성</a></div>
+                    <div class="toc-item">
+                        <a href="#strategies" class="toc-link">II. 핵심 추론 전략</a>
+                        <div class="ms-3 mt-1">
+                            <div class="toc-item"><a href="#context-clues" class="toc-link">A. 문맥 단서 활용</a></div>
+                            <div class="toc-item"><a href="#morphological" class="toc-link">B. 형태론적 분석</a></div>
+                            <div class="toc-item"><a href="#grammatical" class="toc-link">C. 문법적 단서 활용</a></div>
+                            <div class="toc-item"><a href="#logical" class="toc-link">D. 일반 지식 및 논리적 추론</a></div>
+                        </div>
+                    </div>
+                    <div class="toc-item"><a href="#integration" class="toc-link">III. 통합적 접근 및 교육적 함의</a></div>
+                    <div class="toc-item"><a href="#flowchart" class="toc-link">IV. 시각적 표현: 어휘 추론 과정 흐름도</a></div>
+                    <div class="toc-item"><a href="#glossary" class="toc-link">V. 핵심 개념 종합 용어집</a></div>
+                    <div class="toc-item"><a href="#conclusion" class="toc-link">VI. 결론</a></div>
+                </nav>
+            </div>
+
+            <!-- Main Content Sections -->
+            <div class="col-lg-9">
+                <div class="highlight-box">
+                    <p class="mb-0">
+                        <strong><i class="fas fa-bullseye me-2 text-primary"></i>가이드 목표:</strong>
+                        본 가이드는 수능 영어 독해에서 마주치는 낯선 어휘의 의미를 효과적으로 추론하는 데 필요한 고급 전략을 심층적으로 탐구합니다. 모든 단어를 암기하는 것은 불가능하며, 실제 시험 상황에서는 문맥 속에서 어휘의 의미를 유추하는 능력이 매우 중요합니다. 이 가이드는 단순한 어휘 암기를 넘어, 논리적 사고와 비판적 독해를 통해 어휘의 장벽을 넘을 수 있도록 돕는 것을 목표로 합니다. 실제 수능 및 평가원 기출 지문(2017-2024)을 풍부한 예시로 활용하여, 각 추론 전략의 적용 과정을 상세히 보여줄 것입니다.
+                    </p>
+                </div>
+
+                <section id="introduction" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-flag-checkered"></i>I. 서론 및 필요성</h2></div>
+                    <div class="content-section">
+                        <p>표준화된 영어 능력 평가, 특히 대학수학능력시험의 독해 섹션에서 고득점을 달성하기 위해서는 단순한 어휘 암기를 초월하는 고차원적인 독해 전략이 요구됩니다. 모든 어휘를 사전에 학습하는 것은 현실적으로 불가능하므로, 문맥 속에서 미지 어휘의 의미를 효과적으로 추론해내는 능력은 <strong class="highlight">결정적인 메타인지적 기술</strong>로 간주됩니다. 이 능력은 단순히 낯선 단어의 의미를 파악하는 것을 넘어, 글 전체의 논리적 흐름을 이해하고 필자의 의도를 정확히 간파하는 데 필수적입니다.</p>
+                        <p>본 심층 연구 가이드는 수험생들이 미지 어휘에 효과적으로 대처할 수 있도록, 문맥 단서 활용(의미론적 분석), 형태론적 분석(단어 구조), 문법적 단서 활용(통사론적 분석), 그리고 일반 지식 및 논리적 추론(실용적 분석)을 아우르는 <strong class="highlight">다각적인 어휘 추론 접근 방식</strong>을 강조합니다. 본 연구의 <strong class="highlight">범위</strong>는 각 전략의 이론적 배경을 탐구하고, 실제 기출 지문을 통해 그 적용 과정을 상세히 분석하며, 궁극적으로 수험생의 능동적이고 비판적인 어휘 습득 능력을 배양하는 데까지 확장됩니다.</p>
+                    </div>
+                </section>
+
+                <section id="strategies" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-lightbulb"></i>II. 핵심 추론 전략: 풍부한 예시와 함께 상세 설명</h2></div>
+                    <div class="content-section">
+                        <p>각 전략에 대해 명확하고 학술적인 정의/설명, 관련된 인지 과정, 그리고 <strong class="highlight">실제 수능/평가원 기출 지문(2017~2024)을 활용한 최소 세(3)개 이상의 구체적이고 심도 있는 예시</strong>를 제공합니다. 각 예시에는 미지 어휘가 포함된 문장, 해당 어휘의 강조 표시, 단계별 추론 과정, 그리고 추론된 의미가 명시됩니다.</p>
+
+                        <div id="context-clues" class="strategy-card">
+                            <button type="button" class="collapsible"><i class="fas fa-search me-2"></i>A. 문맥 단서 활용 (의미론적 분석)</button>
+                            <div class="content-collapsible">
+                                <p><strong>일반 원칙:</strong> 미지 어휘의 의미는 주변 단어, 구, 절, 또는 문단 전체의 내용과 밀접하게 연관되어 있습니다. 문맥은 미지 어휘의 의미 범위를 좁히고 가장 적절한 뜻을 유추하는 데 결정적인 단서를 제공합니다.</p>
+
+                                <h4><i class="fas fa-info-circle text-primary me-2"></i>1. 직접적인 정의/설명 (Definition/Explanation Clues)</h4>
+                                <p><strong>정의/설명:</strong> 지문 내에서 미지 어휘의 의미가 직접적으로 설명되거나 다른 표현으로 정의되는 경우입니다. 이는 가장 명확한 단서 중 하나입니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 정보 탐색, 의미 연결, 동의 관계 파악.</p>
+                                <p><strong>핵심 단서 표현:</strong> <code>is defined as</code>, <code>means</code>, <code>refers to</code>, <code>that is (to say)</code>, <code>i.e.</code>, <code>in other words</code>, <code>or</code> (동격의 or), 콤마(,)나 대시(-)를 이용한 부연 설명, 관계대명사를 이용한 부연 설명.</p>
+
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2020학년도 수능 31번 - 과학만능주의 비판과 과학의 한계)</h5>
+                                    <div class="quote-box">
+                                        <p>"<span class="vocab-highlight">Scientism</span> is the view that the scientific description of reality is the only truth there is."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">Scientism</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'Scientism'이라는 단어 바로 뒤에 동사 'is'와 함께 "the view that the scientific description of reality is the only truth there is"라는 명사절이 이어집니다.</li>
+                                            <li>이는 'A is B' 형태의 직접적인 정의를 나타냅니다. 'the view that ~'은 '~라는 견해'로 해석됩니다.</li>
+                                            <li>따라서 'Scientism'은 '현실에 대한 과학적 기술(묘사)만이 존재하는 유일한 진실이라는 견해'로 명확하게 정의되고 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 과학만능주의, 과학지상주의.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2019학년도 수능 37번 - 도식적 지식의 도움과 오류 가능성)</h5>
+                                    <div class="quote-box">
+                                        <p>"Bear in mind that <span class="vocab-highlight">schemata</span> summarize the broad pattern of your experience, and so they tell you, in essence, what's typical or ordinary in a given situation."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">schemata</span> (단수형 schema)</p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'schemata'라는 단어 뒤에 그것이 하는 역할("summarize the broad pattern of your experience")과 그 결과("they tell you... what's typical or ordinary")가 설명되어 있습니다.</li>
+                                            <li>즉, 'schemata'는 우리의 경험에서 광범위한 패턴을 요약하고, 이를 통해 특정 상황에서 무엇이 전형적이거나 평범한지를 알려주는 기능을 하는 것입니다.</li>
+                                            <li>이는 'schemata'가 일종의 인지적 틀이나 기존의 지식 체계를 의미함을 시사합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 도식, 스키마 (사물이나 사건에 대한 기존의 이해나 지식 체계).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2023학년도 6월 모의평가 38번 - 관행의 제도화와 과학자의 도덕적 가치 학습)</h5>
+                                    <div class="quote-box">
+                                        <p>"As particular practices are repeated over time and become more widely shared, the values that they embody are reinforced and reproduced and we speak of them as becoming ‘<span class="vocab-highlight">institutionalized</span>’."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">institutionalized</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'institutionalized'라는 단어는 "특정 관행이 오랜 기간 반복되고 더 널리 공유됨에 따라, 그 관행이 구현하는 가치가 강화되고 재생산되는" 상태를 지칭한다고 'we speak of them as becoming ~' 구문을 통해 설명됩니다.</li>
+                                            <li>이는 어떤 관행이나 가치가 사회적으로 널리 받아들여지고, 강화되며, 공식적인 형태로 자리 잡는 과정을 의미합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 제도화된.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-exchange-alt text-primary me-2"></i>2. 동의어/반의어 (Synonym/Antonym Clues - 대조/비교 활용)</h4>
+                                <p><strong>정의/설명:</strong> 미지 어휘와 의미가 같거나 비슷한 단어(동의어), 또는 의미가 반대되는 단어(반의어)가 문맥 속에 제시되어 추론의 단서가 되는 경우입니다. 특히 대조나 비교를 나타내는 연결어 주변에 자주 나타납니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 유사성/차이점 인식, 의미 관계 파악, 대조적 사고.</p>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>핵심 단서 표현 (동의어):</strong> <code>and</code>, <code>or</code> (유사 의미 나열), <code>also</code>, <code>similarly</code>, <code>likewise</code>, <code>in the same way</code>, 재진술 표현 (<code>that is</code>, <code>in other words</code>).</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>핵심 단서 표현 (반의어):</strong> <code>but</code>, <code>however</code>, <code>yet</code>, <code>although</code>, <code>though</code>, <code>while</code>, <code>whereas</code>, <code>unlike</code>, <code>in contrast</code>, <code>on the other hand</code>, <code>not A but B</code>.</p>
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (반의어 - 2019학년도 9월 모의평가 30번 - 외부 생물학 관찰자의 환경에 대한 오해)</h5>
+                                    <div class="quote-box">
+                                        <p>"One misconception that often appears in the writings of physical scientists who are looking at biology from the outside is that the environment appears to them to be a <span class="vocab-highlight">static</span> entity, which cannot contribute new bits of information as evolution progresses. This, however, is by no means the case. Far from being <span class="vocab-highlight">static</span>, the environment is constantly changing and offering new challenges to evolving populations."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">static</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>첫 문장에서 환경이 'static entity'로 보인다고 언급하며, 이것이 'misconception(오해)'이라고 말합니다.</li>
+                                            <li>세 번째 문장에서 "Far from being static, the environment is constantly changing"이라고 명시적으로 대조합니다. 'Far from A, B is C'는 'A와는 거리가 멀게, B는 C이다'라는 의미로, A와 C가 반대되는 특성을 가짐을 나타냅니다.</li>
+                                            <li>따라서 'static'은 'constantly changing(끊임없이 변하는)'의 반대 의미인 '변하지 않는', '정적인'으로 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 정적인, 변하지 않는.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (동의어/재진술 - 2023학년도 9월 모의평가 36번 - 분류와 일반화 능력의 유용성과 고정관념의 위험성)</h5>
+                                    <div class="quote-box">
+                                        <p>"The intuitive ability to classify and generalize is undoubtedly a useful feature of life and research, but it carries a high cost, such as in our tendency to <span class="vocab-highlight">stereotype</span> generalizations about people and situations. ... (C) For most people, the word <span class="vocab-highlight">stereotype</span> arouses negative connotations: it implies a negative bias. But, in fact, stereotypes do not differ in principle from all other generalizations; generalizations about groups of people are not necessarily always negative."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">stereotype</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>첫 문장에서 'stereotype'을 'generalizations about people and situations(사람과 상황에 대한 일반화)'와 관련된 경향성으로 언급합니다.</li>
+                                            <li>(C) 단락에서 "stereotypes do not differ in principle from all other generalizations"라고 하며, 'stereotype'이 '모든 다른 일반화'와 원칙적으로 다르지 않다고 말합니다.</li>
+                                            <li>또한, 바로 뒤이어 "generalizations about groups of people(사람들의 집단에 대한 일반화)"이라고 재진술에 가까운 설명을 제공합니다.</li>
+                                            <li>이를 통해 'stereotype'은 '일반화', 특히 '사람들의 집단에 대한 일반화'의 한 형태임을 알 수 있습니다. (부정적 함축이 있을 수 있다는 부가 정보도 제공됨)</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 고정관념 (사람이나 집단에 대한 지나치게 단순화된 일반화).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (대조 - 2022학년도 6월 모의평가 30번 - 도시 자동차 수요 관리의 필요성과 전략)</h5>
+                                    <div class="quote-box">
+                                        <p>"In recent years urban transport professionals globally have largely <span class="vocab-highlight">acquiesced</span> to the view that automobile demand in cities needs to be managed rather than accommodated. Rising incomes inevitably lead to increases in motorization. Even without the imperative of climate change, the physical constraints of densely inhabited cities and the corresponding demands... all limit the option of expanding road networks purely to accommodate this rising demand."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">acquiesced</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>문장은 도시 교통 전문가들이 자동차 수요를 'accommodated(부응하기/수용하기)'보다는 'managed(관리해야 한다)'는 견해에 'acquiesced'했다고 말합니다.</li>
+                                            <li>'rather than'은 A라기보다는 B라는 의미로, A와 B는 대조적인 개념이거나 선택의 대상을 나타냅니다. 여기서는 '수요에 단순히 부응하는 것'과 '수요를 관리하는 것'이라는 두 가지 접근 방식을 제시합니다.</li>
+                                            <li>전문가들이 후자(수요 관리)의 견해에 'acquiesced'했다는 것은, 이전에는 다른 생각을 가졌을 수 있으나 이제는 그 견해를 '따르거나 마지못해 동의했다'는 의미로 유추할 수 있습니다. 뒤이어 나오는 내용(도로망 확장 옵션 제한)도 수요 관리가 불가피함을 시사합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: (마지못해) 따르다, 묵인하다, 동의하다.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-list-ol text-primary me-2"></i>3. 예시/설명 (Example/Illustration Clues)</h4>
+                                 <p><strong>정의/설명:</strong> 미지 어휘의 의미를 구체적인 예시나 상황 설명을 통해 유추할 수 있도록 하는 경우입니다. 예시들은 미지 어휘가 나타내는 개념의 구체적인 발현 형태를 보여줍니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 귀납적 추론 (구체적 사례 → 일반적 의미), 연관성 파악, 범주화.</p>
+                                <p><strong>핵심 단서 표현:</strong> <code>for example</code>, <code>for instance</code>, <code>such as</code>, <code>including</code>, <code>like</code>, <code>specifically</code>, <code>to illustrate</code>, 구체적인 사례나 목록의 나열.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2024학년도 수능 31번 - 읽기의 확장된 개념)</h5>
+                                    <div class="quote-box">
+                                        <p>"‘Reading’ now applies to a greater number of <span class="vocab-highlight">representational forms</span> than at any time in the past: pictures, maps, screens, design graphics and photographs are all regarded as text."</p>
+                                    </div>
+                                    <p><strong>미지 어휘 (여기서는 개념 확장):</strong> <span class="vocab-highlight">representational forms</span> (현대의 'text'가 되는)</p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'representational forms'라는 표현 뒤에 콜론(:)이 사용되어 구체적인 예시들이 이어질 것임을 암시합니다.</li>
+                                            <li>나열된 예시들("pictures, maps, screens, design graphics and photographs")은 모두 시각적으로 무언가를 나타내거나 정보를 전달하는 다양한 '표현의 형식들'이라는 공통점을 가지고 있습니다.</li>
+                                            <li>따라서 'representational forms'는 이러한 다양한 시각적, 디자인적 표현 형식들을 포괄하는 의미로 사용되었음을 알 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 표현 형식들 (그림, 지도, 화면 등과 같이 정보를 나타내는 다양한 형태).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2022학년도 수능 38번 - 공장 로봇 도입과 인간 노동자의 고용 문제 해결 방안)</h5>
+                                    <div class="quote-box">
+                                        <p>"Since robots are particularly good at highly <span class="vocab-highlight">repetitive</span> simple motions, the replaced human workers should be moved to positions where judgment and decisions beyond the abilities of robots are required."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">repetitive</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>문장은 로봇이 "highly repetitive simple motions"에 특히 능숙하다고 말합니다.</li>
+                                            <li>이와 대조적으로, 대체된 인간 노동자는 로봇의 능력을 넘어서는 "judgment and decisions(판단과 결정)"이 필요한 위치로 옮겨져야 한다고 합니다.</li>
+                                            <li>이는 로봇이 잘하는 동작이 판단이나 결정이 거의 필요 없는, 단순하고 여러 번 되풀이되는 성격의 것임을 시사합니다. 'simple motions'라는 표현도 이를 뒷받침합니다.</li>
+                                            <li>따라서 'repetitive'는 '반복적인', '되풀이되는'이라는 의미로 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 반복적인.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2020학년도 6월 모의평가 39번 - 반딧불이의 생물 발광 기능)</h5>
+                                    <div class="quote-box">
+                                        <p>"The team placed eight bats in a dark room with three or four fireflies plus three times as many tasty insects, including <span class="vocab-highlight">beetles</span> and <span class="vocab-highlight">moths</span>, for four days."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">beetles</span>, <span class="vocab-highlight">moths</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'tasty insects(맛있는 곤충들)'라는 일반적인 범주 뒤에 'including'이라는 표현과 함께 "beetles and moths"가 제시됩니다.</li>
+                                            <li>이는 'beetles'와 'moths'가 '맛있는 곤충들'의 구체적인 예시임을 명확히 보여줍니다.</li>
+                                            <li>만약 'beetles'나 'moths' 중 하나의 의미를 정확히 모른다고 해도, 문맥상 이들이 곤충의 한 종류이며, 실험에서 박쥐의 먹이로 사용될 수 있는 대상임을 유추할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 딱정벌레와 나방 (맛있는 곤충의 예).
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-link text-primary me-2"></i>4. 인과 관계 (Cause and Effect Clues)</h4>
+                                <p><strong>정의/설명:</strong> 미지 어휘가 어떤 사건이나 상태의 원인 또는 결과를 나타내는 문맥 속에 사용되어, 그 관계를 통해 의미를 유추할 수 있는 경우입니다. 원인과 결과는 논리적으로 밀접하게 연결되어 있어 강력한 추론 단서를 제공합니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 논리적 연결, 결과 예측, 원인 분석, 상관관계 파악.</p>
+                                <p><strong>핵심 단서 표현:</strong> <code>because (of)</code>, <code>since</code>, <code>as</code>, <code>due to</code>, <code>owing to</code>, <code>so</code>, <code>thus</code>, <code>therefore</code>, <code>consequently</code>, <code>as a result</code>, <code>leads to</code>, <code>results in</code>, <code>causes</code>, <code>effects</code>, <code>if...then...</code>, 동사(<code>trigger</code>, <code>prompt</code>, <code>induce</code> 등).</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2024학년도 수능 39번 - 책의 오타와 유전자 돌연변이의 유사성 및 차이점)</h5>
+                                    <div class="quote-box">
+                                        <p>"Misprints in a book or in any written message usually have a negative impact on the content, sometimes (literally) <span class="vocab-highlight">fatally</span>. The displacement of a comma, for instance, may be a matter of life and death."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">fatally</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>첫 문장에서 오타(Misprints)가 내용에 부정적인 영향을 미치며(negative impact), 때로는 'fatally' 하다고 말합니다.</li>
+                                            <li>바로 다음 문장은 "The displacement of a comma, for instance, may be a matter of life and death."라고 하여, 쉼표 하나의 잘못된 위치(원인)가 '생사가 걸린 문제(결과)'가 될 수 있다는 구체적인 예시를 제시합니다.</li>
+                                            <li>'생사가 걸린 문제'라는 결과는 매우 심각하며, 죽음에 이를 수 있는 치명적인 결과를 의미합니다.</li>
+                                            <li>따라서 'fatally'는 이러한 심각한 결과를 나타내는 부사로, '치명적으로' 또는 '결정적으로 (나쁜 결과를 초래하여)'라는 의미로 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 치명적으로.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2023학년도 6월 모의평가 36번 - 컴퓨터 소프트웨어 복잡성과 안전/보안 문제)</h5>
+                                    <div class="quote-box">
+                                        <p>"As computer code grows more elaborate, software bugs <span class="vocab-highlight">flourish</span> and security suffers, with increasing consequences for society at large."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">flourish</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>"As computer code grows more elaborate(컴퓨터 코드가 더 정교해짐에 따라)"라는 원인 또는 조건이 제시됩니다.</li>
+                                            <li>그 결과로 "software bugs flourish"하고 "security suffers(보안은 악화된다)"라고 말하며, 이는 "with increasing consequences for society at large(사회 전반에 미치는 결과가 커지면서)"라는 부정적인 상황으로 이어집니다.</li>
+                                            <li>'security suffers'와 병렬적으로 연결되면서 '정교해진 코드'의 부정적인 결과로 나타나는 현상이므로, 'flourish'는 소프트웨어 버그가 '증가하거나 만연한다'는 의미로 사용되었음을 추론할 수 있습니다. 일반적으로 'flourish'는 '번성하다'는 긍정적 의미로 쓰이지만, 여기서는 문맥상 부정적인 대상(버그)이 늘어나는 상황을 나타냅니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: (여기서는 부정적 문맥에서) 번성하다, 창궐하다, 급증하다.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2021학년도 수능 35번 - 조직 내 유머의 역할: 유대감 형성)</h5>
+                                    <div class="quote-box">
+                                        <p>"Shared events that cause laughter can <span class="vocab-highlight">indicate</span> a sense of belonging since “you had to be there” to see the humor in them, and non-members were not and do not."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">indicate</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>"Shared events that cause laughter(웃음을 유발하는 공유된 사건)"가 주어입니다.</li>
+                                            <li>이것이 'a sense of belonging(소속감)'을 'indicate' 할 수 있는 이유(since)는 "그 유머를 이해하려면 '그곳에 있어야 했고', 조직 구성원이 아닌 사람들은 그러지 않았기에[그곳에 없었기에] 그러지 못하기[유머를 이해하지 못하기] 때문"입니다.</li>
+                                            <li>즉, 특정 집단만이 공유하고 이해할 수 있는 유머는 그 집단의 구성원임을 보여주는 신호나 증표가 될 수 있다는 의미입니다.</li>
+                                            <li>따라서 'indicate'는 '나타내다', '보여주다', '암시하다'와 같은 의미로 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 나타내다, 보여주다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="morphological" class="strategy-card">
+                            <button type="button" class="collapsible"><i class="fas fa-puzzle-piece me-2"></i>B. 형태론적 분석 (단어 구조)</button>
+                            <div class="content-collapsible">
+                                <p><strong>일반 원칙:</strong> 단어를 구성하는 형태소(접두사, 접미사, 어근)로 분해하여 각 부분의 의미를 조합함으로써 전체 단어의 의미를 추론합니다.</p>
+                                <h4><i class="fas fa-arrow-left text-primary me-2"></i>1. 접두사 (Prefixes)</h4>
+                                <p><strong>정의/설명:</strong> 단어의 시작 부분에 붙어 원래 어근의 의미에 추가적인 의미(부정, 반대, 강조, 방향, 시간 등)를 부여하는 형태소입니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 단어 분해, 형태소 의미 지식 활용, 의미 조합.</p>
+                                <p><strong>자주 나오는 접두사 예시:</strong> <code>un-</code>, <code>in-/im-/il-/ir-</code> (부정), <code>re-</code> (다시, 뒤로), <code>pre-</code> (이전에), <code>post-</code> (이후에), <code>mis-</code> (잘못된), <code>mal-</code> (나쁜), <code>bene-</code> (좋은), <code>anti-</code> (반대), <code>co-/com-/con-</code> (함께), <code>de-</code> (아래로, 제거), <code>dis-</code> (부정, 분리), <code>ex-</code> (밖으로), <code>sub-</code> (아래에), <code>super-</code> (위에, 초월), <code>trans-</code> (가로질러, 변화).</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2019학년도 수능 31번 - 기억의 사회적 공유와 현실성 부여)</h5>
+                                    <div class="quote-box">
+                                        <p>"Naturally, people should be driven to 'forget' <span class="vocab-highlight">undesirable</span> events."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">undesirable</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>접두사 <strong>'un-'</strong>은 'not' 또는 'opposite of'의 의미를 가집니다.</li>
+                                            <li>어근 <strong>'desire'</strong>는 '바라다', '원하다'는 의미입니다.</li>
+                                            <li>접미사 <strong>'-able'</strong>은 '~할 수 있는' 또는 '~할 만한'의 의미를 가집니다.</li>
+                                            <li>따라서 'undesirable'은 '바랄 수 없는', '원치 않는', '바람직하지 않은'으로 추론할 수 있습니다. 문맥상 사람들이 '잊도록' 이끌리는 사건의 성격과 부합합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 바람직하지 않은, 원치 않는.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2022학년도 9월 모의평가 34번 - 자전적 기억 연구: 심리학과 문학의 차이)</h5>
+                                    <div class="quote-box">
+                                        <p>"If we psychologists are too bent on identifying the orderly pattern, the regularities of children’s minds, we may miss an essential and <span class="vocab-highlight">pervasive</span> characteristic of our topic: the child’s more unruly and imaginative ways of talking and thinking."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">pervasive</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>접두사 <strong>'per-'</strong>는 'through', 'thoroughly' (통하여, 완전히)의 의미를 가질 수 있습니다.</li>
+                                            <li>어근 (라틴어) <strong>'vadere'</strong>는 'to go' (가다)의 의미와 관련됩니다. (이 어근을 직접 알기는 어려울 수 있으나, 'invade'와 같은 단어를 통해 유추 가능)</li>
+                                            <li>접미사 <strong>'-sive'</strong>는 형용사를 만듭니다.</li>
+                                            <li>문맥상 'essential(본질적인)'과 함께 아이들 마음의 'characteristic(특징)'을 수식하며, 'unruly and imaginative ways(제멋대로이고 상상력이 풍부한 방식)'와 연결됩니다. 이는 아이들의 사고방식에 '널리 퍼져 있거나 스며들어 있는' 특징임을 시사합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 널리 퍼져 있는, 만연한, 스며드는.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2023학년도 수능 36번 - 물벼룩의 적응적 가소성)</h5>
+                                    <div class="quote-box">
+                                        <p>"A fascinating species of water flea exhibits a kind of flexibility that evolutionary biologists call adaptive <span class="vocab-highlight">plasticity</span>."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">plasticity</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'plastic'이라는 단어는 '플라스틱' 외에 '형태를 바꾸기 쉬운', '유연한'이라는 의미가 있습니다. (이 의미를 알고 있다면 유리)</li>
+                                            <li>접미사 <strong>'-ity'</strong>는 명사형 어미로, '성질', '상태'를 나타냅니다.</li>
+                                            <li>문맥상 'flexibility(유연성)'와 동격 또는 유사한 개념으로 사용되었으며, 'adaptive(적응적인)'라는 수식어를 통해 환경에 맞춰 변화하는 성질임을 유추할 수 있습니다.</li>
+                                            <li>뒤이어 나오는 예시(포식자 유무에 따라 머리 투구와 가시 돌기 발달 여부가 달라짐)가 이러한 '변화 가능성' 또는 '적응적 유연성'을 뒷받침합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 가소성, 유연성, 적응성.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-arrow-right text-primary me-2"></i>2. 접미사 (Suffixes)</h4>
+                                <p><strong>정의/설명:</strong> 단어의 끝 부분에 붙어 품사를 바꾸거나(명사형, 형용사형, 부사형 등) 의미를 추가하는 형태소입니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 품사 인식, 의미 범주화, 단어 기능 파악.</p>
+                                <p><strong>자주 나오는 접미사 예시:</strong> 명사형: <code>-tion</code>, <code>-sion</code>, <code>-ment</code>, <code>-ness</code>, <code>-ity</code>, <code>-ance</code>, <code>-ence</code>, <code>-er/-or</code> (행위자), <code>-ist</code> (전문가); 형용사형: <code>-able/-ible</code> (가능), <code>-al</code>, <code>-ic</code>, <code>-ive</code>, <code>-ous</code> (성질), <code>-ful</code> (가득 찬), <code>-less</code> (없는); 동사형: <code>-ize</code>, <code>-ify</code>, <code>-en</code>; 부사형: <code>-ly</code>.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2024학년도 수능 36번 - 협상의 정의와 목적, 다양한 기능)</h5>
+                                    <div class="quote-box">
+                                        <p>"Negotiation can be defined as an attempt to explore and reconcile conflicting positions in order to reach an <span class="vocab-highlight">acceptable</span> outcome."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">acceptable</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>동사 <strong>'accept'</strong>는 '받아들이다', '수용하다'는 의미입니다.</li>
+                                            <li>접미사 <strong>'-able'</strong>은 '~할 수 있는', '~하기에 적합한'이라는 의미를 더하여 형용사를 만듭니다.</li>
+                                            <li>따라서 'acceptable'은 '받아들일 수 있는', '수용 가능한'으로 추론할 수 있습니다. 문맥상 협상을 통해 도달하고자 하는 'outcome(결과)'의 성격을 나타냅니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 수용할 수 있는, 받아들일 만한.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2022학년도 9월 모의평가 37번 - 문화의 의식적/무의식적 작동 방식)</h5>
+                                    <div class="quote-box">
+                                        <p>"Culture operates in ways we can consciously consider and discuss but also in ways of which we are far less <span class="vocab-highlight">cognizant</span>."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">cognizant</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>어근 'cogn-' (알다, 인식하다 - recognize, cognition 등과 연관)을 파악할 수 있다면 유리합니다.</li>
+                                            <li>접미사 <strong>'-ant'</strong>는 형용사형 어미로 자주 쓰입니다.</li>
+                                            <li>문맥상 "we can consciously consider and discuss(우리가 의식적으로 고려하고 논의할 수 있는 방식)"와 "we are far less cognizant(우리가 훨씬 덜 cognizant한 방식)"가 'but also'로 연결되며 대조를 이루고 있습니다.</li>
+                                            <li>따라서 'cognizant'는 'conscious(의식하는)'와 유사하거나 관련된 의미로, '인식하는', '알고 있는'으로 추론할 수 있습니다. 'far less'와 함께 쓰여 '훨씬 덜 인식하는'이 됩니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 인식하고 있는, 알고 있는.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2021학년도 6월 모의평가 39번 - 잠의 진화적 역할과 생명 유지 기능)</h5>
+                                    <div class="quote-box">
+                                        <p>"On the other hand, the apparent <span class="vocab-highlight">universality</span> of sleep, and the observation that mammals such as cetaceans have developed such highly complex mechanisms to preserve sleep... suggests that sleep additionally provides some vital service(s) for the organism."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">universality</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>형용사 <strong>'universal'</strong>은 '보편적인', '일반적인', '전 세계적인'이라는 의미입니다.</li>
+                                            <li>접미사 <strong>'-ity'</strong>는 명사형 어미로, '성질', '상태', '특성'을 나타냅니다.</li>
+                                            <li>따라서 'universality'는 '보편적인 성질', 즉 '보편성'으로 추론할 수 있습니다. 문맥상 '잠의 명백한 보편성'은 잠이 많은 생물에게 공통적으로 나타나는 현상임을 의미합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 보편성, 일반성.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-heart text-primary me-2"></i>3. 어근 (Roots)</h4>
+                                <p><strong>정의/설명:</strong> 단어의 핵심적인 의미를 담고 있는 부분입니다. 동일한 어근을 공유하는 단어들은 유사한 기본 의미를 가지는 경우가 많습니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 단어 가족(word family) 연상, 기존 어휘 지식 활용, 의미의 핵심 파악.</p>
+                                <p><strong>자주 나오는 어근 예시:</strong> `aud` (듣다), `bene` (좋은), `bio` (생명), `chron` (시간), `cred` (믿다), `dict` (말하다), `duc/duct` (이끌다), `fac/fact/fect` (만들다, 행하다), `fer` (나르다, 가져오다), `gen` (낳다, 생성하다), `graph/gram` (쓰다, 그리다), `ject` (던지다), `log/logy` (학문, 말), `mal` (나쁜), `mit/miss` (보내다), `mort` (죽음), `path` (느낌, 고통), `ped/pod` (발), `phon` (소리), `port` (나르다), `psych` (정신), `rupt` (깨뜨리다), `scrib/script` (쓰다), `spec/spect` (보다), `struct` (세우다), `terr` (땅), `therm` (열), `tract` (끌다), `ven/vent` (오다), `vert/vers` (돌리다), `vid/vis` (보다), `voc/vok` (목소리, 부르다).</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2022학년도 수능 32번 - 뉴스 전달 방식의 변화와 이해도에 미치는 영향)</h5>
+                                    <div class="quote-box">
+                                        <p>"While current affairs programmes are often ‘serious’ in tone sticking to the ‘rules’ of balance, more popular programmes adopt a friendly, lighter, idiom in which we are invited to consider the impact of particular news items from the <span class="vocab-highlight">perspective</span> of the ‘average person in the street’."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">perspective</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>어근 <strong>'spect'</strong>는 '보다(see, look)'라는 의미를 가집니다. (예: inspect, respect, suspect)</li>
+                                            <li>접두사 <strong>'per-'</strong>는 'through(통하여)' 또는 'thoroughly(철저히)'의 의미를 가질 수 있습니다.</li>
+                                            <li>문맥상 'average person in the street(길거리의 보통 사람)'의 'perspective'에서 특정 뉴스 항목의 영향을 고려한다고 되어 있습니다.</li>
+                                            <li>이는 '보통 사람의 보는 방식', 즉 '관점'이나 '시각'을 의미한다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 관점, 시각.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2020학년도 9월 모의평가 33번 - 평등 개념과 차이의 인정)</h5>
+                                    <div class="quote-box">
+                                        <p>"Such a view, which grounds equality not in human uniformity but in the interplay of uniformity and difference, builds difference into the very concept of equality, breaks the traditional equation of equality with similarity, and is immune to <span class="vocab-highlight">monist</span> distortion."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">monist</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>어근 <strong>'mono-'</strong>는 '하나(one, single)'를 의미합니다. (예: monologue, monopoly)</li>
+                                            <li>접미사 <strong>'-ist'</strong>는 특정 사상이나 주의를 따르는 사람 또는 그것과 관련된 형용사를 나타냅니다.</li>
+                                            <li>문맥상 이 단어는 'distortion(왜곡)'을 수식하며, 글 전체는 평등이 'human uniformity(인간의 획일성)'에만 기초하는 것이 아니라 'uniformity and difference(획일성과 차이)'의 상호작용에 기초한다고 주장합니다.</li>
+                                            <li>따라서 'monist distortion'은 '획일성'만을 강조하는, 즉 '단일한' 관점이나 원리만을 중시하는 데서 오는 왜곡을 의미한다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 일원론적인 (단일한 원리나 실체만을 인정하는 철학적 입장과 관련된).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2021학년도 수능 39번 - 디자인 아이디어와 저작권 보호의 범위)</h5>
+                                    <div class="quote-box">
+                                        <p>"However, the expression of an idea is protected by copyright, and people who <span class="vocab-highlight">infringe</span> on that copyright can be taken to court and prosecuted."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">infringe</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>어근 (라틴어) <strong>'frangere'</strong>는 'to break(깨뜨리다)'의 의미와 관련됩니다. (예: fragile, fraction)</li>
+                                            <li>접두사 <strong>'in-'</strong>은 여기서는 'upon' 또는 'against'의 의미로 볼 수 있습니다.</li>
+                                            <li>문맥상 'copyright(저작권)'을 'infringe on'하는 사람들은 '법정에 끌려가고 기소될 수 있다(can be taken to court and prosecuted)'고 합니다.</li>
+                                            <li>이는 저작권을 '깨뜨리거나 위반하는' 행위를 의미한다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: (법률·규칙 등을) 위반하다, (권리를) 침해하다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="grammatical" class="strategy-card">
+                            <button type="button" class="collapsible"><i class="fas fa-code me-2"></i>C. 문법적 단서 활용 (통사론적 분석)</button>
+                            <div class="content-collapsible">
+                                <p><strong>일반 원칙:</strong> 단어의 문장 내 문법적 기능(품사)과 다른 단어들과의 통사적 관계(병렬 구조, 동격 등)를 활용하여 의미의 범주를 좁히거나 구체적인 의미를 추론합니다.</p>
+                                <h4><i class="fas fa-tags text-primary me-2"></i>1. 품사 (Part of Speech)</h4>
+                                <p><strong>정의/설명:</strong> 단어가 문장 내에서 명사, 동사, 형용사, 부사 중 어떤 품사로 사용되었는지 파악하는 것은 의미 추론의 기본적인 단계입니다. 품사는 단어가 가질 수 있는 의미의 범주를 한정해 줍니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 문장 구조 분석, 문법 지식 적용, 의미 범주화.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2023학년도 9월 모의평가 37번 - 식물의 영양분 제한 시 적응 반응과 기억 활용)</h5>
+                                    <div class="quote-box">
+                                        <p>"Plants show finely tuned adaptive responses when nutrients are <span class="vocab-highlight">limiting</span>."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">limiting</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'limiting'은 동사 'limit(제한하다)'의 현재분사형으로, 여기서는 명사 'nutrients(영양분)'의 상태를 설명하는 형용사적 역할을 하거나, 'are limiting'으로 현재진행형 동사구를 이룰 수 있습니다.</li>
+                                            <li>문맥은 "when nutrients are limiting(영양분이 limiting할 때)" 식물이 적응 반응을 보인다는 내용입니다.</li>
+                                            <li>정원사가 노란 잎을 'poor nutrition(영양 부족)'의 신호로 인식한다는 다음 내용과 연결해 볼 때, 'limiting'은 영양분이 '부족하거나 제한적일 때'를 의미한다고 추론할 수 있습니다. 즉, 영양분이 식물의 성장을 '제한하고 있는' 상황입니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: (여기서는) 부족한, 제한적인 (식물의 성장을 제한하는).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2022학년도 6월 모의평가 35번 - 동물의 갈등 상황에서의 정보 수집과 의사결정)</h5>
+                                    <div class="quote-box">
+                                        <p>"If the rival is likely to win the fight, then the <span class="vocab-highlight">optimal</span> decision would be to give up immediately and not risk getting injured."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">optimal</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'optimal'은 명사 'decision(결정)'을 수식하는 형용사입니다.</li>
+                                            <li>문맥은 "만약 경쟁자가 싸움에서 이길 것 같다면, optimal한 결정은 즉시 포기하고 부상당할 위험을 무릅쓰지 않는 것"이라는 조건부 상황을 제시합니다.</li>
+                                            <li>상대가 강할 때 즉시 포기하는 것은 생존 가능성을 높이는 가장 '좋은' 또는 '최선의' 결정일 것입니다.</li>
+                                            <li>따라서 'optimal'은 '최적의', '가장 바람직한'이라는 긍정적인 의미를 가진다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 최적의, 가장 바람직한.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2024학년도 수능 38번 - 과학 대회의 다양성과 다수의 승자 가능성)</h5>
+                                    <div class="quote-box">
+                                        <p>"Even those who describe scientific contests in such a way note that it is a somewhat <span class="vocab-highlight">inaccurate</span> description, given that replication and verification have social value and are common in science."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">inaccurate</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'inaccurate'는 명사 'description(설명, 묘사)'을 수식하는 형용사입니다.</li>
+                                            <li>접두사 'in-'은 부정의 의미를 나타냅니다. 'accurate'는 '정확한'이라는 의미입니다.</li>
+                                            <li>문맥은 과학 대회를 '승자독식'으로 묘사하는 것이 'somewhat inaccurate description'이라고 말하며, 그 이유로 '반복과 입증이 사회적 가치를 지니고 과학에서 일반적이라는 점'을 제시합니다.</li>
+                                            <li>승자독식 설명이 반복과 입증의 가치를 간과한다면, 그 설명은 '정확하지 않은' 것이 됩니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 부정확한.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-equals text-primary me-2"></i>2. 병렬 구조 (Parallelism)</h4>
+                                <p><strong>정의/설명:</strong> 문장 내에서 두 개 이상의 요소가 문법적으로 대등한 형태로 연결될 때 (주로 등위접속사 <code>and</code>, <code>or</code>, <code>but</code> 이나 상관접속사 <code>either A or B</code>, <code>not only A but also B</code> 등으로 연결), 이 요소들은 의미적으로도 유사하거나 대조적인 범주에 속할 가능성이 높습니다. 이를 통해 미지 어휘의 의미를 유추할 수 있습니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 구조적 유사성 인식, 의미적 연관성 추론, 범주화.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2023학년도 수능 40번 - 장인정신의 지속성과 발전 저해 요인)</h5>
+                                    <div class="quote-box">
+                                        <p>"Craftsmanship names an <span class="vocab-highlight">enduring</span>, basic human impulse, the desire to do a job well for its own sake."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">enduring</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'enduring'은 콤마(,)로 연결된 'basic'과 함께 'human impulse(인간의 충동)'를 수식하는 형용사입니다. 이는 병렬적인 수식 관계를 암시합니다.</li>
+                                            <li>'basic(기본적인)'이라는 단어와 함께 인간의 충동을 설명하고 있으며, 뒤이어 "the desire to do a job well for its own sake(일 자체를 위해 그것을 잘하고 싶은 욕망)"라는 동격의 설명이 나옵니다.</li>
+                                            <li>이러한 욕망은 일시적인 것이 아니라 인간에게 '기본적'으로 내재하며 오랫동안 '지속되는' 성질의 것임을 유추할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 지속적인, 오래가는, 영속적인.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2021학년도 9월 모의평가 39번 - 소비자 단편화와 정체성 형성)</h5>
+                                    <div class="quote-box">
+                                        <p>"In reality, these supposedly individual preferences end up overlapping with emerging, temporary, always changing, almost <span class="vocab-highlight">tribal</span> formations solidifying around cultural sensibilities, social identifications, political sensibilities, and dietary and health concerns."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">tribal</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'tribal'은 'emerging(최근 생겨나는)', 'temporary(일시적인)', 'always changing(항상 바뀌는)'과 함께 'formations(형성물)'를 수식하는 형용사로 병렬적으로 나열되어 있습니다.</li>
+                                            <li>이러한 형성물들은 "cultural sensibilities, social identifications, political sensibilities, and dietary and health concerns(문화적 감성, 사회 정체성, 정치적 감성, 식생활과 건강에 관한 관심)"를 중심으로 확고해진다고 합니다.</li>
+                                            <li>'emerging', 'temporary', 'always changing'이라는 단어들이 변화와 유동성을 나타내는 반면, 'tribal'은 특정 집단의 강한 유대감이나 배타성을 연상시키는 단어입니다. 문맥상 이러한 현대 소비자 집단이 마치 '부족'처럼 특정 가치나 정체성을 중심으로 뭉치지만, 그 형태는 일시적이고 변화무쌍함을 나타내는 것으로 보입니다.</li>
+                                            <li>따라서 'tribal'은 '부족적인', 즉 특정 관심사를 공유하며 강한 결속력을 보이지만 그 경계는 유동적인 집단의 성격을 나타낸다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 부족적인 (특정 관심사를 공유하며 강한 유대감을 갖는 집단의 성격을 나타내는).
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2020학년도 6월 모의평가 30번 - 음악 인식에서의 덩어리로 나누기의 중요성)</h5>
+                                    <div class="quote-box">
+                                        <p>"But this seemingly <span class="vocab-highlight">awesome</span> accomplishment of recall is made improbable (→ possible) by remembering the musical process, not the individual notes as such."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">awesome</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'awesome'은 명사 'accomplishment of recall(기억의 성취)'을 수식하는 형용사입니다.</li>
+                                            <li>이 '기억의 성취'는 "수천 개의 음을 포함하는 작품을 완전히 기억으로 연주할 수 있는 것"을 의미하며, 이는 매우 '대단하고 놀라운' 일입니다.</li>
+                                            <li>'seemingly(겉보기에는)'라는 부사가 함께 쓰여, 겉으로 보기에는 매우 대단해 보이는 성취임을 나타냅니다.</li>
+                                            <li>(참고: 이 지문은 어휘 문제로 출제되었으며, 문맥상 improbable이 아니라 possible이 되어야 했습니다. awesome 자체는 긍정적인 의미로 '굉장한, 놀라운'으로 추론 가능합니다.)</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 굉장한, 놀라운, 경탄할 만한.
+                                    </div>
+                                </div>
+
+                                <h4><i class="fas fa-clone text-primary me-2"></i>3. 동격 (Appositives)</h4>
+                                <p><strong>정의/설명:</strong> 명사(구) 바로 뒤에 콤마(,), 대시(-), or, 또는 특정 구문(that is, namely 등)을 사용하여 앞선 명사(구)와 동일한 대상이거나 그에 대한 부연 설명을 제공하는 구조입니다. 동격 어구는 미지 어휘의 의미를 직접적으로 또는 간접적으로 밝혀줍니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 정보 연결, 재진술 파악, 구체화된 의미 이해.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2023학년도 수능 36번 - 물벼룩의 적응적 가소성)</h5>
+                                    <div class="quote-box">
+                                        <p>"A fascinating species of water flea exhibits a kind of flexibility that evolutionary biologists call adaptive <span class="vocab-highlight">plasticity</span>."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">plasticity</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>'adaptive plasticity'는 관계대명사절 "that evolutionary biologists call ~"의 목적격 보어 역할을 하며, 선행사 "a kind of flexibility(일종의 유연성)"와 동격 관계를 이룹니다. 즉, 진화생물학자들이 '적응적 가소성'이라고 부르는 것이 바로 '일종의 유연성'입니다.</li>
+                                            <li>따라서 'plasticity'는 'flexibility'와 유사한 의미, 즉 '유연성', '변화 가능성', '적응성'을 가진다고 추론할 수 있습니다. 'adaptive'라는 수식어는 이것이 환경에 적응하는 능력과 관련됨을 더욱 명확히 합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 가소성, 유연성.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2020학년도 수능 35번 - 상식적 지식의 장점과 모순적 약점)</h5>
+                                    <div class="quote-box">
+                                        <p>"Each of these contradictory statements may hold true under particular conditions, but without a clear statement of when they apply and when they do not, <span class="vocab-highlight">aphorisms</span> provide little insight into relations among people."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">aphorisms</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>앞 문장들에서는 "Birds of a feather flock together" vs "Opposites attract", "Two heads are better than one" vs "Too many cooks spoil the broth"와 같이 서로 모순되는 말들(contradictory statements)이 예시로 제시되었습니다.</li>
+                                            <li>'aphorisms'라는 단어는 이러한 'contradictory statements'를 지칭하는 것으로 보이며, 이것들이 "언제 적용되고 언제 적용되지 않는지에 대한 명확한 진술이 없으면 사람들 사이의 관계에 대한 통찰력을 거의 제공하지 못한다"고 설명합니다.</li>
+                                            <li>따라서 'aphorisms'는 이러한 짧고 교훈적인 말, 즉 '격언'이나 '경구'를 의미한다고 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 격언, 경구.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2021학년도 6월 모의평가 31번 - 나비 채집 용어와 학문적 지위 변화)</h5>
+                                    <div class="quote-box">
+                                        <p>"The term “butterfly collecting” could come to be used with the adjective “mere” to indicate a pursuit of <span class="vocab-highlight">secondary</span> academic status."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">secondary</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>문맥은 과학에서 수집(collecting)이 예전만큼 중요한 지적 활동으로 여겨지지 않게 되었고, 육안에 보이지 않는 것들이 더 중요해졌다고 설명합니다.</li>
+                                            <li>이러한 상황에서 "butterfly collecting(나비 채집)"이라는 용어가 "mere(한낱, 단지)"라는 형용사와 함께 사용되어 "secondary academic status(이차적인 학문적 지위)"의 추구를 나타낸다고 합니다.</li>
+                                            <li>'mere'라는 단어는 중요도가 낮거나 부차적인 것을 의미하므로, 'secondary' 역시 '주요하지 않은', '부차적인', '덜 중요한'이라는 의미를 가진다고 추론할 수 있습니다. 'primary(주요한)'의 반대 개념으로 이해할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 부차적인, 이차적인, 덜 중요한.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="logical" class="strategy-card">
+                            <button type="button" class="collapsible"><i class="fas fa-brain me-2"></i>D. 일반 지식 및 논리적 추론 (실용적 분석)</button>
+                            <div class="content-collapsible">
+                                <p><strong>일반 원칙:</strong> 지문 내 직접적인 어휘 단서가 부족하거나 명확하지 않을 때, 독자가 가진 배경지식, 상식, 그리고 글 전체의 논리적 흐름을 종합적으로 활용하여 미지 어휘의 가장 그럴듯한 의미를 추론합니다. 이는 고차원적인 독해 능력을 요구합니다.</p>
+                                <p><strong>관련 인지 과정:</strong> 배경지식 활성화, 논리적 연결망 구축, 가설 설정 및 검증, 비판적 사고.</p>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 1 (2023학년도 수능 41~42번 - 간단한 공식/체크리스트의 의사결정 향상 효과)</h5>
+                                    <div class="quote-box">
+                                        <p>"When there are a lot of different factors involved and a situation is very uncertain, simple formulas can win out by focusing on the most important factors and being consistent, while human judgement is too easily influenced by particularly <span class="vocab-highlight">salient</span> and perhaps irrelevant considerations."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">salient</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>문장은 "간단한 공식"과 "인간의 판단"을 대조하고 있습니다. 간단한 공식은 "가장 중요한 요소에 초점을 맞추고 일관성을 유지함으로써" 이점을 가진다고 합니다.</li>
+                                            <li>반면, 인간의 판단은 "particularly salient and perhaps irrelevant considerations(특히 salient하고 아마도 관련 없는 고려 사항들)"에 의해 너무 쉽게 영향을 받는다고 합니다.</li>
+                                            <li>'irrelevant(관련 없는)'와 'perhaps'로 연결된 'salient'는, 인간의 판단을 부정적으로 만드는 요소 중 하나로 보입니다. 인간이 중요하지 않거나 관련 없는 것임에도 불구하고 쉽게 영향을 받는 것은 어떤 특징을 가진 고려 사항일까요?</li>
+                                            <li>일반적으로 사람들은 '눈에 잘 띄거나', '두드러지거나', '현저한' 특징을 가진 정보에 먼저 주목하고 영향을 받기 쉽습니다. 이것이 반드시 가장 중요한 정보는 아닐 수 있습니다.</li>
+                                            <li>따라서 'salient'는 '두드러진', '현저한', '눈에 잘 띄는'과 같은 의미로 추론할 수 있습니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 두드러진, 현저한, 가장 눈에 띄는.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 2 (2022학년도 6월 모의평가 41~42번 - 비상 상황 판단에 대한 군중의 영향)</h5>
+                                    <div class="quote-box">
+                                        <p>"The studied <span class="vocab-highlight">nonchalance</span> of patients in a dentist’s waiting room is a poor indication of their inner anxiety. It is considered embarrassing to “lose your cool” in public."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">nonchalance</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>치과 대기실 환자들의 'studied nonchalance'는 그들의 'inner anxiety(내면의 불안감)'를 제대로 보여주지 못하는 'poor indication(잘못된 표시)'이라고 합니다.</li>
+                                            <li>다음 문장에서 "It is considered embarrassing to “lose your cool” in public(사람들 앞에서 '냉정을 잃는' 것은 창피한 일로 여겨진다)"라고 부연 설명합니다.</li>
+                                            <li>즉, 사람들은 내면적으로 불안하더라도 겉으로는 냉정을 잃지 않으려고, 즉 태연한 척, 무관심한 척 행동한다는 것입니다.</li>
+                                            <li>따라서 'nonchalance'는 이러한 겉으로 보이는 '무관심', '태연함', '냉담함'을 의미한다고 추론할 수 있습니다. 'studied'라는 수식어는 이것이 의도되거나 꾸며진 태도일 수 있음을 시사합니다.</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 무관심, 냉담, 태연함.
+                                    </div>
+                                </div>
+                                <div class="example-box">
+                                    <h5><i class="fas fa-book-reader me-2 text-warning"></i>예시 3 (2020학년도 9월 모의평가 40번 - 미국인의 물질주의에 대한 양면 가치와 사회적 가치 추구)</h5>
+                                    <div class="quote-box">
+                                        <p>"A report entitled Yearning for Balance, based on a nationwide survey of Americans, concluded that they were ‘deeply <span class="vocab-highlight">ambivalent</span> about wealth and material gain’."</p>
+                                    </div>
+                                    <p><strong>미지 어휘:</strong> <span class="vocab-highlight">ambivalent</span></p>
+                                    <div class="inference-process">
+                                        <h6><i class="fas fa-cogs me-2"></i>추론 과정:</h6>
+                                        <ol>
+                                            <li>보고서는 미국인들이 '부에 대해 deeply ambivalent하다'고 결론 내립니다.</li>
+                                            <li>이어지는 내용에서, 대다수의 사람들은 사회가 "탐욕과 과잉에서 벗어나 좀 더 가치, 공동체, 가족 중심의 삶의 방식으로 향하기를 원했다"고 합니다. 이는 물질적 이익에 대한 부정적인 시각을 보여줍니다.</li>
+                                            <li>그러나 동시에 그들은 이러한 우선순위가 대부분의 동료 미국인에 의해 공유되지 않는다고 느끼며, 그들이 "점차 개별화되고, 이기적이며, 무책임해졌다"고 믿습니다. 이는 현실적으로 물질적 성공을 추구하는 경향이 강함을 시사합니다.</li>
+                                            <li>즉, 한편으로는 가치 중심의 삶을 원하면서도, 다른 한편으로는 물질적 이익 추구라는 현실적 경향을 인식하고 있는, 상반된 두 가지 감정이나 태도를 동시에 가지고 있음을 알 수 있습니다.</li>
+                                            <li>따라서 'ambivalent'는 '양면적인 감정을 가진', '상반된 감정이 공존하는'으로 추론할 수 있습니다. (접두사 'ambi-'는 'both'의 의미를 가짐)</li>
+                                        </ol>
+                                    </div>
+                                    <div class="inferred-meaning">
+                                        <i class="fas fa-check-circle me-2"></i>추론된 의미: 양면 가치의, 상반된 감정이 공존하는.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="integration" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-link"></i>III. 통합적 접근 및 교육적 함의</h2></div>
+                    <div class="content-collapsible"> <!-- This should be a content-section or similar -->
+                        <p>위에 제시된 어휘 추론 전략들은 상호 배타적이지 않으며, 실제 독해 상황에서는 <strong class="highlight">복합적으로 작용</strong>하는 경우가 많습니다. 예를 들어, 문맥 단서(예시)를 통해 어휘의 대략적인 의미 범주를 파악한 후, 형태론적 분석(접두사/접미사)을 통해 그 의미를 더욱 정교화하거나 확신을 가질 수 있습니다. 또한, 문법적 단서(품사)는 가능한 의미의 범위를 좁혀주며, 최종적으로는 일반 지식과 논리적 추론을 통해 가장 적절한 의미를 확정하게 됩니다.</p>
+                        <div class="highlight-box">
+                            <h4><i class="fas fa-lightbulb me-2 text-warning"></i>통합적 접근 예시</h4>
+                            <p><strong>(2023학년도 수능 30번 - 사이버공간 과대광고와 기술의 인간 중심적 적응 필요성):</strong></p>
+                            <div class="quote-box">
+                                <p>"The longer we continue to believe that computers will take us to a magical new world, the longer we will <span class="vocab-highlight">maintain</span> (→ 실제 정답은 어휘 문제로, 문맥상 'delay' 등이 적절) their natural fusion with our lives, the hallmark of every major movement that aspires to be called a socioeconomic revolution."</p>
+                            </div>
+                            <p><strong>미지 어휘 (여기서는 어휘 선택 문제의 오답):</strong> <span class="vocab-highlight">maintain</span></p>
+                            <div class="inference-process">
+                                <h6><i class="fas fa-cogs me-2"></i>추론 과정 (오답인 maintain을 비판하고 적절한 의미를 추론하는 과정):</h6>
+                                <ol>
+                                    <li><strong>문맥 단서 (인과 관계 및 대조):</strong> 지문 앞부분에서 필자는 "Technology changes constantly. It’s the one that must adapt to us."라고 주장하며, 기술이 인간에게 적응해야 한다고 말합니다. 또한 컴퓨터가 우리를 마법 같은 신세계로 데려갈 것이라는 믿음은 과대광고(hype)에 가깝다고 암시합니다.</li>
+                                    <li><strong>논리적 추론:</strong> 만약 우리가 '컴퓨터가 우리를 신세계로 데려갈 것'이라는 (필자가 비판적으로 보는) 믿음을 계속 유지한다면, 컴퓨터와 우리 삶의 '자연스러운 융합(natural fusion with our lives)'은 촉진되기보다는 오히려 '지연되거나 방해받을' 것입니다. '자연스러운 융합'은 기술이 인간 중심적으로 적응할 때 이루어지는 긍정적인 결과로 해석될 수 있습니다.</li>
+                                    <li><strong>어휘의 의미:</strong> 'maintain'은 '유지하다', '지속하다'는 의미입니다. 문맥상 부정적인 결과를 초래하는 믿음을 지속할 경우, 긍정적인 '자연스러운 융합'을 '유지한다'는 것은 논리적으로 모순됩니다.</li>
+                                    <li><strong>대안적 추론 (통합적 사고):</strong> 따라서 이 자리에는 '지연시키다(delay)', '방해하다(hinder)', '막다(prevent)'와 같이 부정적인 결과를 나타내는 동사가 와야 문맥이 자연스럽습니다. 이는 문맥 단서(앞선 필자의 주장)와 논리적 추론(잘못된 믿음의 결과)을 통합적으로 고려한 결과입니다.</li>
+                                </ol>
+                            </div>
+                            <div class="inferred-meaning">
+                                <i class="fas fa-times-circle me-2 text-danger"></i>오답 어휘: maintain (유지하다)<br>
+                                <i class="fas fa-check-circle me-2"></i>문맥상 적절한 의미: 지연시키다, 방해하다
+                            </div>
+                        </div>
+                        <p>이러한 어휘 추론 전략을 수능 영어 교육에 적용하는 것은 매우 중요한 <strong class="highlight">교육적 함의</strong>를 지닙니다. 이는 단순한 단어 암기를 넘어, 학생들의 <strong class="highlight">능동적인 독해 능력과 비판적 사고력</strong>을 신장시키는 데 기여합니다. 학생들은 낯선 어휘에 직면했을 때 좌절하기보다는, 주어진 텍스트 내에서 적극적으로 단서를 찾고 논리적으로 의미를 구성해나가는 문제 해결 과정을 경험하게 됩니다. 이는 평생 학습자로서 갖추어야 할 중요한 역량이며, 다양한 학문 분야의 텍스트를 이해하는 데 밑거름이 됩니다.</p>
+                    </div>
+                </section>
+
+                <section id="flowchart" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-sitemap"></i>IV. 시각적 표현: 어휘 추론 과정 흐름도</h2></div>
+                    <div class="content-section">
+                        <div class="flowchart-container">
+                            <h4><i class="fas fa-project-diagram me-2 text-primary"></i>어휘 추론 과정 흐름도</h4>
+                            <div id="mermaid-flowchart" class="mermaid">
+                            graph TD
+                                A[<i class='fas fa-question-circle me-1'></i> 낯선 단어와 마주침] --> B{<i class='fas fa-search me-1'></i> 문맥 단서 확인};
+                                B -- 단서 충분 --> C[<i class='fas fa-lightbulb me-1'></i> 직접 정의/동의어/반의어/예시/인과관계 활용];
+                                B -- 단서 불충분 --> D{<i class='fas fa-atom me-1'></i> 형태론적 분석};
+                                C --> H[<i class='fas fa-check me-1'></i> 의미 추론 및 잠정 결론];
+                                D -- 분석 가능 --> E[<i class='fas fa-cogs me-1'></i> 접두사/접미사/어근 조합];
+                                D -- 분석 어려움 --> F{<i class='fas fa-spell-check me-1'></i> 문법적 단서 활용};
+                                E --> H;
+                                F -- 단서 있음 --> G[<i class='fas fa-stream me-1'></i> 품사/병렬구조/동격 활용];
+                                F -- 단서 약함 --> I[<i class='fas fa-brain me-1'></i> 일반 지식 및 논리적 추론];
+                                G --> H;
+                                I --> H;
+                                H --> J{<i class='fas fa-balance-scale me-1'></i> 문맥 적합성 최종 확인};
+                                J -- 적합 --> K[<i class='fas fa-thumbs-up me-1'></i> 추론 완료!];
+                                J -- 부적합 --> L[<i class='fas fa-redo me-1'></i> 이전 단계로 재평가];
+                                L --> B;
+
+                                classDef startNode fill:#e0f7fa,stroke:#00796b,stroke-width:2px,color:#004d40
+                                classDef processNode fill:#fff9c4,stroke:#f57f17,stroke-width:2px,color:#3e2723
+                                classDef decisionNode fill:#ffe0b2,stroke:#ef6c00,stroke-width:2px,color:#3e2723
+                                classDef endNode fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px,color:#1b5e20
+                                classDef reevaluateNode fill:#ffcdd2,stroke:#c62828,stroke-width:2px,color:#b71c1c
+
+                                class A startNode;
+                                class C,E,G,I processNode;
+                                class B,D,F,J decisionNode;
+                                class K endNode;
+                                class L reevaluateNode;
+                            </div>
+                        </div>
+                        <div class="flowchart-description mt-4">
+                            <h3><i class="fas fa-chalkboard-teacher me-2"></i>흐름도 해설</h3>
+                            <p>위 흐름도는 미지 어휘 추론 시 활용할 수 있는 단계적 접근법을 보여줍니다. 핵심은 하나의 전략에만 의존하는 것이 아니라, 다양한 단서(문맥, 형태, 문법, 논리)를 통합적으로 활용하고, 추론된 의미를 다시 문맥에 비추어 검증하는 반복적인 과정을 거치는 것입니다.</p>
+                            <ul>
+                                <li><strong>1단계 (문맥 단서):</strong> 가장 직접적이고 강력한 단서입니다. 주변 텍스트에서 의미를 명확히 해주는 표현을 찾습니다.</li>
+                                <li><strong>2단계 (형태론적 분석):</strong> 단어 자체의 구조(접두사, 접미사, 어근)를 분석하여 의미를 유추합니다.</li>
+                                <li><strong>3단계 (문법적 단서):</strong> 단어의 품사나 문장 내 다른 단어와의 문법적 관계를 통해 의미 범주를 좁힙니다.</li>
+                                <li><strong>4단계 (일반 지식 및 논리적 추론):</strong> 위의 단서들이 부족할 때, 배경지식과 논리적 사고를 동원하여 가장 그럴듯한 의미를 추론합니다.</li>
+                                <li><strong>최종 확인:</strong> 추론된 의미가 전체 문맥과 자연스럽게 어울리는지 반드시 재확인합니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="glossary" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-book-open"></i>V. 핵심 개념 종합 용어집</h2></div>
+                    <div class="content-section">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-custom">
+                                <thead>
+                                    <tr>
+                                        <th>개념/용어</th>
+                                        <th>정의/설명</th>
+                                        <th>예시 (기출 연관)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>어휘 추론 (Vocabulary Inference)</strong></td>
+                                        <td>낯선 단어의 의미를 문맥, 단어 구조, 문법적 단서, 배경지식 등을 종합적으로 활용하여 논리적으로 유추하는 과정.</td>
+                                        <td>지문 내 <span class="vocab-highlight">salient</span>의 의미를 '두드러진'으로 추론 (2023 수능 41-42)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>문맥 단서 (Context Clues)</strong></td>
+                                        <td>미지 어휘의 의미를 파악하는 데 도움이 되는 주변 텍스트(단어, 구, 절, 문단) 내의 정보.</td>
+                                        <td><span class="vocab-highlight">fatally</span>의 의미를 '생사가 걸린 문제'라는 예시를 통해 추론 (2024 수능 39)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>직접 정의/설명 (Definition/Explanation)</strong></td>
+                                        <td>미지 단어의 의미가 문장 내에서 명시적으로 진술되거나 다른 말로 풀이되는 단서.</td>
+                                        <td><span class="vocab-highlight">Scientism</span> is the view that... (2020 수능 31)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>동의어 단서 (Synonym Clue)</strong></td>
+                                        <td>미지 어휘와 의미가 유사한 단어나 어구가 문맥 속에 제시되는 단서.</td>
+                                        <td><span class="vocab-highlight">stereotype</span>을 generalizations about groups of people로 설명 (2023 9월 36)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>반의어 단서 (Antonym Clue)</strong></td>
+                                        <td>미지 어휘와 의미가 반대되는 단어나 어구가 문맥 속에 제시되는 단서 (주로 대조 연결어와 함께 등장).</td>
+                                        <td>Far from being <span class="vocab-highlight">static</span>, the environment is constantly changing. (2019 9월 30)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>예시 단서 (Example Clue)</strong></td>
+                                        <td>미지 어휘가 나타내는 개념의 구체적인 사례들이 제시되어 의미를 명확히 하는 단서.</td>
+                                        <td><span class="vocab-highlight">representational forms</span>: pictures, maps, screens... (2024 수능 31)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>인과 관계 단서 (Cause & Effect Clue)</strong></td>
+                                        <td>미지 어휘가 원인 또는 결과 관계 속에 놓여 있어, 그 논리적 연결을 통해 의미를 추론할 수 있는 단서.</td>
+                                        <td>Code grows elaborate → software bugs <span class="vocab-highlight">flourish</span> (2023 6월 36)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>형태론적 분석 (Morphological Analysis)</strong></td>
+                                        <td>단어를 구성하는 최소 의미 단위인 형태소(접두사, 접미사, 어근)로 분해하여 각 부분의 의미를 조합함으로써 전체 단어의 의미를 추론하는 방법.</td>
+                                        <td><span class="vocab-highlight">undesirable</span> = un + desire + able (2019 수능 31)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>접두사 (Prefix)</strong></td>
+                                        <td>단어의 시작 부분에 추가되어 어근의 의미에 특정 의미를 더하는 형태소.</td>
+                                        <td><strong>un-</strong> in <span class="vocab-highlight">unprecedented</span> (전례 없는)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>접미사 (Suffix)</strong></td>
+                                        <td>단어의 끝 부분에 추가되어 품사를 바꾸거나 특정 의미를 더하는 형태소.</td>
+                                        <td><strong>-able</strong> in <span class="vocab-highlight">acceptable</span> (수용할 수 있는) (2024 수능 36)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>어근 (Root/Stem)</strong></td>
+                                        <td>단어의 핵심적인 의미를 담고 있는 부분.</td>
+                                        <td><strong>spect</strong> (보다) in <span class="vocab-highlight">perspective</span> (관점) (2022 수능 32)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>문법적 단서 (Grammatical Clues)</strong></td>
+                                        <td>단어의 문장 내 문법적 기능(품사)이나 다른 단어와의 통사적 관계(병렬, 동격 등)를 활용하여 의미를 추론하는 방법.</td>
+                                        <td><span class="vocab-highlight">limiting</span> (형용사/분사) nutrients (2023 9월 37)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>품사 (Part of Speech)</strong></td>
+                                        <td>단어의 문법적 범주(명사, 동사, 형용사, 부사 등)로, 가능한 의미의 범위를 한정함.</td>
+                                        <td><span class="vocab-highlight">optimal</span> (형용사) decision (2022 6월 35)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>병렬 구조 (Parallelism)</strong></td>
+                                        <td>문법적으로 대등한 요소들이 연결될 때, 이들이 의미적으로도 유사하거나 관련된 범주에 속할 가능성을 이용하는 단서.</td>
+                                        <td>emerging, temporary, always changing, almost <span class="vocab-highlight">tribal</span> formations (2021 9월 39)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>동격 (Appositive)</strong></td>
+                                        <td>명사(구) 바로 뒤에 와서 앞선 명사(구)와 동일한 대상이거나 부연 설명을 제공하는 구조.</td>
+                                        <td>adaptive <span class="vocab-highlight">plasticity</span>, a kind of flexibility (2023 수능 36)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>일반 지식/상식 (General Knowledge/Common Sense)</strong></td>
+                                        <td>독자가 이미 가지고 있는 세상에 대한 지식이나 상식을 활용하여 미지 어휘의 의미를 추론하는 방법.</td>
+                                        <td>Dentist's waiting room → inner anxiety vs. studied <span class="vocab-highlight">nonchalance</span> (2022 6월 41-42)</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>논리적 추론 (Logical Inference)</strong></td>
+                                        <td>주어진 텍스트 정보와 일반적인 논리 원칙을 결합하여 미지 어휘의 가장 합리적인 의미를 도출하는 과정.</td>
+                                        <td>Overwhelming evidence vs. jury remained <span class="vocab-highlight">skeptical</span> → acquittal (무죄 판결)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="conclusion" class="section-card">
+                    <div class="section-header"><h2 class="section-title"><i class="fas fa-graduation-cap"></i>VI. 결론</h2></div>
+                    <div class="content-section">
+                        <p>수능 영어 독해에서 미지 어휘 추론 능력은 단순한 기술을 넘어, <strong class="highlight">능동적이고 비판적인 텍스트 이해의 핵심 역량</strong>입니다. 본 가이드에서 제시된 다양한 추론 전략(문맥 단서, 형태론적 분석, 문법적 단서, 일반 지식 및 논리적 추론)을 숙달하는 것은 수험생들이 어휘의 장벽을 넘어서고, 지문의 더 깊은 의미를 파악하며, 궁극적으로 독해 영역에서 높은 성취를 이루는 데 결정적인 역할을 할 것입니다.</p>
+                        <p>중요한 것은 이러한 전략들을 기계적으로 암기하는 것이 아니라, <strong class="highlight">실제 기출 지문을 통해 꾸준히 연습하고 체화</strong>하는 것입니다. 각 지문의 특성과 미지 어휘가 놓인 문맥에 따라 가장 효과적인 전략을 유연하게 선택하고 통합적으로 적용하는 능력을 길러야 합니다. 낯선 단어에 직면했을 때 당황하지 않고, 본 가이드에서 제시된 분석적 도구들을 활용하여 자신감 있게 의미를 구성해나가는 적극적인 자세가 필요합니다. 이러한 노력은 수능에서의 성공뿐만 아니라, 대학에서의 학문적 탐구 및 평생 학습 과정에서도 귀중한 자산이 될 것입니다.</p>
+                        <div class="alert alert-primary mt-4" role="alert">
+                            <h4 class="alert-heading"><i class="fas fa-rocket me-2"></i>최종 조언!</h4>
+                            <p>어휘 추론은 단거리 경주가 아닌 마라톤과 같습니다. 꾸준한 연습과 다양한 전략 적용을 통해 자신만의 어휘 해결 능력을 키워나가시길 바랍니다. 모든 수험생 여러분의 성공적인 수능을 응원합니다!</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button class="btn btn-primary back-to-top" id="backToTopBtn" title="맨 위로 가기">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- JavaScript Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Collapsible content
+        var collapsibles = document.getElementsByClassName("collapsible");
+        for (var i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+
+        // Back to Top Button
+        let backToTopButton = document.getElementById("backToTopBtn");
+        window.onscroll = function() {scrollFunction()};
+        function scrollFunction() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.classList.add("show");
+            } else {
+                backToTopButton.classList.remove("show");
+            }
+        }
+        backToTopButton.addEventListener("click", function() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        });
+
+        // Smooth scroll for ToC links
+        document.querySelectorAll('.toc-link').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    // Adjust for fixed navbar height
+                    const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight - 20; // 20px for extra space
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+        
+        // Active ToC link highlighting on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const tocLinks = document.querySelectorAll('.toc-link');
+        const navbarHeight = document.querySelector('.navbar').offsetHeight;
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - navbarHeight - 50; // Adjusted for navbar and some offset
+                if (pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            tocLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 독해 선지 판단 마스터 가이드</title>
+    <!-- Noto Sans KR 폰트 로드 -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+            font-weight: 700;
+        }
+        h1 {
+            font-size: 2.8em;
+            text-align: center;
+            margin-bottom: 1.2em;
+            color: #1a202c;
+            letter-spacing: -0.03em;
+        }
+        h2 {
+            font-size: 2em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.6em;
+            margin-top: 2.5em;
+            color: #34495e;
+        }
+        h3 {
+            font-size: 1.6em;
+            color: #34495e;
+            margin-top: 2em;
+            padding-left: 5px;
+            border-left: 4px solid #4a90e2; /* Accent color */
+        }
+        h4 {
+            font-size: 1.3em;
+            color: #4a5568;
+            margin-top: 1.5em;
+            padding-left: 5px;
+        }
+        p {
+            margin-bottom: 1em;
+        }
+        ul {
+            list-style-type: disc;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+        ol {
+            list-style-type: decimal;
+            margin-left: 25px;
+            margin-bottom: 1em;
+        }
+        li {
+            margin-bottom: 0.6em;
+        }
+        strong {
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        .section-divider {
+            border-top: 1px solid #e0e0e0;
+            margin: 3em 0;
+        }
+        .tip-box {
+            background-color: #ecf0f1;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin-bottom: 1.5em;
+            border-radius: 5px;
+        }
+        .example-block {
+            background-color: #f8f8f8;
+            border-left: 4px solid #ccc;
+            padding: 15px;
+            margin: 1.5em 0;
+            border-radius: 5px;
+        }
+        .example-block p {
+            margin-bottom: 0.5em;
+        }
+        .example-block strong {
+            color: #2980b9;
+        }
+        .example-block .choice-example {
+            color: #27ae60; /* Green for correct-like choices */
+        }
+        .example-block .choice-example.wrong {
+            color: #e74c3c; /* Red for incorrect choices */
+        }
+        .table-container {
+            overflow-x: auto; /* For responsive tables */
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: 700;
+            color: #555;
+        }
+        tr:nth-child(even) {
+            background-color: #fdfdfd;
+        }
+        .check-icon {
+            color: #27ae60; /* Green */
+            font-weight: 700;
+            margin-right: 5px;
+        }
+        .cross-icon {
+            color: #e74c3c; /* Red */
+            font-weight: 700;
+            margin-right: 5px;
+        }
+        .key-point {
+            font-weight: 700;
+            color: #c0392b; /* Darker red for emphasis */
+        }
+        .final-tip-list li {
+            list-style-type: none; /* Remove default bullet */
+            margin-left: 0;
+            padding-left: 0;
+            position: relative;
+        }
+        .final-tip-list li::before {
+            content: '✅'; /* Unicode checkmark */
+            position: absolute;
+            left: -25px;
+            color: #27ae60;
+            font-weight: 700;
+        }
+        .final-tip-list li.cross::before {
+            content: '❌'; /* Unicode cross mark */
+            color: #e74c3c;
+        }
+        .link-list {
+            list-style-type: none;
+            margin-left: 0;
+            padding-left: 0;
+        }
+        .link-list li {
+            margin-bottom: 0.3em;
+        }
+        .link-list a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        .link-list a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📘 영어 독해 선지 판단 마스터 가이드</h1>
+
+        <div class="tip-box">
+            <h2 class="text-xl font-bold mb-3">🎯 왜 선지 분석이 중요한가?</h2>
+            <p>영어 독해 고득점은 단순히 지문을 해석하는 능력을 넘어, 주어진 정보(지문)를 바탕으로 가장 타당한 진술(선지)을 <strong>논리적으로 선택</strong>하는 능력에 달려 있습니다. 특히 매력적인 오답 선지를 정확히 구별하는 '선지 분석력'은 필수적입니다. 이 가이드는 까다로운 선지 패턴들을 <strong>하위 유형까지 상세히 분석</strong>하고 <strong>구체적인 예시</strong>를 통해 함정을 피하는 방법을 제시합니다.</p>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">🔍 유형별 선지 패턴 & 함정 심층 분석 (영어 예시 포함)</h2>
+
+        <h3 class="text-xl font-bold">I. 패러프레이징 (Paraphrasing) 선지: 같은 의미, 다른 표현!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 지문의 핵심 내용을 <strong>의미는 그대로 유지</strong>하면서 다른 어휘, 구문, 구조로 바꾸어 표현한 선지.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 겉모습(단어, 구조)이 다르다는 이유만으로 오답 처리하지 않도록 주의! 의미 동일성 여부가 관건.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 동의어/유의어 사용 (Synonym/Related Word Substitution):</h4>
+        <p>설명: 지문의 핵심 단어를 의미가 같거나 유사한 다른 단어로 대체.</p>
+        <div class="example-block">
+            <p>Passage Context: The experiment yielded <strong>unexpected</strong> results, prompting further investigation. (그 실험은 예상치 못한 결과를 낳아 추가 조사를 촉발했다.)</p>
+            <p class="choice-example">Choice Example: "🟩 The outcomes of the experiment were <strong>surprising</strong>, leading to more research." (그 실험의 결과는 놀라웠고, 더 많은 연구로 이어졌다.)</p>
+            <p>분석: `unexpected` → `surprising`. 의미상 동일.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 문장 구조 변경 (Sentence Structure Transformation):</h4>
+        <p>설명: 능동태↔수동태 전환, 절↔구 변환, 문장 성분 순서 변경 등 구조적 변형.</p>
+        <div class="example-block">
+            <p>Passage Context: Increased demand for electric vehicles <strong>has driven</strong> innovation in battery technology. (전기차 수요 증가는 배터리 기술 혁신을 이끌어왔다.)</p>
+            <p class="choice-example">Choice Example: "🟩 Innovation in battery technology <strong>has been spurred</strong> by the rising demand for electric vehicles." (배터리 기술 혁신은 증가하는 전기차 수요에 의해 촉진되어 왔다.)</p>
+            <p>분석: 능동태(`has driven`) → 수동태(`has been spurred`), 주어/목적어 위치 변경. 의미는 동일.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 구체화 ↔ 일반화 (Specification ↔ Generalization):</h4>
+        <p>설명: 지문의 여러 구체적 사례/요소를 포괄하는 상위 개념으로 표현하거나, 반대로 일반적 진술을 더 구체화.</p>
+        <div class="example-block">
+            <p>Passage Context: The city implemented bike lanes, expanded subway lines, and increased bus frequency to reduce traffic congestion. (그 도시는 교통 체증을 줄이기 위해 자전거 도로를 설치하고, 지하철 노선을 확장했으며, 버스 운행 빈도를 늘렸다.)</p>
+            <p class="choice-example">Choice Example: "🟩 The city took several measures to <strong>improve its public transportation system</strong> and encourage alternatives to driving." (그 도시는 대중교통 시스템을 개선하고 운전 외 대안을 장려하기 위해 여러 조치를 취했다.)</p>
+            <p>분석: 자전거 도로, 지하철 확장, 버스 증편 등 구체적 조치 → '대중교통 시스템 개선 및 대안 장려'라는 <strong>일반화된 표현</strong>으로 요약.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">4. 긍정 ↔ 부정 전환 (Affirmative ↔ Negative Conversion):</h4>
+        <p>설명: 논리적으로 의미는 같지만, 긍정문을 부정문으로 또는 그 반대로 표현.</p>
+        <div class="example-block">
+            <p>Passage Context: It is <strong>essential</strong> for students to meet the deadline. (학생들이 마감일을 지키는 것은 필수적이다.)</p>
+            <p class="choice-example">Choice Example: "🟩 Students <strong>cannot afford to miss</strong> the deadline." (학생들은 마감일을 놓쳐서는 안 된다.)</p>
+            <p>분석: `essential` (필수적) → `cannot afford to miss` (놓칠 여유가 없다 = 반드시 해야 한다). 긍정 강조 → 부정 강조로 의미 유지.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">II. 비명시적 / 함축적 (Implicit) 선지: 숨겨진 논리를 찾아라!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 지문에 <strong>직접 언급되지 않았지만</strong>, 내용을 바탕으로 <strong>논리적으로 추론 가능</strong>하거나 <strong>함의</strong>된 내용을 담은 선지.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 과도한 비약이나 지문과 무관한 상상력/배경지식 개입 금지! 추론의 근거는 반드시 지문 내에 있어야 함.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 논리적 결과/결론 추론 (Inferring Logical Consequence/Conclusion):</h4>
+        <p>설명: 지문의 진술들을 전제로 하여 필연적 또는 개연적으로 따라 나오는 결과를 제시.</p>
+        <div class="example-block">
+            <p>Passage Context: The habitat destruction has led to a sharp decline in the species' primary food source. Consequently, the species' population numbers have plummeted. (서식지 파괴는 그 종의 주요 먹이원의 급격한 감소로 이어졌다. 결과적으로, 그 종의 개체 수가 급감했다.)</p>
+            <p class="choice-example">Choice Example: "🟩 The species is <strong>facing a threat of extinction</strong> due to changes in its environment." (그 종은 환경 변화로 인해 멸종 위기에 직면해 있다.)</p>
+            <p>분석: 먹이 감소와 개체 수 급감 → '멸종 위기'는 직접 언급 없으나 논리적으로 타당하게 추론되는 심각한 결과.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 필자의 태도/목적/어조 추론 (Inferring Author's Attitude/Purpose/Tone):</h4>
+        <p>설명: 사용된 어휘(긍정적/부정적 단어, 강조 부사 등), 문장 구조, 예시 선택 등을 통해 필자의 숨겨진 관점이나 글을 쓴 의도를 파악.</p>
+        <div class="example-block">
+            <p>Passage Context: The article repeatedly uses words like "flawed," "unsubstantiated," and "dangerous" to describe the new theory, while highlighting counter-evidence. (그 기사는 새로운 이론을 묘사하기 위해 '결함 있는', '입증되지 않은', '위험한'과 같은 단어들을 반복적으로 사용하며 반대 증거를 강조한다.)</p>
+            <p class="choice-example">Choice Example: "🟩 The author exhibits a <strong>skeptical and critical stance</strong> towards the new theory." (필자는 새로운 이론에 대해 회의적이고 비판적인 입장을 보인다.)</p>
+            <p>분석: 부정적 어휘 반복 사용과 반증 강조 → 필자의 '회의적/비판적 태도'를 명백히 함의.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 함의/전제 파악 (Identifying Implication/Assumption):</h4>
+        <p>설명: 필자가 당연하게 여기고 명시적으로 말하지 않았지만, 주장의 바탕이 되는 생각이나 가정을 파악.</p>
+        <div class="example-block">
+            <p>Passage Context: We must urgently develop alternative energy sources to combat climate change. (우리는 기후 변화에 맞서기 위해 대체 에너지원을 시급히 개발해야 한다.)</p>
+            <p class="choice-example">Choice Example: "🟩 The author <strong>assumes that current energy sources are contributing significantly</strong> to climate change." (필자는 현재 에너지원이 기후 변화에 상당히 기여하고 있다고 가정한다.)</p>
+            <p>분석: '대체 에너지 개발이 시급하다'는 주장은 '현재 에너지원에 문제가 있다(기후 변화 유발)'는 전제를 내포함.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">4. 정보 종합 및 일반화 (Synthesizing Information & Generalizing):</h4>
+        <p>설명: 지문의 여러 부분에 흩어져 있는 정보 조각들을 모아 하나의 통합된 결론이나 일반적인 원칙으로 요약.</p>
+        <div class="example-block">
+            <p>Passage Context: (단락 1: 운동 부족은 비만 위험 높임. 단락 2: 가공식품 섭취는 혈당 문제 유발. 단락 3: 불규칙한 수면은 면역력 저하.)</p>
+            <p class="choice-example">Choice Example: "🟩 <strong>Lifestyle choices play a significant role</strong> in overall health and well-being." (생활 방식 선택은 전반적인 건강과 웰빙에 중요한 역할을 한다.)</p>
+            <p>분석: 운동, 식단, 수면 등 구체적인 생활 습관의 영향 → '생활 방식 선택이 건강에 중요하다'는 일반화된 결론으로 종합.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">III. 너무 지엽적인 선지 (Too Specific / Narrow): 숲 대신 나무만!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 내용은 지문과 일치하나, 글 전체의 중심 생각(주제/요지)이 아닌 <strong>매우 사소한 세부 정보, 특정 예시, 지엽적 부연 설명</strong>에만 초점을 맞춘 선지.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 지문에서 분명히 봤던 내용이라 정답처럼 느껴지기 쉬움. 글 전체를 포괄하는지 반드시 확인해야 함.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 단일 예시/사례 강조 (Focusing on a Single Example/Case):</h4>
+        <p>설명: 글 전체 주제를 뒷받침하기 위해 사용된 여러 예시 중 하나만 언급.</p>
+        <div class="example-block">
+            <p>Passage Context: (글 전체: 소셜 미디어의 장단점 분석). Social media allows users to connect with friends easily, <strong>for instance, through instant messaging features.</strong> (소셜 미디어는 사용자들이 친구들과 쉽게 연결되도록 해주는데, 예를 들어, 인스턴트 메시징 기능을 통해서이다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The primary topic of the passage is the instant messaging features of social media." (이 글의 주된 주제는 소셜 미디어의 인스턴트 메시징 기능이다.)</p>
+            <p>분석: 인스턴트 메시징은 소셜 미디어의 장점 중 '하나의 예시'일 뿐, 글 전체 주제(장단점 분석)가 아님.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 부수적 세부 정보 집착 (Dwelling on Minor Details):</h4>
+        <p>설명: 글의 핵심 논지와는 거리가 먼, 사소하거나 부수적인 정보에만 초점을 맞춤.</p>
+        <div class="example-block">
+            <p>Passage Context: The scientist, <strong>who received the Nobel Prize in 1988</strong>, discovered the crucial protein. (1988년에 노벨상을 받은 그 과학자는 그 중요한 단백질을 발견했다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The passage mainly discusses the year the scientist won the Nobel Prize." (이 글은 주로 그 과학자가 노벨상을 받은 연도에 대해 논한다.)</p>
+            <p>분석: 노벨상 수상 연도는 과학자를 부연 설명하는 정보일 뿐, 글의 핵심(단백질 발견)과는 거리가 멈.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 다면적 주제의 일부만 반영 (Reflecting Only One Facet of a Multifaceted Topic):</h4>
+        <p>설명: 여러 측면(장단점, 원인과 결과 등)을 다루는 주제에 대해 오직 한 측면만 언급.</p>
+        <div class="example-block">
+            <p>Passage Context: (글: 인공지능 발전의 잠재적 이점과 윤리적 위험을 모두 탐구)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The passage solely focuses on the potential benefits of artificial intelligence." (이 글은 오직 인공지능의 잠재적 이점에만 초점을 맞춘다.)</p>
+            <p>분석: 글은 이점과 위험 '모두'를 다루는데, 선지는 '이점'이라는 한 측면만 언급하여 지엽적임.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">IV. 너무 포괄적인 선지 (Too Broad / General): 너무 큰 그물!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 선지의 내용이 지문의 <strong>구체적인 범위나 초점을 현저히 벗어나, 지나치게 일반적이거나 추상적인</strong> 진술을 함.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 내용은 틀리지 않았거나 상식적으로 맞는 말처럼 보여서 정답으로 착각하기 쉬움. 하지만 지문이 다루는 <strong>특정 논점</strong>을 정확히 반영하지 못함.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 주제 범위 초과 (Exceeding the Scope of the Topic):</h4>
+        <p>설명: 지문은 특정 주제의 한정된 측면을 다루는데, 선지는 그 주제 전체나 더 큰 상위 범주를 언급.</p>
+        <div class="example-block">
+            <p>Passage Focus: Discusses the impact of a specific type of social media platform (e.g., image-sharing apps) on adolescent self-esteem. (특정 유형의 소셜 미디어 플랫폼(예: 이미지 공유 앱)이 청소년 자존감에 미치는 영향을 논함.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Social media has fundamentally changed modern communication." (소셜 미디어는 현대 커뮤니케이션을 근본적으로 바꾸었다.)</p>
+            <p>분석: 맞는 말이지만, 지문의 초점은 '특정 앱'과 '자존감'이라는 더 좁은 범위임. 선지는 '소셜 미디어 전체'와 '커뮤니케이션 전반'으로 범위를 <strong>과도하게 확장</strong>함.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 지나치게 추상적/철학적 진술 (Overly Abstract/Philosophical Statement):</h4>
+        <p>설명: 지문의 구체적인 내용이나 논거와 직접 연결되기에는 너무 추상적이거나 보편적인 원리, 철학적 명제를 제시.</p>
+        <div class="example-block">
+            <p>Passage Focus: Analyzes the economic factors contributing to the recent decline in the manufacturing industry in Region X. (X 지역 제조업의 최근 쇠퇴에 기여하는 경제적 요인들을 분석함.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Change is an inevitable part of economic evolution." (변화는 경제 발전의 불가피한 부분이다.)</p>
+            <p>분석: 경제 발전에 변화가 따른다는 것은 일반적인 원리이지만, 지문은 'X 지역 제조업 쇠퇴의 구체적 경제 요인'이라는 <strong>특정 현상</strong>을 다룸. 선지는 너무 추상적임.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 핵심 논점 희석 (Diluting the Core Argument):</h4>
+        <p>설명: 지문의 핵심 주장이나 논점을 포함하긴 하지만, 너무 일반적인 용어로 표현하여 그 구체성이나 중요성을 희석시킴.</p>
+        <div class="example-block">
+            <p>Passage Focus: Argues strongly for immediate government intervention to curb pollution from Factory Y due to documented health risks. (문서화된 건강 위험 때문에 Y 공장의 오염을 억제하기 위한 즉각적인 정부 개입을 강력히 주장함.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Environmental protection is an important issue for society." (환경 보호는 사회에 중요한 문제이다.)</p>
+            <p>분석: 환경 보호가 중요하다는 것은 지문의 맥락과 관련 있지만, 'Y 공장 오염'과 '즉각적 정부 개입'이라는 <strong>지문의 핵심적이고 구체적인 주장</strong>을 담아내지 못하고 너무 일반적인 수준에 머무름.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">V. 키워드 함정 / 교묘한 왜곡 선지 (Keyword Trap / Distortion): 그럴듯한 가짜!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 지문의 <strong>중요 키워드를 그대로 사용</strong>하여 정답처럼 보이게 유인하지만, 실제로는 단어의 의미, 내용, 논리적 관계를 <strong>미묘하거나 혹은 명백하게 비틀어 놓은</strong> 선지. 가장 주의해야 할 오답 유형!</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 익숙한 키워드에 현혹되어 선지 전체의 의미를 꼼꼼히 확인하지 않고 성급하게 답으로 고르기 쉬움.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 의미 정반대 왜곡 (Direct Meaning Reversal):</h4>
+        <p>설명: 키워드는 같지만, 핵심 내용이나 관계를 정반대로 서술.</p>
+        <div class="example-block">
+            <p>Passage Context: The study concluded that the new drug was <strong>ineffective</strong> in treating the disease. (그 연구는 신약이 그 질병 치료에 효과가 없다고 결론 내렸다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Research showed the new drug was highly <strong>effective</strong> against the disease." (연구는 신약이 그 질병에 매우 효과적임을 보여주었다.)</p>
+            <p>분석: `new drug`, `disease` 키워드는 같지만, `ineffective` ↔ `effective`로 핵심 결론을 <strong>정반대로 왜곡</strong>.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 미묘한 의미 변질 (Subtle Meaning Alteration):</h4>
+        <p>설명: 단어는 유사하거나 동일하지만, 문맥상 의미가 미묘하게 달라지거나, 수식어 등을 통해 뉘앙스를 왜곡.</p>
+        <div class="example-block">
+            <p>Passage Context: The policy offers <strong>potential</strong> benefits, but its success is not guaranteed. (그 정책은 잠재적인 이점을 제공하지만, 성공이 보장되지는 않는다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The policy guarantees <strong>definite</strong> benefits for everyone." (그 정책은 모든 사람에게 확실한 이점을 보장한다.)</p>
+            <p>분석: `benefits` 키워드는 같지만, 지문의 `potential`(잠재적)을 선지에서 `definite`(확실한)으로 바꾸어 <strong>의미를 과장/왜곡</strong>.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 관계 왜곡 (Misrepresenting Relationships):</h4>
+        <p>설명: 지문에 나온 요소들 간의 관계(원인-결과, 조건, 비교 등)를 키워드는 유지한 채 잘못 연결. (※ VIII. 관계 오류 선지와 겹치지만, 키워드 유인 측면 강조)</p>
+        <div class="example-block">
+            <p>Passage Context: While poverty can <strong>contribute to</strong> crime rates, it is not the sole factor. (빈곤이 범죄율에 기여할 수는 있지만, 유일한 요인은 아니다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Poverty is the <strong>sole cause</strong> of crime according to the passage." (지문에 따르면 빈곤이 범죄의 유일한 원인이다.)</p>
+            <p>분석: `Poverty`, `crime` 키워드는 사용했지만, '기여 요인 중 하나'라는 관계를 '유일한 원인'으로 <strong>왜곡</strong>.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">VI. 지문에 없는 내용 / 외부 지식 선지 (Outside Information / Not Mentioned): 상상력은 넣어둬!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 선지의 내용이 <strong>지문에는 전혀 근거가 없으며</strong>, 오직 수험생의 배경지식, 상식, 또는 추측에 의존해야만 판단 가능한 경우.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 내용 자체가 사실이거나 그럴듯해 보여서 맞다고 착각하기 쉬움. <strong><span class="key-point">독해 문제의 철칙은 '답의 근거는 오직 지문 안에 있다'</span></strong>는 것임을 명심해야 함.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 배경지식/상식 기반 진술 (Statements Based on Common Knowledge/Background Info):</h4>
+        <p>설명: 지문의 주제와 관련은 있지만, 지문에는 없고 일반 상식이나 관련 분야 배경지식에 해당하는 내용.</p>
+        <div class="example-block">
+            <p>Passage Focus: Describes the process of photosynthesis in plants. (식물의 광합성 과정을 설명함.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Photosynthesis is the primary source of oxygen in Earth's atmosphere, a fact known since the 18th century." (광합성은 지구 대기 산소의 주된 원천이며, 이는 18세기부터 알려진 사실이다.)</p>
+            <p>분석: 내용 자체는 과학적 사실일 수 있으나, '지구 대기 산소의 주 원천'이라거나 '18세기부터 알려졌다'는 내용은 <strong>이 지문에는 전혀 언급되지 않음</strong>.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 지문 내용 기반 추측/확장 (Speculation/Extension Beyond Passage Information):</h4>
+        <p>설명: 지문의 내용을 바탕으로 너무 멀리 나아간 추측이나, 지문에서 다루지 않은 미래 예측, 다른 사례 적용 등을 언급.</p>
+        <div class="example-block">
+            <p>Passage Focus: Details the successful launch of the 'Explorer I' satellite in 1958. ('익스플로러 1호' 위성의 1958년 성공적인 발사를 상세히 설명함.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The success of 'Explorer I' directly led to the establishment of NASA later that same year." (익스플로러 1호의 성공은 같은 해 말 NASA 설립으로 직접 이어졌다.)</p>
+            <p>분석: 역사적으로는 연관성이 있을 수 있으나, <strong>이 지문 안에서는</strong> 익스플로러 1호 성공과 NASA 설립 간의 <strong>직접적인 인과 관계를 명시하지 않음</strong>. 지문 밖의 정보를 이용한 추측성 진술.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">VII. 반만 맞는 선지 (Half Right, Half Wrong): 절반의 진실, 완전한 오답!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 선지의 <strong>어떤 부분은 지문 내용과 정확히 일치하지만, 다른 부분은 명백히 틀리거나, 언급되지 않았거나, 왜곡된 내용</strong>을 포함하는 선지.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 앞부분이나 익숙한 부분이 맞으면 전체가 맞다고 성급하게 판단하기 쉬움. 선지의 <strong>모든 요소가 지문과 일치</strong>해야만 정답이 될 수 있음.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 사실 + 오류 결합 (Combination of Fact and Error):</h4>
+        <p>설명: 선지의 한 절은 지문 사실과 부합하지만, 다른 절은 명백히 틀린 정보를 제시.</p>
+        <div class="example-block">
+            <p>Passage Context: The novel received critical acclaim for its innovative plot structure but was criticized for its underdeveloped characters. (그 소설은 혁신적인 줄거리 구조로 비평가들의 찬사를 받았지만, 미숙하게 발전된 등장인물들 때문에 비판받았다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The novel was praised for its innovative plot and well-developed characters." (그 소설은 혁신적인 줄거리와 잘 발전된 등장인물들로 칭찬받았다.)</p>
+            <p>분석: '혁신적인 줄거리로 칭찬받았다'는 부분은 맞지만, '잘 발전된 등장인물'은 지문의 비판 내용과 <strong>정반대</strong>임.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 사실 + 무관/언급 無 결합 (Combination of Fact and Irrelevant/Unmentioned Information):</h4>
+        <p>설명: 선지의 한 부분은 지문 내용과 일치하지만, 다른 부분은 지문에서 전혀 다루지 않은 내용을 추가.</p>
+        <div class="example-block">
+            <p>Passage Context: The research focused on the effects of sleep deprivation on cognitive performance in adults aged 20-30. (그 연구는 20-30세 성인의 인지 능력에 대한 수면 부족의 영향에 초점을 맞췄다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The study examined how lack of sleep affects cognitive abilities in young adults and also compared results across different cultures." (그 연구는 수면 부족이 젊은 성인의 인지 능력에 미치는 영향을 조사했고 또한 여러 문화권에 걸친 결과들을 비교했다.)</p>
+            <p>분석: '젊은 성인의 인지 능력에 미치는 영향 조사'는 맞지만, '여러 문화권 결과 비교'는 <strong>지문에 전혀 언급되지 않은 내용</strong>임.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h3 class="text-xl font-bold">VIII. 관계 오류 선지 (Relationship Error): 연결 고리가 잘못됐어!</h3>
+        <ul>
+            <li><span class="check-icon">✅</span> <strong>핵심:</strong> 지문에 등장하는 개념, 사건, 요소들은 맞게 포함하고 있지만, 그 요소들 사이의 <strong>논리적 연결 관계(원인-결과, 조건-결과, 비교, 대조, 시간 순서 등)를 잘못 설정</strong>한 선지.</li>
+            <li><span class="cross-icon">⛔</span> <strong>함정:</strong> 등장하는 단어들이 익숙해서 관계 설정을 주의 깊게 보지 않으면 속기 쉬움. 요소 자체뿐 아니라 <strong>요소 간의 관계</strong>가 지문과 일치하는지 확인해야 함.</li>
+        </ul>
+
+        <h4 class="text-lg font-bold">1. 원인-결과 전도/왜곡 (Reversing/Distorting Cause and Effect):</h4>
+        <p>설명: 지문에서 A가 B의 원인이라고 했는데, 선지에서 B가 A의 원인이라고 하거나, 인과관계를 완전히 다르게 설정.</p>
+        <div class="example-block">
+            <p>Passage Context: Heavy rainfall (A) <strong>caused</strong> widespread flooding (B) in the region. (폭우(A)가 그 지역에 광범위한 홍수(B)를 야기했다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Widespread flooding (B) <strong>led to</strong> heavy rainfall (A) in the region." (광범위한 홍수(B)가 그 지역에 폭우(A)를 초래했다.)</p>
+            <p>분석: 원인(폭우)과 결과(홍수)의 <strong>관계를 뒤바꾸어</strong> 놓음.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">2. 상관관계 vs. 인과관계 혼동 (Confusing Correlation with Causation):</h4>
+        <p>설명: 지문에서는 두 요소가 단순히 함께 발생하거나 관련이 있다(상관관계)고만 했는데, 선지에서는 하나가 다른 하나의 직접적인 원인(인과관계)이라고 단정.</p>
+        <div class="example-block">
+            <p>Passage Context: Studies show a <strong>correlation</strong> between ice cream sales and crime rates (both tend to rise in summer). (연구들은 아이스크림 판매량과 범죄율 사이에 상관관계가 있음을 보여준다 (둘 다 여름에 증가하는 경향이 있다).)
+            <p class="choice-example wrong">Choice Example: "⛔ Eating ice cream <strong>causes</strong> an increase in crime rates." (아이스크림을 먹는 것이 범죄율 증가를 유발한다.)</p>
+            <p>분석: 지문은 상관관계만 언급했는데, 선지는 <strong>인과관계로 단정</strong>하여 잘못된 관계를 설정함 (실제로는 더위라는 제3의 요인이 둘 다에 영향을 미칠 수 있음).</p>
+        </div>
+
+        <h4 class="text-lg font-bold">3. 잘못된 비교/대조 (Incorrect Comparison/Contrast):</h4>
+        <p>설명: 지문에서 A가 B보다 낫다고 했는데 선지에서 B가 A보다 낫다고 하거나, 비교/대조의 기준이나 대상을 잘못 설정.</p>
+        <div class="example-block">
+            <p>Passage Context: While Method A is faster, Method B is significantly more accurate. (방법 A가 더 빠르긴 하지만, 방법 B가 현저히 더 정확하다.)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ Method A is superior to Method B in terms of accuracy." (방법 A는 정확성 측면에서 방법 B보다 우수하다.)</p>
+            <p>분석: 지문은 정확성 면에서 B가 우수하다고 했는데, 선지는 A가 우수하다고 <strong>비교 결과를 반대로</strong> 제시함.</p>
+        </div>
+
+        <h4 class="text-lg font-bold">4. 시간 순서 오류 (Incorrect Temporal Sequence):</h4>
+        <p>설명: 지문에 묘사된 사건들의 발생 순서를 잘못 배열.</p>
+        <div class="example-block">
+            <p>Passage Context: The team first analyzed the data (1), then formulated a hypothesis (2), and finally conducted experiments (3) to test it. (팀은 먼저 데이터를 분석했고(1), 그 다음 가설을 세웠으며(2), 마지막으로 그것을 검증하기 위해 실험을 수행했다(3).)</p>
+            <p class="choice-example wrong">Choice Example: "⛔ The team conducted experiments (3) before formulating a hypothesis (2)." (팀은 가설을 세우기(2) 전에 실험을 수행했다(3).)</p>
+            <p>분석: 지문에 제시된 <strong>사건의 시간 순서(1→2→3)를 왜곡</strong>함.</p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">💡 최종 점검: 실전 문제풀이 팁</h2>
+        <ul class="final-tip-list">
+            <li>기준점 설정: 선지 보기 전에 지문의 <strong>핵심 주제/요지</strong>를 먼저 파악하세요. 모든 선지 판단은 이것을 기준으로 이루어져야 합니다.</li>
+            <li>오답 소거는 기본: 위에서 배운 오답 패턴들(지엽적, 포괄적, 왜곡, 무관 등)을 기준으로 <strong>확실히 아닌 선지부터 제거</strong>해 나가세요.</li>
+            <li>"근거 찾기" 체화: 항상 "이 선지가 왜 맞지/틀리지? 지문 어디에 근거가 있지?"라고 <strong>스스로 질문하고 답하는 습관</strong>을 들이세요.</li>
+            <li>매력적인 오답 재확인: 특히 정답처럼 보이는 선지(키워드 포함, 내용 일부 일치 등)는 <strong>함정이 없는지 마지막까지 꼼꼼히 검토</strong>하세요.</li>
+            <li>오답 노트 활용: 틀린 문제는 왜 틀렸는지, 어떤 유형의 함정에 빠졌는지 <strong>분석하고 기록</strong>하세요. 이것이 진짜 실력 향상의 지름길입니다!</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">📊 수능 영어 독해 자주 나오는 선지 유형별 특징 정리표</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>유형</th>
+                        <th>정답 선지 특징</th>
+                        <th>대표 기법</th>
+                        <th>함정 오답 요소</th>
+                        <th>실전 전략 팁</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>패러프레이징</strong><br>(Paraphrasing)</td>
+                        <td>의미는 같되 표현만 바꿈</td>
+                        <td>유의어/동의어 사용<br>문장 구조 변화<br>긍정 ↔ 부정 전환<br>구체 ↔ 일반화</td>
+                        <td>표현이 달라서 틀렸다고 속단<br>단어는 달라도 핵심 의미는 동일</td>
+                        <td>단어/구문보다 ‘의미의 등가성’ 중심으로 판단</td>
+                    </tr>
+                    <tr>
+                        <td><strong>비명시적/함축적</strong><br>(Implicit/Inference)</td>
+                        <td>지문 내 근거로 추론 가능한 정보</td>
+                        <td>논리적 귀결 도출<br>필자 어조/태도 파악<br>전제(assumption) 추출</td>
+                        <td>과도한 상상력이나 배경지식 개입<br>지문 근거 없이 "있을 법한 말"</td>
+                        <td>‘직접적 진술은 없지만, 지문에 근거 있음’을 찾는 연습 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>지엽적 세부사항</strong><br>(Too Specific)</td>
+                        <td>특정 예시의 정확한 내용</td>
+                        <td>사례, 수치, 부연 설명 인용</td>
+                        <td>지문 내용 그대로이지만 <strong>중심 주제 아님</strong></td>
+                        <td>중심 생각과 관련된 포괄적 표현인지 확인</td>
+                    </tr>
+                    <tr>
+                        <td><strong>과도한 일반화</strong><br>(Overgeneralization)</td>
+                        <td>일부 사실을 <strong>적절히 일반화</strong></td>
+                        <td>several → some<br>many → often<br>some → may</td>
+                        <td><strong>전체로 확대하는 단어</strong> 사용(all, always, every 등)</td>
+                        <td>"항상", "모두"처럼 범위를 넓히는 표현은 의심!</td>
+                    </tr>
+                    <tr>
+                        <td><strong>지문 외삽</strong><br>(Beyond Text / 확대 해석)</td>
+                        <td>내용 확장 가능성 <strong>지문 내 논리 범위 안</strong></td>
+                        <td>지문에서 암시된 논리 연장선</td>
+                        <td>지문에 없는 외부 지식 기반<br>또는 과한 도약</td>
+                        <td>"지문 내 논리 기반 여부"가 판단의 기준</td>
+                    </tr>
+                    <tr>
+                        <td><strong>반대/역설적 선지</strong><br>(Contradiction/Irony)</td>
+                        <td>지문 내용과 정확히 반대는 아님<br>‘예외’나 ‘반전’ 표현 주의</td>
+                        <td>not, however, although 등의 반전 어휘 사용</td>
+                        <td>지문의 핵심 주장과 <strong>명확히 충돌</strong></td>
+                        <td>반전 연결어(역접, 전환)에 따라 논리 구조를 파악해야 함</td>
+                    </tr>
+                    <tr>
+                        <td><strong>감정/태도 추론</strong><br>(Tone / Attitude)</td>
+                        <td>단어 선택, 강조 표현 등으로 유추</td>
+                        <td>부정/비판/풍자 어휘<br>강조 부사/형용사 사용</td>
+                        <td>단순 중립적 묘사를 긍정/부정으로 오해</td>
+                        <td>평가 어휘의 긍/부정, 강/약 구분 훈련 필요</td>
+                    </tr>
+                    <tr>
+                        <td><strong>원인-결과 연결</strong><br>(Cause & Effect)</td>
+                        <td>지문 내 인과관계를 재구성</td>
+                        <td>because, due to 등 연결어<br>결과 → 원인 재배열</td>
+                        <td>상관관계를 인과로 착각<br>논리적 연결 부족</td>
+                        <td>원인-결과 구조 확인: 무엇이 <strong>먼저</strong> 나왔는지 확인</td>
+                    </tr>
+                    <tr>
+                        <td><strong>논지 일탈</strong><br>(Out-of-scope)</td>
+                        <td>주제와 밀접한 논리 흐름 유지</td>
+                        <td>핵심 키워드와 연결 유지</td>
+                        <td>지문 내용과 ‘유사’하지만 <strong>핵심 주장과 무관</strong></td>
+                        <td>핵심 주제를 기준으로 선지 연결성 평가</td>
+                    </tr>
+                    <tr>
+                        <td><strong>선지 속 단어/표현 왜곡</strong><br>(Misleading Vocabulary)</td>
+                        <td>단어 선택 신중, 의미 적절</td>
+                        <td>중립/완곡 표현 사용</td>
+                        <td>강조/과장된 표현 삽입<br>비슷한 단어지만 미묘한 차이</td>
+                        <td>단어 하나에 현혹되지 말고 <strong>전체 문맥 의미</strong>를 해석</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">🔍 예시로 이해하면 더 확실!</h2>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>유형</th>
+                        <th>오답 선지 예시</th>
+                        <th>문제점</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>패러프레이징</td>
+                        <td>“The results were <strong>completely different</strong> from expectations.”</td>
+                        <td>‘completely different’은 ‘unexpected’보다 <strong>강도 과장</strong></td>
+                    </tr>
+                    <tr>
+                        <td>과도한 일반화</td>
+                        <td>“<strong>All</strong> urban policies fail without citizen participation.”</td>
+                        <td>지문에서는 ‘some’ 사례만 말했을 뿐, <strong>all</strong>로 일반화는 과함</td>
+                    </tr>
+                    <tr>
+                        <td>감정 추론 오류</td>
+                        <td>“The author shows <strong>enthusiasm</strong> for the theory.”</td>
+                        <td>실제 지문에는 <strong>중립적 설명</strong>만 있었음. 감정 어휘 없음</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">🧠 마무리 전략 요약</h2>
+        <ul class="final-tip-list">
+            <li>지문의 주제, 핵심 논지를 기준으로 선지 전체를 스캔</li>
+            <li><strong>'문장의 외형'보다 '의미의 등가성'</strong>에 초점</li>
+            <li>'지문 내 논리 기반'이 없는 선지는 무조건 탈락</li>
+            <li class="cross">과도한 일반화 / 지엽적 세부사항 / 외삽 / 감정 오독은 대표적인 오답 패턴</li>
+        </ul>
+
+        <div class="section-divider"></div>
+
+        <h2 class="text-2xl font-bold mt-10 mb-6">추가 연결 추천 개념:</h2>
+        <ul class="link-list">
+            <li><strong>영어 독해 관련 문서:</strong>
+                <ul>
+                    <li><a href="app://obsidian.md/%EC%98%81%EC%96%B4%20%EB%8B%A8%EC%96%B4">영어 단어</a></li>
+                    <li><a href="app://obsidian.md/%EC%98%81%EC%96%B4%20%EB%AC%B8%EB%B2%95">영어 문법</a></li>
+                    <li><a href="app://obsidian.md/%EB%8F%85%ED%95%B4%20%EC%9C%A0%ED%98%95">독해 유형</a> (예: <a href="app://obsidian.md/%EC%A3%BC%EC%A0%9C%20%EC%B0%BE%EA%B8%B0">주제 찾기</a>, <a href="app://obsidian.md/%EC%84%B8%EB%B6%80%20%EC%A0%95%EB%B3%B4%20%ED%8C%8C%EC%95%85">세부 정보 파악</a>, <a href="app://obsidian.md/%EC%B6%94%EB%A1%A0%20%EB%AC%B8%EC%A0%9C">추론 문제</a>)</li>
+                    <li><a href="app://obsidian.md/%EC%98%A4%EB%8B%B5%20%EC%9C%A0%ED%98%95">오답 유형</a> (더 세분화된 오답 유형, 예: <a href="app://obsidian.md/%EB%82%B4%EC%9A%A9%20%EC%99%9C%EA%B3%A1">내용 왜곡</a>, <a href="app://obsidian.md/%EB%B2%94%EC%9C%84%20%EC%98%A4%EB%A5%98">범위 오류</a>)</li>
+                    <li><a href="app://obsidian.md/%EC%88%98%EB%8A%A5%20%EC%98%81%EC%96%B4">수능 영어</a></li>
+                    <li><a href="app://obsidian.md/%EC%98%81%EC%96%B4%20%ED%95%99%EC%8A%B5%EB%B2%95">영어 학습법</a></li>
+                </ul>
+            </li>
+            <li><strong>구두점 관련 문서:</strong>
+                <ul>
+                    <li><a href="app://obsidian.md/%EC%84%B8%EB%AF%B8%EC%BD%9C%EB%A1%A0">세미콜론</a></li>
+                    <li><a href="app://obsidian.md/%EC%BD%9C%EB%A1%A0">콜론</a></li>
+                    <li><a href="app://obsidian.md/%EC%89%BC%ED%91%9C">쉼표</a></li>
+                    <li><a href="app://obsidian.md/%EB%8C%80%EC%8B%9C">대시</a></li>
+                    <li><a href="app://obsidian.md/%EB%AC%B8%EC%9E%A5%20%EA%B5%AC%EC%A1%B0">문장 구조</a></li>
+                    <li><a href="app://obsidian.md/%EC%9D%98%EB%AF%B8%20%EB%8B%A8%EC%84%9C">의미 단서</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전치사 마스터 가이드: 관계의 미학 (v1.0 - 본론 포함)</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            line-height: 2.0;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #212529;
+        }
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            border: 1px solid #dee2e6;
+        }
+        h1, h2, h3, h4, h5 {
+            color: #003366; /* 깊고 신뢰감 있는 네이비 블루 */
+            font-weight: 700;
+            letter-spacing: -0.03em;
+        }
+        h1 {
+            text-align: center;
+            color: #004d40; /* 차분하고 깊은 청록색 */
+            border-bottom: 5px solid #00796b;
+            padding-bottom: 28px;
+            margin-bottom: 55px;
+            font-size: 2.9em;
+        }
+        h2 {
+            color: #005a9c; /* 선명한 파란색 */
+            margin-top: 70px;
+            border-left: 10px solid #0288d1; /* 밝은 파랑 */
+            padding-left: 25px;
+            font-size: 2.3em;
+            margin-bottom: 40px;
+        }
+        h3 {
+            color: #ad1457; /* 딥 핑크/마젠타 */
+            margin-top: 55px;
+            font-size: 1.9em;
+            margin-bottom: 28px;
+            padding-bottom: 12px;
+            border-bottom: 2px dotted #f48fb1; /* 연한 핑크 점선 */
+        }
+        h4 {
+            color: #4a148c; /* 딥 퍼플 */
+            font-size: 1.6em;
+            margin-top: 38px;
+            font-weight: 600;
+        }
+        h5 { /* 추가된 소제목 스타일 */
+            color: #00695c; /* 청록색 계열 */
+            font-size: 1.3em;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 24px;
+            color: #2d3748; /* 차콜 그레이 */
+            font-size: 1.15em;
+        }
+        ul, ol {
+            list-style-position: outside;
+            padding-left: 30px;
+        }
+        ul li, ol li {
+            background-color: #f8fafc; /* 매우 연한 하늘색/회색 */
+            margin-bottom: 18px;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 7px solid #6d28d9; /* 바이올렛 */
+            transition: box-shadow 0.25s ease, transform 0.2s ease;
+        }
+        ul li:hover, ol li:hover {
+            box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+            transform: translateY(-3px);
+        }
+        ul li strong, ol li strong {
+            color: #4c1d95; /* 더 진한 바이올렛 */
+        }
+        code, .code-inline {
+            background-color: #eef2ff; /* 연한 인디고 배경 */
+            color: #3730a3; /* 인디고 텍스트 */
+            padding: 6px 10px;
+            border-radius: 7px;
+            font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-weight: 500;
+            font-size: 1.02em;
+            border: 1px solid #c7d2fe; /* 인디고 테두리 */
+        }
+        .example {
+            font-style: normal;
+            color: #334155; /* 슬레이트 그레이 */
+            margin-left: 0;
+            padding: 15px 22px;
+            border-left: 5px solid #94a3b8; /* 밝은 슬레이트 테두리 */
+            margin-bottom: 20px;
+            background-color: #f1f5f9; /* 매우 연한 슬레이트 배경 */
+            border-radius: 8px;
+        }
+        .example-label {
+            font-weight: bold;
+            color: #1e40af; /* 진한 파랑 */
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .highlight {
+            background-color: #fef3c7; /* 연한 앰버 */
+            color: #78350f; /* 어두운 앰버 */
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        .keyword {
+            color: #047857; /* 에메랄드 그린 (진하게) */
+            font-weight: bold;
+            border-bottom: 2px dotted #34d399; /* 밝은 에메랄드 점선 */
+        }
+        .definition-box, .intro-box, .summary-box, .philosophical-deep-dive, .linguistic-deep-dive, .preposition-analysis-box {
+            background-color: #fffaf0; /* 매우 연한 오렌지/크림 */
+            padding: 35px;
+            border-left: 10px solid #f59e0b; /* 호박색 */
+            border-radius: 15px;
+            margin-bottom: 50px;
+        }
+        .philosophical-deep-dive { background-color: #fdf4ff; border-left-color: #c026d3; } /* 마젠타 계열 */
+        .linguistic-deep-dive { background-color: #f0f9ff; border-left-color: #0284c7; } /* 하늘색 계열 */
+        .preposition-analysis-box { background-color: #f0fdfa; border-left-color: #14b8a6; } /* 틸/청록 계열 */
+
+        .summary-box h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #fcd34d; /* 밝은 노랑 */
+            color: #b45309; /* 다크 오렌지/브라운 */
+        }
+        .key-concept-box {
+            background-color: #ecfdf5; /* 매우 연한 녹색 */
+            border: 2px dashed #34d399; /* 밝은 녹색 점선 */
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 12px;
+        }
+        .key-concept-box h4 {
+            margin-top:0;
+            color: #065f46; /* 진한 녹색 */
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 40px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #d1d5db; /* 중간 회색 테두리 */
+            padding: 18px 24px; /* 셀 패딩 증가 */
+            text-align: left;
+            font-size: 1.1em;
+        }
+        .comparison-table th {
+            background-color: #1f2937; /* 매우 어두운 차콜 (거의 검정) */
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table td code {
+            font-size: 0.95em;
+            padding: 4px 8px;
+        }
+        .comparison-table tr:nth-child(even) td {
+            background-color: #f9fafb;
+        }
+        .comparison-table tr:hover td {
+            background-color: #f0f9ff; /* 호버 시 연한 하늘색 */
+        }
+        .note, .tip-box, .cognitive-box {
+            font-size: 1.08em;
+            color: #334155;
+            margin-top: 15px;
+            padding: 20px;
+            background-color: #f1f5f9;
+            border-radius: 10px;
+            border-left: 7px solid #94a3b8;
+        }
+        .tip-box {
+            background-color: #e0f2f1;
+            border-left-color: #26a69a;
+        }
+        .cognitive-box {
+            background-color: #f3e5f5; /* 연한 보라 */
+            border-left-color: #ab47bc;
+        }
+        .section-intro {
+            font-size: 1.22em;
+            color: #334155;
+            margin-bottom: 35px;
+            padding: 28px;
+            background-color: #f8fafc;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        .conclusion {
+            margin-top: 45px;
+            padding: 25px;
+            background-color: #e0f2f1;
+            border-left: 6px solid #26a69a;
+            border-radius: 10px;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 40px auto; /* 가운데 정렬 */
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .container { width: 95%; padding: 25px 15px; }
+            h1 { font-size: 2.4em; }
+            h2 { font-size: 2.0em; }
+            h3 { font-size: 1.7em; }
+            p, ul li, ol li { font-size: 1.05em; }
+            .comparison-table th, .comparison-table td { padding: 12px 14px; font-size: 0.98em; }
+            .example { padding: 12px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span style="font-size: 1.2em;">🧭</span> 전치사 마스터 가이드: 관계의 미학, 의미의 나침반 <small style="font-size:0.4em; color:#52525b;">(v1.0)</small> 🧭</h1>
+
+        <section id="intro-to-prepositions">
+            <h2>I. 전치사, 문장의 숨은 건축가이자 의미의 나침반</h2>
+            <p class="section-intro">
+                우리가 사용하는 언어는 단순히 개별 단어들의 집합이 아닙니다. 단어와 단어가 모여 문장을 이루고, 문장들이 모여 하나의 의미 있는 담화를 형성하기까지, 그 사이사이에는 보이지 않는 끈들이 존재하며 각 요소를 정교하게 연결하고 관계 짓습니다. 영어에서 이 중요한 연결고리 역할을 하는 핵심적인 품사 중 하나가 바로 <strong class="keyword">전치사(Preposition)</strong>입니다.
+            </p>
+            <p>
+                흔히 작고 사소하게 여겨지기 쉬운 전치사들이지만, 이들은 문장이라는 건축물에서 시멘트와 같이 단어들을 견고하게 이어주고, 나아가 문장이 가리키는 세계의 <span class="highlight">공간적, 시간적, 논리적, 그리고 추상적인 관계망을 직조하는 정교한 건축가</span>와 같습니다. 또한, 전치사는 우리가 나아가야 할 의미의 방향을 알려주는 <strong class="keyword">나침반</strong>처럼, 문맥 속에서 명사구가 어떤 역할을 하고 다른 요소들과 어떤 관계를 맺는지 명확하게 안내합니다.
+            </p>
+            <p>
+                이 가이드의 서론에서는, 많은 영어 학습자들이 어려움을 느끼는 전치사에 대해 새로운 관점을 제시하고자 합니다. 단순한 암기 대상을 넘어, 전치사가 어떻게 인간의 기본적인 세계 인식 방식과 맞닿아 있는지, 그리고 왜 이 작은 단어들이 영어의 정확성과 풍부함을 결정짓는 핵심 열쇠인지를 철학적, 인지언어학적 배경을 통해 심층적으로 탐구할 것입니다.
+            </p>
+
+            <h3>1. 전치사의 본질적 역할: 단순한 '앞에 놓임'을 넘어서</h3>
+            <div class="definition-box">
+                <p><strong>전치사(Preposition)</strong>는 그 이름('앞(pre)에 놓인다(position)')에서 알 수 있듯 주로 명사 또는 대명사 앞에 위치하여 <strong class="keyword">전치사구(prepositional phrase)</strong>를 형성합니다. 이 전치사구는 문장 내에서 형용사구나 부사구처럼 기능하며, 명사구를 다른 문장 성분(동사, 형용사, 다른 명사)과 연결하여 다음과 같은 <span class="highlight">다층적인 의미 관계</span>를 명시합니다:</p>
+                <ul>
+                    <li><strong>공간적 관계:</strong> `The cat is <strong style="color:#0288d1;">under</strong> the table.` (고양이가 탁자 <span class="keyword">아래에</span> 있다.)</li>
+                    <li><strong>시간적 관계:</strong> `We will meet <strong style="color:#0288d1;">after</strong> lunch.` (우리는 점심 식사 <span class="keyword">후에</span> 만날 것이다.)</li>
+                    <li><strong>방향성:</strong> `She walked <strong style="color:#0288d1;">towards</strong> the exit.` (그녀는 출구 <span class="keyword">쪽으로</span> 걸어갔다.)</li>
+                    <li><strong>소유/부분:</strong> `The color <strong style="color:#0288d1;">of</strong> the sky is blue.` (하늘<span class="keyword">의</span> 색은 파랗다.)</li>
+                    <li><strong>원인/이유:</strong> `The game was cancelled <strong style="color:#0288d1;">due to</strong> heavy rain.` (폭우<span class="keyword">로 인해</span> 경기가 취소되었다.)</li>
+                    <li><strong>수단/방법:</strong> `He contacted me <strong style="color:#0288d1;">by</strong> email.` (그는 이메일<span class="keyword">로</span> 나에게 연락했다.)</li>
+                    <li><strong>추상적 관계:</strong> `She has a strong belief <strong style="color:#0288d1;">in</strong> justice.` (그녀는 정의<span class="keyword">에 대한</span> 강한 신념을 가지고 있다.)</li>
+                </ul>
+                <p>이처럼 전치사는 문장에 정교함과 구체성을 부여하며, 우리가 전달하고자 하는 메시지의 미묘한 뉘앙스를 살려내는 데 결정적인 역할을 합니다. 전치사 하나가 바뀜으로써 문장 전체의 의미가 달라질 수 있을 만큼 그 영향력은 강력합니다.</p>
+            </div>
+
+            <h3>2. 전치사와 인간의 인지: 세계를 이해하는 틀의 반영</h3>
+            <p>전치사의 사용은 단순히 언어적 규칙을 따르는 것을 넘어, 인간이 세상을 인지하고 경험을 구조화하는 방식과 깊이 관련되어 있습니다. 특히 공간과 시간에 대한 우리의 기본적인 이해가 전치사 체계에 큰 영향을 미칩니다.</p>
+
+            <div class="philosophical-deep-dive">
+                <h4>가. 공간 인지의 우선성 (Primacy of Spatial Cognition)</h4>
+                <p>인간의 인지 발달 과정에서 공간에 대한 이해는 가장 기본적인 능력 중 하나입니다. 우리는 태어나면서부터 주변 환경과의 물리적 상호작용을 통해 '안(in)', '위(on)', '아래(under)', '옆(beside)', '사이(between)'와 같은 공간 관계를 체득합니다. 이러한 기본적인 공간 개념들은 많은 언어에서 전치사(또는 그에 상응하는 문법적 장치)의 핵심 의미를 형성하며, 나아가 더 추상적인 의미로 확장되는 기반이 됩니다.</p>
+                <ul>
+                    <li>
+                        <strong><code class="code-inline">in</code> (내부, 포함):</strong>
+                        <p class="example"><span class="example-label">물리적 공간:</span> "The keys are <strong class="keyword">in</strong> the drawer." (열쇠는 서랍 <span style="color:blue;">안에</span> 있다.)</p>
+                        <p class="example"><span class="example-label">시간적 범위:</span> "My birthday is <strong class="keyword">in</strong> July." (내 생일은 7월<span style="color:blue;">에</span> 있다.)</p>
+                        <p class="example"><span class="example-label">추상적 상태/상황:</span> "She is <strong class="keyword">in</strong> a difficult situation." (그녀는 어려운 상황<span style="color:blue;">에</span> 처해 있다.)</p>
+                        <p class="example"><span class="example-label">분야/영역:</span> "He works <strong class="keyword">in</strong> finance." (그는 금융 분야<span style="color:blue;">에서</span> 일한다.)</p>
+                    </li>
+                    <li>
+                        <strong><code class="code-inline">on</code> (표면 접촉, 기반):</strong>
+                        <p class="example"><span class="example-label">물리적 표면:</span> "The painting is <strong class="keyword">on</strong> the wall." (그 그림은 벽<span style="color:blue;">에</span> 걸려 있다.)</p>
+                        <p class="example"><span class="example-label">특정 날짜/요일:</span> "The meeting is <strong class="keyword">on</strong> Friday." (회의는 금요일<span style="color:blue;">에</span> 있다.)</p>
+                        <p class="example"><span class="example-label">주제/관련성:</span> "She wrote a book <strong class="keyword">on</strong> Korean history." (그녀는 한국 역사<span style="color:blue;">에 관한</span> 책을 썼다.)</p>
+                        <p class="example"><span class="example-label">의존/기반:</span> "The decision was based <strong class="keyword">on</strong> the evidence." (그 결정은 증거<span style="color:blue;">에</span> 기반했다.)</p>
+                    </li>
+                </ul>
+                <p>이처럼, 구체적인 공간 관계를 나타내는 전치사의 의미가 확장되어 시간, 상태, 주제 등 더 추상적인 영역에서도 사용되는 것은 인간의 인지 방식이 언어에 반영된 결과로 볼 수 있습니다.</p>
+            </div>
+
+            <div class="linguistic-deep-dive">
+                <h4>나. 개념적 은유 이론 (Conceptual Metaphor Theory)과 전치사</h4>
+                <p>인지언어학자 조지 레이코프(George Lakoff)와 마크 존슨(Mark Johnson)이 제시한 <strong class="keyword">개념적 은유 이론</strong>은 우리가 추상적인 개념을 이해하고 표현할 때, 보다 구체적이고 경험적인 개념(주로 공간적, 신체적 경험)을 빌려와 사용하는 인지 기제를 설명합니다. 전치사는 이러한 개념적 은유를 언어적으로 실현하는 데 매우 중요한 역할을 합니다.</p>
+                <p><strong>시간의 공간적 은유 (TIME IS SPACE Metaphor):</strong></p>
+                <p>우리는 시간을 마치 공간처럼 인식하고 표현하는 경향이 있습니다. 예를 들어, 미래는 우리 '앞에' 있고, 과거는 우리 '뒤에' 있다고 생각하며, 시간의 흐름을 공간을 '통과하는' 것으로 묘사합니다.</p>
+                <ul>
+                    <li><code class="code-inline">in</code>: "I'll see you <strong class="keyword">in</strong> an hour." (한 시간 <span style="color:blue;">안에/후에</span> - 시간을 하나의 '기간'이라는 공간으로 봄)
+                        <p class="example"><span class="example-label">일상:</span> "The project needs to be completed <strong class="keyword">in</strong> three weeks."</p>
+                    </li>
+                    <li><code class="code-inline">at</code>: "The train arrives <strong class="keyword">at</strong> 3:00 PM." (오후 3시<span style="color:blue;">라는 특정 시점</span> - 시간을 '점'으로 인식)
+                        <p class="example"><span class="example-label">일상:</span> "Let's meet <strong class="keyword">at</strong> the usual time."</p>
+                    </li>
+                    <li><code class="code-inline">on</code>: "My birthday is <strong class="keyword">on</strong> October 26th." (10월 26일<span style="color:blue;">이라는 특정 날짜</span> - 시간을 '달력 위의 한 칸'처럼 표면으로 인식)
+                        <p class="example"><span class="example-label">일상:</span> "The store is closed <strong class="keyword">on</strong> Sundays."</p>
+                    </li>
+                    <li><code class="code-inline">before</code> / <code class="code-inline">after</code>: "Please arrive <strong class="keyword">before</strong> the ceremony begins." / "We went for a walk <strong class="keyword">after</strong> dinner." (시간적 순서를 공간적 앞/뒤 관계로 은유)</li>
+                    <li><code class="code-inline">throughout</code>: "The museum is open <strong class="keyword">throughout</strong> the year." (일 년 <span style="color:blue;">내내</span> - 시간을 하나의 '기간'이라는 공간을 통과하는 것으로 은유)</li>
+                </ul>
+
+                <p><strong>기타 개념적 은유와 전치사 예시:</strong></p>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>개념적 은유 (Conceptual Metaphor)</th>
+                            <th>설명</th>
+                            <th>전치사 활용 예시</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>ARGUMENT IS WAR<br>(논쟁은 전쟁이다)</td>
+                            <td>논쟁을 공격, 방어, 승리, 패배 등의 전쟁 용어로 표현</td>
+                            <td>
+                                <p class="example">"He <span style="color:purple;">attacked</span> every weak point <strong class="keyword">in</strong> my argument."</p>
+                                <p class="example">"Her criticisms were right <strong class="keyword">on</strong> target."</p>
+                                <p class="example">"They <span style="color:purple;">shot down</span> all of my arguments."</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>THEORIES ARE BUILDINGS<br>(이론은 건물이다)</td>
+                            <td>이론을 기초, 구조, 붕괴 등의 건물 용어로 표현</td>
+                            <td>
+                                <p class="example">"The theory is built <strong class="keyword">on</strong> a solid foundation of evidence."</p>
+                                <p class="example">"There are some cracks <strong class="keyword">in</strong> his argument."</p>
+                                <p class="example">"We need to <span style="color:purple;">construct</span> a new framework <strong class="keyword">for</strong> this theory."</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>LOVE IS A JOURNEY<br>(사랑은 여정이다)</td>
+                            <td>사랑 관계를 시작, 과정, 장애물, 목적지 등의 여정 용어로 표현</td>
+                            <td>
+                                <p class="example">"We're at a crossroads <strong class="keyword">in</strong> our relationship."</p>
+                                <p class="example">"They've come a long way <strong class="keyword">together</strong>." (together는 부사지만, 여정의 동반자 개념)</p>
+                                <p class="example">"Their marriage is <strong class="keyword">on</strong> the rocks."</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>STATUS IS UP<br>(지위는 위이다)</td>
+                            <td>사회적 지위나 권력의 높낮이를 공간적 위/아래로 표현</td>
+                            <td>
+                                <p class="example">"She is <strong class="keyword">at</strong> the top of her profession."</p>
+                                <p class="example">"He holds a high position <strong class="keyword">in</strong> the company."</p>
+                                <p class="example">"He is <strong class="keyword">under</strong> her in the hierarchy."</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>이처럼 전치사는 우리가 추상적인 세계를 이해하고 표현하는 데 있어 핵심적인 역할을 수행하며, 우리의 사고방식이 언어에 어떻게 투영되는지를 보여줍니다.</p>
+            </div>
+
+            <div class="cognitive-box">
+                <h4>다. 이미지 스키마 (Image Schema)와 전치사의 핵심 의미</h4>
+                <p>이미지 스키마는 반복적인 신체적 경험을 통해 형성되는 매우 기본적인 수준의 개념적 구조입니다. 예를 들어, '용기(CONTAINER)', '표면(SURFACE)', '경로(PATH)', '연결(LINK)', '출발점-경로-도착점(SOURCE-PATH-GOAL)'과 같은 이미지 스키마는 많은 전치사들의 핵심 의미를 이루며, 이 핵심 의미가 다양한 문맥으로 확장되어 다의성을 갖게 됩니다.</p>
+                <div class="mermaid">
+                graph LR
+                    A[신체적 경험] --> B(이미지 스키마);
+                    B --> C[CONTAINER<br>(in, into, out of)];
+                    B --> D[SURFACE<br>(on, onto, off)];
+                    B --> E[PATH<br>(through, across, along)];
+                    B --> F[SOURCE-PATH-GOAL<br>(from, to, towards)];
+                    C --> G[물리적: in a box];
+                    C --> H[추상적: in trouble];
+                    D --> I[물리적: on a table];
+                    D --> J[추상적: on a topic];
+                    
+                    classDef default fill:#fff,stroke:#333,stroke-width:2px;
+                    classDef schema fill:#e0f7fa,stroke:#00796b,stroke-width:2px;
+                    classDef example fill:#e8eaf6,stroke:#3f51b5,stroke-width:1px;
+                    class B,C,D,E,F schema;
+                    class G,H,I,J example;
+                </div>
+                <ul>
+                    <li><strong>CONTAINER (용기):</strong> <code class="code-inline">in</code>, <code class="code-inline">into</code>, <code class="code-inline">out of</code>
+                        <p class="example">"The milk is <strong class="keyword">in</strong> the fridge." (물리적 용기)</p>
+                        <p class="example">"She got <strong class="keyword">into</strong> trouble." (추상적 상황이라는 용기)</p>
+                    </li>
+                    <li><strong>SURFACE (표면):</strong> <code class="code-inline">on</code>, <code class="code-inline">onto</code>, <code class="code-inline">off</code>
+                        <p class="example">"The keys are <strong class="keyword">on</strong> the table." (물리적 표면)</p>
+                        <p class="example">"The discussion is <strong class="keyword">on</strong> a new topic." (주제라는 추상적 표면)</p>
+                    </li>
+                    <li><strong>PATH (경로):</strong> <code class="code-inline">through</code>, <code class="code-inline">across</code>, <code class="code-inline">along</code>
+                        <p class="example">"We walked <strong class="keyword">through</strong> the forest." (숲이라는 경로를 통과)</p>
+                        <p class="example">"He swam <strong class="keyword">across</strong> the river." (강을 가로지르는 경로)</p>
+                    </li>
+                    <li><strong>SOURCE-PATH-GOAL (출발-경로-도착):</strong> <code class="code-inline">from X to Y</code>, <code class="code-inline">towards Z</code>
+                        <p class="example">"She traveled <strong class="keyword">from</strong> Seoul <strong class="keyword">to</strong> Busan." (출발점과 도착점)</p>
+                        <p class="example">"The company is moving <strong class="keyword">towards</strong> a more sustainable model." (지속 가능한 모델이라는 목표를 향해)</p>
+                    </li>
+                </ul>
+                <p>각 전치사가 가진 핵심적인 이미지 스키마를 이해하면, 그 전치사의 다양한 용법들을 보다 체계적으로 파악하고 기억하는 데 도움이 됩니다.</p>
+            </div>
+
+            <h3>3. 왜 전치사가 어려운가? (특히 한국인 학습자에게)</h3>
+            <div class="key-concept-box">
+                <h4>전치사 학습의 도전 과제</h4>
+                <ol>
+                    <li><strong>한국어 조사와의 불일치:</strong> 한국어의 조사는 격(case)을 표시하는 기능이 강한 반면, 영어의 전치사는 주로 관계(relation)를 나타냅니다. 이로 인해 일대일 대응이 어려워 직역 시 어색한 표현이 나오기 쉽습니다.
+                        <p class="example">"학교<span style="color:red;">에</span> 가다" → "go <strong class="keyword">to</strong> school" (방향) vs. "학교<span style="color:red;">에서</span> 공부하다" → "study <strong class="keyword">at</strong> school" (장소)</p>
+                        <p class="example">한국적 맥락: "친구<span style="color:red;">에게</span> 선물을 주다" (give a gift <strong class="keyword">to</strong> a friend) vs. "친구<span style="color:red;">와</span> 이야기하다" (talk <strong class="keyword">with/to</strong> a friend) - 한국어 '에게'가 영어에서는 상황에 따라 다른 전치사로 표현될 수 있습니다.</p>
+                    </li>
+                    <li><strong>다의성 (Polysemy):</strong> 하나의 전치사가 문맥에 따라 매우 다양한 의미와 기능을 가집니다. (예: <code class="code-inline">on</code> - 위에, ~에 관하여, 계속하여, 특정 날짜에 등) 이는 핵심 이미지 스키마에서 다양한 개념적 은유를 통해 의미가 확장되기 때문입니다.</li>
+                    <li><strong>관용적 표현 (Idioms & Collocations):</strong> 특정 동사, 형용사, 명사와 결합하여 고유한 의미를 형성하는 관용구가 많아 개별적으로 익혀야 합니다. (예: <code class="code-inline">depend on</code>, <code class="code-inline">look forward to</code>, <code class="code-inline">in spite of</code>, <code class="code-inline">by heart</code>)</li>
+                    <li><strong>미묘한 뉘앙스 차이:</strong> 의미가 유사해 보이는 전치사들 사이에도 미묘한 뉘앙스 차이가 존재하여 구분하기 어렵습니다. (예: <code class="code-inline">over</code> vs. <code class="code-inline">above</code>, <code class="code-inline">in time</code> vs. <code class="code-inline">on time</code>, <code class="code-inline">due to</code> vs. <code class="code-inline">because of</code>)</li>
+                    <li><strong>인지적 기반의 차이:</strong> 앞서 설명한 공간, 시간, 추상적 관계를 개념화하고 언어적으로 표현하는 방식이 모국어와 영어 간에 다를 수 있어 직관적인 이해가 어려울 수 있습니다.</li>
+                </ol>
+            </div>
+
+            <h3>4. 전치사 학습의 새로운 접근법: 이해를 통한 정복</h3>
+            <div class="tip-box">
+                <p>전치사 학습은 단순한 암기의 반복이 되어서는 안 됩니다. 보다 효과적인 학습을 위해 다음과 같은 접근법을 제안합니다:</p>
+                <ul>
+                    <li><strong>핵심 이미지와 개념적 기능 이해:</strong> 각 전치사가 가진 기본적인 공간적 이미지나 핵심 기능을 먼저 파악하고, 그것이 어떻게 다양한 의미로 확장되는지 이해하려고 노력합니다. (예: <code class="code-inline">in</code>은 '3차원 공간 내부', <code class="code-inline">on</code>은 '2차원 표면 접촉', <code class="code-inline">at</code>은 '특정 지점'이라는 핵심 이미지를 기억하세요.)</li>
+                    <li><strong>문맥 중심 학습 (Context is King):</strong> 전치사를 단독으로 외우기보다는, 실제 문장이나 구(phrase) 안에서 어떤 단어들과 함께 쓰이며 어떤 관계를 나타내는지 <span class="highlight">문맥 속에서 학습</span>합니다.</li>
+                    <li><strong>Collocation과 패턴 인식:</strong> 자주 함께 쓰이는 동사+전치사, 형용사+전치사, 명사+전치사 조합을 하나의 덩어리(chunk)로 익힙니다. (예: <code class="code-inline">rely on</code>, <code class="code-inline">fond of</code>, <code class="code-inline">solution to</code>)</li>
+                    <li><strong>능동적인 관찰과 비교:</strong> 다양한 영어 텍스트(책, 뉴스, 영화 대본 등)를 접하면서 전치사가 어떻게 사용되는지 관찰하고, 유사한 의미의 전치사들이 어떻게 다르게 쓰이는지 비교 분석합니다.</li>
+                    <li><strong>오류를 통한 학습:</strong> 자신이 자주 틀리는 전치사 사용을 기록하고, 왜 그런 실수를 했는지 원인을 파악하여 교정해나갑니다. 원어민의 피드백을 받는 것도 좋은 방법입니다.</li>
+                    <li><strong>시각화 활용:</strong> 전치사의 공간적 의미를 그림이나 다이어그램으로 그려보거나, 마인드맵을 활용하여 다의적인 의미를 정리하는 것도 도움이 됩니다.</li>
+                </ul>
+                <p>전치사는 영어라는 언어가 세계를 바라보고 관계를 맺는 방식을 담고 있는 중요한 창입니다. 이 창을 통해 영어의 깊은 구조와 뉘앙스를 이해할 때, 비로소 우리는 전치사를 정복하고 더욱 풍부하고 정확한 영어 표현을 구사할 수 있게 될 것입니다.</p>
+            </div>
+
+            <p class="section-intro" style="margin-top:40px; background-color: #e0f2f1; border-left: 5px solid #00796b;">
+                지금까지 우리는 전치사의 본질적인 역할과 그 이면에 있는 인간의 인지 방식, 그리고 학습의 어려움과 새로운 접근법에 대해 심층적으로 살펴보았습니다. 이러한 이해를 바탕으로, 다음 섹션부터는 <strong class="keyword">Part 1: 전치사의 기본 개념과 종류</strong>, <strong class="keyword">Part 2: 핵심 전치사 심층 분석</strong>, <strong class="keyword">Part 3: 전치사구의 역할과 문장 내 위치</strong>, 그리고 <strong class="keyword">Part 4: 전치사 학습을 위한 구체적인 팁과 전략</strong>으로 이어지는 본론을 통해 전치사 마스터의 여정을 계속하겠습니다.
+            </p>
+        </section>
+
+        <!-- ======================================================================================================================= -->
+        <!-- =======================================  본론 시작 (Part 1 ~ Part 4)  ======================================= -->
+        <!-- ======================================================================================================================= -->
+
+        <section id="preposition-basics">
+            <h2>II. Part 1: 전치사의 기본 개념과 종류 📖</h2>
+            <p class="section-intro">본격적으로 개별 전치사를 탐구하기에 앞서, 전치사의 기본적인 문법적 정의와 기능을 다시 한번 확인하고, 의미와 기능에 따라 전치사를 어떻게 분류할 수 있는지 살펴보겠습니다. 이는 앞으로 학습할 내용을 체계적으로 이해하는 데 도움이 될 것입니다.</p>
+
+            <h3>1. 전치사의 정의 및 기본 기능</h3>
+            <div class="definition-box" style="border-left-color: #0288d1; background-color: #e1f5fe;">
+                <p><strong>전치사 (Preposition)</strong>는 주로 <span class="highlight">명사, 대명사, 또는 명사구 앞에 위치</span>하여, 이 명사(구)가 문장 내 다른 단어(주로 동사, 형용사, 또는 다른 명사)와 맺는 <span class="highlight">관계</span>를 나타내는 단어입니다.</p>
+                <p>전치사는 그 자체로 완전한 의미를 갖기보다는, 뒤따르는 <strong class="keyword">목적어(object of the preposition)</strong>와 결합하여 <strong class="keyword">전치사구(prepositional phrase)</strong>를 이룹니다. 이 전치사구는 문장 내에서 주로 <strong class="highlight">형용사구</strong>나 <strong class="highlight">부사구</strong>의 역할을 수행합니다.</p>
+                <ul>
+                    <li><strong>형용사구 역할:</strong> 명사를 수식 (예: "The man <code class="code-inline">with the red hat</code> is my uncle.")</li>
+                    <li><strong>부사구 역할:</strong> 동사, 형용사, 또는 다른 부사를 수식하며 시간, 장소, 방법, 이유 등을 나타냄 (예: "She sings <code class="code-inline">with passion</code>." / "He arrived <code class="code-inline">in the morning</code>.")</li>
+                </ul>
+            </div>
+
+            <h3>2. 전치사의 주요 종류 (의미/기능별 분류)</h3>
+            <p>전치사는 그 의미와 기능에 따라 다양하게 분류될 수 있습니다. 하나의 전치사가 여러 카테고리에 속할 수도 있습니다.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>종류</th>
+                        <th>설명</th>
+                        <th>대표 전치사</th>
+                        <th>간단 예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="grammar-term">시간 전치사</span> (Prepositions of Time)</td>
+                        <td>시간적 관계 (특정 시점, 기간, 순서 등)를 나타냅니다.</td>
+                        <td><code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>, <code class="code-inline">for</code>, <code class="code-inline">during</code>, <code class="code-inline">since</code>, <code class="code-inline">until/till</code>, <code class="code-inline">by</code>, <code class="code-inline">from...to/until</code>, <code class="code-inline">before</code>, <code class="code-inline">after</code>, <code class="code-inline">within</code>, <code class="code-inline">throughout</code>, <code class="code-inline">past</code>, <code class="code-inline">to</code> (시간)</td>
+                        <td>"See you <strong class="keyword">at</strong> 5 o'clock <strong class="keyword">on</strong> Monday <strong class="keyword">in</strong> the afternoon."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">장소/위치 전치사</span> (Prepositions of Place/Location)</td>
+                        <td>공간적 위치나 장소를 나타냅니다.</td>
+                        <td><code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>, <code class="code-inline">under</code>, <code class="code-inline">over</code>, <code class="code-inline">above</code>, <code class="code-inline">below</code>, <code class="code-inline">behind</code>, <code class="code-inline">in front of</code>, <code class="code-inline">near</code>, <code class="code-inline">next to/beside</code>, <code class="code-inline">between</code>, <code class="code-inline">among</code>, <code class="code-inline">opposite</code>, <code class="code-inline">around</code>, <code class="code-inline">inside</code>, <code class="code-inline">outside</code></td>
+                        <td>"The cat is sleeping <strong class="keyword">under</strong> the table <strong class="keyword">in</strong> the kitchen."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">방향/이동 전치사</span> (Prepositions of Direction/Movement)</td>
+                        <td>움직임의 방향이나 경로를 나타냅니다.</td>
+                        <td><code class="code-inline">to</code>, <code class="code-inline">from</code>, <code class="code-inline">into</code>, <code class="code-inline">out of</code>, <code class="code-inline">onto</code>, <code class="code-inline">off</code>, <code class="code-inline">up</code>, <code class="code-inline">down</code>, <code class="code-inline">across</code>, <code class="code-inline">along</code>, <code class="code-inline">through</code>, <code class="code-inline">towards</code>, <code class="code-inline">away from</code>, <code class="code-inline">over</code> (넘어서), <code class="code-inline">past</code> (지나서)</td>
+                        <td>"He walked <strong class="keyword">across</strong> the bridge <strong class="keyword">towards</strong> the city."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">수단/방법 전치사</span> (Prepositions of Manner/Instrument)</td>
+                        <td>어떤 일이 이루어지는 방식이나 사용되는 도구를 나타냅니다.</td>
+                        <td><code class="code-inline">by</code> (교통수단, 통신수단, 행위자), <code class="code-inline">with</code> (도구, 동반), <code class="code-inline">through</code> (과정, 수단), <code class="code-inline">in</code> (방식 - in cash, in writing), <code class="code-inline">on</code> (수단 - on foot, on the phone)</td>
+                        <td>"She paid <strong class="keyword">by</strong> credit card." / "He fixed it <strong class="keyword">with</strong> a hammer."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">원인/이유 전치사</span> (Prepositions of Cause/Reason)</td>
+                        <td>어떤 일의 원인이나 이유를 나타냅니다.</td>
+                        <td><code class="code-inline">because of</code>, <code class="code-inline">due to</code>, <code class="code-inline">owing to</code>, <code class="code-inline">on account of</code>, <code class="code-inline">thanks to</code>, <code class="code-inline">for</code> (이유), <code class="code-inline">from</code> (결과), <code class="code-inline">out of</code> (감정의 원인)</td>
+                        <td>"The flight was delayed <strong class="keyword">due to</strong> bad weather."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">목적 전치사</span> (Prepositions of Purpose)</td>
+                        <td>행동의 목적이나 의도를 나타냅니다.</td>
+                        <td><code class="code-inline">for</code>, <code class="code-inline">to</code> (동사원형과 함께 쓰여 목적을 나타내는 to부정사와는 구분)</td>
+                        <td>"She went to the store <strong class="keyword">for</strong> some milk." / "This tool is <strong class="keyword">for</strong> cutting paper."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">관계/소유/소재 전치사</span> (Prepositions of Relation/Possession/Material)</td>
+                        <td>두 명사 간의 관계, 소유, 구성 물질 등을 나타냅니다.</td>
+                        <td><code class="code-inline">of</code> (소유, 부분, 동격, 기원, 재료 등), <code class="code-inline">with</code> (소유, 특징), <code class="code-inline">about/on/concerning/regarding</code> (주제, 관련)</td>
+                        <td>"The cover <strong class="keyword">of</strong> the book." / "A man <strong class="keyword">with</strong> blue eyes." / "A discussion <strong class="keyword">about</strong> politics."</td>
+                    </tr>
+                    <tr>
+                        <td><span class="grammar-term">기타 주요 전치사</span></td>
+                        <td>위 분류 외에도 다양한 관계를 나타내는 전치사들.</td>
+                        <td><code class="code-inline">like</code> (~처럼), <code class="code-inline">as</code> (~로서), <code class="code-inline">than</code> (비교), <code class="code-inline">except (for)</code> (~을 제외하고), <code class="code-inline">without</code> (~없이), <code class="code-inline">against</code> (~에 반대하여, ~에 기대어)</td>
+                        <td>"He works <strong class="keyword">as</strong> a teacher." / "Everyone came <strong class="keyword">except</strong> John."</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">이 분류는 절대적인 것이 아니며, 많은 전치사들이 여러 카테고리에 걸쳐 다양한 의미로 사용될 수 있습니다. 중요한 것은 각 전치사가 문맥 속에서 어떤 <span class="highlight">관계</span>를 나타내는지 파악하는 것입니다.</p>
+        </section>
+
+        <section id="core-prepositions-analysis">
+            <h2>III. Part 2: 핵심 전치사 심층 분석 🔍 (<code class="code-inline">AT</code>, <code class="code-inline">ON</code>, <code class="code-inline">IN</code> 중심)</h2>
+            <p class="section-intro">가장 기본적이면서도 혼동하기 쉬운 전치사 <code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>을 중심으로, 이들이 시간과 장소 개념에서 어떻게 사용되며, 어떤 핵심 이미지를 가지고 다양한 의미로 확장되는지 심층적으로 분석합니다. 다른 주요 전치사들도 이와 유사한 방식으로 접근할 수 있습니다.</p>
+
+            <div class="cognitive-box">
+                <h4>핵심 이미지로 이해하는 AT, ON, IN</h4>
+                <div class="mermaid">
+                graph LR
+                    subgraph AT [AT - 점(Point)의 이미지]
+                        A1["특정 지점/순간<br>(a specific point in space/time)"]
+                        A2["활동/상태가 일어나는 곳<br>(a point of activity/state)"]
+                    end
+                    subgraph ON [ON - 면(Surface)/선(Line)의 이미지]
+                        B1["표면과의 접촉<br>(contact with a surface)"]
+                        B2["선상의 위치/진행<br>(position on a line/continuation)"]
+                    end
+                    subgraph IN [IN - 공간(Space)/기간(Period)의 이미지]
+                        C1["3차원 공간 내부<br>(enclosed in a space)"]
+                        C2["일정 기간 내부<br>(within a period of time)"]
+                    end
+                    classDef point fill:#ffebee,stroke:#c62828,color:#c62828;
+                    classDef surface fill:#e3f2fd,stroke:#1565c0,color:#1565c0;
+                    classDef space fill:#e8f5e9,stroke:#2e7d32,color:#2e7d32;
+                    class A1,A2 point;
+                    class B1,B2 surface;
+                    class C1,C2 space;
+                </div>
+                <p>위 다이어그램은 <code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>의 핵심적인 공간적 이미지를 나타냅니다. 이러한 기본 이미지가 시간 및 추상적 개념으로 확장됩니다.</p>
+            </div>
+
+            <h3>1. AT: 특정 지점, 순간, 활동</h3>
+            <div class="preposition-analysis-box">
+                <p><strong>핵심 이미지:</strong> 점(Point) - 공간이나 시간의 특정 지점, 또는 어떤 활동이 일어나는 초점.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문 (일상/아카데믹/비즈니스)</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>시간 (특정 시각)</strong></td>
+                            <td>정확한 시간, 하루 중 특정 때 (noon, night, midnight), 식사 시간</td>
+                            <td>
+                                <p class="example">"The meeting starts <strong class="keyword">at</strong> 9 AM."</p>
+                                <p class="example">"I usually wake up <strong class="keyword">at</strong> sunrise."</p>
+                                <p class="example">"Let's have dinner <strong class="keyword">at</strong> 7 o'clock."</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>장소 (특정 지점/장소)</strong></td>
+                            <td>구체적인 주소, 건물 내 특정 지점, 이벤트/모임 장소, 어떤 활동이 일어나는 일반적인 장소</td>
+                            <td>
+                                <p class="example">"She is waiting <strong class="keyword">at</strong> the bus stop."</p>
+                                <p class="example">"I'll meet you <strong class="keyword">at</strong> the entrance of the museum."</p>
+                                <p class="example"><span class="example-label">비즈니스:</span> "The conference will be held <strong class="keyword">at</strong> the Grand Hotel."</p>
+                                <p class="example"><span class="example-label">일상:</span> "He is <strong class="keyword">at</strong> work/home/school." (일반적인 활동 장소)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>활동/상태</strong></td>
+                            <td>어떤 활동에 참여 중이거나 특정 상태에 있음을 나타냄</td>
+                            <td>
+                                <p class="example">"She is good <strong class="keyword">at</strong> painting." (활동)</p>
+                                <p class="example">"They were <strong class="keyword">at</strong> play in the park." (활동)</p>
+                                <p class="example">"The country is <strong class="keyword">at</strong> peace/war." (상태)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>방향/겨냥</strong></td>
+                            <td>무언가를 향하거나 겨냥함 (때로 부정적)</td>
+                            <td>
+                                <p class="example">"He threw the ball <strong class="keyword">at</strong> the wall."</p>
+                                <p class="example">"Don't shout <strong class="keyword">at</strong> me!" (나에게 소리치지 마! - 부정적)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>속도/가격/나이 등</strong></td>
+                            <td>특정 비율이나 수치를 나타냄</td>
+                            <td>
+                                <p class="example">"He was driving <strong class="keyword">at</strong> 100 km/h." (속도)</p>
+                                <p class="example">"You can buy these apples <strong class="keyword">at</strong> $2 per kilo." (가격)</p>
+                                <p class="example">"She got married <strong class="keyword">at</strong> 25." (나이)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="tip-box"><strong>AT 사용 팁:</strong> <code class="code-inline">at</code>은 비교적 좁은 지점이나 순간, 또는 어떤 활동의 '장(field)'을 나타낼 때 자주 사용됩니다. "콕 집어서" 가리키는 느낌을 기억하세요.</p>
+            </div>
+
+            <h3>2. ON: 표면 접촉, 특정 날짜, 지속</h3>
+            <div class="preposition-analysis-box">
+                <p><strong>핵심 이미지:</strong> 면(Surface) 또는 선(Line) - 무언가가 표면에 접촉해 있거나, 선 위에 있거나, 어떤 일이 계속 진행됨을 나타냄.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문 (일상/아카데믹/비즈니스)</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>시간 (특정 날짜/요일)</strong></td>
+                            <td>요일, 특정한 날, 공휴일 등 하루 단위의 시간</td>
+                            <td>
+                                <p class="example">"The party is <strong class="keyword">on</strong> Saturday."</p>
+                                <p class="example">"My birthday is <strong class="keyword">on</strong> May 5th."</p>
+                                <p class="example">"What are you doing <strong class="keyword">on</strong> New Year's Day?"</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>장소 (표면 위 접촉)</strong></td>
+                            <td>물체의 표면 위, 길이나 강 등의 선 위, 교통수단(타는 것)</td>
+                            <td>
+                                <p class="example">"The cat is sleeping <strong class="keyword">on</strong> the sofa."</p>
+                                <p class="example">"There is a picture <strong class="keyword">on</strong> the wall."</p>
+                                <p class="example">"The house is <strong class="keyword">on</strong> a busy street." (길이라는 선 위에)</p>
+                                <p class="example"><span class="example-label">일상:</span> "I'm <strong class="keyword">on</strong> the bus/train/plane." (넓은 공간이 있는 교통수단)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>주제/관련</strong></td>
+                            <td>~에 관하여 (about보다 전문적이거나 공식적인 느낌)</td>
+                            <td>
+                                <p class="example"><span class="example-label">아카데믹:</span> "She delivered a lecture <strong class="keyword">on</strong> quantum physics."</p>
+                                <p class="example"><span class="example-label">비즈니스:</span> "The report focuses <strong class="keyword">on</strong> market trends."</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>상태/진행</strong></td>
+                            <td>어떤 상태가 지속되거나 어떤 일이 진행 중임을 나타냄</td>
+                            <td>
+                                <p class="example">"The TV is <strong class="keyword">on</strong>." (작동 중)</p>
+                                <p class="example">"She is <strong class="keyword">on</strong> duty tonight." (근무 중)</p>
+                                <p class="example">"The project is <strong class="keyword">on</strong> schedule." (일정대로 진행 중)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>수단 (전자 매체)</strong></td>
+                            <td>인터넷, 전화, 라디오, TV 등</td>
+                            <td>
+                                <p class="example">"I saw it <strong class="keyword">on</strong> the internet."</p>
+                                <p class="example">"He is talking <strong class="keyword">on</strong> the phone."</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="tip-box"><strong>ON 사용 팁:</strong> <code class="code-inline">on</code>은 무언가가 다른 것의 '표면'에 닿아 있거나, '선' 위에 있는 느낌, 또는 어떤 일이 '계속되는' 느낌을 전달합니다. 달력의 특정 날짜를 '짚는' 이미지도 유용합니다.</p>
+            </div>
+
+            <h3>3. IN: 공간/기간 내부, 상태, 방식</h3>
+            <div class="preposition-analysis-box">
+                <p><strong>핵심 이미지:</strong> 공간(Space) 또는 기간(Period) - 3차원적인 공간이나 일정 기간의 '내부'에 있음을 나타냄.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문 (일상/아카데믹/비즈니스)</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>시간 (긴 기간)</strong></td>
+                            <td>월, 계절, 연도, 세기 등 비교적 긴 기간, 하루 중 일부 (morning, afternoon, evening)</td>
+                            <td>
+                                <p class="example">"I was born <strong class="keyword">in</strong> 1990."</p>
+                                <p class="example">"We usually go skiing <strong class="keyword">in</strong> winter."</p>
+                                <p class="example">"She likes to read <strong class="keyword">in</strong> the evening."</p>
+                                <p class="example"><span class="example-label">미래:</span> "The report will be ready <strong class="keyword">in</strong> two weeks." (2주 후에)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>장소 (넓은 공간 내부)</strong></td>
+                            <td>도시, 나라, 방, 건물 등 경계가 있는 공간의 내부</td>
+                            <td>
+                                <p class="example">"He lives <strong class="keyword">in</strong> London."</p>
+                                <p class="example">"The cat is hiding <strong class="keyword">in</strong> the box."</p>
+                                <p class="example"><span class="example-label">아카데믹:</span> "The experiment was conducted <strong class="keyword">in</strong> a controlled environment."</p>
+                                <p class="example"><span class="example-label">일상 (교통수단):</span> "I left my bag <strong class="keyword">in</strong> the car/taxi." (비교적 작은 개인 공간)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>상태/상황</strong></td>
+                            <td>어떤 상태나 상황 속에 있음을 나타냄</td>
+                            <td>
+                                <p class="example">"She is <strong class="keyword">in</strong> good health."</p>
+                                <p class="example">"The company is <strong class="keyword">in</strong> financial trouble."</p>
+                                <p class="example">"He spoke <strong class="keyword">in</strong> a loud voice." (목소리의 상태)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>방식/형태</strong></td>
+                            <td>어떤 방식으로 또는 어떤 형태로 이루어짐을 나타냄</td>
+                            <td>
+                                <p class="example">"Please pay <strong class="keyword">in</strong> cash." (현금으로)</p>
+                                <p class="example">"The results were presented <strong class="keyword">in</strong> a graph." (그래프 형태로)</p>
+                                <p class="example"><span class="example-label">비즈니스:</span> "All agreements must be <strong class="keyword">in</strong> writing." (서면으로)</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>분야/영역</strong></td>
+                            <td>특정 학문, 산업, 활동 분야</td>
+                            <td>
+                                <p class="example">"She has a degree <strong class="keyword">in</strong> computer science."</p>
+                                <p class="example"><span class="example-label">아카데믹:</span> "This theory is widely accepted <strong class="keyword">in</strong> the field of psychology."</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="tip-box"><strong>IN 사용 팁:</strong> <code class="code-inline">in</code>은 무언가가 다른 것의 '안쪽', '내부', 또는 '경계 안'에 있는 느낌을 전달합니다. 시간적으로는 비교적 긴 기간을, 공간적으로는 둘러싸인 영역을 생각하세요.</p>
+            </div>
+
+            <h4>AT, ON, IN 비교 요약 (시간과 장소)</h4>
+            <div class="mermaid">
+            graph TD
+                A[시간 & 장소 전치사] --> B{개념의 크기/구체성};
+                B -- "가장 작고 구체적인 지점/순간" --> C[AT<br>at 5 PM, at the corner, at home];
+                B -- "중간 크기, 표면/선, 하루 단위" --> D[ON<br>on Monday, on the table, on the street];
+                B -- "가장 크고 포괄적인 공간/기간" --> E[IN<br>in July, in London, in the box];
+
+                classDef default fill:#fff,stroke:#333,stroke-width:2px;
+                classDef concept fill:#e3f2fd,stroke:#1e88e5,stroke-width:2px;
+                classDef prep fill:#e8f5e9,stroke:#4caf50,stroke-width:2px;
+                class B concept;
+                class C,D,E prep;
+            </div>
+            <p class="note">위 다이어그램은 <code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>이 시간과 장소에서 일반적으로 사용되는 상대적인 '크기'나 '구체성'의 개념을 보여줍니다. <code class="code-inline">at</code>은 점, <code class="code-inline">on</code>은 면/선, <code class="code-inline">in</code>은 공간/부피의 이미지와 연결됩니다.</p>
+            <p class="section-intro" style="margin-top:40px; background-color: #f0fdfa; border-left: 5px solid #14b8a6;">
+                지금까지 <code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code>을 중심으로 핵심 전치사들의 용법을 살펴보았습니다. 다음 파트에서는 다른 중요한 전치사들(<code class="code-inline">for</code>, <code class="code-inline">by</code>, <code class="code-inline">with</code>, <code class="code-inline">of</code>, <code class="code-inline">to</code>, <code class="code-inline">from</code> 등)의 다양한 의미와 활용법을 계속해서 탐구하겠습니다.
+            </p>
+        </section>
+
+        <section id="other-core-prepositions">
+            <h2>IV. Part 2 (계속): 다른 핵심 전치사들 심층 분석 🌍</h2>
+            <p class="section-intro">
+                <code class="code-inline">at</code>, <code class="code-inline">on</code>, <code class="code-inline">in</code> 외에도 영어에는 문장의 의미를 풍부하게 만드는 다양한 핵심 전치사들이 존재합니다. 이 섹션에서는 <code class="code-inline">for</code>, <code class="code-inline">by</code>, <code class="code-inline">with</code>, <code class="code-inline">of</code>, <code class="code-inline">to</code>, <code class="code-inline">from</code> 등의 주요 용법과 뉘앙스를 예문과 함께 살펴보겠습니다.
+            </p>
+
+            <h3>4. FOR: 목적, 기간, 교환, 이유, 찬성</h3>
+            <div class="preposition-analysis-box" style="border-left-color: #7e57c2; background-color: #f3e5f5;">
+                <p><strong>핵심 이미지:</strong> 목표 지향성, 기간의 연속, 교환의 대상, 이유/근거, 지지/찬성.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>목적 (~을 위하여)</strong></td>
+                            <td>어떤 행동의 목적이나 의도</td>
+                            <td><p class="example">"This gift is <strong class="keyword">for</strong> you."</p><p class="example">"She is studying hard <strong class="keyword">for</strong> the exam."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>기간 (동안)</strong></td>
+                            <td>일정 기간 동안 지속됨</td>
+                            <td><p class="example">"I have lived here <strong class="keyword">for</strong> ten years."</p><p class="example">"We talked <strong class="keyword">for</strong> hours."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>교환/대가 (~와 바꾸어, ~의 대가로)</strong></td>
+                            <td>무엇인가를 얻기 위한 교환 대상이나 지불 금액</td>
+                            <td><p class="example">"I bought this book <strong class="keyword">for</strong> $10."</p><p class="example">"What can I do <strong class="keyword">for</strong> you?" (당신을 위해 무엇을 해드릴까요?)</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>이유/원인 (~ 때문에, ~라는 이유로)</strong></td>
+                            <td>어떤 일의 이유나 근거</td>
+                            <td><p class="example">"He was punished <strong class="keyword">for</strong> his mistake."</p><p class="example">"The town is famous <strong class="keyword">for</strong> its beautiful scenery."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>찬성/지지 (~을 지지하여)</strong></td>
+                            <td>어떤 의견이나 사람을 지지함</td>
+                            <td><p class="example">"Are you <strong class="keyword">for</strong> or against the proposal?"</p><p class="example">"I voted <strong class="keyword">for</strong> her."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>향함/행선지 (to와 유사)</strong></td>
+                            <td>어떤 장소를 향해 감 (특히 출발을 강조)</td>
+                            <td><p class="example">"This train is bound <strong class="keyword">for</strong> Busan."</p><p class="example">"She left <strong class="keyword">for</strong> Paris yesterday."</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>5. BY: 수단, 행위자, 근접, 기한</h3>
+            <div class="preposition-analysis-box" style="border-left-color: #ec407a; background-color: #fce4ec;">
+                <p><strong>핵심 이미지:</strong> 근접성(옆에), 통과/경유, 행위의 주체, 방법/수단, 시간의 마감.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>수단/방법 (~에 의하여, ~으로)</strong></td>
+                            <td>교통수단, 통신수단, 방법</td>
+                            <td><p class="example">"I go to work <strong class="keyword">by</strong> bus."</p><p class="example">"Please reply <strong class="keyword">by</strong> email."</p><p class="example">"She learned English <strong class="keyword">by</strong> watching movies." (방법)</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>행위자 (수동태에서 ~에 의해)</strong></td>
+                            <td>수동태 문장에서 행위의 주체</td>
+                            <td><p class="example">"The book was written <strong class="keyword">by</strong> a famous author."</p><p class="example">"The window was broken <strong class="keyword">by</strong> the wind."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>근접 (~옆에, ~가에)</strong></td>
+                            <td>어떤 것의 바로 옆이나 가까이</td>
+                            <td><p class="example">"The house is <strong class="keyword">by</strong> the river."</p><p class="example">"Come and sit <strong class="keyword">by</strong> me."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>시간의 기한 (~까지는)</strong></td>
+                            <td>어떤 시점까지 완료되어야 함 (늦어도 그 시점까지)</td>
+                            <td><p class="example">"You must submit the report <strong class="keyword">by</strong> Friday." (금요일까지는 제출해야 한다 - 완료 시점)</p><p class="example">"He promised to be back <strong class="keyword">by</strong> 10 PM."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>정도/차이 (~만큼)</strong></td>
+                            <td>증가, 감소, 차이의 정도</td>
+                            <td><p class="example">"Prices increased <strong class="keyword">by</strong> 10%."</p><p class="example">"She missed the train <strong class="keyword">by</strong> five minutes."</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="tip-box"><strong>BY vs. UNTIL:</strong> <code class="code-inline">by</code>는 '완료 시한' (그때까지 끝내야 함)을, <code class="code-inline">until</code>은 '동작이나 상태의 지속' (그때까지 계속됨)을 나타냅니다. (예: "Finish it <strong class="keyword">by</strong> tomorrow." vs. "Wait <strong class="keyword">until</strong> tomorrow.")</p>
+            </div>
+
+            <h3>6. WITH: 동반, 도구, 소유, 상태, 방식</h3>
+            <div class="preposition-analysis-box" style="border-left-color: #5c6bc0; background-color: #e8eaf6;">
+                <p><strong>핵심 이미지:</strong> 함께함, 소지/부착, 사용, 관련성.</p>
+                <table class="comparison-table">
+                    <thead><tr><th>용법</th><th>설명</th><th>예문</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>동반/함께 (~와 함께)</strong></td>
+                            <td>사람이나 사물과 함께 있음</td>
+                            <td><p class="example">"I went to the park <strong class="keyword">with</strong> my friends."</p><p class="example">"Coffee <strong class="keyword">with</strong> milk."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>도구/수단 (~을 사용하여, ~으로)</strong></td>
+                            <td>어떤 일을 하는 데 사용되는 도구나 수단</td>
+                            <td><p class="example">"He cut the paper <strong class="keyword">with</strong> scissors."</p><p class="example">"She painted the picture <strong class="keyword">with</strong> watercolors."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>소유/특징 (~을 가진)</strong></td>
+                            <td>어떤 특징이나 소유물을 가지고 있음</td>
+                            <td><p class="example">"A girl <strong class="keyword">with</strong> blue eyes."</p><p class="example">"A house <strong class="keyword">with</strong> a large garden."</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>상태/방식 (~한 상태로, ~하게)</strong></td>
+                            <td>어떤 감정, 태도, 방식 등을 나타냄</td>
+                            <td><p class="example">"He spoke <strong class="keyword">with</strong> confidence." (자신감 있게)</p><p class="example">"She listened <strong class="keyword">with</strong> great interest." (큰 관심을 가지고)</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>원인/이유 (~ 때문에)</strong></td>
+                            <td>(주로 감정이나 신체적 반응의 원인)</td>
+                            <td><p class="example">"He was trembling <strong class="keyword">with</strong> fear." (두려움 때문에 떨고 있었다.)</p><p class="example">"Her eyes were red <strong class="keyword">with</strong> crying." (울어서 눈이 빨개졌다.)</p></td>
+                        </tr>
+                        <tr>
+                            <td><strong>대립/반대 (~와 싸우다/다투다)</strong></td>
+                            <td>(fight/argue 등과 함께)</td>
+                            <td><p class="example">"He is always arguing <strong class="keyword">with</strong> his brother."</p></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- OF, TO, FROM 등 다른 핵심 전치사들도 위와 같은 형식으로 추가 분석 가능 -->
+            <p class="section-intro" style="margin-top:40px; background-color: #f0fdfa; border-left: 5px solid #14b8a6;">
+                핵심 전치사들의 다양한 의미와 용법을 살펴보았습니다. 각 전치사가 가진 핵심 이미지를 이해하고, 풍부한 예문을 통해 문맥 속에서의 쓰임새를 익히는 것이 중요합니다. 다음 파트에서는 이러한 전치사들이 만드는 전치사구의 역할과 전치사 학습 전략에 대해 알아보겠습니다.
+            </p>
+        </section>
+
+        <section id="prepositional-phrases-roles">
+            <h2>V. Part 3: 전치사구의 역할과 문장 내 위치 🧱</h2>
+            <p class="section-intro">전치사는 혼자 쓰이지 않고 항상 명사(구)와 함께 <strong class="keyword">전치사구</strong>를 이룹니다. 이 전치사구가 문장 내에서 어떤 역할을 하며, 어디에 위치하는지 이해하는 것은 문장 구조 파악에 매우 중요합니다.</p>
+
+            <h3>1. 전치사구의 주요 기능</h3>
+            <div class="key-concept-box">
+                <h4>전치사구 = 형용사구 or 부사구</h4>
+                <p>전치사구는 문장 내에서 크게 두 가지 주요 역할, 즉 <span class="highlight">형용사구</span> 역할과 <span class="highlight">부사구</span> 역할을 수행합니다.</p>
+            </div>
+            <ul>
+                <li>
+                    <strong>형용사구 역할 (Adjectival Phrase): 명사 수식</strong>
+                    <p>전치사구가 바로 앞이나 뒤의 명사(또는 대명사)를 꾸며주어 그 명사에 대한 추가 정보를 제공합니다. "어떤" 명사인지 설명해 줍니다.</p>
+                    <p class="example">"The book <strong style="color:purple;">on the table</strong> is mine." (어떤 책? → 탁자 위에 있는 책)</p>
+                    <p class="example">"She is the woman <strong style="color:purple;">in the red dress</strong>." (어떤 여자? → 빨간 드레스를 입은 여자)</p>
+                    <p class="example"><span class="example-label">아카데믹:</span> "Theories <strong style="color:purple;">about the origin of the universe</strong> are complex." (우주의 기원에 관한 이론들)</p>
+                </li>
+                <li>
+                    <strong>부사구 역할 (Adverbial Phrase): 동사, 형용사, 다른 부사, 또는 문장 전체 수식</strong>
+                    <p>전치사구가 동사의 행위가 일어나는 시간, 장소, 방법, 이유 등을 설명하거나, 형용사/부사의 의미를 더 구체화하거나, 문장 전체에 대한 부가 정보를 제공합니다.</p>
+                    <p class="example"><span class="example-label">시간:</span> "He arrived <strong style="color:purple;">at noon</strong>." (언제 도착했나? → 정오에)</p>
+                    <p class="example"><span class="example-label">장소:</span> "They live <strong style="color:purple;">near the park</strong>." (어디에 사나? → 공원 근처에)</p>
+                    <p class="example"><span class="example-label">방법/수단:</span> "She solved the problem <strong style="color:purple;">with ease</strong>." (어떻게 풀었나? → 쉽게)</p>
+                    <p class="example"><span class="example-label">이유:</span> "He couldn't come <strong style="color:purple;">because of his illness</strong>." (왜 못 왔나? → 병 때문에)</p>
+                    <p class="example"><span class="example-label">형용사 수식:</span> "I am happy <strong style="color:purple;">for your success</strong>." (너의 성공 때문에 기쁘다)</p>
+                    <p class="example"><span class="example-label">문장 전체 수식:</span> "<strong style="color:purple;">In my opinion</strong>, this is the best solution." (내 생각에는, 이것이 최선의 해결책이다)</p>
+                </li>
+            </ul>
+
+            <h3>2. 전치사구의 문장 내 위치</h3>
+            <ul>
+                <li><strong>일반적 위치:</strong>
+                    <ul>
+                        <li>형용사구로 쓰일 때: 주로 수식하는 명사 <span class="highlight">바로 뒤</span>에 위치합니다. (예: "The flowers <strong class="keyword">in the vase</strong> are beautiful.")</li>
+                        <li>부사구로 쓰일 때: 문장 끝에 오는 경우가 많지만, 동사 바로 뒤나 문장 맨 앞에 오기도 합니다. 위치에 따라 강조점이 달라질 수 있습니다.
+                            <p class="example">"She studies <strong class="keyword">in the library</strong> <strong class="keyword">every afternoon</strong>." (장소 + 시간)</p>
+                            <p class="example">"<strong class="keyword">In the morning</strong>, I usually go for a run." (문장 앞 - 시간 강조)</p>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>주의할 점 (수식 관계의 명확성):</strong>
+                    <p>전치사구가 여러 개 연달아 나올 때나 문장 구조가 복잡할 때, 전치사구가 무엇을 수식하는지 모호해질 수 있습니다. 의미가 명확하도록 어순에 주의해야 합니다.</p>
+                    <p class="example">모호한 문장: "I saw a man with a telescope <span style="color:red;">on the hill</span>." (망원경을 가진 남자를 언덕 위에서 본 것인가, 아니면 언덕 위에 있는 망원경을 가진 남자를 본 것인가?)</p>
+                    <p class="example">명확한 문장 1: "On the hill, I saw a man with a telescope." (언덕 위에서, 나는 망원경을 가진 남자를 보았다.)</p>
+                    <p class="example">명확한 문장 2: "I saw a man with a telescope that was on the hill." (언덕 위에 있던 망원경을 가진 남자를 보았다. - 관계대명사 사용)</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="learning-strategies">
+            <h2>VI. Part 4: 전치사 학습을 위한 팁과 전략 🧠</h2>
+            <p class="section-intro">전치사는 그 다양성과 미묘함 때문에 마스터하기 어려운 품사 중 하나입니다. 하지만 효과적인 학습 전략을 활용하면 전치사에 대한 두려움을 극복하고 자신감을 키울 수 있습니다. 다음은 전치사 학습을 위한 몇 가지 유용한 팁입니다.</p>
+            <div class="tip-box">
+                <ol>
+                    <li>
+                        <strong>핵심 이미지와 개념적 은유 활용:</strong>
+                        <p>각 전치사가 가진 기본적인 공간적 이미지(예: <code class="code-inline">in</code> - 내부, <code class="code-inline">on</code> - 표면, <code class="code-inline">at</code> - 지점)를 먼저 이해하고, 이 이미지가 어떻게 시간적, 추상적 의미로 확장되는지(개념적 은유)를 파악하려고 노력하세요. 시각화(그림 그리기, 마인드맵)가 도움이 될 수 있습니다.</p>
+                    </li>
+                    <li>
+                        <strong>문맥 속에서 통째로 익히기 (Chunking):</strong>
+                        <p>전치사를 개별 단어로 암기하기보다는, 실제 문장이나 구(phrase) 안에서 어떤 단어들과 함께 쓰이며 어떤 관계를 나타내는지 <span class="highlight">의미 덩어리(chunk)로 학습</span>하세요. 예를 들어, 'depend'를 외울 때 'depend on'으로 함께 기억하는 것입니다.</p>
+                        <p class="example">"Rely <strong class="keyword">on</strong> your friends." / "Interested <strong class="keyword">in</strong> art." / "Good <strong class="keyword">at</strong> sports."</p>
+                    </li>
+                    <li>
+                        <strong>Collocations에 주목하기:</strong>
+                        <p>특정 동사, 형용사, 명사는 특정 전치사와 강한 연어 관계(collocation)를 형성합니다. 이러한 짝꿍 표현들을 집중적으로 익히면 자연스러운 영어를 구사하는 데 큰 도움이 됩니다. Collocation 사전을 활용하거나, 읽기 자료에서 자주 함께 나오는 표현들을 기록해두세요.</p>
+                    </li>
+                    <li>
+                        <strong>다양한 예문 접하기 (Extensive Reading & Listening):</strong>
+                        <p>책, 뉴스 기사, 영화, 드라마, 팟캐스트 등 다양한 영어 자료를 통해 전치사가 실제 사용되는 생생한 예문들을 최대한 많이 접하세요. 문맥 속에서 반복적으로 접하다 보면 자연스럽게 감각이 길러집니다.</p>
+                    </li>
+                    <li>
+                        <strong>능동적인 관찰과 비교 분석:</strong>
+                        <p>단순히 읽고 듣는 것을 넘어, 전치사가 어떻게 사용되었는지 <span class="highlight">능동적으로 관찰</span>하고, 의미가 유사해 보이는 전치사들이 문맥에 따라 어떻게 다르게 쓰이는지 <span class="highlight">비교 분석</span>하는 습관을 들이세요. (예: "Why is it 'arrive <strong class="keyword">at</strong> the airport' but 'arrive <strong class="keyword">in</strong> Seoul'?")</p>
+                    </li>
+                    <li>
+                        <strong>자신의 오류 분석 및 교정:</strong>
+                        <p>작문이나 말하기에서 자신이 자주 틀리는 전치사 사용을 기록하고, 왜 그런 실수를 했는지 원인을 파악하여 의식적으로 교정하려고 노력하세요. 원어민이나 선생님에게 피드백을 받는 것도 매우 효과적입니다.</p>
+                    </li>
+                    <li>
+                        <strong>전치사 연습 문제 활용 (제외되었지만, 개인 학습 시):</strong>
+                        <p>다양한 유형의 전치사 연습 문제를 풀어보면서 자신의 이해도를 점검하고 약점을 보완하세요. (본 가이드에서는 제외되었지만, 시중에 좋은 교재나 온라인 자료가 많습니다.)</p>
+                    </li>
+                    <li>
+                        <strong>인내심을 가지고 꾸준히 학습하기:</strong>
+                        <p>전치사 마스터는 단기간에 이루어지지 않습니다. 조급해하지 말고, 꾸준히 다양한 방법으로 접하고 연습하는 것이 중요합니다. 시간이 지남에 따라 점차 전치사에 대한 감각이 향상될 것입니다.</p>
+                    </li>
+                </ol>
+            </div>
+            <p class="conclusion">
+                전치사는 영어의 미묘한 의미와 관계를 표현하는 데 있어 필수적인 요소입니다. 이 가이드에서 제시된 원리와 전략들을 바탕으로 꾸준히 학습하고 연습한다면, 여러분도 전치사를 자신 있게 활용하여 더욱 정확하고 풍부한 영어 표현을 구사할 수 있게 될 것입니다!
+            </p>
+        </section>
+
+        <footer>
+            <p style="text-align:center; margin-top: 60px; color: #334155; font-size:1.12em;">&copy; 전치사 마스터 가이드 (v1.0) - 이 가이드가 여러분의 전치사 학습 여정에 든든한 <span class="keyword">나침반</span>이 되기를 바랍니다! 🧭✨</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme: 'neutral'});</script>
+</body>
+</html>

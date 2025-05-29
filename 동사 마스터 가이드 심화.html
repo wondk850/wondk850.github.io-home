@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encourage 동사 마스터 가이드 (v3.0 - 최종판)</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdff; /* 더 밝고 깨끗한 배경 */
+            color: #333; 
+        }
+        .container {
+            width: 90%;
+            max-width: 960px; 
+            margin: 30px auto;
+            background-color: #ffffff;
+            padding: 30px 40px; 
+            border-radius: 15px; /* 부드러운 곡선 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07); 
+            border: 1px solid #e0e0e0; /* 은은한 테두리 */
+        }
+        h1, h2, h3, h4 {
+            color: #1a237e; /* 깊은 남색 계열로 통일성 및 전문성 강화 */
+            font-weight: 600;
+        }
+        h1 {
+            text-align: center;
+            color: #004d40; /* 차분하고 깊은 청록색 */
+            border-bottom: 3px solid #00796b; 
+            padding-bottom: 18px;
+            margin-bottom: 40px;
+            font-size: 2.4em; 
+        }
+        h2 {
+            color: #0d47a1; /* 신뢰감을 주는 파란색 */
+            margin-top: 50px;
+            border-left: 7px solid #1976d2;
+            padding-left: 15px;
+            font-size: 2em; 
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #c2185b; /* 포인트 핑크/마젠타 계열 */
+            margin-top: 40px;
+            font-size: 1.6em; 
+            margin-bottom: 20px;
+        }
+        h4 {
+            color: #512da8; /* 차분한 보라색 */
+            font-size: 1.3em; 
+            margin-top: 25px;
+            font-weight: 500;
+        }
+        p {
+            margin-bottom: 18px;
+            color: #424242; 
+            font-size: 1.05em; /* 가독성 향상 */
+        }
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        ul li {
+            background-color: #f5f5f5; 
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 6px solid #64b5f6; /* 밝은 파란색 */
+            transition: transform 0.2s ease-in-out;
+        }
+        ul li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        ul li strong {
+            color: #0d47a1; 
+        }
+        code, .code-inline {
+            background-color: #e0f2f1; /* 연한 청록색 배경 */
+            color: #00695c; /* 진한 청록색 텍스트 */
+            padding: 5px 9px; 
+            border-radius: 6px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; 
+            font-weight: 600;
+            font-size: 0.98em; 
+        }
+        .example {
+            font-style: italic;
+            color: #455a64; /* 예문 텍스트 색상 */
+            margin-left: 20px;
+            padding: 10px 18px; 
+            border-left: 4px solid #78909c; /* 예문 테두리 색상 */
+            margin-bottom: 15px;
+            background-color: #eceff1; /* 예문 배경색 */
+            border-radius: 5px;
+        }
+        .example-source {
+            font-size: 0.85em;
+            color: #546e7a;
+            display: block;
+            text-align: right;
+            margin-top: 5px;
+        }
+        .highlight {
+            color: #e53935; /* 강조 빨간색 */
+            font-weight: bold;
+        }
+        .keyword { 
+            color: #00796b; /* 청록색 키워드 */
+            font-weight: bold;
+        }
+        .definition {
+            background-color: #fff8e1; /* 매우 연한 노랑 */
+            padding: 22px;
+            border-left: 7px solid #ffc107; 
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .pattern-box {
+            background-color: #f3e5f5; /* 연한 보라색 계열 */
+            border: 1px solid #e1bee7; 
+            padding: 22px;
+            margin-bottom: 22px;
+            border-radius: 8px;
+        }
+        .pattern-box h4 {
+            margin-top: 0;
+            color: #7b1fa2; /* 진한 보라색 */
+        }
+        .pattern-box .pattern-function {
+            font-style: italic;
+            color: #6a1b9a;
+            margin-top: 8px;
+            display: block;
+            background-color: #f9f5ff;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.06); 
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0; 
+            padding: 14px 18px; 
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #1e88e5; /* 테이블 헤더 파란색 */
+            color: white;
+            font-size: 1.1em; 
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9f9f9; 
+        }
+        .note, .corpus-info, .cultural-note {
+            font-size: 0.95em;
+            color: #546e7a; 
+            margin-top: 8px;
+            padding: 12px;
+            background-color: #eeeeee;
+            border-radius: 5px;
+            border-left: 4px solid #bdbdbd;
+        }
+        .intro-section, .practice-section, .advanced-section {
+            background-color: #e3f2fd; /* 매우 연한 하늘색 */
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 35px;
+            border-left: 6px solid #2196f3; /* 파란색 */
+        }
+        .practice-section h3, .advanced-section h3 {
+            color: #1565c0; /* 진한 파란색 */
+        }
+        .practice-question {
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #b0bec5;
+        }
+        .practice-question:last-child {
+            border-bottom: none;
+        }
+        .practice-answer {
+            color: #00796b;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px 15px;
+            }
+            h1 { font-size: 2em; }
+            h2 { font-size: 1.7em; }
+            h3 { font-size: 1.4em; }
+            .comparison-table th, .comparison-table td {
+                padding: 10px 12px;
+                font-size: 0.9em;
+            }
+            ul li { padding: 15px; }
+            .pattern-box { padding: 18px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏆 Encourage 동사 마스터 가이드 <small style="font-size:0.5em; color:#7f8c8d;">(v3.0 - 최종판)</small> 🏆</h1>
+
+        <section class="intro-section">
+            <h2>👋 이 가이드를 시작하며: Encourage 정복의 여정</h2>
+            <p>영어 동사 <code class="code-inline">encourage</code>는 단순한 '격려'를 넘어, 다양한 상황에서 미묘한 뉘앙스를 전달하는 핵심 어휘입니다. 이 가이드는 <code class="code-inline">encourage</code>의 어원부터 인지적 이미지, 기본 패턴과 그 기능, 심화 활용법, 문화적 맥락, 그리고 실제 데이터 기반 정보까지 총망라하여 여러분이 <code class="code-inline">encourage</code>를 완벽히 이해하고 자신감 있게 사용할 수 있도록 돕기 위해 제작되었습니다. 함께 <code class="code-inline">encourage</code> 정복의 여정을 시작해봅시다!</p>
+        </section>
+
+        <section id="part1">
+            <h2>Part 1: Encourage의 핵심 뿌리 & 기본 구조 🌳</h2>
+
+            <h3>1. Encourage의 핵심 의미와 인지적 이미지</h3>
+            <div class="definition">
+                <p><strong>어원:</strong> <code>en-</code> ("안에, ~하게 만들다") + <code>courage</code> ("용기")</p>
+                <p><strong>핵심 의미:</strong> <span class="highlight">"어떤 행동을 하거나 목표를 추구하도록 내면에 용기, 자신감, 의지, 또는 추진력을 불어넣다."</span></p>
+                <p><strong>인지적 이미지 (Cognitive Image):</strong></p>
+                <p>마치 누군가의 마음속(<code class="code-inline">en-</code>)에 '용기'라는 따뜻하고 강력한 에너지(🔥)를 화살표(➡️)처럼 불어넣어, 그 사람이 특정 방향으로 나아가도록(🏃) 돕는 그림을 연상할 수 있습니다. 이 에너지는 때로는 부드러운 지지일 수도, 때로는 적극적인 추동력일 수도 있습니다.</p>
+                <div style="text-align:center; font-size: 2em; margin-top:10px;">
+                    👤 <span style="color: #ff9800;">➡️</span> ❤️‍🔥 <span style="color: #4caf50;">➡️</span> 🎯/🏃
+                </div>
+                <p class="note">이 근본적인 '에너지 주입' 이미지를 기억하면 다양한 뉘앙스를 이해하는 데 도움이 됩니다.</p>
+            </div>
+
+            <h3>2. 상황에 따른 의미 분화: 개인적 격려 vs. 공적 장려</h3>
+            <ul>
+                <li>
+                    <strong>일상적 개인 장면: "용기를 주다", "격려하다", "기운을 북돋다"</strong>
+                    <p class="note">개인의 감정에 직접 작용하여 정서적 지지를 보내고 특정 행동을 하도록 이끕니다.</p>
+                    <p class="example">My teacher <strong>encouraged me</strong> to participate in the speech contest, even though I was nervous. (선생님은 내가 긴장했음에도 불구하고 연설 대회에 참가하도록 격려해주셨다.)</p>
+                </li>
+                <li>
+                    <strong>공적·제도적 장면: "권장하다", "장려하다", "촉진하다"</strong>
+                    <p class="note">사회, 조직, 또는 시스템 차원에서 특정 행동, 가치, 또는 상태를 바람직하다고 여겨 이를 유도하거나 환경을 조성합니다.</p>
+                    <p class="example">The new policy <strong>encourages</strong> companies to invest in renewable energy. (새로운 정책은 기업들이 재생 에너지에 투자하도록 장려한다.)</p>
+                </li>
+            </ul>
+
+            <h3>3. "Encourage" 동사 패턴 매뉴얼: 구조와 기능 🛠️</h3>
+            <div class="pattern-box">
+                <h4>패턴 1: <code>encourage + 사람/대상 + to + 동사원형</code> (⭐ 가장 중요!)</h4>
+                <p><strong>구조:</strong> 격려하는 주체 + encourage + 격려받는 대상 + to + 대상이 하길 바라는 행동</p>
+                <p class="pattern-function"><strong>의미적 기능/의도:</strong> 특정 대상이 <span class="keyword">구체적인 행동을 하도록 직접적으로 유도하거나 지지</span>할 때 사용됩니다. 가장 직접적인 '에너지 주입'의 형태입니다.</p>
+                <p class="example">She <strong>encouraged her son to apply</strong> for the scholarship. (그녀는 아들이 장학금에 지원하도록 격려했다.)</p>
+            </div>
+            <div class="pattern-box">
+                <h4>패턴 2: <code>encourage + 명사/동명사</code></h4>
+                <p><strong>구조:</strong> 주체 + encourage + 장려되는 개념/행위</p>
+                <p class="pattern-function"><strong>의미적 기능/의도:</strong> 특정 <span class="keyword">행위, 상태, 가치, 또는 개념 자체를 바람직하다고 여겨 이를 지지하거나 조장</span>할 때 사용됩니다. 주로 공적, 제도적 맥락에서 많이 보입니다.</p>
+                <p class="example">Our company <strong>encourages innovation and creativity</strong>. (우리 회사는 혁신과 창의성을 장려한다.)</p>
+                <p class="example">The campaign <strong>encourages recycling</strong> among citizens. (그 캠페인은 시민들 사이에서 재활용을 장려한다.)</p>
+            </div>
+            <div class="pattern-box">
+                <h4>패턴 3: <code>encourage + 사람 + in + 명사/동명사</code></h4>
+                <p><strong>구조:</strong> 주체 + encourage + 대상 + in + 대상이 노력하는 분야/활동</p>
+                <p class="pattern-function"><strong>의미적 기능/의도:</strong> 특정 <span class="keyword">분야나 노력에 대한 지지와 격려</span>를 표현합니다. 패턴 1보다 덜 직접적인 행동 유도일 수 있으며, 지속적인 노력에 대한 지지에 초점을 맞춥니다.</p>
+                <p class="example">My parents always <strong>encouraged me in my artistic pursuits</strong>. (부모님은 항상 나의 예술적 활동을 격려해주셨다.)</p>
+            </div>
+            <div class="pattern-box">
+                <h4>패턴 4: 수동태 패턴 (<code>be encouraged to...</code> / <code>...be encouraged</code>)</h4>
+                <p><strong>구조:</strong> 대상 + be encouraged + (to + 동사원형)</p>
+                <p class="pattern-function"><strong>의미적 기능/의도:</strong> 어떤 행동이나 상태가 <span class="keyword">일반적으로 권장되거나 장려됨</span>을 나타냅니다. 행위의 주체보다는 권장되는 내용에 초점을 맞춥니다.</p>
+                <p class="example">Employees <strong>are encouraged to share</strong> their feedback openly. (직원들은 피드백을 솔직하게 공유하도록 권장된다.)</p>
+                <p class="example">The use of public transportation <strong>is strongly encouraged</strong>. (대중교통 이용이 강력히 권장된다.)</p>
+            </div>
+            <div class="pattern-box" style="background-color: #ffebee; border-color: #ffcdd2;">
+                <h4 style="color: #d32f2f;">패턴 5: 부정적 맥락에서의 사용 (주의! ⚠️)</h4>
+                <p><strong>구조:</strong> 위 패턴들과 동일하게 사용될 수 있음.</p>
+                <p class="pattern-function"><strong>의미적 기능/의도:</strong> 본래 긍정적 뉘앙스가 강하지만, 맥락에 따라 <span class="keyword">(의도치 않게) 부정적인 행동이나 결과를 부추기거나 조장</span>하는 의미로도 쓰일 수 있습니다. 이때는 '조장하다', '부추기다'에 가깝습니다.</p>
+                <p class="example">His indifference seemed to <strong>encourage their bad behavior</strong>. (그의 무관심은 그들의 나쁜 행동을 조장하는 것처럼 보였다.)</p>
+                <p class="example">Some argue that overly sensational media coverage can <strong>encourage copycat crimes</strong>. (지나치게 선정적인 언론 보도가 모방 범죄를 조장할 수 있다고 주장하는 사람들도 있다.)</p>
+            </div>
+        </section>
+
+        <section id="part2" class="advanced-section">
+            <h2>Part 2: Encourage 심화 활용: 뉘앙스, 맥락, 데이터 🚀</h2>
+
+            <h3>1. 의미 네트워크와 Collocations (feat. 코퍼스 정보)</h3>
+            <p><code class="code-inline">Encourage</code>는 다양한 단어들과 연결되어 의미망을 형성합니다. 실제 언어 사용 데이터(코퍼스)를 보면 이러한 연결성을 더 잘 파악할 수 있습니다.</p>
+            
+            <div class="mermaid">
+            graph LR
+                subgraph Encourage_Network
+                    A[Encourage]
+                    subgraph Positive_Outcomes
+                        A -- to foster --> B(Development)
+                        A -- to promote --> C(Participation)
+                        A -- to stimulate --> D(Growth)
+                        A -- to build --> E(Confidence)
+                    end
+                    subgraph Methods_People
+                        A -- by providing --> F(Support)
+                        A -- to --> G(Students)
+                        A -- to --> H(Employees)
+                        A -- through --> I(Dialogue)
+                    end
+                    subgraph Synonyms_Antonyms
+                        A -.-> J(Motivate)
+                        A -.-> K(Inspire)
+                        A <-.-> L(Discourage)
+                    end
+                end
+                classDef default fill:#f9f,stroke:#333,stroke-width:2px;
+                classDef outcome fill:#ccffcc,stroke:#006400;
+                classDef method fill:#cce5ff,stroke:#00008b;
+                classDef related fill:#fff0cc,stroke:#b8860b;
+                class A,J,K,L related;
+                class B,C,D,E outcome;
+                class F,G,H,I method;
+            </div>
+            <p class="note">위 다이어그램은 <code class="code-inline">encourage</code>의 핵심 연결망을 시각화한 예시입니다. 실제로는 더 복잡한 네트워크를 형성합니다.</p>
+
+            <p><strong>자주 함께 쓰이는 표현 (Common Collocations):</strong></p>
+            <ul>
+                <li><code>encourage + 사람 + to + <strong>try/apply/participate/share/speak up</strong></code></li>
+                <li><code>encourage + <strong>development/innovation/investment/dialogue/cooperation</strong></code></li>
+                <li><code>encourage + a spirit of + <strong>teamwork/curiosity/openness</strong></code></li>
+            </ul>
+            <p class="corpus-info"><strong>코퍼스 기반 정보 (Corpus Insights):</strong><br>
+            대규모 영어 코퍼스(예: COCA - Corpus of Contemporary American English) 분석에 따르면, <code class="code-inline">encourage</code>는 특히 교육(students, learning), 비즈니스(innovation, investment, employees), 사회적 활동(participation, dialogue) 관련 맥락에서 높은 빈도로 사용됩니다. 또한, <code class="code-inline">strongly encourage</code>, <code class="code-inline">actively encourage</code>와 같이 강도를 나타내는 부사와 자주 결합합니다.</p>
+
+            <h3>2. 문화적·사회적 맥락: 한국 vs. 영어권 🌍</h3>
+            <p><code class="code-inline">Encourage</code>의 사용은 문화적 배경에 따라 미묘한 차이를 보일 수 있습니다.</p>
+            <ul>
+                <li>
+                    <strong>한국어 "격려하다"와의 비교:</strong>
+                    <p class="cultural-note">한국에서 "격려"는 때로 상급자나 연장자가 아랫사람에게 하는 다소 수직적인 뉘앙스를 가질 수 있습니다 (물론 항상 그런 것은 아닙니다). 반면, 영어권에서 <code class="code-inline">encourage</code>는 동료, 친구, 가족 등 수평적인 관계에서도 매우 자연스럽고 빈번하게 사용되며, 상호 지지의 느낌이 강할 수 있습니다.</p>
+                </li>
+                <li>
+                    <strong>영어권 문화에서의 사용 특징:</strong>
+                    <p class="cultural-note">개인의 자율성과 주도성을 중시하는 문화적 배경으로 인해, 상대방에게 직접적인 명령보다는 <code class="code-inline">encourage</code>를 사용하여 부드럽게 제안하거나 동기를 부여하는 방식이 선호될 때가 많습니다. 또한, 긍정적 피드백과 지지를 표현하는 데 적극적으로 활용됩니다.</p>
+                </li>
+            </ul>
+            <p><strong>실제 미디어 예문 (Real-world Examples):</strong></p>
+            <p class="example">"We want to <strong>encourage</strong> a culture where people feel safe to speak up and challenge the status quo." 
+            <span class="example-source">- Satya Nadella (Microsoft CEO), Interview</span></p>
+            <p class="example">"Let's <strong>encourage</strong> our children to be curious, to ask questions, and to explore the world around them." 
+            <span class="example-source">- Michelle Obama, Public Speech</span></p>
+            <p class="example">"The study <strong>encourages</strong> further research into the long-term effects of this treatment."
+            <span class="example-source">- Science Journal Abstract</span></p>
+            <p class="example">A recent tweet from a non-profit: "We <strong>encourage</strong> everyone to get involved in their local communities! #Volunteer #CommunitySupport"
+            <span class="example-source">- Social Media (X/Twitter) Example</span></p>
+
+            <h3>3. Encourage의 "가족 및 라이벌": 유의어와의 뉘앙스 비교 🆚</h3>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>단어</th>
+                        <th>핵심 뉘앙스 & 인지적 이미지</th>
+                        <th>예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Encourage</strong></td>
+                        <td>'용기/에너지 주입' (내적 동력 강화)</td>
+                        <td>She <strong>encouraged</strong> him to face his fears.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Motivate</strong></td>
+                        <td>'이유/목표 제시' (외적/내적 원동력 제공, 🎯 목표 지향)</td>
+                        <td>The bonus <strong>motivated</strong> the team to work harder.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Inspire</strong></td>
+                        <td>'영감/감동 부여' (정신적 고양, ✨ 불꽃 점화)</td>
+                        <td>His speech <strong>inspired</strong> millions to pursue their dreams.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Support</strong></td>
+                        <td>'지지/도움 제공' (기반을 받쳐줌, 🤝 함께함)</td>
+                        <td>My family always <strong>supports</strong> my choices.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Promote</strong></td>
+                        <td>'촉진/홍보' (더 널리 알리거나 발전시킴, 📢 확성기)</td>
+                        <td>The campaign <strong>promotes</strong> awareness of mental health.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Urge</strong></td>
+                        <td>'강력 권고/촉구' (긴급성, 강한 압력, ❗ 느낌표)</td>
+                        <td>Experts <strong>urge</strong> caution when investing.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p class="note">각 단어의 핵심 이미지를 연상하면 뉘앙스 차이를 더 쉽게 구분할 수 있습니다.</p>
+
+            <h3>4. Encourage의 "반대편 거울": 반의어와의 비교 ↔️</h3>
+            <p>(이전 버전과 동일하게 유지, 중요하므로 반복)</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>단어</th>
+                        <th>핵심 뉘앙스</th>
+                        <th>예시</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Discourage</strong></td>
+                        <td>용기를 꺾어 ~하지 못하게 하다, 의욕을 저하시키다. (<code>from -ing</code> 패턴 흔함)</td>
+                        <td>Negative feedback can <strong>discourage</strong> students from participating.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dissuade</strong></td>
+                        <td>논리나 설득을 통해 특정 행동을 하지 않도록 단념시키다. (<code>from -ing</code> 패턴 흔함)</td>
+                        <td>Her friends tried to <strong>dissuade</strong> her from quitting her job.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="practice-section">
+            <h2>Part 3: Encourage 실력 다지기! ✍️ 심화 연습 문제</h2>
+            <h3>1. 문맥에 맞는 Encourage 패턴 사용하기 (빈칸 채우기)</h3>
+            <div class="practice-question">
+                <p>1. The government aims to ________ small businesses ________ (invest) in new technologies by offering tax incentives. (정부는 세금 인센티브를 제공함으로써 중소기업이 신기술에 투자하도록 장려하는 것을 목표로 한다.)</p>
+                <p class="practice-answer">정답: encourage / to invest</p>
+            </div>
+            <div class="practice-question">
+                <p>2. Open dialogue and the free exchange of ideas ________ (be) actively ________ in our organization. (우리 조직에서는 열린 대화와 자유로운 아이디어 교환이 적극적으로 장려된다.)</p>
+                <p class="practice-answer">정답: are / encouraged</p>
+            </div>
+            <div class="practice-question">
+                <p>3. The coach's pep talk really ________ the team ________ their efforts during the second half. (코치의 격려는 후반전 동안 팀이 노력하는 데 정말 큰 힘이 되었다.)</p>
+                <p class="practice-answer">정답: encouraged / in (또는 encouraged the team to redouble their efforts도 가능)</p>
+            </div>
+
+            <h3>2. 문장 변환 연습 (패턴 유연성 기르기)</h3>
+            <div class="practice-question">
+                <p>1. <strong>능동태 → 수동태:</strong> "The university encourages students to join various clubs."</p>
+                <p class="practice-answer">예시 답안: Students are encouraged by the university to join various clubs. (또는 At the university, students are encouraged to join various clubs.)</p>
+            </div>
+            <div class="practice-question">
+                <p>2. <strong>`encourage + 사람 + to + 동사` → `encourage + 명사(동명사)` (의미 유사하게):</strong> "My mentor encouraged me to pursue further education."</p>
+                <p class="practice-answer">예시 답안: My mentor encouraged my pursuit of further education. (또는 My mentor encouraged further education for me.)</p>
+            </div>
+
+            <h3>3. 유의어 선택 (문맥에 가장 적절한 단어 고르기)</h3>
+            <div class="practice-question">
+                <p>1. The CEO's vision for the future ________ all the employees to work towards a common goal. (그녀는 단지 용기를 준 것을 넘어, 모두에게 영감을 주어 공동 목표를 향해 나아가게 했다.)</p>
+                <p>(a) encouraged (b) motivated (c) inspired</p>
+                <p class="practice-answer">정답: (c) inspired (설명: 'vision', 'common goal'과 어울리며 '영감을 주다'는 뉘앙스가 가장 적절)</p>
+            </div>
+            <div class="practice-question">
+                <p>2. Despite the initial setbacks, her friends ________ her to keep trying and not give up on her project. (좌절에도 불구하고 친구들은 그녀가 계속 시도하도록 용기를 주었다.)</p>
+                <p>(a) urged (b) encouraged (c) promoted</p>
+                <p class="practice-answer">정답: (b) encouraged (설명: 'keep trying', 'not give up'과 어울리는 '용기를 주다'가 적절)</p>
+            </div>
+            
+            <h3>4. 문화적 뉘앙스 고려하여 문장 완성하기</h3>
+            <div class="practice-question">
+                <p>상황: 당신의 외국인 친구가 한국의 회사 문화에 대해 물어봅니다. 한국 회사에서 상사가 부하 직원에게 새로운 프로젝트를 맡기며 격려하는 상황을 영어로 어떻게 표현할 수 있을까요? (수직적 관계에서의 격려 뉘앙스를 살리면서도, 영어로 자연스럽게)</p>
+                <p class="practice-answer">예시 답안: "In many Korean companies, a manager might <strong>encourage</strong> a team member to take on a challenging new project by saying something like, 'I believe in your abilities, and I <strong>encourage</strong> you to take this opportunity for growth. I'll <strong>support</strong> you along the way.'" (여기서 encourage는 '권하다/기회를 주다'의 뉘앙스도 포함, support로 지지를 명시)</p>
+            </div>
+
+        </section>
+
+        <footer>
+            <p style="text-align:center; margin-top: 50px; color: #424242; font-size:1em;">&copy; Encourage 동사 마스터 가이드 (v3.0) - 이 가이드가 당신의 영어 학습 여정을 <span class="keyword">encourage</span> 하기를 바랍니다! 🎉</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+</body>
+</html>

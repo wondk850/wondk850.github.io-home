@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명사 마스터 가이드: Condition 완전 정복 (v1.0)</title>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 한글 폰트 우선 고려 */
+            line-height: 1.9; /* 가독성 높은 줄간격 */
+            margin: 0;
+            padding: 0;
+            background-color: #fcfcff; /* 매우 밝은 배경 */
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1000px; /* 콘텐츠 폭 확장 */
+            margin: 35px auto;
+            background-color: #ffffff;
+            padding: 35px 45px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+            border: 1px solid #e8e8e8;
+        }
+        h1, h2, h3, h4, h5 {
+            color: #1c3a5e; /* 차분하고 지적인 남색 */
+            font-weight: 600;
+            letter-spacing: -0.5px; /* 자간 미세 조정 */
+        }
+        h1 {
+            text-align: center;
+            color: #005f56; /* 깊고 세련된 청록색 */
+            border-bottom: 4px solid #00897b;
+            padding-bottom: 20px;
+            margin-bottom: 45px;
+            font-size: 2.6em;
+        }
+        h2 {
+            color: #1565c0; /* 신뢰감 있는 파란색 */
+            margin-top: 55px;
+            border-left: 8px solid #1e88e5;
+            padding-left: 18px;
+            font-size: 2.1em;
+            margin-bottom: 30px;
+        }
+        h3 {
+            color: #d81b60; /* 강조 핑크 */
+            margin-top: 45px;
+            font-size: 1.7em;
+            margin-bottom: 22px;
+            border-bottom: 1px dashed #f06292;
+            padding-bottom: 8px;
+        }
+        h4 {
+            color: #6a1b9a; /* 깊은 보라색 */
+            font-size: 1.4em;
+            margin-top: 30px;
+            font-weight: 500;
+        }
+        h5 { /* 추가된 소제목 스타일 */
+            color: #00695c; /* 청록색 계열 */
+            font-size: 1.2em;
+            margin-top: 25px;
+            font-weight: 500;
+        }
+        p {
+            margin-bottom: 20px;
+            color: #37474f; /* 읽기 편한 어두운 회색 */
+            font-size: 1.1em; /* 기본 폰트 크기 증가 */
+        }
+        ul, ol { /* ol 태그 스타일 추가 */
+            list-style-position: outside;
+            padding-left: 25px; /* 들여쓰기 조정 */
+        }
+        ul li, ol li {
+            background-color: #f7f9fc; /* 리스트 아이템 배경색 */
+            margin-bottom: 16px;
+            padding: 18px 22px; /* 패딩 조정 */
+            border-radius: 8px;
+            border-left: 6px solid #7986cb; /* 연보라/파랑 계열 */
+            transition: box-shadow 0.2s ease;
+        }
+        ul li:hover, ol li:hover {
+            box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+        }
+        ul li strong, ol li strong {
+            color: #303f9f; /* 진한 남색 */
+        }
+        code, .code-inline {
+            background-color: #e8f5e9; /* 연두색 계열 배경 */
+            color: #2e7d32; /* 진한 녹색 텍스트 */
+            padding: 6px 10px;
+            border-radius: 7px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-weight: 600;
+            font-size: 1em; /* 코드 폰트 크기 조정 */
+        }
+        .example {
+            font-style: italic;
+            color: #424242;
+            margin-left: 20px;
+            padding: 12px 20px;
+            border-left: 4px solid #90a4ae;
+            margin-bottom: 18px;
+            background-color: #f1f3f5; /* 예문 배경색 변경 */
+            border-radius: 6px;
+        }
+        .example-source {
+            font-size: 0.9em;
+            color: #607d8b;
+            display: block;
+            text-align: right;
+            margin-top: 6px;
+        }
+        .highlight {
+            color: #ef5350; /* 밝은 빨강 */
+            font-weight: bold;
+        }
+        .keyword {
+            color: #00796b;
+            font-weight: bold;
+        }
+        .definition-box { /* 이름 변경 */
+            background-color: #fffde7; /* 매우 연한 크림색 */
+            padding: 25px;
+            border-left: 8px solid #ffd600; /* 밝은 노랑 */
+            border-radius: 10px;
+            margin-bottom: 35px;
+        }
+        .key-concept-box { /* 새로운 박스 스타일 */
+            background-color: #e3f2fd;
+            border: 2px dashed #90caf9;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+        .key-concept-box h4 {
+            margin-top:0;
+            color: #1565c0;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px 20px;
+            text-align: left;
+        }
+        .comparison-table th {
+            background-color: #455a64; /* 어두운 회색/남색 */
+            color: white;
+            font-size: 1.15em;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .note, .corpus-info, .cultural-note, .tip-box { /* tip-box 추가 */
+            font-size: 1em;
+            color: #455a64;
+            margin-top: 10px;
+            padding: 15px;
+            background-color: #f0f4f8; /* 연한 회색/파랑 */
+            border-radius: 6px;
+            border-left: 5px solid #78909c; /* 회색/파랑 */
+        }
+        .tip-box {
+            background-color: #e0f2f1; /* 민트색 계열 */
+            border-left-color: #26a69a;
+        }
+        .section-intro { /* 섹션 도입부 설명 스타일 */
+            font-size: 1.1em;
+            color: #546e7a;
+            margin-bottom: 25px;
+            padding: 15px;
+            background-color: #fafafa;
+            border-radius: 5px;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 25px 20px;
+            }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.8em; }
+            h3 { font-size: 1.5em; }
+            p, ul li, ol li { font-size: 1em; }
+            .comparison-table th, .comparison-table td {
+                padding: 12px 15px;
+                font-size: 0.95em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📚 명사 마스터 가이드: Condition 완전 정복 <small style="font-size:0.5em; color:#7f8c8d;">(v1.0)</small> 📚</h1>
+
+        <section id="intro-to-nouns">
+            <h2>I. 명사 마스터를 위한 핵심 열쇠 🔑</h2>
+            <p class="section-intro">영어 명사를 자유자재로 사용하기 위해서는 단순히 뜻을 아는 것을 넘어, 명사가 가진 본질적인 특성을 이해해야 합니다. 이 서론에서는 모든 명사 학습의 기초가 되는 세 가지 핵심 열쇠: <strong class="keyword">셀 수 있느냐 없느냐 (Countability)</strong>, <strong class="keyword">어떤 전치사와 어울리느냐 (Prepositional Harmony)</strong>, 그리고 <strong class="keyword">어떤 단어들과 주로 함께 쓰이느냐 (Collocations)</strong>에 대해 자세히 알아보겠습니다.</p>
+
+            <div class="key-concept-box">
+                <h4>1. 셀 수 있느냐 없느냐 (Countability: Countable vs. Uncountable)</h4>
+                <p><strong>중요성:</strong> 관사 사용, 복수형 여부, 수량 표현이 달라져 문법적 정확성과 의미 전달에 결정적 영향을 미칩니다.</p>
+                <ul>
+                    <li>
+                        <strong>Information (정보 - Uncountable):</strong>
+                        <p class="example">일상: "Could you provide me with <span style="color:blue;">some information</span> regarding the new project?"</p>
+                        <p class="example">아카데믹: "The <span style="color:blue;">information</span> presented in this paper is based on extensive research."</p>
+                        <p class="note">❌ <span style="color:red;">An information</span> / <span style="color:red;">Many informations</span> (X)</p>
+                    </li>
+                    <li>
+                        <strong>Book (책 - Countable):</strong>
+                        <p class="example">일상: "I bought <span style="color:blue;">a fascinating book</span> about ancient history."</p>
+                        <p class="example">아카데믹: "The library has <span style="color:blue;">thousands of books</span> on various subjects."</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="key-concept-box">
+                <h4>2. 어떤 전치사와 어울리느냐 (Prepositional Harmony)</h4>
+                <p><strong>중요성:</strong> 명사와 특정 전치사의 조합은 의미를 명확히 하고, 문장의 뉘앙스를 결정합니다.</p>
+                <ul>
+                    <li>
+                        <strong>Dependence (의존):</strong>
+                        <p class="example">일상: "His <span style="color:green;">dependence on</span> his parents is still quite strong." (그의 부모님에 대한 의존은 여전히 꽤 강하다.)</p>
+                        <p class="example">아카데믹: "The study explores the <span style="color:green;">interdependence of</span> various economic factors." (그 연구는 다양한 경제 요인들의 상호의존성을 탐구한다.)</p>
+                    </li>
+                    <li>
+                        <strong>Access (접근):</strong>
+                        <p class="example">일상: "Do you have <span style="color:green;">access to</span> the internet here?" (여기서 인터넷에 접속할 수 있나요?)</p>
+                        <p class="example">비즈니스: "Improving <span style="color:green;">access for</span> disabled customers is a priority." (장애인 고객을 위한 접근성 개선이 우선 과제이다.)</p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="key-concept-box">
+                <h4>3. 어떤 단어들과 주로 함께 쓰이느냐 (Collocations)</h4>
+                <p><strong>중요성:</strong> 자연스럽고 유창한 영어를 구사하기 위해 필수적이며, 어색한 표현을 피하게 해줍니다.</p>
+                <ul>
+                    <li>
+                        <strong>Effort (노력):</strong>
+                        <p class="example">일상: "She <span style="color:purple;">made a conscious effort</span> to improve her eating habits." (그녀는 식습관을 개선하기 위해 의식적인 노력을 했다.)</p>
+                        <p class="example">비즈니스: "A <span style="color:purple;">collaborative effort</span> is needed to complete this project on time." (이 프로젝트를 제시간에 완료하려면 협력적인 노력이 필요하다.)</p>
+                        <p class="note">주요 Collocations: <code class="code-inline">make an effort</code>, <code class="code-inline">a concerted effort</code>, <code class="code-inline">a waste of effort</code>, <code class="code-inline">put effort into</code></p>
+                    </li>
+                    <li>
+                        <strong>Risk (위험):</strong>
+                        <p class="example">일상: "There's always a <span style="color:purple;">potential risk</span> when investing in the stock market." (주식 시장에 투자할 때는 항상 잠재적인 위험이 있다.)</p>
+                        <p class="example">아카데믹: "The research aims to <span style="color:purple;">assess the risks</span> associated with the new drug." (그 연구는 신약과 관련된 위험을 평가하는 것을 목표로 한다.)</p>
+                        <p class="note">주요 Collocations: <code class="code-inline">take a risk</code>, <code class="code-inline">run the risk of</code>, <code class="code-inline">a high/low risk</code>, <code class="code-inline">minimize risk</code></p>
+                    </li>
+                </ul>
+            </div>
+            <p class="section-intro" style="margin-top:30px; background-color: #fff3e0; border-left: 5px solid #ff9800;">이 세 가지 핵심 요소를 이해하는 것은 모든 명사 학습의 출발점입니다. 이제, 이 관점들을 가지고 명사 <strong class="keyword">"Condition"</strong>의 세계로 더 깊이 들어가 보겠습니다.</p>
+        </section>
+
+        <section id="countability-deep-dive">
+            <h2>II. 명사의 가산성 완전 정복: 정의, 기준, 그리고 쉬운 예시 💡</h2>
+            <p class="section-intro">가산성은 영어 명사 사용의 핵심입니다. 영어 사용자들이 세상을 인식하고 대상을 범주화하는 방식과 관련이 깊죠. "개별 단위로 명확히 구분하여 셀 수 있는가?" 이 질문을 항상 기억하세요!</p>
+
+            <h3>1. 가산성이란 무엇인가? (정의)</h3>
+            <ol>
+                <li>
+                    <strong>셀 수 있는 명사 (Countable Nouns):</strong>
+                    <p>하나, 둘, 셋... <span class="highlight">개별 단위로 명확하게 구분하여 셀 수 있는</span> 대상을 나타냅니다. (예: <code class="code-inline">a car</code> → <code class="code-inline">cars</code>, <code class="code-inline">an idea</code> → <code class="code-inline">ideas</code>)</p>
+                    <p class="note">특징: 단수/복수형 존재, 단수형 앞 'a/an' 가능, 숫자/'many'/'few' 등과 사용.</p>
+                </li>
+                <li>
+                    <strong>셀 수 없는 명사 (Uncountable Nouns / Mass Nouns):</strong>
+                    <p><span class="highlight">개별 단위로 나누어 세기 어렵거나 부자연스러운</span> 대상, 물질, 추상적 개념을 나타냅니다. (예: <code class="code-inline">water</code>, <code class="code-inline">happiness</code>, <code class="code-inline">furniture</code>)</p>
+                    <p class="note">특징: 보통 복수형 없음, 'a/an' 직접 사용 불가, 'much'/'little'/'some' 또는 단위 명사(<code class="code-inline">a piece of</code>)와 사용.</p>
+                </li>
+            </ol>
+
+            <h3>2. 가산성을 판단하는 기준 (어떻게 구분할까?)</h3>
+            <ul>
+                <li>
+                    <strong>기준 1: 구체적인 형태와 경계가 있는가?</strong>
+                    <p>Countable: <code class="code-inline">table</code>, <code class="code-inline">bottle</code>, <code class="code-inline">person</code> (명확한 개별 형태)</p>
+                    <p class="example">"We need <span style="color:blue;">two tables</span> and <span style="color:blue;">six chairs</span> for the event."</p>
+                    <p>Uncountable: <code class="code-inline">sand</code>, <code class="code-inline">flour</code>, <code class="code-inline">traffic</code> (덩어리, 경계 불분명)</p>
+                    <p class="example">"There was too much <span style="color:blue;">traffic</span> this morning."</p>
+                </li>
+                <li>
+                    <strong>기준 2: 추상적인 개념인가, 아니면 구체적인 사례/종류인가?</strong>
+                    <p>Uncountable (일반적 개념): <code class="code-inline">beauty</code> (아름다움), <code class="code-inline">freedom</code> (자유), <code class="code-inline">research</code> (연구)</p>
+                    <p class="example">"<span style="color:blue;">Freedom of speech</span> is a fundamental right."</p>
+                    <p>Countable (구체적 사례/종류): <code class="code-inline">a beauty</code> (미인), <code class="code-inline">a freedom</code> (특정 자유권), <code class="code-inline">a research (paper/project)</code> (연구 논문/프로젝트 하나 - 이때는 paper/project가 핵심)</p>
+                    <p class="example">"She is considered <span style="color:blue;">a great beauty</span> of her time." (그녀는 당대의 대단한 미인으로 여겨진다.)</p>
+                    <p class="example">"The team published <span style="color:blue;">three important researches/research papers</span> last year." (여기서 researches는 research papers/projects의 의미로 쓰일 때가 있으나, 일반적으로 research는 U로 취급하고, 구체적인 결과물은 a paper, a study 등으로 표현하는 것이 더 일반적입니다.)</p>
+                </li>
+                <li>
+                    <strong>기준 3: 덩어리(Mass)로 인식되는가, 아니면 개별 단위(Unit)로 인식되는가?</strong>
+                    <p>Uncountable (덩어리): <code class="code-inline">equipment</code> (장비류), <code class="code-inline">mail</code> (우편물), <code class="code-inline">advice</code> (조언)</p>
+                    <p class="example">"The laboratory has <span style="color:blue;">modern equipment</span>."</p>
+                    <p>Countable (개별 단위): <code class="code-inline">a tool</code> (도구), <code class="code-inline">a letter</code> (편지), <code class="code-inline">a piece of advice</code> (조언 한 마디)</p>
+                    <p class="example">"He gave me <span style="color:blue;">a valuable piece of advice</span>."</p>
+                </li>
+                <li>
+                    <strong>기준 4: 영어 사용자들이 그렇게 사용하기로 "약속"한 것 (Convention)</strong>
+                    <p>Uncountable: <code class="code-inline">news</code> (소식 - 항상 단수 취급), <code class="code-inline">progress</code> (진행, 진척), <code class="code-inline">evidence</code> (증거)</p>
+                    <p class="example">"The <span style="color:blue;">news from</span> the front line is encouraging."</p>
+                    <p class="example">"We have made significant <span style="color:blue;">progress</span> on the project."</p>
+                </li>
+            </ul>
+
+            <h3>3. 헷갈리는 경우 & 팁 (Tricky Cases & Tips)</h3>
+            <div class="tip-box">
+                <h4>하나의 단어가 문맥에 따라 C도 되고 U도 되는 경우:</h4>
+                <p><code>light</code>: "We need more <span style="color:blue;">light</span> in this room." (U - 빛) vs. "There are <span style="color:blue;">two lights</span> in the ceiling." (C - 전등)</p>
+                <p><code>experience</code>: "She has a lot of <span style="color:blue;">experience</span> in marketing." (U - 경험이라는 자질) vs. "Going bungee jumping was <span style="color:blue;">an unforgettable experience</span>." (C - 특정 경험 한 번)</p>
+                <p><code>chicken</code>: "I'd like some <span style="color:blue;">chicken</span>, please." (U - 닭고기) vs. "My grandmother keeps <span style="color:blue;">chickens</span> in her backyard." (C - 닭이라는 동물)</p>
+                <h4>팁:</h4>
+                <ol>
+                    <li><strong>사전 확인:</strong> 영영사전의 [C], [U] 표시를 반드시 확인하세요.</li>
+                    <li><strong>"덩어리 vs. 개별 단위" 자문:</strong> 이 기준으로 많이 해결됩니다.</li>
+                    <li><strong>많은 예문 접하기:</strong> 실제 사용 예를 통해 감을 익히는 것이 최고입니다.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section id="condition-master-guide">
+            <h2>III. 명사 "Condition" 마스터 가이드 🧐</h2>
+            <p class="section-intro">이제 명사 학습의 핵심 원리들을 바탕으로, 다의어이자 가산성 변화가 잦은 명사 <strong class="keyword">"Condition"</strong>을 심층 분석해 보겠습니다. "Condition"이 가진 다양한 얼굴과 쓰임새를 마스터해 봅시다!</p>
+
+            <h3>Part 1: Condition의 정체 파악 - 기본 다지기</h3>
+            <h4>1. 어원과 핵심 개념</h4>
+            <div class="definition-box">
+                <p><strong>어원:</strong> 라틴어 <code class="code-inline">condicio</code> (합의, 상황, 조건, 상태)에서 유래. '함께(con) 말하다(dicere)' 또는 '함께 두다(condere)'와 관련된 어원에서 '상황'이나 '합의된 사항'이라는 의미가 파생된 것으로 보입니다.</p>
+                <p><strong>핵심 개념:</strong> 어떤 사물, 사람, 또는 상황의 <span class="highlight">현재 '상태'나 '모습'</span>, 또는 어떤 일이 일어나거나 존재하기 위한 <span class="highlight">'필수적인 전제(조건)'</span> 또는 <span class="highlight">'주변 환경적 요인'</span>을 나타냅니다.</p>
+            </div>
+
+            <h4>2. 다의어로서의 Condition: 주요 의미와 가산성(C/U) 분석</h4>
+            <ol>
+                <li>
+                    <strong>의미 1: 상태, 모습, 품질 (State, Quality, Appearance) [주로 U, 때때로 C]</strong>
+                    <p>사물, 사람, 장소 등의 현재 모습, 건강 상태, 작동 상태, 또는 전반적인 질을 나타냅니다.</p>
+                    <p class="example">"The car is in <span style="color:blue;">excellent condition</span>." [U] (그 차는 상태가 아주 좋다.)</p>
+                    <p class="example">"What is the patient's <span style="color:blue;">current condition</span>?" [U, 때로 C로도 쓰임: a stable condition] (환자의 현재 상태는 어떻습니까?)</p>
+                    <p class="example">"The house was sold in <span style="color:blue;">its original condition</span>." [U] (그 집은 원래 상태 그대로 팔렸다.)</p>
+                    <p class="note">일반적으로 전반적인 '상태'를 나타낼 때는 셀 수 없지만, 특정 종류의 상태나 개별적으로 언급될 때는 'a/an'과 함께 쓰이거나 복수형이 되기도 합니다. (예: "He suffers from <span style="color:blue;">a rare skin condition</span>.")</p>
+                </li>
+                <li>
+                    <strong>의미 2: 조건, 조항 (Requirement, Stipulation, Term) [C]</strong>
+                    <p>계약, 합의, 제안 등에서 요구되거나 명시된 사항, 또는 어떤 일이 일어나기 위한 전제 조건을 의미합니다. 이 의미로는 거의 항상 셀 수 있는 명사로 쓰입니다.</p>
+                    <p class="example">"There are <span style="color:blue;">several conditions</span> attached to this offer." [C] (이 제안에는 몇 가지 조건이 붙어 있다.)</p>
+                    <p class="example">"One of the <span style="color:blue;">main conditions</span> for the loan is a good credit score." [C] (대출의 주요 조건 중 하나는 좋은 신용 점수이다.)</p>
+                    <p class="example">"He agreed to the <span style="color:blue;">terms and conditions</span>." [C, 고정표현] (그는 약관에 동의했다.)</p>
+                </li>
+                <li>
+                    <strong>의미 3: (주로 복수형) 상황, 환경, 여건 (Circumstances, Environment) [C, 특히 복수형으로]</strong>
+                    <p>어떤 일이 일어나거나 존재하는 주변의 전반적인 상황이나 환경적 요인들을 나타냅니다. 주로 복수형 <code class="code-inline">conditions</code>로 많이 쓰입니다.</p>
+                    <p class="example">"<span style="color:blue;">Working conditions</span> in that factory are very poor." [C] (그 공장의 근무 조건은 매우 열악하다.)</p>
+                    <p class="example">"Athletes must perform well <span style="color:blue;">under difficult weather conditions</span>." [C] (운동선수들은 어려운 기상 조건 하에서도 좋은 성적을 내야 한다.)</p>
+                    <p class="example">"They are living in <span style="color:blue;">appalling conditions</span>." [C] (그들은 끔찍한 환경에서 살고 있다.)</p>
+                </li>
+                <li>
+                    <strong>의미 4: 질병, 질환 (Illness, Ailment, Disorder) [C]</strong>
+                    <p>특히 의학적인 맥락에서, 건강상의 문제나 특정 질병을 의미합니다. 이 의미로는 셀 수 있는 명사로 취급됩니다.</p>
+                    <p class="example">"He has <span style="color:blue;">a serious heart condition</span>." [C] (그는 심각한 심장 질환을 앓고 있다.)</p>
+                    <p class="example">"Eczema is <span style="color:blue;">a common skin condition</span> in children." [C] (습진은 아이들에게 흔한 피부 질환이다.)</p>
+                    <p class="example">"Many chronic <span style="color:blue;">conditions</span> can be managed with proper treatment." [C] (많은 만성 질환은 적절한 치료로 관리될 수 있다.)</p>
+                </li>
+            </ol>
+
+            <h4>3. 복수형 "Conditions"의 특별한 용법</h4>
+            <p>앞서 언급했듯이, <code class="code-inline">conditions</code>는 단순히 '여러 조건들'이나 '여러 상태들'을 넘어, 특정 맥락에서 고유한 의미를 지니는 경우가 많습니다.</p>
+            <ul>
+                <li><code class="code-inline">living conditions</code>: 생활 환경, 주거 환경</li>
+                <li><code class="code-inline">working conditions</code>: 근무 조건, 노동 환경</li>
+                <li><code class="code-inline">weather conditions</code> / <code class="code-inline">climatic conditions</code>: 기상 상태 / 기후 조건</li>
+                <li><code class="code-inline">economic conditions</code>: 경제 상황</li>
+                <li><code class="code-inline">market conditions</code>: 시장 상황</li>
+                <li><code class="code-inline">terms and conditions</code>: (계약 등의) 약관, 조건</li>
+                <li><code class="code-inline">under normal/ideal/certain conditions</code>: 정상적인/이상적인/특정한 조건 하에서</li>
+            </ul>
+            <p class="example">"The government is trying to improve <span style="color:blue;">living conditions</span> in rural areas." (정부는 농촌 지역의 생활 환경을 개선하려고 노력하고 있다.)</p>
+
+            <h3>Part 2: Condition의 실제 활용 - 패턴과 맥락 마스터하기</h3>
+            <h4>1. 찰떡궁합 Collocations & 고정 표현</h4>
+            <h5>형용사 + condition:</h5>
+            <ul>
+                <li><code class="code-inline">good/excellent/perfect condition</code> (좋은 상태)</li>
+                <li><code class="code-inline">bad/poor/terrible condition</code> (나쁜 상태)</li>
+                <li><code class="code-inline">stable/unstable condition</code> (안정된/불안정한 상태 - 주로 환자)</li>
+                <li><code class="code-inline">critical condition</code> (위독한 상태 - 주로 환자)</li>
+                <li><code class="code-inline">medical condition</code> (의학적 질환/상태)</li>
+                <li><code class="code-inline">pre-existing condition</code> (기왕증 - 보험 등)</li>
+                <li><code class="code-inline">necessary/sufficient condition</code> (필요/충분 조건 - 논리학, 수학)</li>
+                <li><code class="code-inline">prevailing conditions</code> (지배적인 상황/여건)</li>
+            </ul>
+            <p class="example">"The patient was admitted to the hospital in <span style="color:purple;">critical condition</span>."</p>
+
+            <h5>동사 + condition:</h5>
+            <ul>
+                <li><code class="code-inline">meet/satisfy/fulfill a condition</code> (조건을 충족시키다)</li>
+                <li><code class="code-inline">set/impose/lay down a condition</code> (조건을 설정하다/부과하다)</li>
+                <li><code class="code-inline">improve/worsen a condition</code> (상태를 개선하다/악화시키다)</li>
+                <li><code class="code-inline">be in (a certain) condition</code> (~한 상태에 있다)</li>
+                <li><code class="code-inline">diagnose a condition</code> (질환을 진단하다)</li>
+                <li><code class="code-inline">treat a condition</code> (질환을 치료하다)</li>
+            </ul>
+            <p class="example">"Applicants must <span style="color:purple;">meet all the conditions</span> to be eligible for the scholarship."</p>
+
+            <h5>고정 표현:</h5>
+            <ul>
+                <li><code class="code-inline">on condition that...</code>: ~라는 조건으로 (주로 뒤에 절이 옴)
+                    <p class="example">"You can borrow the car <span style="color:purple;">on condition that</span> you return it by tomorrow."</p>
+                </li>
+                <li><code class="code-inline">under ... conditions</code>: ~라는 상황/조건 하에
+                    <p class="example">"The experiment was conducted <span style="color:purple;">under controlled conditions</span>."</p>
+                </li>
+                <li><code class="code-inline">terms and conditions</code>: (계약 등의) 약관</li>
+            </ul>
+
+            <h4>2. 전치사와의 결합 (Prepositional Harmony)</h4>
+            <ul>
+                <li><strong>in ... condition:</strong> (상태를 나타낼 때)
+                    <p class="example">"The manuscript is <span style="color:green;">in</span> excellent condition."</p>
+                </li>
+                <li><strong>under ... conditions:</strong> (상황, 환경을 나타낼 때)
+                    <p class="example">"They had to work <span style="color:green;">under</span> extreme pressure and difficult conditions."</p>
+                </li>
+                <li><strong>on condition that:</strong> (~라는 조건으로)
+                    <p class="example">"She agreed to speak <span style="color:green;">on condition that</span> her name would not be revealed."</p>
+                </li>
+                <li><strong>a condition for (something):</strong> (~을 위한 조건)
+                    <p class="example">"Regular exercise is <span style="color:green;">a condition for</span> good health."</p>
+                </li>
+                <li><strong>a condition of (something):</strong> (~의 조건/상태, ~에 따르는 질환)
+                    <p class="example">"This is <span style="color:green;">a condition of</span> the agreement." (이것은 합의의 조건이다.)</p>
+                    <p class="example">"It's <span style="color:green;">a common condition of</span> old age." (그것은 노년에 흔히 따르는 질환이다.)</p>
+                </li>
+            </ul>
+
+            <h4>3. 사용되는 분야/영역별 분석</h4>
+            <ul>
+                <li><strong>의학 (Medicine):</strong> 주로 '질병', '환자의 상태'를 의미. <code class="code-inline">medical condition</code>, <code class="code-inline">heart condition</code>, <code class="code-inline">stable/critical condition</code>.</li>
+                <li><strong>법률/계약 (Law/Contracts):</strong> '조건', '조항'. <code class="code-inline">terms and conditions</code>, <code class="code-inline">meet a condition</code>, <code class="code-inline">on condition that</code>.</li>
+                <li><strong>비즈니스/경제 (Business/Economics):</strong> '시장 상황', '경제 상황', '근무 조건'. <code class="code-inline">market conditions</code>, <code class="code-inline">economic conditions</code>, <code class="code-inline">working conditions</code>.</li>
+                <li><strong>과학/연구 (Science/Research):</strong> '실험 조건', '환경 조건'. <code class="code-inline">experimental conditions</code>, <code class="code-inline">under controlled conditions</code>.</li>
+                <li><strong>일상 대화 (Everyday Conversation):</strong> '물건의 상태', '날씨 상황', '일반적인 여건'. <code class="code-inline">in good condition</code>, <code class="code-inline">weather conditions</code>.</li>
+            </ul>
+
+            <h3>Part 3: Condition의 깊이 있는 이해 - 뉘앙스와 관계망</h3>
+            <h4>1. 의미 네트워크: 유의어, 관련어</h4>
+            <p>각 "Condition"의 주요 의미별 유의어 및 관련어를 통해 이해를 넓혀보세요.</p>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Condition의 의미</th>
+                        <th>유의어/관련어</th>
+                        <th>미묘한 뉘앙스 차이</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>상태 (State)</strong></td>
+                        <td><code class="code-inline">state</code>, <code class="code-inline">shape</code>, <code class="code-inline">form</code>, <code class="code-inline">quality</code>, <code class="code-inline">situation</code></td>
+                        <td><code class="code-inline">State</code>는 가장 일반적. <code class="code-inline">Shape</code>는 물리적 형태. <code class="code-inline">Quality</code>는 질. <code class="code-inline">Situation</code>은 특정 시점의 상황.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>조건 (Requirement)</strong></td>
+                        <td><code class="code-inline">requirement</code>, <code class="code-inline">stipulation</code>, <code class="code-inline">provision</code>, <code class="code-inline">term</code>, <code class="code-inline">prerequisite</code>, <code class="code-inline">qualification</code></td>
+                        <td><code class="code-inline">Requirement</code>는 필수 요구사항. <code class="code-inline">Stipulation</code>은 명시된 조건. <code class="code-inline">Prerequisite</code>는 선결 조건.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>상황/환경 (Circumstances)</strong></td>
+                        <td><code class="code-inline">circumstances</code>, <code class="code-inline">environment</code>, <code class="code-inline">surroundings</code>, <code class="code-inline">setting</code></td>
+                        <td><code class="code-inline">Circumstances</code>는 특정 사건과 관련된 주변 상황. <code class="code-inline">Environment</code>는 물리적/사회적 환경.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>질병 (Illness)</strong></td>
+                        <td><code class="code-inline">illness</code>, <code class="code-inline">ailment</code>, <code class="code-inline">disorder</code>, <code class="code-inline">sickness</code>, <code class="code-inline">disease</code></td>
+                        <td><code class="code-inline">Illness</code>는 일반적 아픔. <code class="code-inline">Ailment</code>는 가벼운 질병. <code class="code-inline">Disorder</code>는 기능 장애. <code class="code-inline">Disease</code>는 특정 원인이 있는 심각한 질병.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>2. 코퍼스 기반 정보 (간략)</h4>
+            <p class="corpus-info">대규모 영어 코퍼스 분석에 따르면, "condition"은 <code class="code-inline">in good condition</code> (상태), <code class="code-inline">terms and conditions</code> (조건), <code class="code-inline">medical condition</code> (질병), <code class="code-inline">working/living conditions</code> (환경)과 같은 표현으로 매우 빈번하게 사용됩니다. 특히 '상태'를 나타낼 때는 전치사 <code class="code-inline">in</code>과, '환경/상황'을 나타낼 때는 전치사 <code class="code-inline">under</code>와 자주 결합하는 경향이 있습니다.</p>
+
+            <h3>Part 4: Condition 마스터를 위한 실전 훈련</h3>
+            <h4>1. 연습 문제</h4>
+            <div class="practice-question">
+                <h5>A. 빈칸 채우기 (올바른 형태의 condition 또는 전치사)</h5>
+                <p>1. The old castle is still ________ remarkably good ________. (그 오래된 성은 여전히 놀랍도록 좋은 상태이다.)</p>
+                <p class="practice-answer">정답: in / condition</p>
+                <p>2. One of the ________ for this job is fluency in English. (이 직업의 조건 중 하나는 유창한 영어 실력이다.)</p>
+                <p class="practice-answer">정답: conditions</p>
+                <p>3. The company offers excellent ________ ________ to its employees. (그 회사는 직원들에게 훌륭한 근무 조건을 제공한다.)</p>
+                <p class="practice-answer">정답: working conditions</p>
+                <p>4. He agreed to lend me the money ________ ________ that I pay it back within a month. (그는 내가 한 달 안에 돈을 갚는다는 조건으로 돈을 빌려주기로 동의했다.)</p>
+                <p class="practice-answer">정답: on condition</p>
+            </div>
+            <div class="practice-question">
+                <h5>B. 문맥 속 의미 파악하기 (어떤 의미의 "condition"일까요?)</h5>
+                <p>1. "The doctor said my overall health condition is improving."</p>
+                <p class="practice-answer">정답: 의미 1 (상태 - 건강 상태)</p>
+                <p>2. "What are the specific conditions outlined in the contract?"</p>
+                <p class="practice-answer">정답: 의미 2 (조건, 조항)</p>
+                <p>3. "Many people in that region live under very poor sanitary conditions."</p>
+                <p class="practice-answer">정답: 의미 3 (상황, 환경 - 위생 환경)</p>
+                <p>4. "Diabetes is a chronic condition that requires lifelong management."</p>
+                <p class="practice-answer">정답: 의미 4 (질병, 질환)</p>
+            </div>
+
+            <h4>2. 자주 하는 실수와 해결책</h4>
+            <div class="tip-box">
+                <p><strong>실수 1: '상태'를 의미할 때 불필요하게 복수형 사용</strong></p>
+                <p>❌ "The conditions of the roads are bad."</p>
+                <p>✅ "The <span class="keyword">condition</span> of the roads is bad." (도로의 전반적인 상태는 단수)</p>
+                <p class="note">단, 여러 도로의 '각각의 상태들'을 비교하거나 열거할 때는 복수형이 가능할 수 있으나, 일반적인 '상태'는 단수(U)로 취급하는 경우가 많습니다.</p>
+
+                <p><strong>실수 2: '조건(requirement)'을 의미할 때 단수형만 고집</strong></p>
+                <p>🤔 "There is only one condition for this." (하나의 조건만 있다면 맞지만, 여러 조건일 가능성을 간과)</p>
+                <p>✅ "There are <span class="keyword">several conditions</span> for this." (여러 조건이 있다면 복수형)</p>
+
+                <p><strong>해결책:</strong> 각 의미별 가산성([C]/[U])을 항상 염두에 두고, 문맥에 따라 단수/복수를 정확히 사용하도록 연습합니다. 특히 '상태'는 [U]로, '조건(requirement)'이나 '질병'은 [C]로 주로 쓰인다는 점을 기억하세요!</p>
+            </div>
+        </section>
+
+        <footer>
+            <p style="text-align:center; margin-top: 50px; color: #424242; font-size:1.05em;">&copy; 명사 마스터 가이드: Condition 완전 정복 (v1.0) - 이 가이드가 여러분의 명사 학습에 훌륭한 <span class="keyword">condition</span>을 제공하기를 바랍니다! 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>

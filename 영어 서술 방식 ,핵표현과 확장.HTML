@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 서술 방식: 핵표현과 확장 (완결판 v2.15 - 가독성 향상)</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif, Arial, Helvetica;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            font-weight: 400; /* 기본 본문 폰트 굵기 */
+        }
+        h1, h2, h3, h4 {
+            color: #2a4365; /* Tailwind blue-800 */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        h1 { font-size: 2.2em; font-weight: 700; }
+        h2 { font-size: 1.8em; font-weight: 600; }
+        h3 { font-size: 1.5em; font-weight: 600; }
+        h4 { font-size: 1.3em; font-weight: 600; }
+        p, li { 
+            margin-bottom: 1em;
+            font-weight: 400; 
+        }
+        ul, ol {
+            padding-left: 1.5em; 
+        }
+        .mermaid {
+            margin: 30px auto;
+            background-color: #fafafa; 
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            max-width: 900px; 
+        }
+        table {
+            border-collapse: collapse;
+            margin: 20px 0;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #cbd5e0; /* Tailwind gray-400 */
+            padding: 10px;
+            text-align: left;
+            font-weight: 400; 
+        }
+        th {
+            background-color: #edf2f7; /* Tailwind gray-200 */
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f8fafc; /* Tailwind gray-50 */
+        }
+        blockquote {
+            border-left: 4px solid #4299e1; /* Tailwind blue-500 */
+            padding-left: 15px;
+            margin-left: 0;
+            color: #4a5568; /* Tailwind gray-700 */
+            font-style: italic;
+            font-weight: 400;
+        }
+        .example {
+            background-color: #f0f4f8; 
+            border-left: 4px solid #63b3ed; /* Tailwind blue-400 */
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .example p, .example li {
+             font-weight: 500; /* 예제 내 텍스트 굵기 증가 (기존 400 -> 500) */
+        }
+        .example em, .example strong { /* 예제 내 강조 텍스트는 더 굵게 */
+            font-weight: 700; /* 기존 600 -> 700 */
+        }
+        
+        .highlight {
+            background-color: #fefcbf; /* Tailwind yellow-100 */
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        .note {
+            background-color: #e6fffa; /* Tailwind teal-50 */
+            border: 1px solid #b2f5ea; /* Tailwind teal-200 */
+            border-radius: 6px;
+            padding: 10px 15px;
+            margin: 15px 0;
+        }
+        .note p { 
+            font-weight: 400;
+        }
+        .note strong {
+             font-weight: 600; 
+        }
+        .code-tag { 
+            font-family: monospace;
+            background-color: #edf2f7; 
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-weight: 600; /* 코드 태그 굵기 증가 (기존 500 -> 600) */
+        }
+        /* 표 내부의 code-tag는 더 강조될 수 있도록 */
+        td .code-tag {
+            font-weight: 600; /* 기존 500 -> 600, 이미 .code-tag에서 600이므로 유지 또는 더 증가 가능 */
+            background-color: #e2e8f0; /* 약간 더 진한 배경 */
+        }
+
+    </style>
+</head>
+<body class="px-4 py-8 bg-gray-50">
+
+    <header class="mb-12 text-center">
+        <h1>영어 서술 방식: 핵표현과 확장</h1>
+        <p class="text-lg text-gray-600">완결판 v2.15 - 가독성 향상</p>
+        <p class="text-md text-gray-600 mt-2">상태 → 변화 → 사동의 3단 단계를 중심으로</p>
+    </header>
+
+    <main>
+        <section id="intro">
+            <h2>서론: 영어 표현력의 비밀, 3단 변화의 마법에 있다</h2>
+            <p>
+                영어를 깊이 있게 이해하고 유창하게 구사하는 길은 어디에 있을까요? 그 핵심 열쇠 중 하나는 바로 영어 동사가 상황을 묘사하는 방식, 특히 
+                <strong>'상태 (<span class="code-tag">be</span>) → 변화 (<span class="code-tag">get</span> 및 유사 동사군, 자동사ℹ️) → 사동/변화 유발 (<span class="code-tag">get ~</span> 및 유사 동사군, 타동사ℹ️)'</strong>로 
+                이어지는 3단 단계를 파악하는 데 있습니다. 이 구조는 마치 하나의 정지된 장면이 움직이는 영상으로, 그리고 그 영상을 만들어내는 연출자의 시점으로 전환되는 영화와 같습니다. 
+                본 완결판에서는 이 3단 핵심 단계를 중심으로 '핵표현ℹ️'의 개념과 그 '색채화ℹ️'를 통한 의미 확장을 더욱 심도 있고 풍부한 예문, 
+                그리고 명확한 시각 자료와 함께 탐구해 보겠습니다.
+            </p>
+        </section>
+
+        <section id="part1">
+            <h2>1부: 핵표현의 발견과 이해 – 의미의 씨앗을 찾아서</h2>
+
+            <h3>1.1. 핵표현 (Nuclear Expression)이란 무엇인가?</h3>
+            <p>
+                어떤 하나의 표현에 있어서 가장 기본이 되는 의미 단위이자 골격입니다. 모든 복잡하고 다양한 영어 표현은 이 단순한 핵표현에서 파생되고 확장된 것으로 볼 수 있습니다. 
+                핵표현을 파악하면 문장의 핵심 의미를 빠르게 포착할 수 있으며, 이를 바탕으로 다양한 파생 표현들을 체계적으로 이해하고 학습하는 것이 가능해집니다.
+            </p>
+
+            <h3>1.2. 표현의 색채화 (Coloring of Expression) – 의미에 생동감을 불어넣다</h3>
+            <p>
+                핵표현에 다른 동사, 부사, 전치사구 등을 덧붙여 원래의 기본 의미에 <strong>구체성, 생동감, 미묘한 뉘앙스(색채)</strong>를 더하는 과정입니다. 
+                색채화를 통해 화자는 자신의 의도나 감정, 상황의 특수성을 더욱 정교하게 전달할 수 있습니다.
+            </p>
+
+            <div class="note">
+                <p><strong>통찰 1</strong>: 영어 표현은 <strong>경제성과 유연성</strong>을 동시에 추구합니다. 소수의 핵표현을 기반으로 다양한 색채화 요소를 조합함으로써, 
+                마치 레고 블록처럼 무한에 가까운 표현을 창조해낼 수 있습니다.</p>
+            </div>
+
+            <h3>1.3. 핵표현과 색채화의 구체적 예시 탐구</h3>
+            
+            <h4>1. 핵표현: <span class="code-tag">get to one's feet</span> (일어서다, stand up)</h4>
+            <div class="example">
+                <p><em>leap to one's feet</em>: (놀람, 기쁨 등으로) 펄쩍 뛰어 일어서다.<br>
+                <em>The crowd <strong>leapt to their feet</strong> when he scored the winning goal.</em></p>
+                
+                <p><em>spring to one's feet</em>: (용수철처럼) 빨딱 일어서다.<br>
+                <em>Hearing his name called, he <strong>sprang to his feet</strong>.</em></p>
+                
+                <p><em>stagger to one's feet</em>: (술 취하거나 다쳐서) 비틀거리며 일어서다.<br>
+                <em>After the accident, he <strong>staggered to his feet</strong>, dazed and confused.</em></p>
+            </div>
+
+            <h4>1.3.1. 핵표현 <span class="code-tag">get to one's feet</span> 시각화 (Mermaid Flowchart)</h4>
+            
+            <div class="mermaid">
+flowchart TD
+  root((get to ones feet\n일어서다)):::rootStyle
+  leap("leap to ones feet\n펄쩍 뛰어 일어서다"):::branchStyle1
+  spring("spring to ones feet\n빨딱 일어서다"):::branchStyle2
+  stagger("stagger to ones feet\n비틀거리며 일어서다"):::branchStyle3
+  struggle("struggle to ones feet\n힘겹게 일어서다"):::branchStyle4
+  jump("jump to ones feet\n벌떡 일어서다"):::branchStyle5
+
+  root --> leap
+  root --> spring
+  root --> stagger
+  root --> struggle
+  root --> jump
+
+classDef rootStyle fill:#f9d423,stroke:#e67e22,stroke-width:3px,color:#444,font-weight:bold
+classDef branchStyle1 fill:#a7d7f9,stroke:#3498db,stroke-width:2px,color:#333
+classDef branchStyle2 fill:#a8e6cf,stroke:#2ecc71,stroke-width:2px,color:#333
+classDef branchStyle3 fill:#d7dadd,stroke:#95a5a6,stroke-width:2px,color:#333
+classDef branchStyle4 fill:#e1c3f7,stroke:#8e44ad,stroke-width:2px,color:#333
+classDef branchStyle5 fill:#99e7dd,stroke:#1abc9c,stroke-width:2px,color:#333
+            </div>
+            
+            <p>
+                위 플로우차트는 핵표현 'get to one's feet'가 다양한 동사(색채화 요소)와 결합하여 어떻게 다른 뉘앙스의 표현으로 확장되는지 보여줍니다. 
+                중심의 <strong>주황색 노드</strong>가 핵표현이며, 각기 다른 <strong>색상의 가지 노드</strong>들은 '펄쩍 뛰어오르는(파란색)', 
+                '용수철처럼 튀어오르는(녹색)', '비틀거리는(회색)' 등 구체적인 방식을 나타냅니다.
+            </p>
+
+            <h4>2. 핵표현: <span class="code-tag">put to death</span> (-을 죽이다)</h4>
+            <div class="example">
+                <p><em>beat to death</em>: 때려서 죽이다.<br>
+                <em>The gang <strong>beat</strong> the rival member <strong>to death</strong>.</em></p>
+                
+                <p><em>freeze to death</em>: 얼려서 죽이다 (얼어 죽다).<br>
+                <em>Lost in the blizzard, they nearly <strong>froze to death</strong>.</em></p>
+            </div>
+
+            <h4>3. 핵표현: <span class="code-tag">make one's way</span> (가다, go)</h4>
+            <div class="example">
+                <p><em>push her way through the crowd</em>: (밀면서 군중 속을 뚫고 가다)<br>
+                <em>She had to <strong>push her way through the crowd</strong> to reach the front.</em></p>
+                
+                <p><em>work his way through college</em>: (일해서 학비를 벌어 대학을 나오다)<br>
+                <em>He <strong>worked his way through college</strong> by waiting tables at night.</em></p>
+            </div>
+        </section>
+
+        <section id="part2">
+            <h2>2부: 영어 핵심 동사 구조: 상태 → 변화 → 사동의 3단 단계로 이해하기</h2>
+            
+            <p>
+                영어 동사 표현의 가장 근본적인 확장 방식은 <strong>상태(State)에서 시작하여, 주어 스스로의 변화(Change)를 거쳐, 
+                마침내 주체가 타자나 환경에 영향을 미쳐 변화를 유발하는 사동(Causing Change)의 단계</strong>로 심화되는 3단 구조로 이해할 수 있습니다.
+            </p>
+
+            <div class="mermaid">
+graph LR
+    A["1. 상태 (be)\n정적 상태"]:::stateStyle --> B["2. 변화 (get - 자동사)\n주어 스스로 변화"]:::changeStyle
+    B --> C["3. 사동 (get ~ - 타동사)\n변화 유발"]:::causativeStyle
+    
+    classDef stateStyle fill:#e6f7ff,stroke:#007bff,stroke-width:2px,color:#333,font-weight:bold
+    classDef changeStyle fill:#e6ffe6,stroke:#28a745,stroke-width:2px,color:#333,font-weight:bold
+    classDef causativeStyle fill:#fff0e6,stroke:#fd7e14,stroke-width:2px,color:#333,font-weight:bold
+            </div>
+
+            <h4>표 2.A: 상태 → 변화 → 사동의 3단 핵심 구조 비교 (<span class="code-tag">drunk</span> 예시)</h4>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>단계</th>
+                        <th>구조</th>
+                        <th>예시</th>
+                        <th>의미 번역</th>
+                        <th>핵심 설명</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. 상태 (State)</strong></td>
+                        <td><span class="code-tag">be + 상태</span></td>
+                        <td>He <strong>is drunk</strong>.</td>
+                        <td>그는 술에 취한 <strong>상태이다</strong>.</td>
+                        <td>정적인 현재 상태 묘사.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. 변화 (Change)</strong></td>
+                        <td><span class="code-tag">get + 상태</span></td>
+                        <td>He <strong>got drunk</strong>.</td>
+                        <td>그는 술에 <strong>취하게 되었다</strong>.</td>
+                        <td>상태가 변화하는 과정 또는 결과. 주어 스스로의 변화.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. 사동 (Cause)</strong>ℹ️</td>
+                        <td><span class="code-tag">get + 목적어 + 상태</span></td>
+                        <td>His friends <strong>got him drunk</strong>.</td>
+                        <td>친구들이 그를 <strong>취하게 만들었다</strong>.</td>
+                        <td>주체가 목적어의 상태 변화를 유발.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>2.1. 1단계: 상태 (State) – <span class="code-tag">be</span> 동사로 표현되는 정적인 순간</h3>
+            <p>
+                특정 시점에서의 주어의 정적인 상태, 조건, 정체성, 위치 등을 묘사합니다.
+            </p>
+            <div class="example">
+                <p><em>She <strong>is happy</strong>.</em> / <em>The book <strong>is on the table</strong>.</em> / <em>The door <strong>is closed</strong>.</em></p>
+            </div>
+
+            <h3>2.2. 2단계: 변화 (Change) – <span class="code-tag">get</span> (및 유사 동사군ℹ️)의 자동사적 용법으로 표현되는 역동성</h3>
+            <p>
+                주어가 어떤 상태에서 다른 상태로 '변화하는 과정' 또는 어떤 동작을 '하게 되는' 과정을 나타냅니다.
+            </p>
+            <div class="example">
+                <p><em>She <strong>got angry</strong> when she heard the news.</em> / <em>It <strong>got dark</strong> suddenly.</em></p>
+            </div>
+
+            <p><strong><span class="code-tag">get</span> 외 다른 상태 변화 동사 예시:</strong></p>
+            <ul class="list-disc pl-6 mb-4">
+                <li><span class="code-tag">turn</span>: (색깔, 상태 등이) 변하다.<br>
+                <em>The leaves <strong>turn red</strong> in autumn.</em> / <em>He <strong>turned pale</strong>.</em></li>
+                
+                <li><span class="code-tag">go</span>: (주로 나쁜 상태로) 변하다.<br>
+                <em>The milk <strong>went sour</strong>.</em> / <em>His business <strong>went bankrupt</strong>.</em></li>
+                
+                <li><span class="code-tag">fall</span>: (갑자기 어떤 상태에) 빠지다.<br>
+                <em>She <strong>fell asleep</strong>.</em> / <em>The room <strong>fell silent</strong>.</em></li>
+                
+                <li><span class="code-tag">grow</span>: (점진적으로 어떤 상태로) 자라다, 되다.<br>
+                <em>He <strong>grew tired</strong> of her complaints.</em></li>
+            </ul>
+
+            <h3>2.3. 3단계: 사동/변화 유발 (Causing Change) – <span class="code-tag">get ~</span> (및 유사 동사군)의 타동사적 용법으로 세상을 움직이다</h3>
+            <p>
+                주어가 목적어로 하여금 특정 상태가 되도록 '만들거나', 특정 행동을 하도록 '시키거나' 하는 등, 주체가 타자나 환경에 적극적으로 영향을 미쳐 변화를 유발하는 경우를 나타냅니다.
+            </p>
+            <div class="example">
+                <p><em>The news <strong>got her angry</strong>.</em> / <em>I need to <strong>get my car repaired</strong>.</em> / <em>She <strong>got him to agree</strong>.</em></p>
+            </div>
+
+            <p><strong><span class="code-tag">get</span> 외 다른 사동/변화 유발 동사 예시:</strong></p>
+            <ul class="list-disc pl-6 mb-4">
+                <li><span class="code-tag">make</span>: (강제적 또는 직접적 원인이 되어) ~하게 만들다.<br>
+                <em>The sad movie <strong>made her cry</strong>.</em> / <em>She <strong>made him a star</strong>.</em></li>
+                
+                <li><span class="code-tag">have</span>: (시키다, 경험하다 - 주로 서비스나 업무를) ~하게 하다.<br>
+                <em>I <strong>had my hair cut</strong> yesterday.</em></li>
+                
+                <li><span class="code-tag">let</span>: ~하도록 허락하다, 내버려 두다.<br>
+                <em>My parents <strong>let me stay</strong> out late.</em></li>
+                
+                <li><span class="code-tag">help</span>: ~가 ~하도록 돕다.<br>
+                <em>He <strong>helped me (to) carry</strong> the bags.</em></li>
+            </ul>
+
+            <div class="note">
+                <p><strong>통찰 2 (강화)</strong>: 이 <strong><span class="code-tag">be</span> → <span class="code-tag">get (자)</span> → <span class="code-tag">get ~ (타)</span>의 3단 단계</strong>는 
+                영어 서술 방식의 핵심적인 확장 패턴입니다. <span class="code-tag">get</span> 외에도 <span class="code-tag">turn</span>, <span class="code-tag">go</span>, <span class="code-tag">fall</span>, <span class="code-tag">make</span>, <span class="code-tag">have</span> 등 
+                다양한 동사군이 유사한 상태 변화 및 사동 구조를 형성하며, 이는 영어가 세계를 분석하고 상호작용하는 방식을 반영하는 <strong>보편적인 언어 원리</strong>임을 시사합니다.</p>
+            </div>
+        </section>
+
+        <section id="part3">
+            <h2>3부: 핵표현과 서술 방식의 심층적 이해 – 보이지 않는 의미의 결을 읽다</h2>
+
+            <h3>3.1. 물리적 표현에서 추상적 표현으로의 확장 – 구체성에서 보편성으로</h3>
+            <p>
+                영어는 구체적인 물리적 경험을 바탕으로 추상적인 개념을 이해하고 표현합니다.
+            </p>
+            <div class="example">
+                <p><em><span class="code-tag">get over a fence</span></em> (담장을 넘다) → <em><span class="code-tag">get over a difficulty</span></em> (어려움을 극복하다)</p>
+                <p><em><span class="code-tag">make one's way through a forest</span></em> (숲을 헤쳐 나아가다) → <em><span class="code-tag">make one's way in the world</span></em> (세상에서 출세하다)</p>
+            </div>
+
+            <div class="note">
+                <p><strong>통찰 3</strong>: 영어는 <strong>구체적인 동작이나 공간적 관계의 패턴</strong>을 빌려와 <strong>비유적이고 추상적인 의미</strong>를 효과적으로 전달합니다. 이는 언어의 표현력을 극대화합니다.</p>
+            </div>
+
+            <h3>3.2. 표현 방식의 전환 – 유연한 사고의 반영</h3>
+            <p>
+                같은 의미를 전달하더라도 동사 중심 ↔ 형용사/명사 중심으로 유연하게 전환합니다.
+            </p>
+            <div class="example">
+                <p><em>He did not <strong>succeed</strong>.</em> ↔ <em>He <strong>was</strong> not <strong>successful</strong>.</em></p>
+                <p><em>Children <strong>depend on</strong> their parents.</em> ↔ <em>Children <strong>are dependent on</strong> parents.</em></p>
+            </div>
+
+            <div class="note">
+                <p><strong>통찰 4</strong>: 영어 학습의 핵심은 다양한 표현 <strong>패턴과 그 변형</strong>을 익히는 것입니다.</p>
+            </div>
+
+            <h3>3.3. 동사의 방향성과 이미지성 심층 탐구 – 언어 속의 그림ℹ️</h3>
+            <p>
+                많은 영어 동사, 특히 구동사는 특정한 방향성, 움직임의 궤적, 또는 시각적 이미지를 강하게 내포합니다.
+            </p>
+
+            <h4>표 3.A: 주요 전치사/부사의 방향성 및 이미지</h4>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>전치사/부사</th>
+                        <th>핵심 이미지/방향성</th>
+                        <th>예시 동사구 (및 의미)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>up</strong></td>
+                        <td>위로, 상승, 증가, 완료, 출현</td>
+                        <td><span class="code-tag">stand up</span> (일어서다), <span class="code-tag">grow up</span> (성장하다), <span class="code-tag">show up</span> (나타나다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>down</strong></td>
+                        <td>아래로, 하강, 감소, 진정, 기록</td>
+                        <td><span class="code-tag">sit down</span> (앉다), <span class="code-tag">calm down</span> (진정하다), <span class="code-tag">break down</span> (고장나다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>out</strong></td>
+                        <td>밖으로, 제거, 소멸, 발견, 공개</td>
+                        <td><span class="code-tag">go out</span> (나가다), <span class="code-tag">find out</span> (알아내다), <span class="code-tag">put out</span> (불을 끄다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>on</strong></td>
+                        <td>접촉, 계속, 시작</td>
+                        <td><span class="code-tag">put on</span> (입다), <span class="code-tag">go on</span> (계속하다), <span class="code-tag">turn on</span> (켜다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>off</strong></td>
+                        <td>분리, 중단, 제거</td>
+                        <td><span class="code-tag">take off</span> (벗다, 이륙하다), <span class="code-tag">turn off</span> (끄다), <span class="code-tag">call off</span> (취소하다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>over</strong></td>
+                        <td>너머로, 극복, 전체, 완료, 반복</td>
+                        <td><span class="code-tag">get over</span> (극복하다), <span class="code-tag">look over</span> (검토하다), <span class="code-tag">do over</span> (다시 하다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>through</strong></td>
+                        <td>관통, 통과, 완료 (어려움)</td>
+                        <td><span class="code-tag">go through</span> (겪다), <span class="code-tag">see through</span> (꿰뚫어보다), <span class="code-tag">get through</span> (끝내다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>away</strong></td>
+                        <td>멀리, 사라짐</td>
+                        <td><span class="code-tag">go away</span> (가버리다), <span class="code-tag">throw away</span> (버리다), <span class="code-tag">run away</span> (도망가다)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>back</strong></td>
+                        <td>뒤로, 되돌아감, 이전 상태</td>
+                        <td><span class="code-tag">come back</span> (돌아오다), <span class="code-tag">give back</span> (돌려주다), <span class="code-tag">look back</span> (회상하다)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="mermaid">
+graph TD
+    Verb["동사 (Verb)"]:::verbStyle
+    Verb --> UP["UP (상승, 완료)"]:::prepStyleUp
+    Verb --> DOWN["DOWN (하강, 진정)"]:::prepStyleDown
+    Verb --> OUT["OUT (외부, 소멸)"]:::prepStyleOut
+    Verb --> ON["ON (지속, 접촉)"]:::prepStyleOn
+    Verb --> OFF["OFF (분리, 중단)"]:::prepStyleOff
+    Verb --> OVER["OVER (극복, 전체)"]:::prepStyleOver
+    Verb --> THROUGH["THROUGH (관통, 경험)"]:::prepStyleThrough
+    Verb --> AWAY["AWAY (멀리, 제거)"]:::prepStyleAway
+    Verb --> BACK["BACK (되돌아감)"]:::prepStyleBack
+    
+    classDef verbStyle fill:#e9ecef,stroke:#adb5bd,stroke-width:2px,color:#212529,font-weight:bold,rx:5,ry:5
+    classDef prepStyleUp fill:#cce5ff,stroke:#007bff,stroke-width:1.5px,color:#004085,rx:5,ry:5
+    classDef prepStyleDown fill:#ffeeba,stroke:#ffc107,stroke-width:1.5px,color:#856404,rx:5,ry:5
+    classDef prepStyleOut fill:#d4edda,stroke:#28a745,stroke-width:1.5px,color:#155724,rx:5,ry:5
+    classDef prepStyleOn fill:#f8d7da,stroke:#dc3545,stroke-width:1.5px,color:#721c24,rx:5,ry:5
+    classDef prepStyleOff fill:#d1ecf1,stroke:#17a2b8,stroke-width:1.5px,color:#0c5460,rx:5,ry:5
+    classDef prepStyleOver fill:#e2d9f3,stroke:#6f42c1,stroke-width:1.5px,color:#381663,rx:5,ry:5
+    classDef prepStyleThrough fill:#fff3cd,stroke:#fd7e14,stroke-width:1.5px,color:#856404,rx:5,ry:5
+    classDef prepStyleAway fill:#f5c6cb,stroke:#e83e8c,stroke-width:1.5px,color:#721c24,rx:5,ry:5
+    classDef prepStyleBack fill:#ced4da,stroke:#6c757d,stroke-width:1.5px,color:#343a40,rx:5,ry:5
+            </div>
+
+            <div class="note">
+                <p><strong>통찰 5</strong>: 동사+전치사/부사의 결합이 만들어내는 <strong>시각적 이미지를 이해</strong>하면 수많은 구동사의 의미를 보다 쉽게 유추하고 기억할 수 있습니다.</p>
+            </div>
+
+            <h3>3.4. 색채화의 본질: 어감과 뉘앙스의 영역 – 문법을 넘어선 감각</h3>
+            <p>
+                색채화 요소의 선택은 엄격한 문법 규칙보다는 화자의 의도, 감정, 전달하고자 하는 미묘한 어감에 의해 결정됩니다.
+            </p>
+            <div class="example">
+                <p><em>He <strong>walked</strong> into the room.</em> (단순히 걸어 들어왔다)<br>
+                → <em>He <strong>strode</strong> into the room.</em> (성큼성큼 자신감 있게)<br>
+                → <em>He <strong>tiptoed</strong> into the room.</em> (살금살금 발끝으로)<br>
+                → <em>He <strong>stormed</strong> into the room.</em> (화가 나서 쿵쿵거리며)</p>
+            </div>
+
+            <div class="note">
+                <p><strong>통찰 6</strong>: 영어 표현력의 정수는 바로 이 <strong>색채화 요소들이 만들어내는 어감의 차이</strong>를 감각적으로 체득하고 활용하는 데 있습니다.</p>
+            </div>
+        </section>
+
+        <section id="part4">
+            <h2>4부: 영어 서술 방식 학습을 위한 종합 표 정리</h2>
+
+            <h3>표 4.A: 영어 동사 서술의 핵심 구조 및 확장 방식 요약</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>구분 원리</th>
+                        <th>핵심 개념 및 설명</th>
+                        <th>예시 (핵심: <span class="code-tag">open</span> 또는 <span class="code-tag">drunk</span>)</th>
+                        <th>학습 초점 및 통찰</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. 핵표현</strong></td>
+                        <td>표현의 가장 기본 골격.</td>
+                        <td><span class="code-tag">open</span> (열린, 열다), <span class="code-tag">drunk</span> (취한)</td>
+                        <td>기본 의미 단위 파악.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. 색채화</strong></td>
+                        <td>핵표현에 구체성과 뉘앙스 추가.</td>
+                        <td><span class="code-tag">pry open</span> (지레로 열다), <span class="code-tag">stone drunk</span> (곤드레만드레 취한)</td>
+                        <td>이미지와 감각으로 학습.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. 상태 (<span class="code-tag">be</span>)</strong></td>
+                        <td><span class="code-tag">be + 상태</span>: 정적인 현재 상태.</td>
+                        <td><span class="code-tag">The door is open.</span><br><span class="code-tag">He is drunk.</span></td>
+                        <td>스냅샷처럼 특정 시점 포착.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. 변화 (<span class="code-tag">get</span>)</strong></td>
+                        <td><span class="code-tag">get + 상태</span>: 상태 변화 과정/결과 (자동사).</td>
+                        <td><span class="code-tag">The door got open.</span><br><span class="code-tag">He got drunk.</span></td>
+                        <td>동영상처럼 상태 전환 주목.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. 사동 (<span class="code-tag">get~</span>)</strong></td>
+                        <td><span class="code-tag">get + O + 상태</span>: 상태 변화 유발 (타동사).</td>
+                        <td><span class="code-tag">He got the door open.</span><br><span class="code-tag">Friends got him drunk.</span></td>
+                        <td>주체의 능동적 영향력에 초점.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. 구체↔추상 확장</strong></td>
+                        <td>물리적 의미 → 비유적, 추상적 의미.</td>
+                        <td><span class="code-tag">open a door</span> → <span class="code-tag">open a discussion</span></td>
+                        <td>비유적 사고, 표현력 확장.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. 표현 방식 전환</strong></td>
+                        <td>동사 중심 ↔ 형용사/명사 중심.</td>
+                        <td><span class="code-tag">He succeeded.</span> ↔ <span class="code-tag">He was successful.</span></td>
+                        <td>유연한 사고와 표현력 증진.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8. 동사의 이미지성</strong></td>
+                        <td>구동사는 방향성, 시각적 이미지 내포.</td>
+                        <td><span class="code-tag">shoot up</span> (급등), <span class="code-tag">break down</span> (고장)</td>
+                        <td>이면의 그림 상상, 직관적 체득.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="conclusion">
+            <h2>결론: 3단 단계의 이해, 영어 표현력의 비약적 향상을 이끈다</h2>
+            
+            <p>
+                영어의 서술 방식, 특히 <strong>'상태(<span class="code-tag">be</span>) → 변화(<span class="code-tag">get</span> 및 유사 동사군) → 사동(<span class="code-tag">get ~</span> 및 유사 동사군)'으로 이어지는 3단 핵심 단계</strong>를 
+                이해하고 체화하는 것은 영어 표현력을 비약적으로 향상시키는 지름길입니다. 이는 단순한 문법 규칙 암기를 넘어, 영어가 세상을 인식하고 표현하는 근본적인 방식을 깨닫는 과정입니다.
+            </p>
+            
+            <p>
+                여기에 '핵표현'과 '색채화'의 원리를 더하고, 구체적인 것에서 추상적인 것으로 의미가 확장되는 과정을 이해하며, 동사가 가진 이미지와 어감까지 파악한다면, 
+                여러분은 마치 능숙한 요리사처럼 한정된 재료(단어)로도 무궁무진하고 맛깔스러운 표현(문장)을 만들어낼 수 있을 것입니다.
+            </p>
+
+            <h3>학습 전략 제안:</h3>
+            <ol class="list-decimal pl-8 mb-4">
+                <li><strong>3단 단계를 의식하며 예문 접하기</strong>: 문장을 볼 때마다 '이것은 상태인가? 변화인가? 아니면 변화를 유발하는 사동인가?'를 구분해 보세요.</li>
+                <li><strong>핵심 변화/사동 동사군(<span class="code-tag">get</span>, <span class="code-tag">make</span>, <span class="code-tag">turn</span> 등)에 집중하기</strong>: 이들 동사의 다양한 용법을 예문과 함께 집중적으로 학습하세요.</li>
+                <li><strong>핵표현 찾고 색채화 요소 분석하기</strong>: 문장에서 핵심 의미를 이루는 부분과 그것을 구체화하는 부분을 나눠보세요.</li>
+                <li><strong>이미지와 감각으로 익히기</strong>: 단어와 표현이 주는 느낌, 그림, 소리 등을 상상하며 감각적으로 받아들이세요. 특히 구동사의 경우 전치사/부사가 만드는 이미지를 적극 활용하세요.</li>
+                <li><strong>표를 활용한 체계적 정리</strong>: 본문에 제시된 표들을 참고하여 자신만의 노트를 만들고, 새로운 예문을 추가하며 확장해나가세요.</li>
+            </ol>
+
+            <p>
+                궁극적으로 영어는 단순한 규칙의 집합이 아니라, <strong>세상을 인식하고 표현하는 하나의 유기적인 시스템</strong>입니다. 그 구조를 이해하고, 이미지를 그리고, 
+                감각을 동원할 때, 비로소 영어는 정복의 대상이 아닌 소통의 즐거움으로 다가올 것입니다. <strong>영어는 구조로 보고, 이미지로 그리고, 감각으로 체화하십시오.</strong>
+            </p>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mermaid 초기화
+            mermaid.initialize({
+                startOnLoad: true, // 페이지 로드 시 .mermaid 클래스가 있는 모든 요소를 자동으로 렌더링
+                theme: 'default', 
+                securityLevel: 'loose',
+                fontFamily: 'Arial, sans-serif',
+                flowchart: {
+                    htmlLabels: true, 
+                    useMaxWidth: true,
+                },
+                mindmap: { // mindmap 특정 설정
+                    useMaxWidth: true
+                }
+            });
+        });
+    </script>
+</body>
+</html>

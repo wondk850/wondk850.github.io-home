@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="영어 표현력의 비밀, 3단 변화의 마법을 통해 영어의 동사 구조를 인지언어학적으로 이해하고 응용하는 방법">
+    <meta name="keywords" content="영어, 영어 학습, 영어 동사, 인지언어학, 3단 변화, 구동사, 영어 서술 방식, English learning, cognitive linguistics, phrasal verbs">
+    <title>영어 표현력의 비밀: 3단 변화와 인지언어학 (완결판)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        /* 기존 CSS 스타일 시작 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 사용자 제공 스타일 개선 사항 적용 (기존 스타일과 병합/덮어쓰기) */
+        body {
+            font-family: 'Noto Sans KR', sans-serif; /* 사용자 제공 */
+            line-height: 1.6; /* 사용자 제공 */
+            color: #333; /* 사용자 제공 */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            /* max-width, margin, padding은 .container에서 관리하므로 body에서 제거 또는 조정 */
+        }
+
+        .container {
+            max-width: 1200px; /* 사용자 제공 body 스타일에서 가져옴 */
+            margin: 2rem auto; 
+            background: white;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 20px; /* 사용자 제공 body 스타일에서 가져옴 */
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 50%, #9b59b6 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .quick-summary {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            border-left: 5px solid #f39c12;
+            padding: 2rem;
+            margin: 2rem 0; /* 상하 마진 조정 */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .quick-summary h2 {
+            color: #d68910;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+        }
+
+        .content {
+            padding: 0 0 2rem 0; /* 내부 패딩 조정 */
+        }
+        
+        /* 사용자 제공 section 스타일 적용 */
+        section.section { /* 클래스 선택자로 명확히 지정 */
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: none; /* 기존 border 제거 또는 필요시 유지 */
+            position: relative; /* 기존 스타일 유지 */
+        }
+        /* 기존 .section::before 스타일은 유지하거나 새 디자인에 맞게 조정 */
+        section.section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            border-radius: 8px 0 0 8px; /* radius 일치 */
+        }
+
+
+        section.section h2 { /* 클래스 선택자 내부의 h2 */
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        section.section h3 {
+            color: #34495e;
+            margin: 1.5rem 0 1rem 0;
+            font-size: 1.3rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        section.section h3::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+        }
+        
+        section.section h4 {
+            color: #34495e;
+            margin: 1.2rem 0 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .icon {
+            margin-right: 0.8rem;
+            font-size: 1.3em;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .three-step-visual {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .step-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 2rem 0;
+            gap: 1rem;
+        }
+
+        .step {
+            flex: 1;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-radius: 15px;
+            color: white;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .step-1 { 
+            background: linear-gradient(135deg, #3498db, #2980b9); 
+        }
+        .step-2 { 
+            background: linear-gradient(135deg, #27ae60, #229954); 
+        }
+        .step-3 { 
+            background: linear-gradient(135deg, #e74c3c, #c0392b); 
+        }
+
+        .step h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .step h3::before {
+            display: none;
+        }
+
+        .step .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            line-height: 40px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .step p {
+            font-size: 1rem;
+            opacity: 0.95;
+            margin-bottom: 0.5rem;
+        }
+
+        .step .example {
+            font-style: italic;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.1);
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-top: 0.5rem;
+        }
+
+        .arrow {
+            font-size: 2.5rem;
+            color: #3498db;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .nuclear-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .nuclear-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #f39c12;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nuclear-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, rgba(243,156,18,0.1), rgba(241,196,15,0.1));
+            border-radius: 50%;
+            transform: translate(30px, -30px);
+        }
+
+        .nuclear-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .nuclear-expression {
+            background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 1rem;
+            border: 1px solid #f1c40f;
+            position: relative;
+            z-index: 1;
+        }
+
+        .colored-variations {
+            list-style: none;
+            padding: 0;
+        }
+
+        .colored-variations li {
+            background: linear-gradient(135deg, #d1ecf1, #a8e6cf);
+            margin: 0.5rem 0;
+            padding: 0.8rem;
+            border-radius: 6px;
+            border-left: 3px solid #17a2b8;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .colored-variations li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .colored-variations li::before {
+            content: '→';
+            color: #17a2b8;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* 사용자 제공 .mermaid-container 스타일 적용 */
+        .mermaid-container {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9; /* 사용자 제공 */
+            border-radius: 8px; /* 사용자 제공 */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* 기존 스타일 유지 또는 조정 */
+        }
+        .mermaid-container h4 {
+             margin-bottom: 1rem; color: #2c3e50;
+        }
+
+        /* 사용자 제공 table, th, td 스타일 적용 */
+        table.comparison-table { /* 기존 클래스에 적용 */
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0; /* 사용자 제공 */
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        table.comparison-table caption {
+            font-size: 1.2rem;
+            font-weight: bold;
+            padding: 1rem;
+            color: #2c3e50;
+            caption-side: top;
+            text-align: left;
+        }
+
+        table.comparison-table th {
+            background-color: #f8f9fa; /* 사용자 제공 */
+            font-weight: 600; /* 사용자 제공 */
+            color: #333; /* 사용자 제공 th 텍스트 색상 */
+            padding: 12px 15px; /* 사용자 제공 */
+            text-align: left; /* 사용자 제공 */
+            border-bottom: 1px solid #E1E1E1; /* 사용자 제공 */
+        }
+
+        table.comparison-table td {
+            padding: 12px 15px; /* 사용자 제공 */
+            text-align: left; /* 사용자 제공 */
+            border-bottom: 1px solid #E1E1E1; /* 사용자 제공 */
+            vertical-align: top;
+        }
+
+        table.comparison-table tr:hover {
+            background: linear-gradient(135deg, #f0f0f0, #e7e7e7); /* 호버 색상 조정 */
+        }
+
+        table.comparison-table .stage-1 { border-left: 4px solid #3498db; }
+        table.comparison-table .stage-2 { border-left: 4px solid #27ae60; }
+        table.comparison-table .stage-3 { border-left: 4px solid #e74c3c; }
+
+
+        .verb-expansion {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .verb-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #ecf0f1;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .verb-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+        }
+
+        .verb-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .verb-card h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .verb-examples {
+            list-style: none;
+            padding: 0;
+        }
+
+        .verb-examples li {
+            margin: 0.8rem 0;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 6px;
+            border-left: 3px solid #3498db;
+            font-size: 0.95rem;
+        }
+
+        .physical-abstract {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 1rem;
+            align-items: center;
+            margin: 1.5rem 0;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .physical, .abstract {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+
+        .physical {
+            background: linear-gradient(135deg, #a8e6cf, #81c784);
+            color: #2e7d32;
+        }
+
+        .abstract {
+            background: linear-gradient(135deg, #ffcccb, #ff8a80);
+            color: #c62828;
+        }
+
+        .expansion-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .expansion-arrow .arrow-line {
+            width: 2px;
+            height: 30px;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            margin: 0.2rem 0;
+        }
+
+        .expansion-arrow .arrow-head {
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        /* 사용자 제공 .insight-box 스타일 적용 */
+        .insight-box {
+            background-color: #f0f7ff; /* 사용자 제공 */
+            border-left: 5px solid #0078ff; /* 사용자 제공 */
+            padding: 15px; /* 사용자 제공 */
+            margin: 20px 0; /* 사용자 제공 */
+            color: #333; /* 텍스트 색상 조정 */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 기존 그림자 또는 새 그림자 */
+            position: relative;
+            overflow: hidden;
+        }
+        .insight-box::before { /* 기존 아이콘 스타일 유지 또는 조정 */
+            content: '💡';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            opacity: 0.3;
+            color: #0078ff; /* 아이콘 색상 조정 */
+        }
+        .insight-box h3 {
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+            color: #0056b3; /* 제목 색상 조정 */
+        }
+        .insight-box h3::before {
+            display: none;
+        }
+
+
+        .direction-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .direction-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            border: 1px solid #ecf0f1;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .direction-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+        }
+
+        .direction-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+
+        .direction-card h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .direction-card .image-desc {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #495057;
+            margin-bottom: 0.8rem;
+        }
+
+        .learning-strategies {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+            border: 2px solid #4caf50;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .learning-strategies h3 {
+            color: #2e7d32;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .learning-strategies h3::before {
+            display: none;
+        }
+
+
+        .strategy-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .strategy-item {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+        }
+
+        .strategy-item h4 {
+            color: #2e7d32;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .strategy-item h4::before {
+            content: '✓';
+            color: #4caf50;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .interactive-demo {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+         .interactive-demo h3 {
+            color: #2c3e50; text-align: center;
+        }
+         .interactive-demo h3::before {
+            display:none;
+        }
+
+
+        .demo-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        .demo-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .demo-btn.state { background: linear-gradient(135deg, #3498db, #2980b9); color: white; }
+        .demo-btn.change { background: linear-gradient(135deg, #27ae60, #229954); color: white; }
+        .demo-btn.causative { background: linear-gradient(135deg, #e74c3c, #c0392b); color: white; }
+
+        .demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .demo-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 10px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .demo-result h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+        .demo-result div.stage-explanation { /* 사용자 JS 참조 내용 반영 */
+            text-align: left; /* 내부 텍스트 왼쪽 정렬 */
+            width: 90%;
+        }
+        .demo-result div.stage-explanation p {
+             margin: 0.5rem 0; padding: 0.5rem; background: rgba(0,0,0,0.03); border-radius: 5px;
+        }
+
+
+        .conclusion {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem 0 0 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .conclusion::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .conclusion h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+
+        .conclusion h2::before {
+            display: none;
+        }
+
+        .conclusion p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            z-index: 1;
+            opacity: 0.95;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            z-index: 9999;
+        }
+
+        .scroll-progress {
+            height: 100%;
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        .floating-nav {
+            position: fixed;
+            right: 2rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            border-radius: 25px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none; 
+        }
+         @media (max-width: 1024px) {
+            .floating-nav {
+                display: none !important;
+            }
+        }
+
+
+        .floating-nav a {
+            display: block;
+            padding: 0.5rem;
+            color: #2c3e50;
+            text-decoration: none;
+            border-radius: 50%;
+            margin: 0.3rem 0;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 40px;
+            height: 40px;
+            line-height: 30px;
+        }
+        .floating-nav a.active { /* 활성 링크 스타일 */
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+            font-weight: bold;
+        }
+
+        .floating-nav a:hover {
+            background: linear-gradient(135deg, #3498db, #9b59b6);
+            color: white;
+        }
+        
+        .exercise-section, .references-section {
+            margin-top: 2rem;
+        }
+        .exercise-section h3, .references-section h3 { /* section.section 내부의 h3 스타일과 구분 */
+            color: #2c3e50;
+            border-bottom: 2px solid #9b59b6; 
+            padding-bottom: 0.5rem;
+        }
+         .exercise-section h3::before, .references-section h3::before {
+            color: #9b59b6;
+        }
+
+        .exercise {
+            background: #fdfdfe;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .exercise p strong {
+            color: #8e44ad;
+        }
+        .exercise .question {
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+        }
+        .exercise .options {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .exercise .options li {
+            margin-bottom: 0.5rem;
+        }
+        .exercise .answer {
+            margin-top: 1rem;
+            padding: 0.8rem;
+            background: #e9f7ef;
+            border-left: 3px solid #27ae60;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        .exercise .answer strong {
+            color: #1e8449;
+        }
+
+        .references-section ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .references-section li {
+            background: #f8f9fa;
+            border-left: 3px solid #fd7e14;
+            padding: 1rem;
+            margin-bottom: 0.8rem;
+            border-radius: 4px;
+        }
+         .references-section li strong {
+            color: #c0392b;
+        }
+
+        /* 사용자 제공 목차 스타일 */
+        .table-of-contents {
+            background-color: #f8f9fa;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            border: 1px solid #dee2e6;
+        }
+        .table-of-contents h3 {
+            margin-bottom: 10px;
+            color: #343a40;
+            font-size: 1.4rem;
+            border-bottom: 1px solid #ced4da;
+            padding-bottom: 8px;
+        }
+        .table-of-contents ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .table-of-contents ul li {
+            margin-bottom: 8px;
+        }
+        .table-of-contents ul li a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.2s ease-in-out;
+        }
+        .table-of-contents ul li a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+                padding: 10px; /* 모바일 패딩 조정 */
+            }
+            .content {
+                 padding: 0 1rem 1rem 1rem;
+            }
+            .header {
+                padding: 2rem 1rem;
+            }
+            .header h1 {
+                font-size: 2rem;
+            }
+            .header .subtitle {
+                font-size: 1rem;
+            }
+            .quick-summary {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            section.section { /* 클래스 선택자 명시 */
+                padding: 1.5rem;
+            }
+            .step-container {
+                flex-direction: column;
+            }
+            
+            .arrow {
+                transform: rotate(90deg);
+                margin: 1rem 0;
+            }
+            
+            .nuclear-examples,
+            .verb-expansion,
+            .direction-grid,
+            .strategy-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .physical-abstract {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .expansion-arrow {
+                flex-direction: row;
+                justify-content: center;
+            }
+            
+            .expansion-arrow .arrow-line {
+                width: 30px;
+                height: 2px;
+                margin: 0 0.2rem;
+            }
+            .expansion-arrow .arrow-head {
+                transform: rotate(-90deg); 
+            }
+            .expansion-arrow .arrow-head:last-child {
+                transform: rotate(90deg);
+            }
+
+            table.comparison-table th, table.comparison-table td {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+            .demo-buttons {
+                flex-direction: column;
+            }
+            .demo-btn {
+                width: 100%;
+                margin-bottom: 0.5rem;
+            }
+        }
+    
+        /* Added CSS for custom flowchart */
+        .custom-flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            font-family: 'Noto Sans KR', sans-serif;
+            margin-top: 20px; 
+        }
+
+        .custom-flowchart .flowchart-node { /* Specificity for custom chart nodes */
+            padding: 12px 18px; 
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.12); 
+            line-height: 1.5; 
+            position: relative; 
+        }
+
+        .custom-flowchart .root-node {
+            background-color: #f9d423;
+            border: 3px solid #e67e22;
+            color: #444;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 40px; 
+            z-index: 1; 
+        }
+
+        .custom-flowchart .root-node::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: -20px; 
+            transform: translateX(-50%);
+            width: 3px; 
+            height: 20px; 
+            background-color: #e67e22; 
+        }
+
+        .custom-flowchart .flowchart-branches {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px 20px; 
+            width: 100%;
+            padding-top: 20px; 
+        }
+
+        .custom-flowchart .branch-node {
+            border-width: 2px;
+            border-style: solid;
+            color: #333;
+            width: 180px; 
+            min-height: 110px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; 
+            margin-top: 20px; 
+        }
+
+        .custom-flowchart .branch-node::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: -20px; 
+            transform: translateX(-50%);
+            width: 2px; 
+            height: 20px; 
+            /* Base background-color is set per style below */
+        }
+
+        .custom-flowchart .branch-node.style1 { background-color: #a7d7f9; border-color: #3498db; }
+        .custom-flowchart .branch-node.style1::before { background-color: #3498db; } 
+
+        .custom-flowchart .branch-node.style2 { background-color: #a8e6cf; border-color: #2ecc71; }
+        .custom-flowchart .branch-node.style2::before { background-color: #2ecc71; }
+
+        .custom-flowchart .branch-node.style3 { background-color: #d7dadd; border-color: #95a5a6; }
+        .custom-flowchart .branch-node.style3::before { background-color: #95a5a6; }
+
+        .custom-flowchart .branch-node.style4 { background-color: #e1c3f7; border-color: #8e44ad; }
+        .custom-flowchart .branch-node.style4::before { background-color: #8e44ad; }
+
+        .custom-flowchart .branch-node.style5 { background-color: #99e7dd; border-color: #1abc9c; }
+        .custom-flowchart .branch-node.style5::before { background-color: #1abc9c; }
+
+
+        @media (max-width: 768px) {
+            .custom-flowchart .flowchart-branches {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px; 
+                padding-top: 10px; 
+            }
+            .custom-flowchart .root-node {
+                margin-bottom: 30px; 
+            }
+            .custom-flowchart .root-node::after {
+                bottom: -15px;
+                height: 15px;
+            }
+            .custom-flowchart .branch-node {
+                width: 75%; 
+                margin-top: 25px; 
+            }
+            .custom-flowchart .branch-node::before {
+                top: -15px;
+                height: 15px;
+            }
+        }
+        /* End of Added CSS for custom flowchart */
+
+    </style>
+    <style media="print">
+      body {
+        font-family: 'Noto Sans KR', sans-serif; /* 인쇄 시에도 폰트 유지 */
+        color: #000 !important; /* 흑백 인쇄 고려 */
+        background: #fff !important; /* 배경 제거 */
+      }
+      .container {
+        box-shadow: none !important;
+        border: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+      .header, .quick-summary, .conclusion, .floating-nav, .scroll-indicator, .interactive-demo .demo-buttons {
+        display: none !important; /* 인쇄 불필요 요소 제거 */
+      }
+      section.section, .mermaid-container, table.comparison-table, .exercise, .references-section li {
+        page-break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important; /* 최소한의 경계선 */
+        background: #fff !important;
+      }
+      section.section h2, section.section h3, section.section h4 {
+        page-break-after: avoid;
+        color: #000 !important;
+      }
+      .mermaid svg, .custom-flowchart { /* 머메이드 SVG 및 커스텀 플로우차트 크기 조정 */
+        max-width: 100% !important;
+        height: auto !important;
+      }
+      a {
+        text-decoration: none !important;
+        color: #000 !important;
+      }
+      a[href^="http"]::after {
+        content: " (" attr(href) ")"; /* 외부 링크 URL 표시 */
+        font-size: 0.9em;
+        color: #555;
+      }
+      .table-of-contents {
+        border: 1px solid #ccc !important;
+        background: #fff !important;
+      }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">
+        <div class="scroll-progress" id="scrollProgress"></div>
+    </div>
+
+    <nav class="floating-nav" id="floatingNav">
+        <a href="#intro" title="소개">🎯</a>
+        <a href="#core-concepts" title="핵심 개념">💎</a>
+        <a href="#three-steps" title="3단 구조">🔄</a>
+        <a href="#examples" title="물리적↔추상적 확장">🚀</a>
+        <a href="#expansion" title="동사의 방향성">🎭</a>
+        <a href="#strategies" title="학습 전략 및 종합">📊</a>
+        <a href="#exercises" title="연습 문제">✏️</a>
+        <a href="#references" title="참고 자료">📚</a>
+        <a href="#toc-main" title="목차로 이동">📜</a>
+    </nav>
+
+    <div class="container">
+        <header class="header">
+            <h1>🎯 영어 표현력의 비밀: 3단 변화와 인지언어학</h1>
+            <p class="subtitle">상태 → 변화 → 사동으로 이해하는 영어 서술 방식의 완결판 (인지언어학 기반)</p>
+        </header>
+
+        <div class="table-of-contents" id="toc-main">
+          <h3>목차</h3>
+          <ul>
+            <li><a href="#intro">서론: 영어 표현력의 비밀</a></li>
+            <li><a href="#core-concepts">1부: 핵표현의 발견과 이해</a></li>
+            <li><a href="#three-steps">2부: 영어 핵심 동사 구조</a></li>
+            <li><a href="#examples">3부: 핵표현과 서술 방식의 심층적 이해</a></li>
+            <li><a href="#expansion">4부: 동사의 방향성과 이미지성 심층 탐구</a></li>
+            <li><a href="#strategies">5부: 영어 서술 방식 학습을 위한 종합</a></li>
+            <li><a href="#exercises">6부: 연습 문제 및 시험 연계</a></li>
+            <li><a href="#references">7부: 참고 자료 및 추가 학습</a></li>
+            <li><a href="#page_conclusion">결론</a></li>
+          </ul>
+        </div>
+
+        <div class="quick-summary">
+            <h2>🚀 빠르게 시작하기: 핵심 개념 요약</h2>
+            <p>본격적인 내용에 앞서, 이 문서에서 다루는 주요 개념들을 간략히 소개합니다. 각 개념은 본문에서 더 자세히 설명됩니다. 인지언어학적 접근을 통해 영어 표현의 깊이 있는 이해를 돕고자 합니다.</p>
+            <p><strong>※ 본문 중 'ℹ️' 표시는 각주 또는 추가 설명이 필요한 용어를 나타내며, 이 요약 또는 본문 설명을 통해 이해할 수 있습니다.</strong></p>
+        </div>
+
+        <main class="content">
+            <section id="intro" class="section">
+                <h2><span class="icon">🌟</span>서론: 영어 표현력의 비밀, 3단 변화의 마법에 있다</h2>
+                <p>영어를 깊이 있게 이해하고 유창하게 구사하는 길은 어디에 있을까요? 그 핵심 열쇠 중 하나는 바로 영어 동사가 상황을 묘사하는 방식, 특히 <strong>'상태 (be) → 변화 (get 및 유사 동사군, 자동사) → 사동/변화 유발 (get ~ 및 유사 동사군, 타동사)'</strong>로 이어지는 3단 단계를 파악하는 데 있습니다. 이 구조는 단순한 문법 규칙을 넘어, 우리가 세상을 인지하고 경험을 언어로 표현하는 방식과 깊이 연결되어 있습니다 (ℹ️ 개념 은유, 이미지 스키마).</p>
+                
+                <p>이 구조는 마치 하나의 정지된 장면이 움직이는 영상으로, 그리고 그 영상을 만들어내는 연출자의 시점으로 전환되는 영화와 같습니다. 본 완결판에서는 이 3단 핵심 단계를 중심으로 '핵표현'의 개념과 그 '색채화'를 통한 의미 확장을 더욱 심도 있고 풍부한 예문, 그리고 명확한 시각 자료와 함께 탐구해 보겠습니다. 특히 인지언어학적 관점을 통합하여, 영어 표현이 어떻게 우리의 생각과 경험을 반영하는지 살펴봅니다.</p>
+
+                <div class="three-step-visual">
+                    <h3 style="text-align: center; color: #2c3e50; margin-bottom: 2rem;">📈 3단 변화 구조 시각화 (기본)</h3>
+                    <div class="step-container">
+                        <div class="step step-1">
+                            <div class="step-number">1</div>
+                            <h3>상태 (State)</h3>
+                            <p>정적인 현재 상태</p>
+                            <div class="example">"He <strong>is</strong> happy"<br>그는 행복한 상태이다</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="step step-2">
+                            <div class="step-number">2</div>
+                            <h3>변화 (Change)</h3>
+                            <p>스스로의 상태 변화</p>
+                            <div class="example">"He <strong>got</strong> happy"<br>그는 행복해졌다</div>
+                        </div>
+                        <div class="arrow">→</div>
+                        <div class="step step-3">
+                            <div class="step-number">3</div>
+                            <h3>사동 (Causative)</h3>
+                            <p>타자의 변화 유발</p>
+                            <div class="example">"I <strong>made</strong> him happy"<br>내가 그를 행복하게 만들었다</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="core-concepts" class="section">
+                <h2><span class="icon">💎</span>1부: 핵표현의 발견과 이해 – 의미의 씨앗을 찾아서 (인지적 프레임과 원형)</h2>
+                
+                <h3>🎯 핵표현 (Nuclear Expression)이란 무엇인가? (ℹ️ 인지적 원형)</h3>
+                <p>어떤 하나의 표현에 있어서 가장 기본이 되는 의미 단위이자 골격입니다. 이는 인지언어학에서 말하는 <strong>원형(prototype)</strong>과 유사한 개념으로, 특정 카테고리의 가장 대표적인 예시처럼 기능합니다. 모든 복잡하고 다양한 영어 표현은 이 단순한 핵표현에서 파생되고 확장된 것으로 볼 수 있습니다. 핵표현을 파악하면 문장의 핵심 의미를 빠르게 포착할 수 있으며, 이를 바탕으로 다양한 파생 표현들을 체계적으로 이해하고 학습하는 것이 가능해집니다.</p>
+                <p>예: "walk" (걷다)라는 핵표현(원형)은 "stroll"(한가롭게 거닐다), "march"(행진하다), "tiptoe"(발끝으로 살금살금 걷다) 등 다양한 '걷는 방식'으로 확장될 수 있습니다. 각 파생 표현은 'walk'라는 원형적 의미를 공유하면서도 고유한 뉘앙스를 추가합니다.</p>
+
+                <h3>🎨 표현의 색채화 (Coloring of Expression) – 의미에 생동감을 불어넣다 (ℹ️ 인지적 프레임 활성화)</h3>
+                <p>핵표현에 다른 동사, 부사, 전치사구 등을 덧붙여 원래의 기본 의미에 구체성, 생동감, 미묘한 뉘앙스(색채)를 더하는 과정입니다. 이는 특정 <strong>인지적 프레임(cognitive frame)</strong>을 활성화하여 의미를 풍부하게 만듭니다. 프레임이란 특정 개념과 관련된 배경 지식, 기대, 연상 등을 포함하는 구조화된 지식 체계입니다. 색채화를 통해 화자는 자신의 의도나 감정, 상황의 특수성을 더욱 정교하게 전달할 수 있습니다.</p>
+                <p>예: "He walked into the room." (그는 방으로 걸어 들어갔다) - 단순 사실 전달 (WALKING 프레임)<br>
+                "He <strong>stormed</strong> into the room." (그는 방으로 뛰어들듯 들어갔다) - 'storm'은 분노, 격렬함과 관련된 프레임(ANGER/VIOLENCE 프레임)을 활성화하여 단순한 '걸어 들어감' 이상의 의미를 전달합니다.</p>
+
+
+                <div class="insight-box">
+                    <h3>💡 통찰 1: 영어 표현의 경제성과 유연성 (인지적 효율성)</h3>
+                    <p>영어 표현은 경제성과 유연성을 동시에 추구합니다. 소수의 핵표현(원형)을 기반으로 다양한 색채화 요소(프레임 활성화 단서)를 조합함으로써, 마치 레고 블록처럼 무한에 가까운 표현을 창조해낼 수 있습니다. 이는 한정된 인지 자원을 효율적으로 사용하려는 인간의 경향을 반영합니다.</p>
+                </div>
+
+                <h3>📚 핵표현과 색채화의 구체적 예시 탐구</h3>
+                
+                <div class="nuclear-examples">
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">핵표현 (원형): get to one's feet (일어서다, stand up)</div>
+                        <ul class="colored-variations">
+                            <li><strong>leap to one's feet:</strong> (놀람, 기쁨 등으로) 펄쩍 뛰어 일어서다 (ℹ️ SUDDEN MOVEMENT 프레임) <br><em>The crowd leapt to their feet when he scored the winning goal.</em></li>
+                            <li><strong>spring to one's feet:</strong> (용수철처럼) 빨딱 일어서다 (ℹ️ ELASTIC MOVEMENT 프레임)<br><em>Hearing his name called, he sprang to his feet.</em></li>
+                            <li><strong>stagger to one's feet:</strong> (술 취하거나 다쳐서) 비틀거리며 일어서다 (ℹ️ UNSTEADY MOVEMENT 프레임)<br><em>After the accident, he staggered to his feet, dazed and confused.</em></li>
+                            <li><strong>struggle to one's feet:</strong> (힘겹게) 몸을 일으켜 세우다 (ℹ️ DIFFICULT ACTION 프레임)<br><em>The old man struggled to his feet with a groan.</em></li>
+                            <li><strong>jump to one's feet:</strong> (갑자기) 벌떡 일어서다 (ℹ️ QUICK UPWARD MOVEMENT 프레임)<br><em>She jumped to her feet as soon as her name was called.</em></li>
+                        </ul>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">핵표현 (원형): put to death (죽이다)</div>
+                        <ul class="colored-variations">
+                            <li><strong>beat to death:</strong> 때려서 죽이다 (ℹ️ VIOLENT IMPACT 프레임)<br><em>The gang beat the rival member to death.</em></li>
+                            <li><strong>freeze to death:</strong> 얼려서 죽이다 (얼어 죽다) (ℹ️ EXTREME COLD 프레임)<br><em>Lost in the blizzard, they nearly froze to death.</em></li>
+                            <li><strong>starve to death:</strong> 굶겨 죽이다 (굶어 죽다) (ℹ️ LACK OF FOOD 프레임)<br><em>The abandoned animals were in danger of starving to death.</em></li>
+                            <li><strong>stone to death:</strong> 돌로 쳐 죽이다 (ℹ️ REPEATED IMPACT 프레임)<br><em>In ancient times, criminals were sometimes stoned to death.</em></li>
+                            <li><strong>bleed to death:</strong> 피를 흘려 죽다 (ℹ️ LOSS OF BLOOD 프레임)<br><em>He was severely wounded and might have bled to death without immediate medical attention.</em></li>
+                        </ul>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">핵표현 (원형): make one's way (가다, go) (ℹ️ PATH 스키마)</div>
+                        <ul class="colored-variations">
+                            <li><strong>push her way through the crowd:</strong> (밀면서 군중 속을 뚫고 가다) → 물리적 이동 (ℹ️ FORCEFUL MOVEMENT 프레임)<br><em>She had to push her way through the crowd to reach the front.</em></li>
+                            <li><strong>work his way through college:</strong> (일해서 학비를 벌어 대학을 나오다) → 추상적 목표 달성 (ℹ️ EFFORTFUL PROGRESS 프레임, 은유: LIFE IS A JOURNEY)<br><em>He worked his way through college by waiting tables at night.</em></li>
+                            <li><strong>fight their way to the top:</strong> (싸우며 정상까지 가다) → 추상적 성공 (ℹ️ STRUGGLE FOR SUCCESS 프레임, 은유: SUCCESS IS UP)<br><em>Despite numerous obstacles, they fought their way to the top of the industry.</em></li>
+                            <li><strong>crawl one's way through the tunnel:</strong> (기어서 터널을 통과하다) → 물리적 이동 (ℹ️ SLOW/DIFFICULT MOVEMENT 프레임)<br><em>The trapped miners had to crawl their way through the narrow tunnel to safety.</em></li>
+                            <li><strong>talk one's way out of trouble:</strong> (말솜씨로 곤경에서 벗어나다) → 추상적 문제 해결 (ℹ️ VERBAL MANIPULATION 프레임, 은유: ARGUMENT IS WAR)<br><em>He's always been good at talking his way out of trouble.</em></li>
+                            <li><strong>think one's way through a problem:</strong> (생각해서 문제를 해결하다) → 추상적 사고 과정 (ℹ️ MENTAL EFFORT 프레임, 은유: IDEAS ARE OBJECTS)<br><em>We need to think our way through this problem step by step.</em></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mermaid-container">
+                    <h4>🌳 핵표현 'get to one's feet'의 색채화 (프레임 활성화) 시각화</h4>
+                    <div class="custom-flowchart">
+                        <div class="flowchart-node root-node">
+                            get to one's feet<br/>일어서다<br/>[원형]
+                        </div>
+                        <div class="flowchart-branches">
+                            <div class="flowchart-node branch-node style1">
+                                leap to one's feet<br/>펄쩍 뛰어 일어서다<br/>[놀람/기쁨 프레임]
+                            </div>
+                            <div class="flowchart-node branch-node style2">
+                                spring to one's feet<br/>빨딱 일어서다<br/>[탄력성 프레임]
+                            </div>
+                            <div class="flowchart-node branch-node style3">
+                                stagger to one's feet<br/>비틀거리며 일어서다<br/>[불안정 프레임]
+                            </div>
+                            <div class="flowchart-node branch-node style4">
+                                struggle to one's feet<br/>힘겹게 일어서다<br/>[어려움 프레임]
+                            </div>
+                            <div class="flowchart-node branch-node style5">
+                                jump to one's feet<br/>벌떡 일어서다<br/>[갑작스러움 프레임]
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; font-style: italic; color: #7f8c8d;">위 플로우차트는 핵표현(원형) 'get to one's feet'가 다양한 동사(색채화 요소)와 결합하여 어떻게 다른 인지적 프레임을 활성화하고 뉘앙스를 부여하는지 보여줍니다.</p>
+            </section>
+
+            <section id="three-steps" class="section">
+                <h2><span class="icon">🔄</span>2부: 영어 핵심 동사 구조: 상태 → 변화 → 사동의 3단 단계로 이해하기 (ℹ️ 경로 스키마와 힘 역학)</h2>
+                
+                <p>영어 동사 표현의 가장 근본적인 확장 방식은 상태(State)에서 시작하여, 주어 스스로의 변화(Change)를 거쳐, 마침내 주체가 타자나 환경에 영향을 미쳐 변화를 유발하는 사동(Causing Change)의 단계로 심화되는 3단 구조로 이해할 수 있습니다. 이는 인지적으로 <strong>경로 스키마(Path Schema)</strong> - 시작점(상태)에서 목표점(변화된 상태)으로의 이동 - 와 <strong>힘 역학(Force Dynamics)</strong> - 한 행위자가 다른 행위자에게 힘을 가해 변화를 일으키는 관계 - 과 관련됩니다.</p>
+
+                <div class="mermaid-container">
+                    <h4>📊 상태 → 변화 → 사동의 3단 단계 (인지적 관점)</h4>
+                    <div class="mermaid">
+                        graph LR
+                            A["1. 상태 (be)<br/>정적 상태<br/>(시작점)"]:::stateStyle 
+                            B["2. 변화 (get - 자동사)<br/>주어 스스로 변화<br/>(경로 이동)"]:::changeStyle
+                            C["3. 사동 (get ~ - 타동사)<br/>변화 유발<br/>(힘의 작용)"]:::causativeStyle
+                            
+                            A -- 경로 스키마 --> B
+                            B -- 힘 역학 --> C
+                            
+                            classDef stateStyle fill:#e6f7ff,stroke:#007bff,stroke-width:2px,color:#333,font-weight:bold
+                            classDef changeStyle fill:#e6ffe6,stroke:#28a745,stroke-width:2px,color:#333,font-weight:bold
+                            classDef causativeStyle fill:#fff0e6,stroke:#fd7e14,stroke-width:2px,color:#333,font-weight:bold
+                    </div>
+                </div>
+
+                <table class="comparison-table">
+                    <caption>상태 → 변화 → 사동의 3단 구조와 인지적 해석</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">단계</th>
+                            <th scope="col">구조</th>
+                            <th scope="col">예시 (drunk)</th>
+                            <th scope="col">예시 (open)</th>
+                            <th scope="col">핵심 설명 (인지적 관점)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="stage-1">
+                            <td><strong>1. 상태 (State)</strong></td>
+                            <td>be + 상태</td>
+                            <td><em>He is drunk.</em><br/>(그는 술에 취한 상태이다.)</td>
+                            <td><em>The door is open.</em><br/>(문이 열려 있는 상태이다.)</td>
+                            <td>정적인 현재 상태 묘사. (경로의 시작점)</td>
+                        </tr>
+                        <tr class="stage-2">
+                            <td><strong>2. 변화 (Change)</strong></td>
+                            <td>get + 상태 (자동사)</td>
+                            <td><em>He got drunk.</em><br/>(그는 술에 취하게 되었다.)</td>
+                            <td><em>The door got open.</em><br/>(문이 열리게 되었다.)</td>
+                            <td>상태가 변화하는 과정 또는 결과. 주어 스스로의 변화. (경로 스키마: 한 상태에서 다른 상태로 이동)</td>
+                        </tr>
+                        <tr class="stage-3">
+                            <td><strong>3. 사동 (Cause)</strong></td>
+                            <td>get/make + 목적어 + 상태 (타동사)</td>
+                            <td><em>His friends got him drunk.</em><br/>(친구들이 그를 취하게 만들었다.)</td>
+                            <td><em>He got the door open.</em><br/>(그가 문을 열리게 했다.)<br/><em>She made the window open.</em><br/>(그녀가 창문을 열리게 만들었다.)</td>
+                            <td>주체가 목적어의 상태 변화를 유발. (힘 역학: 외부 힘이 작용하여 변화를 일으킴)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="interactive-demo">
+                    <h3><span class="icon">🎮</span> 3단 변화 체험하기 (원리 이해)</h3>
+                    <p>아래 버튼을 클릭해서 각 단계의 특징과 인지적 원리를 확인해보세요!</p>
+                    <div class="demo-buttons">
+                        <button id="state-btn" class="demo-btn state" onclick="showDemo('state')">1단계: 상태 (State)</button>
+                        <button id="change-btn" class="demo-btn change" onclick="showDemo('change')">2단계: 변화 (Change)</button>
+                        <button id="causative-btn" class="demo-btn causative" onclick="showDemo('causative')">3단계: 사동 (Causative)</button>
+                    </div>
+                    <div class="demo-result" id="explanation-container">
+                        버튼을 클릭해서 각 단계의 예시와 설명을 확인해보세요.
+                    </div>
+                </div>
+
+                <h3>📈 2단계: 변화 (Change) – get 외 다른 상태 변화 동사들의 색채화 (다양한 경로와 방식)</h3>
+                <p>'get' 외에도 다양한 동사들이 상태 변화를 나타내며, 각각 고유한 색채(변화의 방식, 속도, 원인 등)를 더합니다. 이는 다양한 경로 스키마의 변형으로 볼 수 있습니다.</p>
+                
+                <div class="verb-expansion">
+                    <div class="verb-card">
+                        <h4>🔄 turn: (색깔, 상태 등이) 변하다 (명확한 전환)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>The leaves turn red in autumn.</strong><br/>나뭇잎이 가을에 빨갛게 변한다 (색깔 변화)</li>
+                            <li><strong>He turned pale with fear.</strong><br/>공포로 창백하게 변했다 (색채화: with fear - 감정적 원인)</li>
+                            <li><strong>The situation turned serious quickly.</strong><br/>상황이 빨리 심각하게 변했다 (색채화: quickly - 속도)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>⬇️ go: (주로 나쁜 상태로) 변하다 (부정적 경로)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>The milk went sour.</strong><br/>우유가 상했다 (품질 저하)</li>
+                            <li><strong>His business went bankrupt after the crisis.</strong><br/>위기 후 사업이 파산했다 (색채화: after the crisis - 시간적 배경)</li>
+                            <li><strong>Everything went wrong that day.</strong><br/>그날 모든 것이 잘못되었다 (전반적 부정)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>💫 fall: (갑자기 어떤 상태에) 빠지다 (급격한 진입)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>She fell asleep during the movie.</strong><br/>영화 중에 잠들었다 (색채화: during the movie - 시간)</li>
+                            <li><strong>The room fell silent when the principal entered.</strong><br/>교장선생님이 들어오자 조용해졌다 (색채화: when the principal entered - 조건)</li>
+                            <li><strong>He fell ill last week.</strong><br/>지난주에 병이 났다 (갑작스러운 발병)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>🌱 grow: (점진적으로 어떤 상태로) 자라다, 되다 (점진적 경로)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>He grew tired of her complaints.</strong><br/>그녀의 불평에 지쳤다 (감정의 점진적 변화)</li>
+                            <li><strong>The children grew taller every year.</strong><br/>아이들이 매년 키가 더 커졌다 (색채화: every year - 시간의 경과)</li>
+                            <li><strong>She grew accustomed to the new environment.</strong><br/>새로운 환경에 익숙해졌다 (적응 과정)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>⚡ 3단계: 사동/변화 유발 (Causing Change) – get 외 다른 사동 동사들의 색채화 (다양한 힘의 작용)</h3>
+                <p>'get' 외 사동 동사들은 변화를 유발하는 힘의 종류(강제, 허락, 도움 등)와 방식을 다양하게 표현합니다.</p>
+                
+                <div class="verb-expansion">
+                    <div class="verb-card">
+                        <h4>💪 make: (강제적 또는 직접적 원인이 되어) ~하게 만들다 (강한 힘)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>The sad movie made her cry.</strong><br/>슬픈 영화가 그녀를 울게 만들었다 (감정적 강제)</li>
+                            <li><strong>She made him a star through her relentless promotion.</strong><br/>끊임없는 홍보를 통해 그를 스타로 만들었다 (색채화: through her relentless promotion - 수단)</li>
+                            <li><strong>The teacher made the students write an essay.</strong><br/>선생님은 학생들이 에세이를 쓰게 만들었다 (권위에 의한 강제)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>🔧 have: (시키다, 경험하다 - 주로 서비스나 업무를) ~하게 하다 (간접적 힘, 위임)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>I had my hair cut yesterday.</strong><br/>어제 머리를 잘랐다 (서비스를 받았다 - 타인에게 시킴)</li>
+                            <li><strong>We had the house painted last summer.</strong><br/>지난 여름에 집에 페인트칠을 했다 (서비스 - 타인에게 위임)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>✋ let: ~하도록 허락하다, 내버려 두다 (저항 제거, 허용)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>My parents let me stay out late on weekends.</strong><br/>부모님은 주말에 늦게까지 밖에 있도록 허락하셨다 (색채화: on weekends - 조건)</li>
+                            <li><strong>Let me help you with that.</strong><br/>그걸 도와드릴게요 (자신의 행동 허용 요청)</li>
+                        </ul>
+                    </div>
+
+                    <div class="verb-card">
+                        <h4>🤝 help: ~가 ~하도록 돕다 (보조적인 힘)</h4>
+                        <ul class="verb-examples">
+                            <li><strong>He helped me (to) carry the bags.</strong><br/>그가 가방을 나르는 것을 도와주었다 (행동 보조)</li>
+                            <li><strong>She helped the old man cross the street.</strong><br/>노인이 길을 건너도록 도왔다 (목표 달성 보조)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h3>💡 통찰 2 (강화): 영어 서술 방식의 핵심 패턴 (인지적 보편성)</h3>
+                    <p>이 be → get (자) → get ~ (타)의 3단 단계는 영어 서술 방식의 핵심적인 확장 패턴입니다. get 외에도 turn, go, fall, make, have 등 다양한 동사군이 유사한 상태 변화 및 사동 구조를 형성하며, 이는 영어가 세계를 분석하고 상호작용하는 방식을 반영하는 보편적인 인지 원리(경로 스키마, 힘 역학)임을 시사합니다.</p>
+                </div>
+            </section>
+
+            <section id="examples" class="section"> <h2><span class="icon">🚀</span>3부: 핵표현과 서술 방식의 심층적 이해 – 보이지 않는 의미의 결을 읽다 (ℹ️ 개념 은유와 이미지 스키마)</h2>
+                
+                <h3>🌉 물리적 표현에서 추상적 표현으로의 확장 – 구체성에서 보편성으로 (ℹ️ 개념 은유)</h3>
+                <p>영어는 구체적인 물리적 경험을 바탕으로 추상적인 개념을 이해하고 표현합니다. 이는 <strong>개념 은유(Conceptual Metaphor)</strong>를 통해 이루어지며, 하나의 개념 영역(출발 영역, source domain)을 다른 개념 영역(목표 영역, target domain)을 통해 이해하는 인지 과정입니다. 예를 들어, '어려움(목표 영역)은 장애물(출발 영역)'이라는 은유 (DIFFICULTIES ARE OBSTACLES)를 통해 'get over a difficulty'(어려움을 극복하다)와 같이 표현합니다. 이는 언어의 경제성과 유연성을 극대화하는 중요한 방식입니다.</p>
+
+                <div class="nuclear-examples">
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">1. get over (넘어가다, 극복하다) (은유: DIFFICULTIES ARE OBSTACLES / ILLNESSES ARE OBSTACLES)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                get over a fence<br/>
+                                (담장을 넘다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • get over a difficulty (어려움을 극복하다)<br/>
+                                • get over a breakup (이별의 아픔을 극복하다)<br/>
+                                • get over the flu (독감에서 회복하다)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">2. make one's way (나아가다, 성공하다) (은유: LIFE IS A JOURNEY / CAREER IS A JOURNEY)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                make one's way through a forest<br/>
+                                (숲을 헤쳐 나아가다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • make one's way in the world (세상에서 출세하다)<br/>
+                                • make one's way to the top (정상에 오르다)<br/>
+                                • make one's way through a problem (문제를 해결하다)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">3. hold (들다, 유지하다) (은유: IDEAS ARE OBJECTS / EVENTS ARE OBJECTS)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                hold a book<br/>
+                                (책을 들다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • hold a belief (신념을 가지다)<br/>
+                                • hold a record (기록을 보유하다)<br/>
+                                • hold a meeting (회의를 개최하다)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">4. see (보다, 이해하다) (은유: UNDERSTANDING IS SEEING)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                see a light<br/>
+                                (빛을 보다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • see the point (요점을 이해하다)<br/>
+                                • see eye to eye (의견이 일치하다)<br/>
+                                • see a doctor (의사를 만나다 - '만나다'의 의미 확장)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">5. run (달리다, 운영하다) (은유: BUSINESS IS A MACHINE / TIME IS A RESOURCE)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                run a marathon<br/>
+                                (마라톤을 달리다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • run a business (사업을 운영하다)<br/>
+                                • run into trouble (곤경에 처하다 - 은유: DIFFICULTIES ARE CONTAINERS)<br/>
+                                • run out of time (시간이 다 떨어지다)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nuclear-card">
+                        <div class="nuclear-expression">6. catch (잡다, 이해하다) (은유: IDEAS ARE MOVING OBJECTS / DISEASES ARE PROJECTILES)</div>
+                        <div class="physical-abstract">
+                            <div class="physical">
+                                <strong>물리적 (출발 영역)</strong><br/>
+                                catch a ball<br/>
+                                (공을 잡다)
+                            </div>
+                            <div class="expansion-arrow">
+                                <div class="arrow-head">⬇</div>
+                                <div class="arrow-line"></div>
+                                <div class="arrow-head">⬇</div>
+                            </div>
+                            <div class="abstract">
+                                <strong>추상적 (목표 영역)</strong><br/>
+                                • catch a cold (감기에 걸리다)<br/>
+                                • catch a glimpse (언뜻 보다)<br/>
+                                • catch on (이해하다, 유행하다)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h3>💡 통찰 3: 언어의 표현력 극대화 (개념 은유의 힘)</h3>
+                    <p>영어는 구체적인 동작이나 공간적 관계의 패턴(출발 영역)을 빌려와 비유적이고 추상적인 의미(목표 영역)를 효과적으로 전달합니다. 이는 개념 은유를 통해 언어의 표현력을 극대화하고, 새로운 개념을 기존의 익숙한 틀로 이해하도록 돕습니다.</p>
+                </div>
+
+                <h3>🔄 표현 방식의 전환 – 유연한 사고의 반영 (문법적 은유)</h3>
+                <p>같은 의미를 전달하더라도 동사 중심 ↔ 형용사/명사 중심으로 유연하게 전환합니다. 이는 사건이나 상태를 다른 관점에서 바라보는 유연한 사고를 반영하며, 때로는 <strong>문법적 은유(grammatical metaphor)</strong>의 한 형태로 볼 수 있습니다. (예: 과정을 명사로 표현)</p>
+                
+                <div class="verb-expansion"> <div class="verb-card">
+                        <h4>🔄 동사 ↔ 형용사/명사 전환 예시</h4>
+                        <ul class="verb-examples">
+                            <li><strong>He did not succeed.</strong> (동사 중심: 과정) ↔ <strong>He was not successful.</strong> (형용사 중심: 속성)</li>
+                            <li><strong>Children depend on their parents.</strong> (동사 중심: 관계) ↔ <strong>Children are dependent on parents.</strong> (형용사 중심: 상태)</li>
+                            <li><strong>The team performed excellently.</strong> (동사+부사 중심: 방식) ↔ <strong>The team's performance was excellent.</strong> (명사 중심: 사건/결과)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h3>💡 통찰 4: 영어 학습의 핵심 (패턴 인식과 유연성)</h3>
+                    <p>영어 학습의 핵심은 다양한 표현 패턴과 그 변형(문법적 은유 포함)을 익히는 것입니다. 하나의 의미를 여러 방식으로 표현할 수 있는 능력, 그리고 그 이면에 있는 인지적 원리를 이해하는 것이 바로 유창함의 비결입니다.</p>
+                </div>
+            </section>
+
+            <section id="expansion" class="section"> <h2><span class="icon">🎭</span>4부: 동사의 방향성과 이미지성 심층 탐구 – 언어 속의 그림 (ℹ️ 이미지 스키마)</h2>
+                <p>많은 영어 동사, 특히 구동사는 특정한 방향성, 움직임의 궤적, 또는 시각적 이미지를 강하게 내포합니다. 이는 <strong>이미지 스키마(Image Schema)</strong>라는 기본적인 공간적, 운동적 경험에서 비롯된 인지 구조와 관련됩니다. 예를 들어, UP-DOWN, PATH, CONTAINER 등의 이미지 스키마는 구동사의 의미를 이해하는 데 중요한 역할을 합니다.</p>
+
+                <table class="comparison-table">
+                    <caption>주요 전치사/부사와 관련된 이미지 스키마 및 의미 확장</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">전치사/부사</th>
+                            <th scope="col">핵심 이미지/방향성 (이미지 스키마)</th>
+                            <th scope="col">예시 동사구 (및 의미)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>up</strong></td>
+                            <td>위로, 상승, 증가, 완료, 출현 (UP 스키마, COMPLETION 스키마)</td>
+                            <td>stand up (일어서다), grow up (성장하다), show up (나타나다), eat up (다 먹다), use up (다 써버리다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>down</strong></td>
+                            <td>아래로, 하강, 감소, 진정, 기록 (DOWN 스키마, CONTROL 스키마)</td>
+                            <td>sit down (앉다), calm down (진정하다), break down (고장나다), write down (적다), turn down (거절하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>out</strong></td>
+                            <td>밖으로, 제거, 소멸, 발견, 공개 (CONTAINER 스키마 - 외부, VISIBILITY 스키마)</td>
+                            <td>go out (나가다), find out (알아내다), put out (불을 끄다), run out of (~이 바닥나다), point out (지적하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>on</strong></td>
+                            <td>접촉, 계속, 시작, 의존 (SURFACE 스키마, CONTINUATION 스키마)</td>
+                            <td>put on (입다), go on (계속하다), turn on (켜다), rely on (의존하다), keep on (~을 계속하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>off</strong></td>
+                            <td>분리, 중단, 제거, 출발 (SEPARATION 스키마, PATH 스키마 - 이탈)</td>
+                            <td>take off (벗다, 이륙하다), turn off (끄다), call off (취소하다), set off (출발하다), cut off (자르다, 중단하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>over</strong></td>
+                            <td>너머로, 극복, 전체, 완료, 반복 (PATH 스키마 - 장애물 통과, COVERING 스키마)</td>
+                            <td>get over (극복하다), look over (검토하다), do over (다시 하다), talk over (상의하다), take over (인수하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>through</strong></td>
+                            <td>관통, 통과, 완료 (어려움) (PATH 스키마 - 내부 통과, EXPERIENCE 스키마)</td>
+                            <td>go through (겪다), see through (꿰뚫어보다), get through (끝내다), read through (정독하다), break through (돌파하다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>away</strong></td>
+                            <td>멀리, 사라짐, 제거 (PATH 스키마 - 멀어짐, REMOVAL 스키마)</td>
+                            <td>go away (가버리다), throw away (버리다), run away (도망가다), put away (치우다), fade away (사라지다)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>back</strong></td>
+                            <td>뒤로, 되돌아감, 이전 상태, 응답 (PATH 스키마 - 복귀, REPETITION 스키마)</td>
+                            <td>come back (돌아오다), give back (돌려주다), look back (회상하다), call back (다시 전화하다), fight back (저항하다)</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="mermaid-container">
+                    <h4>🎨 동사와 주요 전치사/부사의 결합 (이미지 스키마 활성화)</h4>
+                    <div class="mermaid">
+                        graph TD
+                            Verb["동사 (Verb)"]:::verbStyle
+                            
+                            Verb -- UP 스키마 --> UP["UP<br/>(상승, 완료)"]:::prepStyleUp
+                            Verb -- DOWN 스키마 --> DOWN["DOWN<br/>(하강, 진정)"]:::prepStyleDown
+                            Verb -- CONTAINER 스키마 (외부) --> OUT["OUT<br/>(외부, 소멸)"]:::prepStyleOut
+                            Verb -- SURFACE/CONTINUATION 스키마 --> ON["ON<br/>(지속, 접촉)"]:::prepStyleOn
+                            Verb -- SEPARATION 스키마 --> OFF["OFF<br/>(분리, 중단)"]:::prepStyleOff
+                            Verb -- PATH/COVERING 스키마 --> OVER["OVER<br/>(극복, 전체)"]:::prepStyleOver
+                            Verb -- PATH/EXPERIENCE 스키마 --> THROUGH["THROUGH<br/>(관통, 경험)"]:::prepStyleThrough
+                            Verb -- PATH/REMOVAL 스키마 --> AWAY["AWAY<br/>(멀리, 제거)"]:::prepStyleAway
+                            Verb -- PATH/REPETITION 스키마 --> BACK["BACK<br/>(되돌아감)"]:::prepStyleBack
+                            
+                            classDef verbStyle fill:#e9ecef,stroke:#adb5bd,stroke-width:2px,color:#212529,font-weight:bold,rx:5,ry:5
+                            classDef prepStyleUp fill:#cce5ff,stroke:#007bff,stroke-width:1.5px,color:#004085,rx:5,ry:5
+                            classDef prepStyleDown fill:#ffeeba,stroke:#ffc107,stroke-width:1.5px,color:#856404,rx:5,ry:5
+                            classDef prepStyleOut fill:#d4edda,stroke:#28a745,stroke-width:1.5px,color:#155724,rx:5,ry:5
+                            classDef prepStyleOn fill:#f8d7da,stroke:#dc3545,stroke-width:1.5px,color:#721c24,rx:5,ry:5
+                            classDef prepStyleOff fill:#d1ecf1,stroke:#17a2b8,stroke-width:1.5px,color:#0c5460,rx:5,ry:5
+                            classDef prepStyleOver fill:#e2d9f3,stroke:#6f42c1,stroke-width:1.5px,color:#381663,rx:5,ry:5
+                            classDef prepStyleThrough fill:#fff3cd,stroke:#fd7e14,stroke-width:1.5px,color:#856404,rx:5,ry:5
+                            classDef prepStyleAway fill:#f5c6cb,stroke:#e83e8c,stroke-width:1.5px,color:#721c24,rx:5,ry:5
+                            classDef prepStyleBack fill:#ced4da,stroke:#6c757d,stroke-width:1.5px,color:#343a40,rx:5,ry:5
+                    </div>
+                </div>
+
+                <div class="direction-grid">
+                    <div class="direction-card">
+                        <h4>⬆️ UP (상승, 완료) (UP 스키마)</h4>
+                        <div class="image-desc">위로 올라가는 움직임, 완성되는 느낌, 증가하는 경향</div>
+                        <ul class="verb-examples">
+                            <li><strong>stand up:</strong> 일어서다</li>
+                            <li><strong>grow up:</strong> 성장하다</li>
+                            <li><strong>eat up:</strong> 다 먹어치우다 (완료)</li>
+                            <li><strong>give up:</strong> 포기하다 (완전히 넘겨주는 이미지)</li>
+                            <li><strong>speed up:</strong> 속도를 높이다 (증가)</li>
+                        </ul>
+                    </div>
+
+                    <div class="direction-card">
+                        <h4>⬇️ DOWN (하강, 진정) (DOWN 스키마)</h4>
+                        <div class="image-desc">아래로 내려가는 움직임, 안정되는 느낌, 감소하는 경향</div>
+                        <ul class="verb-examples">
+                            <li><strong>sit down:</strong> 앉다</li>
+                            <li><strong>calm down:</strong> 진정하다</li>
+                            <li><strong>break down:</strong> 고장나다 (기능 저하)</li>
+                            <li><strong>write down:</strong> 적어두다 (기록하여 고정)</li>
+                            <li><strong>slow down:</strong> 속도를 줄이다 (감소)</li>
+                        </ul>
+                    </div>
+
+                    <div class="direction-card">
+                        <h4>👉 OUT (외부, 발견) (CONTAINER 스키마 - 외부)</h4>
+                        <div class="image-desc">안에서 밖으로, 숨겨진 것이 드러나는 느낌, 소진</div>
+                        <ul class="verb-examples">
+                            <li><strong>find out:</strong> 알아내다 (숨겨진 정보가 밖으로)</li>
+                            <li><strong>work out:</strong> 운동하다 (에너지 발산), 해결하다 (문제가 풀려나옴)</li>
+                            <li><strong>run out:</strong> 바닥나다 (용기에서 내용물이 다 나감)</li>
+                            <li><strong>point out:</strong> 지적하다 (특정 부분을 밖으로 드러냄)</li>
+                            <li><strong>speak out:</strong> 공개적으로 말하다</li>
+                        </ul>
+                    </div>
+
+                    <div class="direction-card">
+                        <h4>🔛 ON (지속, 접촉) (SURFACE/CONTINUATION 스키마)</h4>
+                        <div class="image-desc">계속되는 상태, 접촉하고 있는 느낌, 작동 중</div>
+                        <ul class="verb-examples">
+                            <li><strong>go on:</strong> 계속하다</li>
+                            <li><strong>put on:</strong> 입다 (몸 표면에 접촉)</li>
+                            <li><strong>turn on:</strong> 켜다 (작동 상태로 전환)</li>
+                            <li><strong>depend on:</strong> 의존하다 (기대어 지탱)</li>
+                            <li><strong>hold on:</strong> 기다리다, 꽉 잡다</li>
+                        </ul>
+                    </div>
+
+                    <div class="direction-card">
+                        <h4>⏹️ OFF (분리, 중단) (SEPARATION 스키마)</h4>
+                        <div class="image-desc">떨어져 나가는 느낌, 중단되는 상태, 제거</div>
+                        <ul class="verb-examples">
+                            <li><strong>take off:</strong> 벗다 (몸에서 분리), 이륙하다 (땅에서 분리)</li>
+                            <li><strong>turn off:</strong> 끄다 (작동 중단)</li>
+                            <li><strong>call off:</strong> 취소하다 (계획에서 분리)</li>
+                            <li><strong>set off:</strong> 출발하다 (장소에서 분리)</li>
+                            <li><strong>pay off:</strong> 빚을 다 갚다 (부채에서 분리)</li>
+                        </ul>
+                    </div>
+
+                    <div class="direction-card">
+                        <h4>🌉 OVER (극복, 전체) (PATH - 장애물 통과, COVERING 스키마)</h4>
+                        <div class="image-desc">위를 넘어가는 느낌, 전체를 아우르는 느낌, 완료/종결</div>
+                        <ul class="verb-examples">
+                            <li><strong>get over:</strong> 극복하다 (장애물을 넘어감)</li>
+                            <li><strong>look over:</strong> 검토하다 (전체를 훑어봄)</li>
+                            <li><strong>think over:</strong> 곰곰 생각하다 (문제를 여러 각도에서 덮어봄)</li>
+                            <li><strong>take over:</strong> 인수하다 (권한을 넘겨받음)</li>
+                            <li><strong>game over:</strong> 게임이 끝나다 (종결)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="insight-box">
+                    <h3>💡 통찰 5: 시각적 이미지의 힘 (이미지 스키마의 활용)</h3>
+                    <p>동사+전치사/부사의 결합이 만들어내는 시각적 이미지(이미지 스키마)를 이해하면 수많은 구동사의 의미를 보다 쉽게 유추하고 기억할 수 있습니다. 언어는 단순한 기호가 아니라 우리 머릿속에 공간적, 운동적 경험에 기반한 그림을 그려주는 도구입니다.</p>
+                </div>
+
+                <h3>🎨 색채화의 본질: 어감과 뉘앙스의 영역 – 문법을 넘어선 감각 (프레임의 미묘한 차이)</h3>
+                <p>색채화 요소의 선택은 엄격한 문법 규칙보다는 화자의 의도, 감정, 전달하고자 하는 미묘한 어감에 의해 결정됩니다. 이는 다양한 인지적 프레임 중 어떤 것을 활성화하고 강조하느냐의 문제입니다.</p>
+
+                <div class="nuclear-card">
+                    <div class="nuclear-expression">방으로 들어가는 다양한 방식들 (WALKING 프레임의 변주)</div>
+                    <ul class="colored-variations">
+                        <li><strong>He walked into the room.</strong><br/>단순히 걸어 들어왔다는 사실 전달 (기본 WALKING 프레임)</li>
+                        <li><strong>He strode into the room.</strong><br/>성큼성큼 자신감 있게 들어옴 - 긍정적/단호한 느낌 (CONFIDENT WALKING 프레임)</li>
+                        <li><strong>He tiptoed into the room.</strong><br/>살금살금 발끝으로 조심스럽게 들어옴 - 긴장감/은밀함 (CAREFUL/STEALTHY WALKING 프레임)</li>
+                        <li><strong>He stormed into the room.</strong><br/>화가 나서 쿵쿵거리며 격렬하게 들어옴 - 분노/격정 (ANGRY/FORCEFUL MOVEMENT 프레임)</li>
+                        <li><strong>He crept into the room.</strong><br/>몰래 슬금슬금 들어옴 - 비밀스러움 (STEALTHY MOVEMENT 프레임)</li>
+                        <li><strong>He burst into the room.</strong><br/>갑자기 문을 박차고 들어옴 - 급작스러움/에너지 (SUDDEN/ENERGETIC ENTRY 프레임)</li>
+                    </ul>
+                </div>
+
+                <div class="insight-box">
+                    <h3>💡 통찰 6: 영어 표현력의 정수 (프레임 선택 능력)</h3>
+                    <p>영어 표현력의 정수는 바로 이 색채화 요소들이 만들어내는 어감의 차이(활성화되는 프레임의 차이)를 감각적으로 체득하고 활용하는 데 있습니다. 같은 행동이라도 어떤 동사를 선택하느냐에 따라 완전히 다른 장면이 그려지고, 다른 인지적 프레임이 청자/독자의 마음에 떠오릅니다.</p>
+                </div>
+            </section>
+
+            <section id="strategies" class="section">
+                <h2><span class="icon">📊</span>5부: 영어 서술 방식 학습을 위한 종합 표 및 학습 전략</h2>
+                <p>지금까지 논의된 영어 동사 서술의 핵심 원리들을 인지언어학적 관점에서 종합적으로 요약한 표입니다. 각 원리가 어떻게 상호작용하며 다양한 표현을 만들어내는지 확인해 보세요.</p>
+
+                <table class="comparison-table">
+                     <caption>영어 서술 방식의 핵심 원리 (인지언어학적 관점)</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">구분 원리</th>
+                            <th scope="col">핵심 개념 및 설명 (인지적 기반)</th>
+                            <th scope="col">대표 예시 (get 동사 중심)</th>
+                            <th scope="col">학습 초점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1. 핵표현</strong></td>
+                            <td>표현의 기본 골격 (<strong>원형</strong>)</td>
+                            <td>get to one's feet (일어서다)</td>
+                            <td>기본 의미 단위(원형) 파악</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2. 색채화</strong></td>
+                            <td>핵표현에 뉘앙스 추가 (<strong>프레임 활성화</strong>)</td>
+                            <td>leap to one's feet (펄쩍 일어서다)</td>
+                            <td>활성화되는 프레임과 이미지 연상</td>
+                        </tr>
+                        <tr>
+                            <td><strong>3. 3단 단계</strong></td>
+                            <td>상태 → 변화 → 사동 (<strong>경로 스키마, 힘 역학</strong>)</td>
+                            <td>is open → gets open → gets sth open</td>
+                            <td>상황 전개 방식과 인지적 흐름 이해</td>
+                        </tr>
+                        <tr>
+                            <td><strong>4. 구체↔추상 확장</strong></td>
+                            <td>물리적 의미 → 비유적 의미 (<strong>개념 은유</strong>)</td>
+                            <td>get over a fence → get over a difficulty</td>
+                            <td>은유적 사고를 통한 표현력 확장</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5. 동사의 이미지성</strong></td>
+                            <td>구동사의 방향성/시각적 이미지 (<strong>이미지 스키마</strong>)</td>
+                            <td>get up (일어나다 - UP 스키마)</td>
+                            <td>이면의 공간적/운동적 그림 상상</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="learning-strategies">
+                    <h3><span class="icon">💪</span> 학습 전략 제안 (인지적 접근)</h3>
+                    <div class="strategy-grid">
+                        <div class="strategy-item">
+                            <h4>🧠 3단 단계를 의식하며 예문 접하기</h4>
+                            <p>문장을 볼 때마다 '이것은 상태(시작점)인가? 변화(경로 이동)인가? 아니면 변화를 유발하는 사동(힘의 작용)인가?'를 구분하고 그 인지적 흐름을 느껴보세요.</p>
+                        </div>
+
+                        <div class="strategy-item">
+                            <h4>🎯 핵심 변화/사동 동사군에 집중하기</h4>
+                            <p>get, make, turn 등 핵심 동사들의 다양한 용법을 예문과 함께 학습하되, 각 동사가 어떤 경로 스키마나 힘 역학을 주로 나타내는지 연관 지어 보세요.</p>
+                        </div>
+
+                        <div class="strategy-item">
+                            <h4>🖼️ 핵표현(원형) 찾고 색채화(프레임) 분석하기</h4>
+                            <p>문장에서 핵심 의미를 이루는 부분(원형)과 그것을 구체화하며 특정 프레임을 활성화하는 부분을 나눠보세요.</p>
+                        </div>
+
+                        <div class="strategy-item">
+                            <h4>🔗 구체↔추상 확장 패턴(개념 은유) 파악하기</h4>
+                            <p>물리적 동작이나 상태가 어떻게 추상적인 의미로 확장되는지, 그 배경에 있는 개념 은유(예: ARGUMENT IS WAR, IDEAS ARE FOOD)를 찾아보세요.</p>
+                        </div>
+
+                        <div class="strategy-item">
+                            <h4>👁️ 이미지와 감각으로 익히기 (이미지 스키마 활용)</h4>
+                            <p>단어와 표현이 주는 느낌, 그림, 소리 등을 상상하며 이미지 스키마(UP-DOWN, CONTAINER 등)를 활용하여 감각적으로 받아들이세요.</p>
+                        </div>
+
+                        <div class="strategy-item">
+                            <h4>📝 표를 활용한 체계적 정리 및 확장</h4>
+                            <p>본문의 표들을 참고하여 자신만의 노트를 만들고, 새로운 예문을 추가하며 각 표현의 인지적 기반(원형, 프레임, 은유, 스키마)을 함께 정리해나가세요.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="exercises" class="section exercise-section">
+                <h2><span class="icon">✏️</span>6부: 연습 문제 및 시험 연계 (실력 다지기)</h2>
+                <p>다음 연습 문제를 통해 학습한 내용을 점검하고 실력을 향상시켜 보세요. 각 문제에는 인지언어학적 해설을 포함하여 깊이 있는 이해를 돕고자 합니다.</p>
+
+                <div class="exercise">
+                    <h4>🎯 핵표현 및 색채화 (원형과 프레임)</h4>
+                    <p><strong>문제 1:</strong> 다음 문장에서 밑줄 친 표현의 핵표현(원형)은 무엇이며, 어떤 인지적 프레임이 활성화되었는지 설명하세요.</p>
+                    <p class="question">"The news <u>rocked</u> the small community."</p>
+                    <div class="answer">
+                        <p><strong>정답 및 해설:</strong></p>
+                        <p><strong>핵표현(원형):</strong> shake (흔들다) 또는 affect strongly (강하게 영향을 미치다)</p>
+                        <p><strong>활성화된 인지적 프레임:</strong> 'rock'은 물리적으로 큰 충격이나 흔들림을 주는 이미지(PHYSICAL IMPACT 프레임)를 바탕으로, 감정적/사회적으로 큰 충격이나 동요를 일으키는 상황(EMOTIONAL SHOCK/SOCIAL DISRUPTION 프레임)을 은유적으로 표현합니다. 'rock the boat'(평지풍파를 일으키다)와 같은 관용구에서도 유사한 프레임이 발견됩니다.</p>
+                    </div>
+                </div>
+
+                <div class="exercise">
+                    <h4>🔄 3단 단계 (경로 스키마와 힘 역학)</h4>
+                    <p><strong>문제 2:</strong> "The window is broken." (상태) 문장을 2단계(변화)와 3단계(사동)로 변형하고, 각 단계의 인지적 특징을 설명하세요.</p>
+                    <div class="answer">
+                        <p><strong>정답 및 해설:</strong></p>
+                        <p><strong>2단계 (변화):</strong> "The window <u>got broken</u> / <u>broke</u>." (창문이 깨졌다.)</p>
+                        <p><strong>인지적 특징:</strong> 창문의 상태가 '온전함'에서 '깨짐'으로 변화하는 과정 또는 결과를 나타냅니다. (경로 스키마: 상태 A → 상태 B로의 이동)</p>
+                        <p><strong>3단계 (사동):</strong> "Someone <u>broke</u> the window." / "The ball <u>got</u> the window <u>broken</u>." (누군가가 창문을 깼다. / 공이 창문을 깨지게 했다.)</p>
+                        <p><strong>인지적 특징:</strong> 외부 행위자(someone, the ball)가 힘을 가하여 창문의 상태 변화를 유발합니다. (힘 역학: 행위자 → 대상에게 힘 작용 → 상태 변화)</p>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <h4>🚀 개념 은유 및 이미지 스키마</h4>
+                    <p><strong>문제 3:</strong> "We need to <u>push through</u> these difficulties." 문장에 사용된 개념 은유와 이미지 스키마는 무엇일까요?</p>
+                    <div class="answer">
+                        <p><strong>정답 및 해설:</strong></p>
+                        <p><strong>개념 은유:</strong> DIFFICULTIES ARE OBSTACLES (어려움은 장애물이다), PROGRESS IS FORWARD MOVEMENT (진행은 앞으로 나아감이다)</p>
+                        <p><strong>이미지 스키마:</strong> PATH 스키마 (경로), FORCE 스키마 (힘). '어려움'이라는 장애물로 가로막힌 경로(PATH)를 힘(FORCE)을 사용하여 '뚫고(through)' 나아가는 이미지를 나타냅니다.</p>
+                    </div>
+                </div>
+
+                <h4><span class="icon">🎓</span> 시험 연계 문제 (GRE/수능 유형)</h4>
+                <div class="exercise">
+                     <p><strong>GRE 유형 문제:</strong> Choose the word or set of words that, when inserted in the sentence, best fits the meaning of the sentence as a whole.</p>
+                    <p class="question">Despite the initial setbacks, the team managed to ______ the project and deliver it on time, much to everyone's surprise.</p>
+                    <ul class="options">
+                        <li>(A) relinquish</li>
+                        <li>(B) exacerbate</li>
+                        <li>(C) salvage</li>
+                        <li>(D) impede</li>
+                        <li>(E) retract</li>
+                    </ul>
+                    <div class="answer">
+                        <p><strong>정답: (C) salvage</strong></p>
+                        <p><strong>해설:</strong> 'salvage'는 '(난파선·재화 등을) 구조하다', '(어려움에서) 구해내다, 지켜내다'라는 의미입니다. 문맥상 '초기 차질에도 불구하고 팀이 프로젝트를 구해내어 제때 납품했다'는 흐름이 자연스럽습니다. 이는 '어려운 상황(PROJECT IS A DAMAGED SHIP 프레임 또는 DIFFICULT SITUATION 프레임)에서 가치 있는 것을 건져내는' 이미지를 연상시킵니다. (A) 포기하다, (B) 악화시키다, (D) 방해하다, (E) 철회하다는 문맥에 맞지 않습니다.</p>
+                    </div>
+                </div>
+                <div class="exercise">
+                    <p><strong>수능 유형 문제:</strong> 다음 밑줄 친 부분 중 문맥상 낱말의 쓰임이 적절하지 <u>않은</u> 것은?</p>
+                    <p class="question">To effectively stir up innovation, leaders must ①<u>foster</u> an environment where experimentation is encouraged and failure is seen as a learning opportunity. They should ②<u>empower</u> their teams by granting autonomy and providing necessary resources. However, if a leader ③<u>monopolizes</u> every decision and micromanages tasks, it can ④<u>stifle</u> creativity and demotivate employees, ultimately ⑤<u>accelerating</u> the company's decline.</p>
+                     <div class="answer">
+                        <p><strong>정답: ⑤ accelerating</strong></p>
+                        <p><strong>해설:</strong> 문맥상 리더가 모든 결정을 독점하고 세세하게 관리하면 창의성을 억압하고 직원들의 의욕을 저하시켜 회사의 쇠퇴를 '가속화(accelerating)'하는 것이 아니라 '초래하거나 앞당긴다'는 부정적 결과가 와야 합니다. 'accelerating'은 긍정적 또는 중립적 속도 증가를 의미하므로, 여기서는 'hastening', 'leading to', 'causing' 등이 더 적절하거나, 문맥상 부정적 결과를 나타내는 단어가 와야 합니다. 'stir up innovation'(혁신을 불러일으키다)은 '움직임/활동을 유발하는(MOVEMENT/AGITATION 프레임)' 이미지를 활용한 표현입니다. ④'stifle'(숨 막히게 하다, 억누르다)은 '압력으로 성장을 막는(PRESSURE/CONSTRICTION 프레임)' 이미지를 가집니다.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="references" class="section references-section">
+                <h2><span class="icon">📚</span>7부: 참고 자료 및 추가 학습을 위한 제언</h2>
+                <p>본 문서에서 다룬 내용을 더 깊이 있게 학습하고 싶다면 다음 자료들을 참고해 보세요. 인지언어학은 영어 표현의 이면에 있는 인간의 사고방식을 이해하는 데 큰 도움을 줄 것입니다.</p>
+                <ul>
+                    <li>
+                        <strong>George Lakoff & Mark Johnson - <em>Metaphors We Live By</em> (1980/2003)</strong><br>
+                        개념 은유 이론의 고전으로, 우리가 일상 언어에서 얼마나 많은 은유를 사용하며 살아가는지 보여줍니다. 영어 학습자에게는 표현의 의미를 더 깊이 이해하는 데 도움을 줍니다.
+                    </li>
+                    <li>
+                        <strong>George Lakoff - <em>Women, Fire, and Dangerous Things: What Categories Reveal About the Mind</em> (1987)</strong><br>
+                        원형 이론(Prototype Theory)과 이상화된 인지 모델(ICMs) 등 인지언어학의 핵심 개념을 심도 있게 다룹니다.
+                    </li>
+                    <li>
+                        <strong>Vyvyan Evans & Melanie Green - <em>Cognitive Linguistics: An Introduction</em> (2006)</strong><br>
+                        인지언어학의 전반적인 내용을 다루는 훌륭한 개론서입니다. 이미지 스키마, 프레임 의미론, 개념적 통합 이론 등을 학습할 수 있습니다.
+                    </li>
+                    <li>
+                        <strong>Charles J. Fillmore - "Frame Semantics" (1982)</strong><br>
+                        프레임 의미론의 기초를 다진 논문으로, 단어의 의미가 특정 프레임(배경 지식 구조) 내에서 어떻게 이해되는지 설명합니다. (주요 논문 모음집 등에서 찾아볼 수 있습니다.)
+                    </li>
+                    <li>
+                        <strong>Oxford Phrasal Verbs Dictionary for learners of English</strong><br>
+                        구동사를 학습하는 데 매우 유용한 사전입니다. 다양한 예문과 함께 각 구동사가 가진 핵심 의미와 이미지를 파악하는 데 도움이 됩니다.
+                    </li>
+                    <li>
+                        <strong>BBC Learning English, VOA Learning English 등 영어 학습 웹사이트</strong><br>
+                        실제 사용되는 다양한 표현과 구동사를 접하고, 맥락 속에서 그 의미를 익힐 수 있는 좋은 자료들을 제공합니다.
+                    </li>
+                </ul>
+                <p style="margin-top:1.5rem;"><strong>추가 학습 제언:</strong></p>
+                <p>단순히 단어와 문법 규칙을 암기하는 것을 넘어, 각 표현이 어떤 인지적 원리(은유, 스키마, 프레임)에 기반하는지 생각하며 학습해 보세요. 영어 원서를 읽거나 영화를 볼 때도 등장하는 표현들의 이면의 그림을 그려보는 연습을 하면 더욱 풍부한 영어 표현력을 갖출 수 있을 것입니다.</p>
+            </section>
+
+
+            <footer class="conclusion" id="page_conclusion">
+                <h2>🎯 결론: 3단 단계와 인지적 원리 이해, 영어 표현력의 비약적 향상을 이끈다</h2>
+                <p>영어의 서술 방식, 특히 '상태(be) → 변화(get 및 유사 동사군) → 사동(get ~ 및 유사 동사군)'으로 이어지는 3단 핵심 단계를 이해하고 체화하는 것은 영어 표현력을 비약적으로 향상시키는 지름길입니다.</p>
+                
+                <p>여기에 더해 '핵표현(원형)'과 '색채화(프레임 활성화)'의 원리, 구체적인 것에서 추상적인 것으로 의미가 확장되는 '개념 은유'의 과정, 그리고 동사가 가진 '이미지 스키마'와 어감까지 파악한다면, 여러분은 마치 능숙한 요리사처럼 한정된 재료(단어)로도 무궁무진하고 맛깔스러운 표현(문장)을 만들어낼 수 있을 것입니다.</p>
+
+                <p><strong>궁극적으로 영어는 단순한 규칙의 집합이 아니라, 세상을 인식하고 표현하는 하나의 유기적인 시스템입니다. 그 구조를 이해하고, 이미지를 그리고, 감각을 동원할 때, 비로소 영어는 정복의 대상이 아닌 소통의 즐거움으로 다가올 것입니다.</strong></p>
+                
+                <p style="font-size: 1.3rem; font-weight: bold; margin-top: 2rem;">🎨 영어는 구조로 보고, 이미지로 그리고, 감각으로 체화하십시오.</p>
+            </footer>
+        </main>
+    </div>
+
+    <script>
+        // Mermaid 초기화
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'default', 
+            flowchart: {
+                useMaxWidth: true,
+                htmlLabels: true,
+                curve: 'basis' 
+            },
+            themeVariables: { 
+                primaryColor: '#3498db',
+                primaryTextColor: '#fff',
+                lineColor: '#2c3e50',
+                fontSize: '16px'
+            }
+        });
+
+        // 스크롤 진행률 표시
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const docHeight = Math.max(
+                document.body.scrollHeight, document.documentElement.scrollHeight,
+                document.body.offsetHeight, document.documentElement.offsetHeight,
+                document.body.clientHeight, document.documentElement.clientHeight
+            );
+            const winHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+            
+            if (docHeight <= winHeight) {
+                 document.getElementById('scrollProgress').style.width = '0%';
+                 const floatingNav = document.getElementById('floatingNav');
+                 if (floatingNav) floatingNav.style.display = 'none';
+                 return;
+            }
+
+            const scrollPercent = (scrollTop / (docHeight - winHeight)) * 100;
+            document.getElementById('scrollProgress').style.width = scrollPercent + '%';
+
+            const floatingNav = document.getElementById('floatingNav');
+            if (floatingNav) {
+                if (scrollTop > 200 && window.innerWidth > 1024) { 
+                    floatingNav.style.display = 'block';
+                } else {
+                    floatingNav.style.display = 'none';
+                }
+            }
+        });
+
+        // 3단 변화 데모 (사용자 제공 내용으로 업데이트)
+        function showDemo(type) {
+            const explainContainer = document.getElementById('explanation-container');
+            let contentHtml = '';
+
+            if (type === 'state') {
+                contentHtml = `
+                    <div class="stage-explanation">
+                        <h3>1단계: 상태 (State)</h3>
+                        <p>정적인 현재 상태를 묘사합니다. 경로의 시작점으로 볼 수 있습니다.</p>
+                        <p>예: <strong>He is drunk.</strong> (그는 술에 취한 상태이다.)</p>
+                        <p>예: <strong>The door is open.</strong> (문이 열려 있는 상태이다.)</p>
+                    </div>`;
+            } else if (type === 'change') {
+                contentHtml = `
+                    <div class="stage-explanation">
+                        <h3>2단계: 변화 (Change)</h3>
+                        <p>주어가 스스로 상태를 변화시킵니다. (인지적으로 경로 스키마: 한 상태에서 다른 상태로 이동)</p>
+                        <p>예: <strong>He got drunk.</strong> (그는 술에 취하게 되었다.)</p>
+                        <p>예: <strong>The door got open.</strong> (문이 열리게 되었다.)</p>
+                    </div>`;
+            } else if (type === 'causative') {
+                contentHtml = `
+                    <div class="stage-explanation">
+                        <h3>3단계: 사동 (Causative)</h3>
+                        <p>주체가 다른 대상의 변화를 유발합니다. (인지적으로 힘 역학: 외부 힘이 작용)</p>
+                        <p>예: <strong>His friends got him drunk.</strong> (친구들이 그를 취하게 만들었다.)</p>
+                        <p>예: <strong>He got the door open.</strong> (그가 문을 열리게 했다.)</p>
+                    </div>`;
+            }
+            explainContainer.innerHTML = contentHtml;
+        }
+
+
+        // 부드러운 스크롤 및 활성 링크 표시
+        document.querySelectorAll('.floating-nav a, .table-of-contents a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                     window.scrollTo({
+                         top: targetElement.offsetTop - 80, 
+                         behavior: 'smooth'
+                     });
+                }
+            });
+        });
+        
+        const sections = document.querySelectorAll('section[id], footer[id]'); // footer도 포함
+        const navLinks = document.querySelectorAll('.floating-nav a');
+        const tocLinks = document.querySelectorAll('.table-of-contents a');
+
+        const observerOptions = {
+            root: null, 
+            rootMargin: '0px 0px -50% 0px', // 화면 중앙 기준으로 판별하도록 조정
+            threshold: 0.01 // 조금이라도 보이면
+        };
+
+        let currentActive = null;
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const correspondingNavLink = document.querySelector(`.floating-nav a[href="#${id}"]`);
+                const correspondingTocLink = document.querySelector(`.table-of-contents a[href="#${id}"]`);
+
+                if (entry.isIntersecting && entry.intersectionRatio > 0) {
+                    if (currentActive) {
+                        currentActive.classList.remove('active');
+                    }
+                    if (correspondingNavLink) {
+                        correspondingNavLink.classList.add('active');
+                        currentActive = correspondingNavLink;
+                    }
+                    // TOC 링크 활성화는 선택사항 (스타일 복잡도 증가 가능)
+                    // if (correspondingTocLink) correspondingTocLink.style.fontWeight = 'bold';
+                } else {
+                    if (correspondingNavLink) {
+                        correspondingNavLink.classList.remove('active');
+                    }
+                    // if (correspondingTocLink) correspondingTocLink.style.fontWeight = 'normal';
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            if (document.getElementById('explanation-container')) { 
+                 showDemo('state'); // 기본 데모 표시
+            }
+            window.dispatchEvent(new Event('scroll')); // 초기 플로팅 네비 상태
+        });
+    </script>
+</body>
+</html>

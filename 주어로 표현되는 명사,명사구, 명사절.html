@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주어로 표현되는 동사의 종류 (접근성 및 코드 개선)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px 15px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -140px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(10px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text,
+        .tooltip-container:focus-within .tooltip-text { /* 포커스 시에도 툴팁 보이도록 */
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .example-sentence {
+            font-style: italic;
+            color: #555;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #2980b9;
+        }
+
+        .modal {
+            display: none; /* 초기에는 숨김 */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+        }
+
+        .modal.open {
+            display: flex; /* Flexbox로 중앙 정렬 */
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            /* margin: 10% auto; 제거하고 flex로 중앙 정렬 */
+            padding: 25px;
+            border: none;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            transform: translateY(-20px) scale(0.95); /* 시작 시 약간 작고 위로 */
+            opacity: 0; /* 시작 시 투명 */
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .modal.open .modal-content {
+            transform: translateY(0) scale(1); /* 열릴 때 원래 크기로 */
+            opacity: 1; /* 열릴 때 불투명하게 */
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #modalTitle {
+            margin-top: 0;
+            color: #3498db;
+            font-weight: 700;
+        }
+
+        #modalText p, #modalText li, #modalText ul {
+            margin-bottom: 10px;
+        }
+
+        #modalText b {
+            color: #2c3e50;
+        }
+
+        .footnote-trigger {
+            color: #007bff;
+            text-decoration: none;
+            border-bottom: 1px dashed #007bff;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0 2px; /* 클릭 영역 확보 */
+        }
+        .footnote-trigger:hover, .footnote-trigger:focus {
+            color: #0056b3;
+            border-bottom-style: solid;
+            outline: 2px solid #007bff; /* 포커스 시 아웃라인 */
+            outline-offset: 2px;
+        }
+        td sup.footnote-trigger {
+            font-size: 0.8em;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        th sup.footnote-trigger {
+            font-size: 0.7em;
+            vertical-align: super;
+            margin-left: 4px;
+            color: white;
+            border-bottom: 1px dashed white;
+        }
+        th sup.footnote-trigger:hover, th sup.footnote-trigger:focus {
+            color: #f0f0f0;
+            border-bottom-style: solid;
+            outline-color: white;
+        }
+
+        /* 유틸리티 클래스 */
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>주어로 표현되는 동사의 종류 (명사구/명사절 주어)</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>유형</th>
+                    <th>형태/구조</th>
+                    <th>의미/특징</th>
+                    <th>수 일치 규칙</th>
+                    <th>가주어 It 가능</th>
+                    <th>추상/구체<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="abstract-concrete" aria-describedby="tooltip-abstract-concrete">ℹ️</sup><span class="tooltip-text" id="tooltip-abstract-concrete" role="tooltip">"추상/구체" 구분에 대한 간략한 설명입니다. 클릭하면 자세한 내용을 볼 수 있습니다.</span></span></th>
+                    <th>빈출 포인트</th>
+                    <th>동사 수동 가능 여부 (주어절 내 동사)</th>
+                    <th>예문 (주어 부분 볼드)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>To 부정사구</td>
+                    <td>To + 동사원형 ...</td>
+                    <td>'~하는 것', '~하기'</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>가주어 It 구조로 자주 변환됨.</td>
+                    <td>가능 (제한적)</td>
+                    <td class="example-sentence"><strong>To learn English</strong> is fun.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>동명사구 (~ing)</td>
+                    <td>동사원형 + ing ...</td>
+                    <td>'~하는 것', '~하기'</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>단수 취급 유의.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>Reading books</strong> is useful.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>That 절</td>
+                    <td>That + 주어 + 동사 ... (완전한 문장)</td>
+                    <td>'~라는 것', '~하다는 사실'</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>가주어 It 구조로 매우 자주 변환됨.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>That he passed the test</strong> surprised us.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>What 절</td>
+                    <td>What + (주어) + 동사 ... (불완전한 절<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="1" aria-describedby="tooltip-1">1</sup><span class="tooltip-text" id="tooltip-1" role="tooltip">What절은 항상 불완전하며, 그 자체가 명사 역할을 합니다.</span></span>)</td>
+                    <td>'~하는 것', '~인 것'</td>
+                    <td>단수</td>
+                    <td>불가</td>
+                    <td>추상</td>
+                    <td>What절은 항상 불완전, 그 자체가 명사 역할.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>What she said</strong> was true.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>의문사절</td>
+                    <td>의문사 + (주어) + 동사 ...<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="2" aria-describedby="tooltip-2">2</sup><span class="tooltip-text" id="tooltip-2" role="tooltip">의문대명사(who, what, which)는 불완전절, 의문부사(when, where, why, how)는 완전절을 이끕니다.</span></span></td>
+                    <td>'~인지', '~하는지'</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>의문사의 종류에 따라 절의 구조가 다름.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>Why he left</strong> is unknown.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Whether 절</td>
+                    <td>Whether + 주어 + 동사 (+ or not) ...<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="3" aria-describedby="tooltip-3">3</sup><span class="tooltip-text" id="tooltip-3" role="tooltip">If절은 주어로 잘 쓰이지 않으며, Whether절이 더 격식적입니다.</span></span></td>
+                    <td>'~인지 아닌지'</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>If절은 주어로 잘 쓰이지 않음.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>Whether we win or lose</strong> doesn't matter.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>The fact that 절</td>
+                    <td>The fact that + 주어 + 동사 ... (완전한 문장)</td>
+                    <td>'~라는 사실' (that절 내용 강조)</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>'The fact'가 주어, that절은 동격.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>The fact that he apologized</strong> is important.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>The + 형용사</td>
+                    <td>The + 형용사<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="4" aria-describedby="tooltip-4">4</sup><span class="tooltip-text" id="tooltip-4" role="tooltip">'~한 사람들'은 복수, '~한 것'은 단수 취급합니다.</span></span></td>
+                    <td>'~한 사람들' / '~한 것'</td>
+                    <td>복수/단수</td>
+                    <td>불가</td>
+                    <td>구체/추상</td>
+                    <td>'사람들' 의미 시 복수 동사 사용.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>The poor</strong> need help. / <strong>The unknown</strong> is scary.</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>인용구/특정 명사구</td>
+                    <td>따옴표로 묶인 구절 또는 특정 명사구<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="5" aria-describedby="tooltip-5">5</sup><span class="tooltip-text" id="tooltip-5" role="tooltip">하나의 개념으로 주로 단수 취급됩니다.</span></span></td>
+                    <td>문장/어구 자체가 하나의 개념으로 주어 역할</td>
+                    <td>주로 단수</td>
+                    <td>불가</td>
+                    <td>구체/추상</td>
+                    <td>특정 표현이나 문구가 주어로 사용.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>"To be or not to be"</strong> is famous.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>의문사 + to 부정사</td>
+                    <td>의문사 (what, how, when, where, whether) + to + 동사원형</td>
+                    <td>'~할지', '~하는 방법' 등의 명사구</td>
+                    <td>단수</td>
+                    <td>가능</td>
+                    <td>추상</td>
+                    <td>명사구로 취급.</td>
+                    <td>가능 (제한적)</td>
+                    <td class="example-sentence"><strong>What to do next</strong> is unclear.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>가주어 It 구조</td>
+                    <td>It + 동사 + (보어/목적어 등) + <strong>진주어</strong><span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="6" aria-describedby="tooltip-6">6</sup><span class="tooltip-text" id="tooltip-6" role="tooltip">진주어의 동사 수동태 가능 여부는 해당 동사에 따릅니다.</span></span></td>
+                    <td>긴 주어를 대신하는 형식상의 주어</td>
+                    <td>단수 (It)</td>
+                    <td>해당 없음</td>
+                    <td>-</td>
+                    <td>문장의 균형과 가독성 향상.</td>
+                    <td>진주어 내 동사에 따라 다름</td>
+                    <td class="example-sentence"><strong>It</strong> is essential <strong>to understand the rules</strong>.</td>
+                </tr>
+                <!-- 복합관계대명사절 추가 -->
+                <tr>
+                    <td>12</td>
+                    <td>복합관계대명사절</td>
+                    <td>복합관계대명사 (whoever, whatever, whichever 등) + (주어) + 동사 ... (불완전한 절<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="7" aria-describedby="tooltip-7">7</sup><span class="tooltip-text" id="tooltip-7" role="tooltip">복합관계대명사 자체가 절 내에서 주어나 목적어 역할을 하므로 절은 불완전합니다.</span></span>)</td>
+                    <td>'~하는 것은 무엇이든/누구든/어느 것이든'</td>
+                    <td>단수</td>
+                    <td>불가</td>
+                    <td>추상</td>
+                    <td>복합관계대명사 자체가 절 내에서 역할 수행.</td>
+                    <td>가능</td>
+                    <td class="example-sentence"><strong>Whatever he says</strong> is important. / <strong>Whoever wants to come</strong> is welcome.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" role="button" tabindex="0" aria-label="닫기">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <div id="modalText"></div>
+        <p class="modal-example-container"><strong>예문:</strong> <span id="modalExample" class="example-sentence"></span></p>
+      </div>
+    </div>
+
+    <script>
+        const footnotes = {
+            "1": "<p>'What' 자체가 절 내에서 주어나 목적어 역할을 하므로 절은 불완전합니다.</p><p>예: <i>What matters</i> is... / <i>What I want</i> is...</p>",
+            "2": "<p><b>의문대명사 (who, what, which) + 불완전한 절:</b> 의문대명사가 절 내에서 주어나 목적어 역할을 합니다.</p><p>예: <i>Who broke the window</i> is unknown.</p><p><b>의문부사 (when, where, why, how) + 완전한 절:</b></p><p>예: <i>How he did it</i> is a secret.</p>",
+            "3": "<p>'if'절은 주어 자리에서는 거의 사용되지 않으며, 주로 명사절을 목적어로 취하는 동사 뒤에 사용됩니다. Whether절은 좀 더 격식적인 표현입니다.</p>",
+            "4": "<p><b>'The + 형용사'</b>가 '가난한 사람들'(The poor), '부유한 사람들'(The rich) 등 사람들의 집단을 나타낼 때는 <b>복수 취급</b>합니다.</p><p>'The unknown'(미지의 것), 'The beautiful'(아름다운 것) 등 추상적인 개념을 나타낼 때는 <b>단수 취급</b>합니다.</p>",
+            "5": "<p>대부분 하나의 개념으로 간주되어 단수 동사를 사용하지만, 인용된 내용 자체가 복수의 항목을 나열하는 등 문맥에 따라 복수 취급될 가능성도 아주 드물게 있습니다.</p>",
+            "6": "<p>진주어가 되는 명사구/명사절의 동사가 수동태로 사용될 수 있는지 여부는 해당 동사의 특성에 따릅니다. 가주어 'It' 자체는 수동태로 변하지 않습니다.</p><p>진주어 예시: <b>to be honest</b> (to 부정사구), <b>reading books</b> (동명사구), <b>that she knew the answer</b> (that절).</p>",
+            // 복합관계대명사절에 대한 새로운 각주 추가
+            "7": "<p><b>복합관계대명사 (whoever, whatever, whichever)</b>는 그 자체가 절 내에서 주어, 목적어, 보어 등의 역할을 수행하므로, 복합관계대명사절은 항상 불완전한 절을 이끌게 됩니다.</p><p>예: <i>Whoever comes</i> is welcome. (whoever가 절의 주어)<br><i>Whatever you do</i> is fine. (whatever가 절의 목적어)</p><p>복합관계대명사절은 명사절로서 문장에서 주어, 목적어, 보어 역할을 할 수 있습니다. 주어 역할을 할 때는 일반적으로 단수 취급합니다.</p>",
+            "abstract-concrete": `
+                <p><strong>"추상/구체" 구분은 주어의 성격에 따른 일반적인 경향을 나타내며, 문장 구조의 자연스러움이나 가주어 사용 빈도 등과 관련될 수 있습니다.</strong></p>
+                <h4>개념 이해 도움:</h4>
+                <ul>
+                    <li><strong>추상 명사(구/절):</strong> <i>That he is honest</i> (그가 정직하다는 것), <i>To love</i> (사랑하는 것) 등은 눈에 보이지 않는 생각, 개념, 상태 등을 나타냅니다. 이런 주어들은 주로 가주어 'It'으로 대체되어 문장 뒤로 가는 경향이 있습니다. 왜냐하면 문장 앞부분이 너무 길고 무거워지는 것을 피하기 위해서죠.</li>
+                    <li><strong>구체 명사(구/절):</strong> <i>The book</i>, <i>The poor</i> (가난한 사람들) 등은 실제로 존재하거나 특정 집단을 지칭합니다. 이런 주어들은 상대적으로 가주어 'It'으로 잘 대체되지 않습니다.</li>
+                </ul>
+                <h4>자연스러운 영작 유도:</h4>
+                <ul>
+                    <li>어떤 종류의 주어가 주로 어떤 문장 구조와 어울리는지 감을 잡는 데 도움이 될 수 있습니다. 예를 들어, "그가 정직하다는 것은 중요하다"를 영작할 때, <i>That he is honest is important.</i>도 맞지만, 원어민들은 <i>It is important that he is honest.</i>를 더 자연스럽게 사용하는 경향이 있다는 것을 "추상"이라는 키워드를 통해 간접적으로 인지할 수 있습니다.</li>
+                    <li>"The + 형용사"가 사람들을 나타낼 때 (예: <i>The poor</i>)는 구체적인 집단을 지칭하므로 가주어 It을 쓰지 않는다는 점을 이해하는 데도 도움이 됩니다.</li>
+                </ul>
+                <p>이 구분은 엄격한 문법 규칙이라기보다는, 언어 사용의 경향성과 뉘앙스를 이해하는 데 도움을 주는 참고 사항으로 활용하시면 좋습니다.</p>
+            `
+        };
+
+        const modal = document.getElementById("myModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalText = document.getElementById("modalText");
+        const modalExample = document.getElementById("modalExample");
+        const modalExampleContainer = document.querySelector(".modal-example-container"); // 클래스로 선택
+        const closeButton = document.getElementsByClassName("close-button")[0];
+
+        function openModal(footnoteId, typeText, exampleHTML) {
+            modalTitle.textContent = typeText;
+            modalText.innerHTML = footnotes[footnoteId] || "해당 각주 정보를 찾을 수 없습니다.";
+
+            if (exampleHTML) {
+                modalExample.innerHTML = exampleHTML;
+                modalExampleContainer.classList.remove('hidden');
+            } else {
+                modalExampleContainer.classList.add('hidden');
+            }
+
+            modal.style.display = "flex"; // display를 flex로 변경하여 애니메이션 시작점 설정
+            requestAnimationFrame(() => { // 다음 프레임에서 클래스 추가하여 애니메이션 트리거
+                modal.classList.add('open');
+            });
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            // transitionend 이벤트를 사용하여 애니메이션이 끝난 후 display: none 처리
+            modal.addEventListener('transitionend', function handler() {
+                modal.style.display = "none";
+                modal.removeEventListener('transitionend', handler); // 이벤트 리스너 한번만 실행 후 제거
+            });
+        }
+
+        document.querySelectorAll('sup.footnote-trigger').forEach(trigger => {
+            const footnoteId = trigger.dataset.footnoteId;
+            const tooltipTextElement = document.getElementById(`tooltip-${footnoteId}`);
+            if (tooltipTextElement) {
+                trigger.setAttribute('aria-describedby', `tooltip-${footnoteId}`);
+            }
+
+            trigger.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const row = this.closest('tr');
+                let typeText = "추가 정보";
+                let exampleHTML = "";
+
+                if (footnoteId === "abstract-concrete") {
+                    typeText = "주어의 추상성/구체성 설명";
+                } else if (row) {
+                    typeText = row.cells[1].textContent + " (추가 설명)";
+                    exampleHTML = row.cells[9].innerHTML;
+                }
+                openModal(footnoteId, typeText, exampleHTML);
+            });
+
+            trigger.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault(); // 스페이스바로 인한 페이지 스크롤 방지
+                    this.click(); // 클릭 이벤트 트리거
+                }
+            });
+        });
+
+        closeButton.addEventListener('click', closeModal);
+        closeButton.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                closeModal();
+            }
+        });
+
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+
+    </script>
+
+</body>
+</html>

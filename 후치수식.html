@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>후치 수식 총정리표 (개정판 v2)</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-weight: 700;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: relative;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        tr:hover {
+            background-color: #e9ecef;
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .tooltip-container {
+            position: relative;
+            display: inline-block;
+            cursor: help;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 280px;
+            background-color: #333;
+            color: #fff;
+            text-align: left;
+            border-radius: 6px;
+            padding: 10px 15px;
+            position: absolute;
+            z-index: 10;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -140px; /* Half of width */
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transform: translateY(10px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9em;
+            line-height: 1.4;
+        }
+
+        .tooltip-text::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+
+        .tooltip-container:hover .tooltip-text,
+        .tooltip-container:focus-within .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .example-sentence {
+            font-style: italic;
+            color: #555;
+        }
+        .example-sentence ul {
+            margin-top: 5px;
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+        .example-sentence li {
+            margin-bottom: 3px;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+        }
+
+        .modal.open {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 25px;
+            border: none;
+            width: 90%;
+            max-width: 700px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            transform: translateY(-20px) scale(0.95);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .modal.open .modal-content {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            line-height: 1;
+            transition: color 0.2s ease;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        #modalTitle {
+            margin-top: 0;
+            color: #3498db;
+            font-weight: 700;
+        }
+
+        #modalText p, #modalText li, #modalText ul {
+            margin-bottom: 10px;
+        }
+
+        #modalText b {
+            color: #2c3e50;
+        }
+        .modal-example-container.hidden {
+            display: none;
+        }
+
+        .footnote-trigger {
+            color: #007bff;
+            text-decoration: none;
+            border-bottom: 1px dashed #007bff;
+            cursor: pointer;
+            font-weight: 500;
+            padding: 0 2px;
+            font-size: 0.8em;
+            vertical-align: super;
+            margin-left: 2px;
+        }
+        .footnote-trigger:hover, .footnote-trigger:focus {
+            color: #0056b3;
+            border-bottom-style: solid;
+            outline: 2px solid #007bff;
+            outline-offset: 2px;
+        }
+        .explanation-text {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>후치 수식 총정리표 (개정판 v2)</h1>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>유형</th>
+                    <th>형태/구조</th>
+                    <th>의미/특징</th>
+                    <th>예문 (수식 부분 볼드)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>전치사 + 명사구</td>
+                    <td>전치사 + 명사</td>
+                    <td>위치, 방법, 대상 등을 설명하며 앞의 명사를 꾸밈</td>
+                    <td class="example-sentence">The book <strong>on the desk</strong> is mine.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>현재분사구 (~ing)</td>
+                    <td>동사원형+ing ...</td>
+                    <td><strong>능동/진행</strong> 의미: '~하는', '~하고 있는'</td>
+                    <td class="example-sentence">The man <strong>talking to John</strong> is my teacher.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>과거분사구 (p.p.)</td>
+                    <td>과거분사 ...</td>
+                    <td><strong>수동/완료</strong> 의미: '~된', '~받은'</td>
+                    <td class="example-sentence">The car <strong>repaired by the mechanic</strong> runs well.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>형용사 + (전치사/to부정사)</td>
+                    <td>형용사 + 전치사구/to부정사 ...</td>
+                    <td>형용사의 <strong>의미를 보충</strong>하며 성질, 상태, 가능성 등을 구체화</td>
+                    <td class="example-sentence">It's a problem <strong>difficult to solve</strong>.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>to 부정사</td>
+                    <td>to + 동사원형 ...</td>
+                    <td>미래 지향적이거나 <strong>목적/용도/성격</strong>을 설명</td>
+                    <td class="example-sentence">I have no friends <strong>to play with</strong>.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>관계대명사절 (주격)</td>
+                    <td>주격 관계대명사 (who, which, that) + 동사 ... <br><span class="explanation-text">(즉, 관계대명사가 주어 역할을 하는 불완전절<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-incomplete-clause" aria-describedby="tooltip-fn-incomplete-clause">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-incomplete-clause" role="tooltip">불완전절의 정의와 특징에 대한 추가 설명입니다.</span></span>)</span></td>
+                    <td>선행사 설명, <strong>관계대명사가 주어 역할</strong>을 하는 절로 수식</td>
+                    <td class="example-sentence">The woman <strong>who lives next door</strong> is a doctor.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>관계대명사절 (목적격 생략형)</td>
+                    <td>(목적격 관계대명사 생략) + 주어 + 동사 ... <br><span class="explanation-text">(즉, 동사나 전치사의 목적어가 빠진 불완전절<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-rel-pron-obj-omission" aria-describedby="tooltip-fn-rel-pron-obj-omission">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-rel-pron-obj-omission" role="tooltip">목적격 관계대명사가 생략되는 조건에 대한 추가 설명입니다.</span></span>)</span></td>
+                    <td>선행사 설명, <strong>절 내 목적어가 생략된 형태</strong>로 수식</td>
+                    <td class="example-sentence">The movie <strong>I watched yesterday</strong> was fantastic.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>관계부사절</td>
+                    <td>관계부사 (where, when, why, how) + 주어 + 동사 ... <br><span class="explanation-text">(즉, 필수 성분을 모두 갖춘 완전절<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-complete-clause-rel-adv" aria-describedby="tooltip-fn-complete-clause-rel-adv">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-complete-clause-rel-adv" role="tooltip">완전절의 정의와 관계부사 사용에 대한 추가 설명입니다.</span></span>)</span></td>
+                    <td>장소, 시간, 이유, 방법 등 설명</td>
+                    <td class="example-sentence">
+                        <ul>
+                            <li>I remember the day <strong>when we first met</strong>.</li>
+                            <li>This is the place <strong>where we stayed</strong>.</li>
+                            <li>The reason <strong>why he left</strong> is unclear.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>동격 that절</td>
+                    <td>that + 주어 + 동사 ... <br><span class="explanation-text">(즉, 필수 성분을 모두 갖춘 완전절)</span></td>
+                    <td>추상명사<span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-appositive-that-nouns" aria-describedby="tooltip-fn-appositive-that-nouns">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-appositive-that-nouns" role="tooltip">동격 that절과 함께 자주 쓰이는 추상명사 예시입니다.</span></span> 설명: '<strong>~라는</strong>' 내용 구체화</td>
+                    <td class="example-sentence">The news <strong>that he won the award</strong> surprised everyone.</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>of + ~ing 구</td>
+                    <td>of + 동명사 ...</td>
+                    <td><strong>행위나 개념</strong>을 명사형으로 만들어 앞 명사를 구체화</td>
+                    <td class="example-sentence">The idea <strong>of traveling around the world</strong> excites me.</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>전치사 + 관계대명사절</td>
+                    <td>전치사 + 관계대명사 (whom, which) + 주어 + 동사 ... <br><span class="explanation-text">(즉, 필수 성분을 모두 갖춘 완전절 또는 관계대명사가 목적어인 불완전절)</span><span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-prep-rel-pron" aria-describedby="tooltip-fn-prep-rel-pron">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-prep-rel-pron" role="tooltip">전치사+관계대명사 구조의 사용 이유와 형태에 대한 추가 설명입니다.</span></span></td>
+                    <td>선행사 설명, 전치사와 관계사 결합으로 <strong>격 구조를 명확히</strong> 함</td>
+                    <td class="example-sentence">This is the house <strong>in which I grew up</strong>.</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>whose + 명사 + 절</td>
+                    <td>whose + 명사 + (주어) + 동사 ...</td>
+                    <td><strong>소유관계</strong>를 나타내며 명사 뒤 수식</td>
+                    <td class="example-sentence">The student <strong>whose backpack was stolen</strong> reported it.</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>부사구</td>
+                    <td>부사 or 부사구</td>
+                    <td><strong>일시적 상황이나 맥락</strong>을 제공하며 명사를 구체화 <span class="tooltip-container"><sup class="footnote-trigger" role="button" tabindex="0" data-footnote-id="fn-adverbial-limitation" aria-describedby="tooltip-fn-adverbial-limitation">ℹ️</sup><span class="tooltip-text" id="tooltip-fn-adverbial-limitation" role="tooltip">부사구의 명사 후치 수식은 제한적이며, 학문적 논의가 있을 수 있습니다.</span></span></td>
+                    <td class="example-sentence">The people <strong>outside</strong> are waiting. <br> The event <strong>tomorrow</strong> is important.</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>동격 명사구</td>
+                    <td>명사, 동격 명사구</td>
+                    <td><strong>앞 명사를 구체적으로 정의하거나 추가 정보 제공</strong></td>
+                    <td class="example-sentence">Seoul, <strong>the capital of Korea</strong>, is vibrant.</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>비교/최상급 구</td>
+                    <td>비교급/최상급 표현 ... (+ 전치사구 등)</td>
+                    <td><strong>정도 비교</strong>: '~보다 더', '가장 ~한'</td>
+                    <td class="example-sentence">
+                        <ul>
+                            <li>A task <strong>more difficult than I expected</strong>.</li>
+                            <li>The tallest building <strong>in the city</strong>.</li>
+                            <li>The most interesting book <strong>I have ever read</strong>.</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>수량 표현 + of + 명사</td>
+                    <td>수량형용사/대명사 + of + (한정사) + 명사</td>
+                    <td>'~ 중 다수/일부/전부' 등 부분 또는 전체를 나타내며 명사구를 수식</td>
+                    <td class="example-sentence">Many <strong>of the students</strong> passed the test. <br> Some <strong>of the information</strong> was useful.</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>명사 + 숫자/수량 + 전치사구</td>
+                    <td>명사 + 숫자/단위 + 전치사구</td>
+                    <td>명사의 구체적인 수량이나 범위를 나타내며 추가 정보를 제공</td>
+                    <td class="example-sentence">Three books <strong>on the shelf</strong> are mine. <br> A journey <strong>of a thousand miles</strong> begins with a single step.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close-button" role="button" tabindex="0" aria-label="닫기">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <div id="modalText"></div>
+        <p class="modal-example-container"><strong>예문:</strong> <span id="modalExample" class="example-sentence"></span></p>
+      </div>
+    </div>
+
+    <script>
+        const footnotes = {
+            "fn-incomplete-clause": "<p><b>불완전절</b>이란 절 내에서 주어나 목적어, 또는 보어 등 문장의 필수 요소 중 하나 이상이 빠져 있는 절을 의미합니다. 관계대명사절에서 관계대명사가 바로 이 빠진 요소의 역할을 대신합니다.</p><p>예: The woman <b>who <del>she</del> lives next door</b>... (who가 주어 역할)</p><p>The movie <b>which I watched <del>it</del></b>... (which가 목적어 역할)</p>",
+            "fn-rel-pron-obj-omission": "<p>목적격 관계대명사(who(m), which, that)가 관계대명사절 안에서 <b>동사나 전치사의 목적어 역할</b>을 할 때 생략될 수 있습니다. 단, 전치사가 관계대명사 바로 앞에 올 경우(예: in which)에는 생략할 수 없습니다.</p><p>예: The movie <i>(that/which) I watched yesterday</i> was fantastic. (watched의 목적어)</p><p>The person <i>(who(m)) I spoke to</i> was helpful. (to의 목적어)</p>",
+            "fn-complete-clause-rel-adv": "<p><b>완전절</b>이란 주어, 동사, 그리고 필요한 경우 목적어나 보어 등 문장의 모든 필수 요소를 갖춘 절입니다. 관계부사(where, when, why, how)는 완전절을 이끌며, 관계부사 자체가 절 내에서 부사(장소, 시간, 이유 등) 역할을 합니다.</p><p><b>주요 관계부사:</b></p><ul><li><b>where:</b> 장소 (선행사 + at/in/on which)</li><li><b>when:</b> 시간 (선행사 + at/in/on which)</li><li><b>why:</b> 이유 (선행사 + for which)</li><li><b>how:</b> 방법 (the way how는 함께 쓰이지 않고, the way (that/in which) 또는 how 단독으로 사용)</li></ul>",
+            "fn-appositive-that-nouns": "<p>동격 that절은 주로 다음과 같은 <b>추상명사</b>의 내용을 구체적으로 설명하여 명확하게 해줍니다:</p><ul><li>the fact that... (~라는 사실)</li><li>the idea that... (~라는 생각)</li><li>the news that... (~라는 소식)</li><li>the belief that... (~라는 믿음)</li><li>the rumor that... (~라는 소문)</li><li>the possibility that... (~라는 가능성)</li><li>the hope that... (~라는 희망)</li><li>the theory that... (~라는 이론)</li></ul><p>이때 that은 접속사이며, 뒤에는 완전한 문장이 옵니다.</p>",
+            "fn-prep-rel-pron": "<p><b>'전치사 + 관계대명사'</b> 구조는 다음과 같은 경우에 사용됩니다:</p><ul><li><b>격식 표현:</b> 문어체나 격식적인 상황에서 선호됩니다.</li><li><b>문장 끝 전치사 회피:</b> 영어에서는 문장이나 절 끝에 전치사가 오는 것을 어색하게 여기는 경우가 있어, 전치사를 관계대명사 앞으로 이동시킵니다. (예: the person <i>to whom I spoke</i>)</li><li><b>의미 명확화:</b> 전치사가 관계대명사와 함께 쓰여 선행사와의 관계를 더 명확히 나타낼 수 있습니다.</li></ul><p>형태: <b>전치사 + whom/which</b> (that이나 who는 전치사 뒤에 올 수 없음). 이때 관계대명사절은 완전한 절이 될 수도 있고 (전치사구가 부사구 역할), 관계대명사가 전치사의 목적어 역할을 하며 절 내 다른 요소가 빠진 불완전절이 될 수도 있습니다.</p><p>예: This is the house. I grew up <b>in it</b>. &rarr; This is the house <b>in which</b> I grew up.</p>",
+            "fn-adverbial-limitation": "<p>부사(구)가 명사를 뒤에서 수식하는 경우는 주로 <b>장소나 시간</b>을 나타내는 일부 부사에 한정되며, 형용사처럼 자유롭게 사용되지는 않습니다. (예: the people <b>here</b>, the meeting <b>yesterday</b>). 이러한 구조는 때로 생략된 관계사절(예: the people <i>who are</i> outside)로 이해되기도 하며, 모든 부사가 명사를 후치 수식할 수 있는 것은 아닙니다. 학자에 따라 이를 진정한 후치 수식으로 보지 않고 동반 부사(adjunct)로 분류하기도 합니다.</p>"
+        };
+
+        const modal = document.getElementById("myModal");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalText = document.getElementById("modalText");
+        const modalExample = document.getElementById("modalExample");
+        const modalExampleContainer = document.querySelector(".modal-example-container");
+        const closeButton = document.getElementsByClassName("close-button")[0];
+
+        function openModal(footnoteId, typeText, exampleHTML) {
+            modalTitle.textContent = typeText;
+            modalText.innerHTML = footnotes[footnoteId] || "해당 각주 정보를 찾을 수 없습니다.";
+
+            if (exampleHTML && exampleHTML.trim() !== "") {
+                modalExample.innerHTML = exampleHTML;
+                modalExampleContainer.classList.remove('hidden');
+            } else {
+                modalExampleContainer.classList.add('hidden');
+            }
+
+            modal.style.display = "flex";
+            requestAnimationFrame(() => {
+                modal.classList.add('open');
+            });
+        }
+
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.addEventListener('transitionend', function handler() {
+                modal.style.display = "none";
+                modal.removeEventListener('transitionend', handler);
+            });
+        }
+
+        document.querySelectorAll('sup.footnote-trigger').forEach(trigger => {
+            const footnoteId = trigger.dataset.footnoteId;
+            const tooltipTextElement = document.getElementById(`tooltip-${footnoteId}`);
+            if (tooltipTextElement) {
+                trigger.setAttribute('aria-describedby', `tooltip-${footnoteId}`);
+            }
+
+            trigger.addEventListener('click', function(event) {
+                event.stopPropagation();
+                const row = this.closest('tr');
+                let typeText = "추가 정보";
+                let exampleHTML = "";
+
+                if (row) {
+                    typeText = row.cells[1].textContent + " (추가 설명)";
+                    if (row.cells[4]) {
+                         exampleHTML = row.cells[4].innerHTML;
+                    }
+                }
+                openModal(footnoteId, typeText, exampleHTML);
+            });
+
+            trigger.addEventListener('keydown', function(event) {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        closeButton.addEventListener('click', closeModal);
+        closeButton.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('click', function(event) {
+            if (event.target == modal) {
+                closeModal();
+            }
+        });
+
+        window.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && modal.classList.contains('open')) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 독해 선지 판단 마스터 SPA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Visualization & Content Choices:
+        - Chapter Summaries: Brief introductory paragraphs for each main section.
+        - Text Content: Presented with clear typography and Tailwind CSS for styling. Key terms/strategies will be highlighted.
+        - Tables (from report): Rendered as responsive HTML tables using Tailwind CSS for readability. (e.g., "수능 영어 출제 원리 이해", "수능 영어 주요 문제 유형 및 특징").
+        - Flowcharts (from report): Reimagined as structured HTML/CSS (Tailwind) diagrams or step-by-step textual explanations with icons, as Mermaid JS is disallowed. (e.g., "능동적 읽기 과정").
+        - Example Analyses (Passage + Choices): Presented in a clear format, possibly using cards or accordions, with distinct visual cues (colors/icons like 🟩, ⛔) for correct/incorrect choices and their analyses. Goal: Allow focused study of each example. Method: HTML structure, Tailwind styling.
+        - Chart.js: A bar chart will be used to visualize "문제 유형별 학습 중요도 (가상 데이터)" to provide a visual summary and engagement point. Goal: Offer a quick visual overview of perceived importance. Method: Chart.js library, data stored in JS.
+        - Interactive Elements: Navigation links, accordion toggles for examples/strategies. Goal: Improve navigation and content digestibility. Method: Vanilla JavaScript.
+        - Justification: These choices prioritize clarity, ease of navigation, and interactive exploration of the guide's dense content, adhering to the NO SVG/Mermaid constraint.
+        -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* 스크롤 부드럽게 */
+        html {
+            scroll-behavior: smooth;
+        }
+        .active-nav-link {
+            color: #0D9488; /* teal-600 */
+            font-weight: 600;
+            border-left: 3px solid #0D9488;
+            padding-left: 0.5rem;
+        }
+        .nav-link {
+            transition: all 0.3s ease;
+            padding-left: 0.75rem; /* active-nav-link의 padding-left와 맞추기 위함 */
+        }
+        .nav-link:hover {
+            color: #14B8A6; /* teal-500 */
+            background-color: #F0FDF4; /* green-50 */
+        }
+        .content-section {
+            padding-top: 4rem; /* 헤더 높이만큼 패딩 */
+            margin-top: -4rem; /* 헤더 높이만큼 마진 상쇄 */
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px; /* 최대 너비 설정 */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; /* 기본 높이 */
+            max-height: 400px; /* 최대 높이 */
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-stone-100 text-neutral-800">
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <h1 class="text-2xl font-bold text-amber-700">영어 독해 선지 판단 마스터</h1>
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-neutral-600 hover:text-amber-700 hover:bg-stone-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 pt-20">
+        <div class="flex flex-col md:flex-row">
+            <nav id="sidebar-nav" class="md:w-1/4 lg:w-1/5 p-4 bg-white rounded-lg shadow-lg md:sticky md:top-20 self-start mb-8 md:mb-0 hidden md:block max-h-[calc(100vh-6rem)] overflow-y-auto">
+                <ul class="space-y-2">
+                    <li><a href="#section1" class="block py-2 px-3 rounded-md nav-link">제1장: 선지 분석의 중요성</a></li>
+                    <li><a href="#section2" class="block py-2 px-3 rounded-md nav-link">제2장: 문제 유형 해부</a></li>
+                    <li><a href="#section3" class="block py-2 px-3 rounded-md nav-link">제3장: 오답 함정 파헤치기</a></li>
+                    <li><a href="#section4" class="block py-2 px-3 rounded-md nav-link">제4장: 지문/문제 해석 전략</a></li>
+                    <li><a href="#section5" class="block py-2 px-3 rounded-md nav-link">제5장: 정답률 향상 기술</a></li>
+                    <li><a href="#section6" class="block py-2 px-3 rounded-md nav-link">제6장: 독해력 강화 훈련</a></li>
+                    <li><a href="#section7" class="block py-2 px-3 rounded-md nav-link">제7장: 실전 감각 극대화</a></li>
+                    <li><a href="#section8" class="block py-2 px-3 rounded-md nav-link">제8장: 개인별 학습 전략</a></li>
+                </ul>
+            </nav>
+
+            <main class="md:w-3/4 lg:w-4/5 md:pl-8">
+                <section id="section1" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제1장: 왜 선지 분석이 중요한가?</h2>
+                    <p class="mb-3">이 장에서는 수능 영어 독해에서 단순한 지문 해석을 넘어, 정답 선지를 논리적으로 선택하는 전략적 사고의 중요성을 탐구합니다. 출제자의 의도를 파악하고 문제와 선지가 어떻게 설계되는지 이해함으로써, 보다 능동적으로 문제를 해결하는 방법을 제시합니다.</p>
+                    
+                    <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>1.1 단순 해석을 넘어: 정답을 고르는 전략적 사고</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>수능 영어 독해 고득점은 지문 정보 바탕으로 가장 타당한 선지를 논리적으로 선택하는 능력에 달렸습니다. 매력적인 오답을 구별하는 '선지 분석력'이 필수적입니다. 이 가이드는 학술적 예문을 통해 선지 분석 능력을 체계적으로 훈련합니다.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>1.2 출제자의 시선: 수능 영어 문제와 선지의 설계 원리</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>수능 영어 문제와 선지는 수험생의 이해력과 사고력을 종합적으로 평가하기 위해 정교하게 설계됩니다. 매력적인 오답은 피상적 이해나 오개념을 간파하기 위한 장치입니다. 출제 원리를 이해하면 능동적 문제 해결이 가능합니다.</p>
+                            <h4 class="font-semibold mt-3 mb-1 text-neutral-700">표 1: 수능 영어 출제 원리 이해</h4>
+                            <div class="overflow-x-auto">
+                                <table class="min-w-full bg-white border border-stone-300 rounded-md">
+                                    <thead class="bg-stone-200">
+                                        <tr>
+                                            <th class="py-2 px-3 border-b text-left text-sm font-semibold text-neutral-700">평가 목표</th>
+                                            <th class="py-2 px-3 border-b text-left text-sm font-semibold text-neutral-700">문제 유형 예시</th>
+                                            <th class="py-2 px-3 border-b text-left text-sm font-semibold text-neutral-700">정답 선지 특징</th>
+                                            <th class="py-2 px-3 border-b text-left text-sm font-semibold text-neutral-700">매력적 오답 설계 방식</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="py-2 px-3 border-b text-sm">중심 내용 파악</td>
+                                            <td class="py-2 px-3 border-b text-sm">주제, 요지, 제목 찾기</td>
+                                            <td class="py-2 px-3 border-b text-sm">지문 전체를 포괄하며 핵심 내용을 정확히 요약</td>
+                                            <td class="py-2 px-3 border-b text-sm">너무 지엽적이거나, 너무 광범위하거나, 핵심에서 벗어난 내용 포함</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-3 border-b text-sm">세부 정보 이해</td>
+                                            <td class="py-2 px-3 border-b text-sm">내용 일치/불일치</td>
+                                            <td class="py-2 px-3 border-b text-sm">지문에 명시된 정보를 정확하게 반영</td>
+                                            <td class="py-2 px-3 border-b text-sm">지문 키워드는 사용하나 내용을 왜곡, 반대로 진술, 언급되지 않은 내용 추가</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-3 border-b text-sm">논리적 추론</td>
+                                            <td class="py-2 px-3 border-b text-sm">빈칸 추론, 함축 의미 파악</td>
+                                            <td class="py-2 px-3 border-b text-sm">지문 정보를 바탕으로 논리적으로 도출 가능</td>
+                                            <td class="py-2 px-3 border-b text-sm">과도한 비약, 지문과 무관한 상상, 배경지식에 의존해야 하는 내용</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="py-2 px-3 text-sm">어휘/어법 적용</td>
+                                            <td class="py-2 px-3 text-sm">문맥상 어휘, 어법성 판단</td>
+                                            <td class="py-2 px-3 text-sm">문맥 속에서 가장 적절한 의미/형태</td>
+                                            <td class="py-2 px-3 text-sm">형태는 유사하나 문맥에 맞지 않는 어휘, 흔히 혼동하는 문법 오류</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section2" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제2장: 수능 영어 독해 문제 유형 완벽 해부</h2>
+                    <p class="mb-3">수능 영어 독해는 다양한 문제 유형으로 출제되며, 각 유형은 특정한 독해 기술과 접근 방식을 요구합니다. 이 장에서는 주요 문제 유형을 분류하고, 각 유형별 맞춤 공략법을 학술적 영어 예시와 함께 상세히 설명합니다.</p>
+                    
+                    <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>2.1 수능 빈출 문제 유형 분류 (표 2 요약)</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>수능 영어 주요 문제 유형은 전체적 이해(목적, 심경, 주제, 제목), 세부적 이해(내용 일치, 도표), 논리적 추론(빈칸, 함축, 무관 문장, 순서, 삽입, 요약), 어법/어휘로 나뉩니다. 각 유형은 고유한 출제 의도와 공략 포인트가 있습니다.</p>
+                             <h4 class="font-semibold mt-3 mb-1 text-neutral-700">문제 유형별 학습 중요도 (가상 데이터)</h4>
+                            <div class="chart-container my-4">
+                                <canvas id="problemTypeChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>2.2 유형별 맞춤 공략법: 중심 내용 파악 (예시)</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p class="font-semibold">전략:</p>
+                            <p>반복되는 핵심 어휘나 개념을 찾고, 각 단락의 중심 내용을 종합하여 글 전체의 메시지를 파악합니다. 첫 문장이나 마지막 문장이 주제문인 경우가 많으니 주목합니다.</p>
+                            <p class="font-semibold mt-2">학술적 예시 지문:</p>
+                            <blockquote class="border-l-4 border-amber-500 pl-4 italic my-2 text-sm">
+                                "The proliferation of digital technologies has fundamentally altered the landscape of academic research. Access to vast online databases and collaborative platforms accelerates information retrieval and knowledge sharing among scholars globally. However, this digital shift also presents challenges, including the need for enhanced critical evaluation skills to navigate misinformation and the potential for a digital divide to exacerbate existing inequalities in research opportunities."
+                            </blockquote>
+                            <p class="font-semibold mt-2">선지 예시 (요지):</p>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>(A) Digital technologies offer only benefits to academic research. <span class="text-red-500 font-bold">⛔</span></li>
+                                <li>(B) Misinformation is the biggest challenge in the digital age of research. <span class="text-red-500 font-bold">⛔</span></li>
+                                <li>(C) The digital transformation of academic research brings both significant advantages and notable challenges. <span class="text-green-500 font-bold">🟩</span></li>
+                                <li>(D) Global collaboration is solely dependent on digital platforms. <span class="text-red-500 font-bold">⛔</span></li>
+                            </ul>
+                            <p class="font-semibold mt-2">분석:</p>
+                            <p class="text-sm">정답 (C)는 지문의 양면성(장점과 도전 과제)을 포괄적으로 담고 있습니다. (A)는 "only benefits"가, (B)는 "biggest challenge"가, (D)는 "solely dependent"가 지문 내용과 맞지 않거나 과장된 표현입니다.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>2.2 유형별 맞춤 공략법: 빈칸 추론 (예시)</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                             <p class="font-semibold">전략:</p>
+                             <p>빈칸이 포함된 문장과 그 앞뒤 문장을 통해 논리적 흐름을 파악합니다. 지문 전체의 주제와 빈칸의 관계를 생각하고, 빈칸에 들어갈 내용의 단서를 지문 내 다른 부분에서 찾거나(패러프레이징), 논리적으로 추론합니다.</p>
+                             <p class="font-semibold mt-2">학술적 예시 지문:</p>
+                             <blockquote class="border-l-4 border-amber-500 pl-4 italic my-2 text-sm">
+                                "Cognitive load theory suggests that the human brain has a limited working memory capacity. When instructional materials are poorly designed, they can impose an extraneous cognitive load, hindering the learning process. Therefore, effective instructional design aims to _________________________ by presenting information in a clear, organized, and coherent manner, thereby facilitating schema acquisition and automation."
+                            </blockquote>
+                            <p class="font-semibold mt-2">선지 예시:</p>
+                            <ul class="list-disc list-inside text-sm space-y-1">
+                                <li>(A) maximize the intrinsic difficulty of the material <span class="text-red-500 font-bold">⛔</span></li>
+                                <li>(B) increase the learner's reliance on rote memorization <span class="text-red-500 font-bold">⛔</span></li>
+                                <li>(C) minimize unnecessary cognitive burden on the learner <span class="text-green-500 font-bold">🟩</span></li>
+                                <li>(D) encourage a wider range of multitasking behaviors <span class="text-red-500 font-bold">⛔</span></li>
+                            </ul>
+                            <p class="font-semibold mt-2">분석:</p>
+                            <p class="text-sm">정답 (C). 지문은 잘못된 설계가 인지 부하를 높여 학습을 방해한다고 설명합니다. 따라서 효과적인 설계는 불필요한 인지 부담을 최소화하는 것을 목표로 합니다. "clear, organized, and coherent manner"가 단서입니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section3" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제3장: 매력적인 오답의 함정 파헤치기</h2>
+                    <p class="mb-3">수능 영어 독해에서 고득점을 가로막는 가장 큰 장애물 중 하나는 매력적인 오답입니다. 이 장에서는 정답 선지의 일반적인 특징을 살펴보고, 수능에 자주 등장하는 대표적인 오답 유형들을 심층 분석하여 함정을 피하는 방법을 제시합니다.</p>
+
+                    <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>3.1 정답 선지의 특징</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <ul class="list-disc pl-5 space-y-1">
+                                <li>지문 내용과 일관성: 핵심 내용이나 세부 정보와 논리적으로 일치합니다.</li>
+                                <li>문제 요구 조건 충족: 질문이 묻는 바에 정확하게 답합니다.</li>
+                                <li>적절한 범위와 강도: 너무 광범위하거나 지엽적이지 않으며, 과장/축소되지 않은 표현을 사용합니다.</li>
+                                <li>패러프레이징 활용: 지문 표현을 그대로 쓰기보다 의미는 같지만 다른 어휘/구조로 바꿉니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>3.2 수능 단골 오답 유형 심층 분석 (표 3 요약)</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>대표적인 오답 유형으로는 '너무 포괄적/일반적', '너무 지엽적/세부적', '키워드 함정(교묘한 왜곡)', '지문과 무관/언급 없음', '반만 맞는 선지', '정반대 진술', '논리적 비약/과도한 추론' 등이 있습니다. 각 유형의 특징과 판별법을 숙지하는 것이 중요합니다.</p>
+                            <h4 class="font-semibold mt-3 mb-1 text-neutral-700">오답 유형 예시 분석: 키워드 함정 (교묘한 왜곡)</h4>
+                            <p class="font-semibold mt-2">학술적 예시 지문:</p>
+                            <blockquote class="border-l-4 border-amber-500 pl-4 italic my-2 text-sm">
+                                "Neuroscientific research indicates that while certain brain regions are more active during specific cognitive tasks, complex functions like decision-making and problem-solving typically involve the integrated activity of multiple brain areas. The notion of a single brain region being solely responsible for a complex cognitive process is an oversimplification often perpetuated in popular media."
+                            </blockquote>
+                            <p class="font-semibold mt-2">선지 예시 (오답):</p>
+                            <p class="text-sm">"The passage suggests that specific cognitive tasks activate only one isolated brain region." <span class="text-red-500 font-bold">⛔</span></p>
+                            <p class="font-semibold mt-2">분석:</p>
+                            <p class="text-sm">이 선지는 "specific cognitive tasks", "brain regions" 키워드를 사용하지만, 지문은 "certain brain regions are *more* active"라고 했지 "*only one isolated* brain region"이 활성화된다고 하지 않았습니다. 오히려 "multiple brain areas"의 "integrated activity"를 강조하며, 단일 영역 책임론은 "oversimplification"이라고 비판합니다. 선지는 지문의 뉘앙스를 무시하고 내용을 왜곡했습니다.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="section4" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제4장: 지문 분석 및 문제 해석 핵심 전략</h2>
+                    <p class="mb-3">정확한 선지 판단을 위해서는 지문을 능동적으로 읽고 문제의 의도를 정확히 파악하는 것이 선행되어야 합니다. 이 장에서는 수능 지문에서 찾아야 할 핵심 단서들과 문제 유형별 출제 의도를 파악하는 방법을 다룹니다.</p>
+                    <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>4.1 선지 판단을 위한 능동적 읽기</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>능동적 읽기는 문제 해결에 필요한 단서를 적극적으로 찾는 과정입니다. 핵심 단서로는 주제문, 연결어, 강조 표현, 반복 어구, 질문과 답변 구조 등이 있습니다.</p>
+                            <h4 class="font-semibold mt-3 mb-1 text-neutral-700">능동적 읽기 과정 (단계별 요약)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-sm">
+                                <li>문제 유형 확인 및 키워드 파악</li>
+                                <li>지문 읽기 시작: 각 단락 중심 내용 파악</li>
+                                <li>주제/주장 암시 표현 탐색</li>
+                                <li>세부 정보/예시와 중심 생각 연결</li>
+                                <li>문제 요구 정보와 관련된 부분 집중 분석</li>
+                                <li>선지 판단 근거 확보</li>
+                            </ol>
+                        </div>
+                    </div>
+                     <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>4.2 문제의 정확한 의도 파악</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>문제 발문의 특정 어휘나 표현을 통해 출제자의 의도를 파악해야 합니다. 예를 들어, "main purpose"는 글의 기능적 의도를, "true according to the passage"는 명시적/논리적 세부 정보를, "implies"는 추론 내용을 묻습니다. "NOT", "EXCEPT", "LEAST", "MOST"와 같은 표현에 특히 주의해야 합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section5" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제5장: 정답률을 높이는 선지 소거 및 검증 기술</h2>
+                    <p class="mb-3">정답을 직접 찾는 것보다 확실한 오답을 먼저 제거하는 것이 효율적일 수 있습니다. 이 장에서는 체계적인 오답 소거법과 최종적으로 선택한 답을 검증하는 기술을 소개하여 정답률을 높이는 데 도움을 줍니다.</p>
+                     <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>5.1 체계적인 오답 소거법</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>오답 유형(제3장 참고)을 기준으로 각 선지를 평가하고, 남은 선지들을 비교 대조하며 미묘한 차이를 분석합니다.</p>
+                            <h4 class="font-semibold mt-3 mb-1 text-neutral-700">선지 판단 및 소거 과정 (단계별 요약)</h4>
+                            <ol class="list-decimal list-inside space-y-1 text-sm">
+                                <li>문제 의도 및 지문 핵심 파악</li>
+                                <li>선지 1 검토: 지문과 명백히 모순? 너무 포괄/지엽적? 키워드만 같고 의미 왜곡? 지문 언급 無? → 오답으로 판단 또는 판단 보류</li>
+                                <li>선지 2 검토 (이하 반복)</li>
+                                <li>남은 선지 중 가장 적절한 것 선택</li>
+                                <li>최종 검증</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>5.2 최종 선택 검증 (표 4 요약)</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>최종 답안 검증 체크리스트를 통해 선택한 답이 문제 부합성, 지문 근거, 범위/강도 적절성, 오답 가능성, 전체적 일관성을 만족하는지 확인합니다. 예를 들어, "이 선지를 뒷받침하는 명확한 근거가 지문에 있는가?" 등을 점검합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section6" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제6장: 수능 영어 독해력 강화 훈련</h2>
+                    <p class="mb-3">선지 판단 능력은 탄탄한 기본 독해력이 뒷받침될 때 더욱 빛을 발합니다. 이 장에서는 어휘력, 문법적 정확성, 그리고 논리적 사고력이라는 세 가지 핵심 요소를 강화하는 훈련 방법을 안내합니다.</p>
+                     <div class="accordion-item mt-4">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>6.1 어휘력: 미묘한 뉘앙스와 문맥 파악</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>학술적 어휘, 다의어/유의어 구분, 단어의 긍정/부정/중립적 뉘앙스 파악이 중요합니다. 예: "significant", "substantial", "critical"의 문맥상 차이 이해.</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>6.2 문법적 정확성: 구조가 의미에 미치는 영향</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>복잡한 문장 구조(수식 관계, 병렬 구조, 비교 구문, 도치/생략/삽입)를 정확히 분석하여 선지의 의미를 파악해야 합니다.</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item mt-2">
+                        <button class="accordion-header w-full text-left text-lg font-medium text-teal-700 hover:text-teal-600 py-2 px-4 bg-stone-50 rounded-md focus:outline-none flex justify-between items-center">
+                            <span>6.3 논리적 사고력: 복잡한 선지 해결의 열쇠</span>
+                            <svg class="w-5 h-5 transform transition-transform" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <div class="accordion-content px-4 py-2 text-neutral-700">
+                            <p>인과 관계, 비교/대조, 일반화/구체화, 함의/전제 파악 등 논리적 관계를 파악하고 추론하는 능력이 필요합니다.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="section7" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제7장: 실전 감각 극대화 및 약점 극복</h2>
+                    <p class="mb-3">아무리 좋은 전략도 실전에서 활용하지 못하면 무용지물입니다. 이 장에서는 전략적인 연습 방법, 흔한 실수 교정, 그리고 시험 상황에서의 평정심 유지 방법을 통해 실전 감각을 극대화하는 데 초점을 맞춥니다.</p>
+                </section>
+
+                <section id="section8" class="content-section bg-white p-6 rounded-lg shadow-lg mb-8">
+                    <h2 class="text-2xl font-semibold text-amber-700 mb-4">제8장: 개인별 맞춤 학습 전략 및 최종 점검</h2>
+                    <p class="mb-3">모든 수험생의 강점과 약점은 다릅니다. 이 장에서는 자신을 정확히 진단하고 구체적인 학습 목표를 설정하는 방법, 그리고 시험 당일까지 꾸준히 실력을 향상시켜 최상의 컨디션을 만드는 전략을 제시합니다.</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <footer class="bg-stone-800 text-stone-300 py-8 mt-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2024 영어 독해 선지 판단 마스터 가이드 SPA. All rights reserved.</p>
+            <p class="text-sm mt-1">이 자료는 학습 목적으로 제작되었습니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Accordion functionality
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const icon = header.querySelector('svg');
+                
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    // Close other open accordions in the same section (optional)
+                    // const openAccordion = header.closest('.content-section').querySelector('.accordion-content[style*="max-height"]');
+                    // if (openAccordion && openAccordion !== content) {
+                    //     openAccordion.style.maxHeight = null;
+                    //     openAccordion.previousElementSibling.querySelector('svg').style.transform = 'rotate(0deg)';
+                    // }
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const sidebarNav = document.getElementById('sidebar-nav');
+        mobileMenuButton.addEventListener('click', () => {
+            sidebarNav.classList.toggle('hidden');
+        });
+        
+        // Sidebar active link highlighting on scroll
+        const sections = document.querySelectorAll('.content-section');
+        const navLinks = document.querySelectorAll('#sidebar-nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active-nav-link');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active-nav-link');
+                }
+            });
+        });
+        
+        // Close mobile menu when a link is clicked
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth < 768) { // md breakpoint
+                    sidebarNav.classList.add('hidden');
+                }
+            });
+        });
+
+        // Chart.js: 문제 유형별 학습 중요도 (가상 데이터)
+        const problemTypeCtx = document.getElementById('problemTypeChart');
+        if (problemTypeCtx) {
+            new Chart(problemTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ["중심 내용 파악", "빈칸 추론", "내용 일치/불일치", "순서/삽입", "어법/어휘"],
+                    datasets: [{
+                        label: '학습 중요도 (1-10점)',
+                        data: [8, 9, 7, 8, 6], // 가상 데이터
+                        backgroundColor: [
+                            'rgba(255, 159, 64, 0.7)', // amber
+                            'rgba(54, 162, 235, 0.7)', // blue
+                            'rgba(255, 206, 86, 0.7)', // yellow
+                            'rgba(75, 192, 192, 0.7)', // teal
+                            'rgba(153, 102, 255, 0.7)' // purple
+                        ],
+                        borderColor: [
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 10 
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false // 범례 숨김
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += context.parsed.y + '점';
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

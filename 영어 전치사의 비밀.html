@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 전치사의 비밀: 공간에서 추상으로 (v2)</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans KR', sans-serif, Arial, Helvetica;
+            line-height: 1.8;
+            color: #2c3e50;
+            background-color: #ecf0f1;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .slide-deck-container {
+            width: 95%;
+            max-width: 950px; /* 표를 위해 너비 약간 증가 */
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            margin: 25px;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 35px 45px;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            position: relative;
+            min-height: 600px; /* 내용 증가로 높이 조정 */
+            display: none;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            opacity: 1;
+            display: block;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 25px;
+            font-size: 0.95em;
+            color: #bdc3c7;
+        }
+
+        h1, h2, h3, h4 {
+            color: #2980b9;
+            margin-bottom: 1em;
+            line-height: 1.3;
+        }
+        h1 { font-size: 2.3em; font-weight: 700; text-align: center; margin-top: 0; margin-bottom: 1.6em; border-bottom: 3px solid #3498db; padding-bottom: 0.6em;}
+        h2 { font-size: 1.9em; font-weight: 600; margin-top: 1.6em; color: #2c3e50; }
+        h3 { font-size: 1.5em; font-weight: 600; margin-top: 1.3em; color: #34495e; }
+        h4 { font-size: 1.25em; font-weight: 600; margin-top: 1.1em; color: #7f8c8d; }
+
+        p, li {
+            margin-bottom: 1.1em;
+            font-size: 1.1em;
+        }
+        ul, ol { padding-left: 2em; }
+        li { margin-bottom: 0.6em; }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 45px;
+            background-color: #34495e;
+            border-top: 1px solid #2c3e50;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.05em;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+        .nav-button:hover { background-color: #2980b9; }
+        .nav-button:active { transform: translateY(1px); }
+        .nav-button:disabled { background-color: #95a5a6; cursor: not-allowed; }
+
+        .code-tag {
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            background-color: #ecf0f1;
+            padding: 3px 6px;
+            border-radius: 5px;
+            font-size: 0.95em;
+            color: #2980b9;
+            border: 1px solid #bdc3c7;
+        }
+
+        .highlight {
+            background-color: #f1c40f;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #7f8c8d;
+        }
+
+        .example {
+            background-color: #eaf6ff;
+            border-left: 5px solid #3498db;
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .example em { font-weight: 600; color: #2980b9; }
+        .example-annotation { font-size: 0.9em; color: #7f8c8d; margin-left: 10px; font-style: italic; }
+
+        .mermaid {
+            margin: 30px auto;
+            background-color: #fdfefe;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .d3-visualization {
+            width: 100%;
+            min-height: 250px;
+            border: 1px solid #dde4e6;
+            border-radius: 8px;
+            margin-top: 25px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9f9;
+            overflow: hidden;
+        }
+        .d3-text { font-size: 14px; fill: #34495e; }
+        .d3-label { font-size: 12px; fill: #7f8c8d; text-anchor: middle; }
+        .d3-arrow { stroke: #3498db; stroke-width: 2; marker-end: url(#arrowhead); }
+        
+        .interactive-area { padding: 15px; border: 1px dashed #3498db; border-radius: 8px; margin-top: 20px; background-color: #f4faff; }
+        .interactive-area button { background-color: #3498db; color: white; border: none; padding: 8px 12px; margin: 5px; border-radius: 5px; cursor: pointer; }
+        .interactive-area button:hover { background-color: #2980b9; }
+        
+        .popup { display: none; position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); background-color: white; padding: 25px; border: 1px solid #bdc3c7; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 1000; max-width: 80%; }
+        .popup-content { text-align: center; }
+        .popup-close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; font-weight: bold; cursor: pointer; color: #7f8c8d; }
+
+        /* 표 스타일 추가 */
+        table.concept-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.95em; }
+        table.concept-table th, table.concept-table td { border: 1px solid #bdc3c7; padding: 10px 12px; }
+        table.concept-table th { background-color: #3498db; color: white; font-weight: bold; }
+        table.concept-table tr:nth-child(even) { background-color: #f8f9f9; }
+        .footnote { font-size: 0.85em; color: #7f8c8d; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    <div class="slide-deck-container">
+        <div class="slides">
+            <!-- Slide 1: Intro (유지) -->
+            <div class="slide active" id="slide1">
+                <h1>영어 전치사의 비밀: 공간에서 추상으로의 여정</h1>
+                <p>영어 전치사는 단순한 위치 표시를 넘어, 우리 사고방식과 세상을 이해하는 틀을 반영합니다. 이 슬라이드 덱을 통해 전치사가 어떻게 <strong class="highlight">구체적인 공간 개념</strong>에서 출발하여 <strong class="highlight">추상적인 의미</strong>로 확장되는지, 그 흥미로운 여정을 함께 탐험해 봅시다.</p>
+                <h2>학습 목표</h2>
+                <ul>
+                    <li>전치사의 다의성과 추상성이 발생하는 근본 원리를 이해합니다.</li>
+                    <li>'물리적 의미 &rarr; 은유적 연결 &rarr; 추상적 의미'의 3단계 확장 프레임워크를 학습합니다.</li>
+                    <li>개념 은유 이론이 전치사 의미 확장에 어떻게 기여하는지 파악합니다.</li>
+                    <li><span class="code-tag">on track</span>, <span class="code-tag">in trouble</span>, <span class="code-tag">under pressure</span> 등 주요 전치사구의 의미 형성 과정을 분석합니다.</li>
+                    <li>시각 자료와 인터랙티브 시뮬레이션을 통해 직관적인 이해를 돕습니다.</li>
+                </ul>
+                <p class="slide-number">1 / 10</p>
+            </div>
+
+            <!-- Slide 2: 전치사, 왜 어려울까? (유지) -->
+            <div class="slide" id="slide2">
+                <h2>전치사, 왜 학습하기 어려울까요?</h2>
+                <p>많은 영어 학습자들이 전치사 사용에 어려움을 느낍니다. 그 이유는 무엇일까요?</p>
+                <ul>
+                    <li><strong>다의성 (Polysemy):</strong> 하나의 전치사가 문맥에 따라 너무나 많은 다른 의미로 사용됩니다. (예: <span class="code-tag">on</span> the table, <span class="code-tag">on</span> Monday, <span class="code-tag">on</span> fire, depend <span class="code-tag">on</span>)</li>
+                    <li><strong>추상성 (Abstractness):</strong> 물리적 위치를 나타내는 것을 넘어, 시간, 상태, 관계 등 추상적인 개념을 표현하는 데 자주 사용됩니다.</li>
+                    <li><strong>관용적 표현 (Idiomatic Expressions):</strong> 특정 동사나 명사와 결합하여 고유한 의미를 형성하는 경우가 많습니다. (예: <span class="code-tag">look forward to</span>, <span class="code-tag">in charge of</span>)</li>
+                </ul>
+                <p>단순히 각 용법을 목록화하여 암기하는 것은 비효율적이며, 그 기저에 있는 <strong class="highlight">의미 확장 원리</strong>를 이해하는 것이 중요합니다.</p>
+                <div class="mermaid">
+                    graph LR
+                        A[전치사 학습의 어려움] --> B(다의성);
+                        A --> C(추상성);
+                        A --> D(관용적 표현);
+                        E[원리 이해 필요] --> A;
+                    classDef default fill:#f9f9f9,stroke:#333,stroke-width:2px;
+                    classDef highlight fill:#f1c40f,stroke:#c0392b,color:#2c3e50;
+                    class E highlight;
+                </div>
+                <p class="slide-number">2 / 10</p>
+            </div>
+
+            <!-- Slide 3: 핵심 원리 - 3단계 프레임워크 (유지) -->
+            <div class="slide" id="slide3">
+                <h2>핵심 원리: 공간에서 추상으로 (3단계 프레임워크)</h2>
+                <p>대부분의 전치사 의미 확장은 다음과 같은 3단계를 거칩니다.</p>
+                <ol>
+                    <li><strong>1단계: 물리적/공간적 의미 (원형적 의미)</strong>
+                        <ul><li>전치사가 가진 가장 기본적이고 구체적인, 눈에 보이는 공간 관계나 위치를 나타냅니다.</li></ul>
+                    </li>
+                    <li><strong>2단계: 은유적 연결 (Metaphorical Link)</strong>
+                        <ul><li>1단계의 물리적 공간 이미지가 특정 추상적 상황, 개념, 또는 인간의 경험과 어떻게 유사하게 연결될 수 있는지 <strong class="highlight">은유적으로 사고</strong>하는 단계입니다. 이때 <strong class="highlight">이미지 스키마</strong>(예: CONTAINER, PATH, SURFACE)가 중요한 역할을 합니다.</li></ul>
+                    </li>
+                    <li><strong>3단계: 추상적 의미 (Figurative Meaning)</strong>
+                        <ul><li>2단계의 은유적 연결을 통해, 해당 전치사가 특정 추상적 상태, 감정, 관계, 시간 등을 나타내는 관용적인 표현으로 의미가 굳어집니다.</li></ul>
+                    </li>
+                </ol>
+                <div class="d3-visualization" id="d3-framework-flow">
+                    <p style="color: #888;">(D3.js 시각화: 3단계 프레임워크 흐름도)</p>
+                </div>
+                <p>이 프레임워크를 이해하면, 겉보기에 연관 없어 보이는 전치사의 다양한 의미들이 사실은 하나의 뿌리에서 확장된 것임을 알 수 있습니다.</p>
+                <p class="slide-number">3 / 10</p>
+            </div>
+
+            <!-- Slide 4: 예시 1 - on track (유지) -->
+            <div class="slide" id="slide4">
+                <h2>예시 1: <span class="code-tag">on track</span> 심층 분석</h2>
+                <p>전치사구 <span class="code-tag">on track</span>이 어떻게 "계획대로 순조롭게 진행 중인"이라는 추상적 의미를 갖게 되는지 3단계 프레임워크로 살펴봅시다.</p>
+                <div class="d3-visualization" id="d3-on-track-simulation" style="min-height: 350px;">
+                     <p style="color: #888;">(D3.js 시뮬레이션: 'on track' 의미 확장)</p>
+                </div>
+                <div class="interactive-area" style="text-align: center;">
+                    <p><strong><span class="code-tag">on track</span>의 다양한 활용:</strong> 아래 버튼을 클릭하여 예문을 확인하세요.</p>
+                    <button onclick="showExamplePopup('on-track-be')">be on track</button>
+                    <button onclick="showExamplePopup('on-track-get')">get on track</button>
+                    <button onclick="showExamplePopup('on-track-stay')">stay on track</button>
+                    <button onclick="showExamplePopup('on-track-put')">put sth back on track</button>
+                </div>
+                <p class="slide-number">4 / 10</p>
+            </div>
+
+            <!-- Slide 5: 예시 2 - in trouble (유지) -->
+            <div class="slide" id="slide5">
+                <h2>예시 2: <span class="code-tag">in trouble</span> 심층 분석</h2>
+                <p>전치사구 <span class="code-tag">in trouble</span>이 "곤경에 처한"이라는 추상적 의미를 갖게 되는 과정을 살펴봅시다.</p>
+                 <div class="d3-visualization" id="d3-in-trouble-simulation" style="min-height: 350px;">
+                     <p style="color: #888;">(D3.js 시뮬레이션: 'in trouble' 의미 확장)</p>
+                </div>
+                <div class="interactive-area" style="text-align: center;">
+                    <p><strong><span class="code-tag">in trouble</span>의 다양한 활용:</strong></p>
+                    <button onclick="showExamplePopup('in-trouble-be')">be in trouble</button>
+                    <button onclick="showExamplePopup('in-trouble-get')">get into trouble</button>
+                    <button onclick="showExamplePopup('in-trouble-keep')">keep sb out of trouble</button>
+                </div>
+                <p class="slide-number">5 / 10</p>
+            </div>
+
+            <!-- Slide 6: 예시 3 - under pressure (유지) -->
+            <div class="slide" id="slide6">
+                <h2>예시 3: <span class="code-tag">under pressure</span> 심층 분석</h2>
+                <p>전치사구 <span class="code-tag">under pressure</span>가 "압박감을 느끼는"이라는 추상적 의미를 갖게 되는 과정을 살펴봅시다.</p>
+                <div class="d3-visualization" id="d3-under-pressure-simulation" style="min-height: 350px;">
+                     <p style="color: #888;">(D3.js 시뮬레이션: 'under pressure' 의미 확장)</p>
+                </div>
+                 <div class="interactive-area" style="text-align: center;">
+                    <p><strong><span class="code-tag">under pressure</span>의 다양한 활용:</strong></p>
+                    <button onclick="showExamplePopup('under-pressure-be')">be under pressure</button>
+                    <button onclick="showExamplePopup('under-pressure-work')">work under pressure</button>
+                    <button onclick="showExamplePopup('under-pressure-put')">put sb under pressure</button>
+                </div>
+                <p class="slide-number">6 / 10</p>
+            </div>
+
+            <!-- Slide 7: 개념 은유 이론 (내용 대폭 보강) -->
+            <div class="slide" id="slide7">
+                <h2>개념 은유 이론 (Conceptual Metaphor Theory)</h2>
+                <p>전치사의 의미 확장을 이해하는 데 중요한 이론적 배경은 Lakoff와 Johnson의 <strong class="highlight">개념 은유 이론</strong>입니다. 이 이론에 따르면, 우리는 추상적인 개념을 이해하기 위해 구체적이고 경험적인 개념을 활용합니다.</p>
+                <h4>핵심 아이디어</h4>
+                <ul>
+                    <li><strong>은유는 단순한 수사가 아니다:</strong> 은유는 우리의 사고방식과 개념 체계를 근본적으로 구조화합니다.</li>
+                    <li><strong>출발 영역 &rarr; 목표 영역:</strong> 구체적인 경험 영역(출발 영역, 예: 공간)을 통해 추상적인 개념 영역(목표 영역, 예: 상태, 시간)을 이해합니다. (<span class="code-tag">TARGET DOMAIN IS SOURCE DOMAIN</span>)</li>
+                </ul>
+                <h4>전치사 의미 확장에 중요한 주요 개념 은유들</h4>
+                <div class="mermaid">
+                graph TD
+                    A["출발 영역: 구체적 경험 (Source Domain)"] --> B["목표 영역: 추상적 개념 (Target Domain)"];
+                    
+                    subgraph "은유적 사상 (Metaphorical Mapping)"
+                        C["<strong style='color:#2980b9;'>상태는 공간이다</strong><br>(STATES ARE LOCATIONS)<br><span class='example-en'>e.g., <em>in</em> trouble, <em>at</em> peace</span>"]
+                        D["<strong style='color:#2980b9;'>변화는 움직임이다</strong><br>(CHANGES ARE MOVEMENTS)<br><span class='example-en'>e.g., <em>get into</em> trouble, <em>fall out of</em> fashion</span>"]
+                        E["<strong style='color:#2980b9;'>목적은 목적지/경로이다</strong><br>(PURPOSES ARE DESTINATIONS/PATHS)<br><span class='example-en'>e.g., <em>on</em> track, <em>off</em> course</span>"]
+                        F["<strong style='color:#2980b9;'>어려움은 장애물/갇힌 공간이다</strong><br>(DIFFICULTIES ARE IMPEDIMENTS/ENCLOSURES)<br><span class='example-en'>e.g., <em>in</em> a bind, <em>at</em> a standstill</span>"]
+                        G["<strong style='color:#2980b9;'>통제는 위/안, 통제 상실은 아래/밖이다</strong><br>(CONTROL IS UP/IN, LACK OF CONTROL IS DOWN/OUT)<br><span class='example-en'>e.g., <em>under</em> control, <em>out of</em> control</span>"]
+                        H["<strong style='color:#2980b9;'>지식은 빛, 무지는 어둠이다</strong><br>(KNOWLEDGE IS LIGHT, IGNORANCE IS DARKNESS)<br><span class='example-en'>e.g., <em>in</em> the dark, shed light <em>on</em></span>"]
+                        I["<strong style='color:#2980b9;'>감정/영향력은 물리적 힘이다</strong><br>(EMOTIONS/INFLUENCES ARE PHYSICAL FORCES)<br><span class='example-en'>e.g., <em>under</em> pressure, fall <em>in</em> love</span>"]
+                    end
+                    A --> C; A --> D; A --> E; A --> F; A --> G; A --> H; A --> I;
+
+                classDef default fill:#f4faff,stroke:#3498db,stroke-width:1.5px,color:#2c3e50,rx:5,ry:5;
+                classDef sourceTarget fill:#e8f6f3,stroke:#1abc9c,color:#16a085,font-weight:bold;
+                class A,B sourceTarget;
+                </div>
+                <p class="footnote">위 다이어그램은 주요 개념 은유의 일부 예시이며, 실제로는 더 다양하고 복합적인 은유가 작용합니다. 각 은유는 우리가 세상을 어떻게 인식하고 언어로 표현하는지에 대한 깊은 통찰을 제공합니다.</p>
+                <p class="slide-number">7 / 10</p>
+            </div>
+
+            <!-- Slide 8: 더 많은 예시와 개념 은유 적용 (표 형식으로 변경) -->
+            <div class="slide" id="slide8">
+                <h2>주요 전치사구와 개념 은유 적용</h2>
+                <p>다양한 전치사구 표현들이 어떤 공간 이미지와 개념 은유에 기반하는지 표를 통해 자세히 살펴봅시다.</p>
+                <table class="concept-table">
+                    <thead>
+                        <tr>
+                            <th>표현 (전치사구)</th>
+                            <th>공간 이미지 (원형적 의미)</th>
+                            <th>추상적 의미 해석</th>
+                            <th>주요 개념 은유</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>on track</strong></td>
+                            <td>선로(track) 위에(on) 정확히 놓여 있음</td>
+                            <td>계획대로 순조롭게 진행되는 상태</td>
+                            <td>PURPOSES ARE PATHS<br>STATES ARE LOCATIONS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>in trouble</strong></td>
+                            <td>곤란한 장소/함정(trouble) 안(in)에 있음</td>
+                            <td>문제가 생기거나 곤경에 처한 상태</td>
+                            <td>STATES ARE LOCATIONS<br>DIFFICULTIES ARE ENCLOSURES</td>
+                        </tr>
+                        <tr>
+                            <td><strong>under pressure</strong></td>
+                            <td>무거운 것(pressure)이 위에서 아래로(under) 누름</td>
+                            <td>심리적 압박감이나 스트레스를 느끼는 상태</td>
+                            <td>EMOTIONS/INFLUENCES ARE PHYSICAL FORCES<br>SUBJECTION IS DOWN / CONTROL IS UP</td>
+                        </tr>
+                        <tr>
+                            <td><strong>out of control</strong></td>
+                            <td>통제(control) 범위 밖(out of)으로 벗어남</td>
+                            <td>상황이나 감정 등이 통제 불능인 상태</td>
+                            <td>CONTROL IS CONTAINMENT<br>LACK OF CONTROL IS OUT</td>
+                        </tr>
+                        <tr>
+                            <td><strong>at a standstill</strong></td>
+                            <td>정확한 지점(at)에서 완전히 멈춰(standstill) 있음</td>
+                            <td>진행이나 활동이 완전히 중단된 교착 상태</td>
+                            <td>STATES ARE LOCATIONS<br>LACK OF PROGRESS IS LACK OF MOTION</td>
+                        </tr>
+                        <tr>
+                            <td><strong>on edge</strong></td>
+                            <td>가장자리(edge) 위에(on) 위태롭게 있음</td>
+                            <td>불안정하고 긴장되며 예민한 심리 상태</td>
+                            <td>STATES ARE LOCATIONS (위태로운 장소)<br>EMOTIONAL STATES ARE PHYSICAL STATES</td>
+                        </tr>
+                        <tr>
+                            <td><strong>in the dark</strong></td>
+                            <td>빛이 없는 어두운 공간(dark) 안(in)에 있음</td>
+                            <td>정보를 전혀 모르거나 상황 파악이 안 되는 상태</td>
+                            <td>KNOWLEDGE IS LIGHT<br>IGNORANCE IS DARKNESS<br>STATES ARE LOCATIONS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>under arrest</strong></td>
+                            <td>권위나 법적 구속력(arrest) 아래(under)에 놓임</td>
+                            <td>체포되어 구금된 상태</td>
+                            <td>SUBJECTION IS DOWN<br>AUTHORITY IS UP<br>STATES ARE LOCATIONS</td>
+                        </tr>
+                        <tr>
+                            <td><strong>off course / off track</strong></td>
+                            <td>정해진 경로(course/track)에서 벗어남(off)</td>
+                            <td>원래의 계획, 목표, 주제 등에서 이탈한 상태</td>
+                            <td>PURPOSES ARE DESTINATIONS/PATHS<br>DEVIATION IS OFF THE PATH</td>
+                        </tr>
+                        <tr>
+                            <td><strong>in danger</strong></td>
+                            <td>위험(danger)이라는 보이지 않는 공간 안(in)에 있음</td>
+                            <td>위험한 상황이나 위협에 직면한 상태</td>
+                            <td>STATES ARE LOCATIONS<br>DANGER IS A LOCATION/CONTAINER</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="footnote">각 표현은 여러 개념 은유가 복합적으로 작용할 수 있으며, 위에 제시된 것은 주요한 연결고리입니다.</p>
+                <p class="slide-number">8 / 10</p>
+            </div>
+
+            <!-- Slide 9: 학습 전략 및 결론 (유지) -->
+            <div class="slide" id="slide9">
+                <h2>전치사 학습, 어떻게 해야 할까요?</h2>
+                <p>전치사의 의미 확장 원리를 이해했다면, 이제 효과적인 학습 전략을 적용할 차례입니다.</p>
+                <ul>
+                    <li><strong class="highlight">1. 원형적 의미 파악:</strong> 각 전치사가 가진 가장 기본적인 공간적 의미(이미지 스키마)를 먼저 명확히 인지합니다.</li>
+                    <li><strong class="highlight">2. 은유적 연결고리 찾기:</strong> 물리적 의미가 어떤 상황이나 개념과 유사하게 연결될 수 있는지 상상하고 유추해봅니다. (예: '안에 갇힌다' &rarr; '곤경에 처한다')</li>
+                    <li><strong class="highlight">3. 문맥 속에서 학습:</strong> 다양한 예문을 통해 전치사가 실제로 어떻게 사용되는지, 어떤 동사나 명사와 자주 어울리는지(연어 관계) 관찰합니다.</li>
+                    <li><strong class="highlight">4. 개념 은유 활용:</strong> "상태는 공간이다"와 같은 주요 개념 은유를 중심으로 관련 표현들을 묶어서 학습하면 효과적입니다.</li>
+                    <li><strong class="highlight">5. 능동적 사용:</strong> 배운 표현을 실제 말하기나 글쓰기에 적극적으로 활용해봅니다.</li>
+                </ul>
+                <p>단순 암기를 넘어 <strong class="highlight">원리를 이해하고 적용</strong>하는 것이 전치사 정복의 핵심입니다!</p>
+                <p class="slide-number">9 / 10</p>
+            </div>
+
+            <!-- Slide 10: Outro (유지) -->
+            <div class="slide" id="slide10">
+                <h1>여정을 마치며</h1>
+                <p>전치사는 영어의 미묘한 뉘앙스를 전달하는 매우 중요한 요소입니다. 공간에서 출발하여 추상적인 세계로 확장되는 전치사의 의미 여정을 이해함으로써, 여러분의 영어는 더욱 깊이 있고 풍부해질 것입니다.</p>
+                <p>오늘 배운 원리들을 바탕으로 영어 전치사의 세계를 계속 탐험해나가시길 바랍니다.</p>
+                <p style="text-align:center; margin-top: 50px; font-size: 2em;">🚀</p>
+                <p class="slide-number">10 / 10</p>
+            </div>
+        </div>
+
+        <div class="navigation-buttons">
+            <button id="prevButton" class="nav-button" onclick="prevSlide()">이전</button>
+            <button id="nextButton" class="nav-button" onclick="nextSlide()">다음</button>
+        </div>
+    </div>
+
+    <div id="example-popup" class="popup">
+        <span class="popup-close" onclick="closePopup('example-popup')">&times;</span>
+        <div class="popup-content" id="example-popup-content"></div>
+    </div>
+    <div id="preposition-info-popup" class="popup">
+        <span class="popup-close" onclick="closePopup('preposition-info-popup')">&times;</span>
+        <div class="popup-content">
+            <h3 id="popup-expression" style="margin-top:0; color:#2980b9;"></h3>
+            <p><strong>공간 이미지 &rarr; 추상적 의미:</strong> <span id="popup-meaning"></span></p>
+            <p><strong>관련 개념 은유:</strong> <span id="popup-metaphor"></span></p>
+        </div>
+    </div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+    const prevButton = document.getElementById('prevButton');
+    const nextButton = document.getElementById('nextButton');
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active', i === index);
+            slide.style.display = (i === index) ? 'block' : 'none';
+        });
+        prevButton.disabled = index === 0;
+        nextButton.disabled = index === totalSlides - 1;
+
+        if (index === 2 && typeof renderFrameworkFlow === 'function') renderFrameworkFlow();
+        if (index === 3 && typeof renderOnTrackSimulation === 'function') renderOnTrackSimulation();
+        if (index === 4 && typeof renderInTroubleSimulation === 'function') renderInTroubleSimulation();
+        if (index === 5 && typeof renderUnderPressureSimulation === 'function') renderUnderPressureSimulation();
+    }
+
+    function nextSlide() { if (currentSlide < totalSlides - 1) { currentSlide++; showSlide(currentSlide); } }
+    function prevSlide() { if (currentSlide > 0) { currentSlide--; showSlide(currentSlide); } }
+
+    const examplePopups = {
+        'on-track-be': { title: "be on track", en: "The project <em>is on track</em>.", kr: "프로젝트가 순조롭게 진행 중이다." },
+        'on-track-get': { title: "get on track", en: "We need to <em>get</em> the project <em>on track</em>.", kr: "우리는 프로젝트를 본궤도에 올려야 한다." },
+        'on-track-stay': { title: "stay on track", en: "Let's <em>stay on track</em> with our goals.", kr: "우리 목표에 계속 집중합시다." },
+        'on-track-put': { title: "put sth back on track", en: "He helped <em>put</em> the company <em>back on track</em>.", kr: "그는 회사를 다시 정상궤도에 올려놓는 데 도움을 주었다." },
+        'in-trouble-be': { title: "be in trouble", en: "She knew she <em>was in trouble</em>.", kr: "그녀는 자신이 곤경에 처했다는 것을 알았다." },
+        'in-trouble-get': { title: "get into trouble", en: "Try not to <em>get into trouble</em>.", kr: "곤경에 빠지지 않도록 노력해라." },
+        'in-trouble-keep': { title: "keep sb out of trouble", en: "Her parents tried to <em>keep her out of trouble</em>.", kr: "그녀의 부모님은 그녀가 말썽을 피우지 않도록 하려 했다." },
+        'under-pressure-be': { title: "be under pressure", en: "He <em>is under pressure</em> to finish by Friday.", kr: "그는 금요일까지 끝내야 한다는 압박을 받고 있다." },
+        'under-pressure-work': { title: "work under pressure", en: "She <em>works well under pressure</em>.", kr: "그녀는 압박감 속에서도 일을 잘한다." },
+        'under-pressure-put': { title: "put sb under pressure", en: "Don't <em>put me under pressure</em>!", kr: "나에게 압박 주지 마!" }
+    };
+
+    function showExamplePopup(key) {
+        const popupData = examplePopups[key];
+        if (!popupData) return;
+        const popup = document.getElementById('example-popup');
+        const contentDiv = document.getElementById('example-popup-content');
+        contentDiv.innerHTML = `<h3 style="margin-top:0; color:#2980b9;">${popupData.title}</h3>
+                               <p class="example-en" style="margin-bottom: 0.5em;">${popupData.en}</p>
+                               <p class="example-kr">${popupData.kr}</p>`;
+        popup.style.display = 'block';
+    }
+    
+    function showPrepositionInfo(expression, meaning, metaphor) {
+        const popup = document.getElementById('preposition-info-popup');
+        document.getElementById('popup-expression').textContent = expression.toUpperCase();
+        document.getElementById('popup-meaning').innerHTML = meaning.replace(/&rarr;/g, '<strong>&rarr;</strong>');
+        document.getElementById('popup-metaphor').innerHTML = metaphor.replace(/\n/g, '<br>');
+        popup.style.display = 'block';
+    }
+
+    function closePopup(popupId) { document.getElementById(popupId).style.display = 'none'; }
+    
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose', fontFamily: '"Noto Sans KR", sans-serif' });
+
+    function renderFrameworkFlow() {
+        const vizContainer = d3.select("#d3-framework-flow");
+        vizContainer.html(""); 
+        const width = Math.min(vizContainer.node().getBoundingClientRect().width * 0.95, 700);
+        const height = 200;
+
+        const svg = vizContainer.append("svg").attr("width", width).attr("height", height);
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "-0 -5 10 10").attr("refX", 18).attr("refY", 0) // Adjusted refX for larger nodes
+            .attr("orient", "auto").attr("markerWidth", 7).attr("markerHeight", 7)
+            .append("svg:path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", "#3498db");
+
+        const nodeWidth = 160, nodeHeight = 70;
+        const nodesData = [
+            { id: 1, text: "1. 물리적/공간적\n의미 (원형)", x: width * 0.18, y: height / 2, color: "#3498db" },
+            { id: 2, text: "2. 은유적 연결\n(이미지 스키마)", x: width * 0.5, y: height / 2, color: "#f1c40f" },
+            { id: 3, text: "3. 추상적 의미\n(비유적 확장)", x: width * 0.82, y: height / 2, color: "#2ecc71" }
+        ];
+        const linksData = [ { source: 1, target: 2 }, { source: 2, target: 3 } ];
+
+        const link = svg.append("g").selectAll("line")
+            .data(linksData)
+            .join("line")
+            .attr("x1", d => nodesData.find(n => n.id === d.source).x + nodeWidth/2 -10) // Adjusted for node width
+            .attr("y1", d => nodesData.find(n => n.id === d.source).y)
+            .attr("x2", d => nodesData.find(n => n.id === d.target).x - nodeWidth/2 +10) // Adjusted for node width
+            .attr("y2", d => nodesData.find(n => n.id === d.target).y)
+            .attr("class", "d3-arrow")
+            .style("opacity", 0);
+
+        const node = svg.append("g").selectAll("g")
+            .data(nodesData)
+            .join("g")
+            .attr("transform", d => `translate(${d.x},${d.y})`)
+            .style("opacity", 0);
+
+        node.append("rect")
+            .attr("x", -nodeWidth/2)
+            .attr("y", -nodeHeight/2)
+            .attr("width", nodeWidth)
+            .attr("height", nodeHeight)
+            .attr("rx", 8)
+            .attr("fill", d => d.color)
+            .attr("stroke", d => d3.color(d.color).darker(0.7))
+            .attr("stroke-width", 2);
+        
+        node.selectAll("text")
+            .data(d => d.text.split("\n"))
+            .enter().append("text")
+            .attr("dy", (d,i,arr) => (i - (arr.length-1)/2) * 1.3 + "em") // Centering multi-line text
+            .attr("text-anchor", "middle")
+            .style("font-size", "13px")
+            .style("fill", d => d3.color(nodesData.find(n => n.text.includes(d)).color).l > 0.6 ? "#2c3e50" : "white") // Text color contrast
+            .style("font-weight", "500")
+            .text(d => d);
+
+        node.transition().duration(700).delay((d,i) => i * 800).style("opacity", 1);
+        link.transition().duration(700).delay((d,i) => 600 + i * 800).style("opacity", 1);
+    }
+    
+    // 슬라이드 4, 5, 6의 D3 시뮬레이션 함수들은 이전 코드와 유사하게 유지하거나,
+    // 각 전치사의 핵심 이미지를 더 명확히 보여주는 방식으로 개선할 수 있습니다.
+    // 여기서는 이전 코드를 재사용한다고 가정하고, 필요시 각 함수를 호출합니다.
+
+    function createSimpleIcon(svg, iconType, x, y, size, color, label) {
+        const g = svg.append("g").attr("transform", `translate(${x},${y})`).style("opacity",0);
+        if (iconType === "train_on_track") {
+            g.append("rect").attr("x", -size/2).attr("y", -size/4).attr("width", size).attr("height", size/2).attr("fill", color);
+            g.append("line").attr("x1", -size*0.8).attr("y1", size/2 + 5).attr("x2", size*0.8).attr("y2", size/2 + 5).attr("stroke", "#7f8c8d").attr("stroke-width", 3);
+            g.append("line").attr("x1", -size*0.8).attr("y1", size/2 + 10).attr("x2", size*0.8).attr("y2", size/2 + 10).attr("stroke", "#7f8c8d").attr("stroke-width", 3);
+        } else if (iconType === "person_in_pit") {
+            g.append("rect").attr("x", -size/2).attr("y", 0).attr("width", size).attr("height", size*0.6).attr("fill", "#7f8c8d"); // Pit
+            g.append("circle").attr("cy", -size*0.2).attr("r", size*0.2).attr("fill", color); // Person
+        } else if (iconType === "person_under_weight") {
+            g.append("circle").attr("cy", size*0.1).attr("r", size*0.2).attr("fill", color); // Head
+            g.append("rect").attr("x", -size*0.1).attr("y", size*0.3).attr("width", size*0.2).attr("height", size*0.4).attr("fill", color); // Body
+            g.append("rect").attr("x", -size*0.6).attr("y", -size*0.5).attr("width", size*1.2).attr("height", size*0.4).attr("fill", "#7f8c8d"); // Weight
+        }
+        g.append("text").attr("y", size*0.8 + 15).text(label).attr("class", "d3-label").style("font-size","11px");
+        return g;
+    }
+
+    function createAbstractIcon(svg, iconType, x, y, size, color, label) {
+        const g = svg.append("g").attr("transform", `translate(${x},${y})`).style("opacity",0);
+         if (iconType === "progress_bar") {
+            g.append("rect").attr("x", -size/2).attr("y", -size/8).attr("width", size).attr("height", size/4).attr("rx",5).attr("fill", "#ecf0f1").attr("stroke", "#bdc3c7");
+            g.append("rect").attr("x", -size/2).attr("y", -size/8).attr("width", size*0.8).attr("height", size/4).attr("rx",5).attr("fill", color);
+        } else if (iconType === "worried_face") {
+            g.append("circle").attr("r", size*0.4).attr("fill", color);
+            g.append("circle").attr("cx", -size*0.1).attr("cy", -size*0.05).attr("r", size*0.05).attr("fill", "white");
+            g.append("circle").attr("cx", size*0.1).attr("cy", -size*0.05).attr("r", size*0.05).attr("fill", "white");
+            g.append("path").attr("d", `M ${-size*0.15} ${size*0.1} Q 0 0 ${size*0.15} ${size*0.1}`).attr("stroke", "white").attr("stroke-width", 2).attr("fill","none");
+        } else if (iconType === "stressed_person") {
+            g.append("circle").attr("r", size*0.4).attr("fill", color);
+            g.append("text").text("🤯").attr("text-anchor","middle").attr("dy",".3em").style("font-size", size*0.6+"px");
+        }
+        g.append("text").attr("y", size*0.5 + 20).text(label).attr("class", "d3-label").style("font-size","11px");
+        return g;
+    }
+
+    function animateTransition(svg, x1, y1, x2, y2, delay) {
+        return svg.append("path")
+            .attr("d", `M ${x1} ${y1} Q ${(x1+x2)/2} ${y1-30} ${x2} ${y2}`) // Curved arrow
+            .attr("class", "d3-arrow")
+            .style("opacity", 0)
+            .attr("fill", "none")
+            .transition().duration(600).delay(delay).style("opacity", 1);
+    }
+
+    function setupSimulation(containerId, physicalIcon, physicalLabel, metaphorLabel, abstractIcon, abstractLabel, physicalColor, abstractColor) {
+        const vizContainer = d3.select(containerId);
+        vizContainer.html("");
+        const width = Math.min(vizContainer.node().getBoundingClientRect().width, 600);
+        const height = 280;
+        const svg = vizContainer.append("svg").attr("width", width).attr("height", height);
+        svg.append("defs").append("marker")
+            .attr("id", "arrowhead")
+            .attr("viewBox", "-0 -5 10 10").attr("refX", 8).attr("refY", 0)
+            .attr("orient", "auto").attr("markerWidth", 6).attr("markerHeight", 6)
+            .append("svg:path").attr("d", "M 0,-5 L 10 ,0 L 0,5").attr("fill", "#3498db");
+
+        const iconSize = 80;
+        const yPos = height / 2 - 20;
+        const xPos1 = width * 0.15;
+        const xPos2 = width * 0.5;
+        const xPos3 = width * 0.85;
+
+        const physical = createSimpleIcon(svg, physicalIcon, xPos1, yPos, iconSize, physicalColor, physicalLabel);
+        const metaphorText = svg.append("text").attr("x", xPos2).attr("y", yPos + iconSize/2 + 5).text(metaphorLabel).attr("class", "d3-label").style("opacity",0).style("font-style","italic");
+        const abstract = createAbstractIcon(svg, abstractIcon, xPos3, yPos, iconSize, abstractColor, abstractLabel);
+
+        physical.transition().duration(700).style("opacity", 1);
+        animateTransition(svg, xPos1 + iconSize/2, yPos, xPos2 - 30, yPos, 700); // Arrow to metaphor
+        metaphorText.transition().duration(700).delay(1000).style("opacity", 1);
+        animateTransition(svg, xPos2 + 30, yPos, xPos3 - iconSize/2, yPos, 1700); // Arrow to abstract
+        abstract.transition().duration(700).delay(2400).style("opacity", 1);
+    }
+
+    function renderOnTrackSimulation() {
+        setupSimulation("#d3-on-track-simulation", "train_on_track", "기차 on 선로", "선로 = 계획된 경로", "progress_bar", "계획대로 진행", "#3498db", "#2ecc71");
+    }
+    function renderInTroubleSimulation() {
+        setupSimulation("#d3-in-trouble-simulation", "person_in_pit", "사람 in 함정", "갇힘 = 문제 상황", "worried_face", "곤경에 처함", "#3498db", "#e74c3c");
+    }
+    function renderUnderPressureSimulation() {
+        setupSimulation("#d3-under-pressure-simulation", "person_under_weight", "사람 under 무게", "물리적 압박 = 심리적 부담", "stressed_person", "스트레스 받음", "#3498db", "#e67e22");
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { showSlide(0); });
+</script>
+</body>
+</html>

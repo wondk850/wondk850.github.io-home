@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>명사 마스터 가이드: Measure 완전 정복 (v1.0)</title>
+    <style>
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            line-height: 1.9;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        .container {
+            width: 90%;
+            max-width: 1024px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 40px 50px;
+            border-radius: 18px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+            border: 1px solid #dee2e6;
+        }
+        h1, h2, h3, h4, h5 {
+            color: #003366;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        h1 {
+            text-align: center;
+            color: #004c40;
+            border-bottom: 4px solid #00796b;
+            padding-bottom: 22px;
+            margin-bottom: 50px;
+            font-size: 2.8em;
+        }
+        h2 {
+            color: #005a9c;
+            margin-top: 60px;
+            border-left: 9px solid #0277bd;
+            padding-left: 20px;
+            font-size: 2.2em;
+            margin-bottom: 35px;
+        }
+        h3 {
+            color: #c62828;
+            margin-top: 50px;
+            font-size: 1.8em;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px dotted #ef9a9a;
+        }
+        h4 {
+            color: #673ab7;
+            font-size: 1.5em;
+            margin-top: 35px;
+            font-weight: 600;
+        }
+        h5 {
+            color: #00796b;
+            font-size: 1.25em;
+            margin-top: 30px;
+            font-weight: 600;
+        }
+        p {
+            margin-bottom: 22px;
+            color: #343a40;
+            font-size: 1.12em;
+        }
+        ul, ol {
+            list-style-position: outside;
+            padding-left: 30px;
+        }
+        ul li, ol li {
+            background-color: #f1f3f5;
+            margin-bottom: 18px;
+            padding: 20px 25px;
+            border-radius: 10px;
+            border-left: 7px solid #5c6bc0;
+            transition: box-shadow 0.25s ease, transform 0.2s ease;
+        }
+        ul li:hover, ol li:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+        ul li strong, ol li strong {
+            color: #283593;
+        }
+        code, .code-inline {
+            background-color: #e0f2f1;
+            color: #00695c;
+            padding: 7px 11px;
+            border-radius: 8px;
+            font-family: 'Fira Code', 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+            font-weight: 500;
+            font-size: 1.02em;
+            border: 1px solid #b2dfdb;
+        }
+        .example {
+            font-style: normal;
+            color: #37474f;
+            margin-left: 0;
+            padding: 14px 22px;
+            border-left: 5px solid #818cf8;
+            margin-bottom: 20px;
+            background-color: #eef2ff;
+            border-radius: 8px;
+        }
+        .example-label {
+            font-weight: bold;
+            color: #4f46e5;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .highlight {
+            background-color: #fff59d;
+            color: #5d4037;
+            padding: 2px 5px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .keyword {
+            color: #059669;
+            font-weight: bold;
+            border-bottom: 2px dotted #6ee7b7;
+        }
+        .definition-box {
+            background-color: #fffbeb;
+            padding: 28px;
+            border-left: 9px solid #f59e0b;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        .key-concept-box {
+            background-color: #eff6ff;
+            border: 2px dashed #60a5fa;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+        }
+        .key-concept-box h4 {
+            margin-top:0;
+            color: #1e40af;
+        }
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 35px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.07);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .comparison-table th, .comparison-table td {
+            border: 1px solid #e5e7eb;
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 1.05em;
+        }
+        .comparison-table th {
+            background-color: #374151;
+            color: white;
+            font-weight: 600;
+        }
+        .comparison-table td code {
+            font-size: 0.9em;
+            padding: 3px 6px;
+        }
+        .comparison-table tr:nth-child(even) td {
+            background-color: #f9fafb;
+        }
+        .comparison-table tr:hover td {
+            background-color: #f3f4f6;
+        }
+        .note, .philosophical-link, .linguistic-insight, .corpus-info, .cultural-note, .tip-box, .cognitive-box {
+            font-size: 1.05em;
+            color: #495057;
+            margin-top: 12px;
+            padding: 18px;
+            background-color: #f1f3f5;
+            border-radius: 8px;
+            border-left: 6px solid #adb5bd;
+        }
+        .philosophical-link { background-color: #fefce8; border-left-color: #facc15; }
+        .linguistic-insight { background-color: #f0f9ff; border-left-color: #38bdf8; }
+        .cognitive-box { background-color: #f3e5f5; border-left-color: #ab47bc; }
+        .corpus-info { background-color: #eef2ff; border-left-color: #7c3aed; }
+        .cultural-note { background-color: #fff7ed; border-left-color: #fb923c; }
+        .tip-box { background-color: #e0f2f1; border-left-color: #26a69a; }
+        .section-intro {
+            font-size: 1.18em;
+            color: #4b5563;
+            margin-bottom: 30px;
+            padding: 22px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .practice-section {
+            background-color: #e8f5e9;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            border-left: 7px solid #66bb6a;
+        }
+        .practice-section h3 { color: #2e7d32; }
+        .practice-question {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #a5d6a7;
+        }
+        .practice-question:last-child { border-bottom: none; }
+        .practice-answer {
+            color: #1b5e20;
+            font-weight: bold;
+            margin-top: 8px;
+            padding: 8px;
+            background-color: #dcedc8;
+            border-radius: 5px;
+        }
+        .mermaid {
+            text-align: center;
+            margin: 35px 0;
+            padding: 25px;
+            background-color: #fcfcfc;
+            border-radius: 10px;
+            border: 1px solid #f0f0f0;
+            overflow-x: auto;
+        }
+
+        /* 반응형 스타일 */
+        @media (max-width: 768px) {
+            .container { width: 95%; padding: 25px 15px; }
+            h1 { font-size: 2.2em; }
+            h2 { font-size: 1.9em; }
+            h3 { font-size: 1.6em; }
+            p, ul li, ol li { font-size: 1em; }
+            .comparison-table th, .comparison-table td { padding: 12px 14px; font-size: 0.95em; }
+            .example { padding: 12px 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><span style="font-size: 1.2em;">📏</span> 명사 마스터 가이드: Measure 완전 정복 <small style="font-size:0.4em; color:#52525b;">(v1.0)</small> 📏</h1>
+
+        <section id="intro-principles">
+            <h2>I. 명사, 세계를 담는 그릇: 왜 핵심 원리를 알아야 하는가?</h2>
+            <p class="section-intro">
+                언어를 사용하여 소통한다는 것은 단순히 단어들을 나열하는 행위를 넘어, 우리가 인식하고 경험하는 세계를 상대방에게 전달하고 공유하는 과정입니다. 그 과정에서 명사는 사물, 사람, 장소, 개념 등 세상의 모든 '존재'와 '실체'를 담는 그릇과 같은 역할을 합니다. 하지만 이 그릇은 단순하지 않습니다. 각 명사마다 고유한 특성이 있어, 그 특성을 제대로 이해하고 활용해야만 우리의 생각과 의도를 정확하고 자연스럽게 표현할 수 있습니다.
+            </p>
+            <p>
+                특히 영어 명사를 마스터하기 위해 우리가 주목해야 할 세 가지 핵심적인 기둥이 있습니다:
+            </p>
+            <ol>
+                <li><strong>셀 수 있느냐 없느냐 (Countability):</strong> 명사가 가리키는 대상의 본질적 속성을 파악하는 열쇠입니다. 이는 관사 사용, 수 일치, 수량 표현 등 문법 전반에 영향을 미칩니다.</li>
+                <li><strong>어떤 단어들과 주로 함께 쓰이느냐 (Collocations):</strong> 명사의 의미를 풍부하게 하고, 원어민처럼 자연스러운 표현을 가능하게 하는 단어들의 '찰떡궁합'입니다.</li>
+                <li><strong>어떤 전치사와 어울리느냐 (Prepositional Harmony):</strong> 명사와 다른 문장 요소들 간의 관계를 정교하게 설정하고, 의미의 방향성을 제시하는 연결고리입니다.</li>
+            </ol>
+            <p>
+                이 중에서도 <strong class="highlight">가산성(Countability)</strong>은 영어 명사 이해의 가장 근본적이면서도 많은 학습자에게 도전 과제가 되는 영역입니다. 이는 단순한 문법 규칙을 넘어, 영어 사용자들이 세계를 인식하고 범주화하는 방식, 더 나아가 서양 철학의 오랜 사유 전통과도 깊이 맞닿아 있기 때문입니다. 이 서론에서는 가산성의 철학적 뿌리와 현대 언어학적 관점을 대표적인 명사 예시들과 함께 심층적으로 탐구하여, 영어 명사의 본질에 한 걸음 더 다가가고자 합니다.
+            </p>
+        </section>
+
+        <section id="philosophical-roots">
+            <h2>II. 가산성의 철학적 뿌리: 세계 인식과 범주화의 방식 🏛️</h2>
+            <p class="section-intro">
+                영어에서 명사를 '셀 수 있는 것(Countable)'과 '셀 수 없는 것(Uncountable/Mass)'으로 구분하는 방식은 우연히 생긴 규칙이 아닙니다. 이는 고대 그리스 철학에서부터 시작된, 인간이 세계를 이해하고 그 안에 질서를 부여하려는 지적 노력의 산물과 맞닿아 있습니다. 철학자들이 세상을 구성하는 근본 요소와 그것을 인식하는 방식을 고민했던 흔적이 언어의 구조 속에 스며들어 있는 것입니다.
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>철학자/학파</th>
+                        <th>핵심 개념 (가산성 연관)</th>
+                        <th>영어 명사 가산성과의 연결점 (대표 단어 예시 포함)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>플라톤 (Plato)</strong><br><small>(c. 428 – c. 348 BC)</small></td>
+                        <td>이데아/형상(Form), 질료(Matter)</td>
+                        <td>
+                            <p><strong>형상(Form)을 가진 개체 → Countable:</strong> 플라톤은 개별 사물은 '이데아'라는 완벽한 본질의 그림자라고 보았습니다. 명확한 형상과 경계를 가진 개체들은 이데아를 불완전하게나마 반영하며, 개별적으로 인식되고 셀 수 있습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">a chair</code>, <code class="code-inline">chairs</code>: 각 의자는 '의자의 이데아'를 따르는 개별적 형상.
+                                    <p class="example"><span class="example-label">일상:</span> "There are <span style="color:blue;">three chairs</span> around the table."</p>
+                                </li>
+                                <li><code class="code-inline">an idea</code>, <code class="code-inline">ideas</code>: 정신적 세계의 개별적 형상.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The philosopher presented <span style="color:blue;">several new ideas</span> in his lecture."</p>
+                                </li>
+                            </ul>
+                            <p><strong>질료(Matter) 또는 추상적 이데아 → Uncountable:</strong> 특정한 형상 없이 존재하는 순수한 질료나, 그 자체로 추상적인 이데아는 개별 단위로 세기 어렵습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">water</code>: 형상 없는 질료.
+                                    <p class="example"><span class="example-label">일상:</span> "Could I have <span style="color:blue;">some water</span>?"</p>
+                                </li>
+                                <li><code class="code-inline">beauty</code>: 추상적 이데아.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The concept of <span style="color:blue;">beauty</span> has been debated by philosophers for centuries."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>아리스토텔레스 (Aristotle)</strong><br><small>(384–322 BC)</small></td>
+                        <td>실체(Substance), 형상(Form), 질료(Matter), 속성(Attribute)</td>
+                        <td>
+                            <p><strong>개별적 실체(형상+질료) → Countable:</strong> 아리스토텔레스는 현실의 개별 사물, 즉 '실체'에 주목했습니다. 명확한 형상을 부여받아 구분되는 실체는 셀 수 있습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">a book</code>, <code class="code-inline">books</code>: 명확한 형상을 가진 개별 실체.
+                                    <p class="example"><span class="example-label">일상:</span> "She borrowed <span style="color:blue;">two books</span> from the library."</p>
+                                </li>
+                                <li><code class="code-inline">a person</code>, <code class="code-inline">people</code>: 개별 인간 실체.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The study involved <span style="color:blue;">interviews with 100 people</span> from diverse backgrounds."</p>
+                                </li>
+                            </ul>
+                            <p><strong>질료 또는 속성/상태 → Uncountable:</strong> 형상을 갖기 전의 질료나, 실체에 귀속되는 추상적 속성/상태는 그 자체로 세기 어렵습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">wood</code> (목재): 질료.
+                                    <p class="example"><span class="example-label">일상:</span> "The table is made of <span style="color:blue;">solid wood</span>."</p>
+                                </li>
+                                <li><code class="code-inline">wisdom</code>: 속성.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "<span style="color:blue;">Wisdom</span> is often gained through <span style="color:blue;">experience</span> [U]."</p>
+                                </li>
+                                <li><code class="code-inline">information</code>: 형태 없는 추상적 내용.
+                                    <p class="example"><span class="example-label">비즈니스:</span> "We need reliable <span style="color:blue;">information</span> to make a decision."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>중세 스콜라 철학</strong><br><small>(c. 1100–1700)</small></td>
+                        <td>보편 논쟁 (Problem of Universals), 유명론 (Nominalism)</td>
+                        <td>
+                            <p><strong>개별자(Individual) → Countable:</strong> 보편 개념(예: '인간')이 개별자들(예: 소크라테스, 플라톤) 안에 혹은 그것들을 통해 존재한다고 볼 때, 이 개별자들은 셀 수 있습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">a cat</code>, <code class="code-inline">cats</code>: '고양이'라는 보편적 종류에 속하는 개별 고양이들.
+                                    <p class="example"><span class="example-label">일상:</span> "My neighbor has <span style="color:blue;">three cats</span>."</p>
+                                </li>
+                            </ul>
+                            <p><strong>총칭적 의미의 보편자 (때로 Uncountable적 속성):</strong> 보편자가 단지 이름에 불과하거나(유명론), 혹은 종류 전체를 지칭할 때 불가산적 특성을 띨 수 있습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">fruit</code> (과일 일반):
+                                    <p class="example"><span class="example-label">일상:</span> "<span style="color:blue;">Fruit</span> is good for your health." (U - 과일이라는 종류)</p>
+                                    <p class="example"><span class="example-label">일상:</span> "She bought <span style="color:blue;">various fruits</span> like apples and bananas." (C - 여러 종류의 과일들)</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td><strong>근대 경험론 (존 로크 등)</strong><br><small>(17-18세기)</small></td>
+                        <td>감각 경험, 단순/복합 관념</td>
+                        <td>
+                            <p><strong>감각으로 명확히 구분되는 개별 대상 → Countable:</strong> 우리의 지식은 감각 경험에서 비롯되며, 명확히 구분되는 개별적 감각 대상들은 셀 수 있습니다.</p>
+                            <ul>
+                                <li><code class="code-inline">a flower</code>, <code class="code-inline">flowers</code>: 시각, 후각 등으로 개별 단위 인식.
+                                    <p class="example"><span class="example-label">일상:</span> "She picked <span style="color:blue;">a beautiful flower</span> from the garden."</p>
+                                </li>
+                                <li><code class="code-inline">a sound</code>, <code class="code-inline">sounds</code>: 특정 소리 사건.
+                                    <p class="example"><span class="example-label">일상:</span> "I heard <span style="color:blue;">a strange sound</span> last night." (단, <code class="code-inline">sound</code> 자체는 U: "Sound travels in waves.")</p>
+                                </li>
+                            </ul>
+                            <p><strong>경험의 흐름, 추상적 관념, 감각으로 구분하기 어려운 물질 → Uncountable:</strong></p>
+                            <ul>
+                                <li><code class="code-inline">advice</code>: 추상적 내용.
+                                    <p class="example"><span class="example-label">일상:</span> "Thank you for the <span style="color:blue;">advice</span>."</p>
+                                </li>
+                                <li><code class="code-inline">sand</code>: 개별 입자를 세기 어려운 물질.
+                                    <p class="example"><span class="example-label">일상:</span> "The beach was covered in <span style="color:blue;">fine white sand</span>."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>근대 합리론 (이마누엘 칸트 등)</strong><br><small>(18세기)</small></td>
+                        <td>선험적 범주, 지성의 작용</td>
+                        <td>
+                            <p><strong>지성에 의해 명확히 범주화되고 구분되는 현상 → Countable:</strong> 우리의 지성은 경험에 질서를 부여하는 선험적 범주(예: 단일성, 복수성, 전체성)를 통해 대상을 파악합니다.</p>
+                            <ul>
+                                <li><code class="code-inline">a reason</code>, <code class="code-inline">reasons</code>: 특정 논리적 근거나 원인.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The report outlines <span style="color:blue;">several reasons</span> for the project's delay."</p>
+                                </li>
+                                <li><code class="code-inline">a mistake</code>, <code class="code-inline">mistakes</code>: 개별적인 오류.
+                                    <p class="example"><span class="example-label">일상:</span> "Everyone makes <span style="color:blue;">mistakes</span> sometimes."</p>
+                                </li>
+                            </ul>
+                            <p><strong>범주화하기 어렵거나 무한한 것으로 인식되는 것 → Uncountable:</strong></p>
+                            <ul>
+                                <li><code class="code-inline">knowledge</code>: 방대하고 경계가 모호한 총체.
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The accumulation of <span style="color:blue;">knowledge</span> is a continuous process."</p>
+                                </li>
+                                 <li><code class="code-inline">evidence</code>: 특정 주장을 뒷받침하는 정보의 총체.
+                                    <p class="example"><span class="example-label">법률/아카데믹:</span> "There is not enough <span style="color:blue;">evidence</span> to convict him."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="philosophical-link">
+                <p><strong>결론적으로,</strong> 영어 명사의 가산성 구분은 단순히 임의적인 문법 규칙이 아니라, 서양 철학의 오랜 전통 속에서 세계를 이해하고 사물과 개념을 범주화하려는 인간의 인식 방식과 깊이 연관되어 있습니다. <span class="highlight">개별적이고 구체적인 형태를 가진 존재(countable)와, 경계가 불분명한 질료나 추상적인 개념(uncountable)을 구분하려는 경향</span>이 언어에 반영된 것이라고 볼 수 있습니다.</p>
+                <p>이러한 철학적 배경을 이해하는 것은 가산성 규칙을 암기하는 데 직접적인 도움을 주지는 않더라도, 왜 영어가 이처럼 명사를 구분하는지에 대한 근본적인 이해를 제공하여 학습에 깊이를 더할 수 있습니다. 즉, "왜?"라는 질문에 대한 답을 찾는 데 도움을 줄 수 있습니다.</p>
+            </div>
+        </section>
+
+        <section id="linguistic-perspective">
+            <h2>III. 현대 언어학적 관점에서의 가산성 설명 🗣️</h2>
+            <p class="section-intro">
+                현대 언어학, 특히 인지언어학과 의미론은 명사의 가산성을 인간의 인지 과정 및 세계를 개념화하는 방식과 더욱 직접적으로 연결하여 설명합니다. 단순히 철학적 사유를 넘어, 우리가 실제로 언어를 사용하며 대상을 어떻게 인지하고 범주화하는지가 언어 구조에 어떻게 반영되는지를 탐구합니다.
+            </p>
+
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>언어학적 개념</th>
+                        <th>설명</th>
+                        <th>영어 명사 가산성 적용 예시 (대표 단어 및 일상/아카데믹 맥락)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>개체화 (Individuation) & 경계 설정 (Bounding)</strong></td>
+                        <td>대상을 다른 것과 구분되는 명확한 경계를 가진 개별 단위(개체)로 인식하는 인지 과정. 셀 수 있는 명사는 이러한 개체화와 경계 설정이 용이한 대상을 지칭합니다.</td>
+                        <td>
+                            <p><strong>Countable (개체화/경계 명확):</strong></p>
+                            <ul>
+                                <li><code class="code-inline">a computer</code>, <code class="code-inline">computers</code>:
+                                    <p class="example"><span class="example-label">일상:</span> "I need to buy <span style="color:blue;">a new computer</span>."</p>
+                                    <p class="example"><span class="example-label">비즈니스:</span> "The office is equipped with <span style="color:blue;">fifty computers</span>."</p>
+                                </li>
+                                <li><code class="code-inline">a song</code>, <code class="code-inline">songs</code>:
+                                    <p class="example"><span class="example-label">일상:</span> "She sang <span style="color:blue;">a beautiful song</span>."</p>
+                                </li>
+                            </ul>
+                            <p><strong>Uncountable (비개체화/경계 모호):</strong></p>
+                            <ul>
+                                <li><code class="code-inline">music</code>:
+                                    <p class="example"><span class="example-label">일상:</span> "I love listening to <span style="color:blue;">classical music</span>." (개별 곡이 아닌 음악 장르 전체)</p>
+                                    <p class="example"><span class="example-label">아카데믹:</span> "The psychological effects of <span style="color:blue;">music</span> on mood have been extensively studied."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>물질성 (Materiality) & 집합성 (Collectivity)</strong></td>
+                        <td>물질 명사(Mass Nouns)는 균질적인 물질이나 재료를 나타내며, 그 일부를 취해도 여전히 같은 물질로 인식됩니다. 집합 명사(Collective Nouns)는 여러 개체를 하나의 단위로 묶어 지칭하지만, 그 집합 자체는 셀 수 없는 것으로 취급될 때가 많습니다.</td>
+                        <td>
+                            <p><strong>Uncountable (물질/집합):</strong></p>
+                            <ul>
+                                <li><code class="code-inline">rice</code> (쌀 - 물질):
+                                    <p class="example"><span class="example-label">일상:</span> "Would you like <span style="color:blue;">some rice</span> with your curry?"</p>
+                                </li>
+                                <li><code class="code-inline">furniture</code> (가구 - 집합):
+                                    <p class="example"><span class="example-label">일상:</span> "They bought <span style="color:blue;">a lot of new furniture</span> for their house."</p>
+                                    <p class="example"><span class="example-label">비즈니스:</span> "The cost of <span style="color:blue;">office furniture</span> can be a significant expense."</p>
+                                </li>
+                                <li><code class="code-inline">luggage</code> (수하물 - 집합):
+                                    <p class="example"><span class="example-label">일상:</span> "You can only bring <span style="color:blue;">one piece of carry-on luggage</span>." (단위 명사 사용)</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>추상성 (Abstractness)</strong></td>
+                        <td>감정, 개념, 상태, 활동 등 구체적인 형태가 없는 추상적인 대상을 나타내는 명사들은 종종 셀 수 없는 것으로 취급됩니다. 이는 명확한 경계를 설정하거나 개별 단위로 나누기 어렵기 때문입니다.</td>
+                        <td>
+                            <p><strong>Uncountable (추상 개념):</strong></p>
+                            <ul>
+                                <li><code class="code-inline">happiness</code>:
+                                    <p class="example"><span class="example-label">일상:</span> "Money can't buy <span style="color:blue;">happiness</span>."</p>
+                                </li>
+                                <li><code class="code-inline">advice</code>:
+                                    <p class="example"><span class="example-label">일상:</span> "Can I offer you <span style="color:blue;">a piece of advice</span>?"</p>
+                                    <p class="example"><span class="example-label">아카데믹:</span> "Seeking <span style="color:blue;">legal advice</span> is recommended in this situation."</p>
+                                </li>
+                                <li><code class="code-inline">research</code>:
+                                    <p class="example"><span class="example-label">아카데믹:</span> "Further <span style="color:blue;">research</span> is needed to confirm these findings." (단, <code class="code-inline">a research project/paper</code> 또는 <code class="code-inline">researches</code> (연구 결과물들)는 C)</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>관점의 전환 (Perspective Shift)</strong></td>
+                        <td>동일한 대상이라도 화자가 어떤 관점에서 바라보느냐에 따라 가산성이 달라질 수 있습니다. 전체적인 물질이나 개념으로 보느냐, 아니면 개별적인 단위나 종류로 보느냐의 차이입니다.</td>
+                        <td>
+                            <ul>
+                                <li><code class="code-inline">coffee</code>:
+                                    <p class="example"><span class="example-label">일상 (U - 음료 자체):</span> "I drink <span style="color:blue;">coffee</span> every morning."</p>
+                                    <p class="example"><span class="example-label">일상 (C - 한 잔/종류):</span> "Can I get <span style="color:blue;">two coffees</span>, please?" (두 잔의 커피)</p>
+                                </li>
+                                <li><code class="code-inline">light</code>:
+                                    <p class="example"><span class="example-label">일상 (U - 빛이라는 현상):</span> "The room was filled with <span style="color:blue;">bright light</span>."</p>
+                                    <p class="example"><span class="example-label">일상 (C - 전등):</span> "There are <span style="color:blue;">three lights</span> in the kitchen."</p>
+                                </li>
+                                <li><code class="code-inline">experience</code>:
+                                    <p class="example"><span class="example-label">비즈니스 (U - 경력/경험 일반):</span> "She has <span style="color:blue;">a lot of experience</span> in project management."</p>
+                                    <p class="example"><span class="example-label">일상 (C - 특정 경험):</span> "Traveling abroad was <span style="color:blue;">an unforgettable experience</span> for me."</p>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="linguistic-insight">
+                <p>이처럼 현대 언어학은 명사의 가산성을 단순히 문법 규칙으로만 보지 않고, <span class="highlight">인간이 세계를 인지하고 개념화하는 방식이 언어 구조에 어떻게 반영되는지를 탐구</span>합니다. 명사가 가리키는 대상이 뚜렷한 경계를 가진 개별 단위로 인식되는지(<strong class="keyword">개체화</strong>), 아니면 경계 없이 연속되거나 추상적인 총체로 인식되는지(<strong class="keyword">비개체화</strong>)가 가산성 구분의 핵심적인 기준으로 작용합니다. 또한, 화자의 <strong class="keyword">관점과 의도</strong>에 따라 동일한 대상도 다르게 범주화되어 가산성이 달라질 수 있음을 보여줍니다.</p>
+            </div>
+
+            <div class="key-concept-box" style="margin-top: 40px;">
+                <h4>가산성 판단의 핵심 질문: "이것은 하나하나 똑똑 떨어지는 알갱이인가, 아니면 한 덩어리인가?"</h4>
+                <p>명사의 가산성을 판단할 때, 그 대상이 명확한 경계를 가지고 개별적으로 분리될 수 있는 '알갱이' 같은 존재인지, 아니면 형태가 불분명하거나 추상적이어서 하나의 '덩어리'나 '총체'로 인식되는지를 기준으로 삼으면 많은 경우에 도움이 됩니다. 물론, 언어는 항상 예외와 관습이 존재하므로, 다양한 예문을 통해 감을 익히는 것이 중요합니다.</p>
+            </div>
+
+            <p class="section-intro" style="margin-top:40px; background-color: #e0f2f1; border-left: 5px solid #00796b;">
+                이제 우리는 명사의 가산성에 대한 철학적, 언어학적 배경을 살펴보았습니다. 이러한 깊이 있는 이해는 단순한 규칙 암기를 넘어, 영어 명사를 보다 유연하고 정확하게 사용하는 데 튼튼한 기반이 될 것입니다.
+                다음으로는 명사 학습의 다른 두 핵심 기둥인 <strong class="keyword">Collocations (함께 쓰이는 단어들)</strong>와 <strong class="keyword">Prepositional Harmony (전치사와의 조화)</strong>의 중요성을 간략히 짚어보고, 오늘의 주인공인 명사 <strong class="keyword">"Measure"</strong>에 대한 본격적인 탐구를 시작하겠습니다.
+            </p>
+        </section>
+
+        <!--  Collocations와 Prepositional Harmony에 대한 간략한 설명 섹션 (이전 버전 참고하여 추가) -->
+        <section id="collocations-prepositions">
+            <h2>IV. 명사 활용의 날개: Collocations & Prepositional Harmony 🕊️</h2>
+            <p class="section-intro">가산성이 명사의 본질을 이해하는 열쇠라면, Collocations와 Prepositional Harmony는 명사를 실제 문장 속에서 자연스럽고 정확하게 사용하는 데 필요한 날개와 같습니다.</p>
+            <div class="key-concept-box">
+                <h4>1. 어떤 단어들과 주로 함께 쓰이느냐 (Collocations)</h4>
+                <p><strong>중요성:</strong> 원어민들은 특정 명사를 사용할 때 자연스럽게 함께 떠올리고 사용하는 단어들(형용사, 동사 등)이 있습니다. 이러한 연어(Collocation)를 익히면 훨씬 더 자연스럽고 유창한 영어를 구사할 수 있으며, 어색한 단어 조합을 피할 수 있습니다.</p>
+                <ul>
+                    <li>
+                        <strong>Effort (노력):</strong>
+                        <p class="example"><span class="example-label">일상:</span> "She <span style="color:purple;">made a conscious effort</span> to improve her eating habits."</p>
+                        <p class="example"><span class="example-label">비즈니스:</span> "A <span style="color:purple;">collaborative effort</span> is needed to complete this project on time."</p>
+                        <p class="note">주요 Collocations: <code class="code-inline">make an effort</code>, <code class="code-inline">a concerted effort</code>, <code class="code-inline">a waste of effort</code>, <code class="code-inline">put effort into</code></p>
+                    </li>
+                    <li>
+                        <strong>Risk (위험):</strong>
+                        <p class="example"><span class="example-label">일상:</span> "There's always a <span style="color:purple;">potential risk</span> when investing in the stock market."</p>
+                        <p class="example"><span class="example-label">아카데믹:</span> "The research aims to <span style="color:purple;">assess the risks</span> associated with the new drug."</p>
+                        <p class="note">주요 Collocations: <code class="code-inline">take a risk</code>, <code class="code-inline">run the risk of</code>, <code class="code-inline">a high/low risk</code>, <code class="code-inline">minimize risk</code></p>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="key-concept-box">
+                <h4>2. 어떤 전치사와 어울리느냐 (Prepositional Harmony)</h4>
+                <p><strong>중요성:</strong> 명사는 종종 특정 전치사와 짝을 이루어 의미를 명확히 하거나 특별한 관계를 나타냅니다. 어떤 전치사를 사용하느냐에 따라 문장의 뉘앙스가 달라지거나, 아예 다른 의미가 될 수도 있습니다.</p>
+                <ul>
+                    <li>
+                        <strong>Interest (관심, 흥미):</strong>
+                        <p class="example"><span class="example-label">일상:</span> "She has a keen <span style="color:green;">interest in</span> art."</p>
+                        <p class="example"><span class="example-label">아카데믹:</span> "The <span style="color:green;">interest of</span> the study lies in its innovative methodology."</p>
+                    </li>
+                    <li>
+                        <strong>Reason (이유):</strong>
+                        <p class="example"><span class="example-label">일상:</span> "What's the <span style="color:green;">reason for</span> your decision?"</p>
+                        <p class="example"><span class="example-label">아카데믹:</span> "There is no <span style="color:green;">reason to</span> doubt the validity of the results."</p>
+                    </li>
+                </ul>
+            </div>
+            <p class="section-intro" style="margin-top:30px; background-color: #e0f2f1; border-left: 5px solid #00796b;">
+                이 세 가지 핵심 요소 – <strong class="keyword">Countability, Collocations, Prepositional Harmony</strong> – 는 모든 명사 학습의 기초이자 완성입니다. 이들을 염두에 두고 명사를 학습한다면, 단순히 단어의 뜻을 아는 것을 넘어 실제 의사소통에서 명사를 정확하고 자연스럽게 사용하는 능력을 키울 수 있을 것입니다.
+                자, 그럼 이제 이 탄탄한 이론적 배경을 바탕으로, 오늘의 주인공인 명사 <strong class="keyword">"Measure"</strong>에 대한 마스터 가이드를 본격적으로 시작하겠습니다!
+            </p>
+        </section>
+
+        <!-- ======================================================================================================================= -->
+        <!-- =======================================  "MEASURE" 명사 마스터 가이드 시작  ======================================= -->
+        <!-- ======================================================================================================================= -->
+
+        <section id="measure-master-guide">
+            <h2>IV. 명사 "Measure" 마스터 가이드 📏 (v1.0)</h2>
+            <p class="section-intro">이제 명사 학습의 핵심 원리들을 바탕으로, 다의어이자 다양한 활용 패턴을 가진 명사 <strong class="keyword">"Measure"</strong>를 심층 분석해 보겠습니다. "Measure"가 가진 여러 의미와 쓰임새를 정확히 이해하고 활용하는 방법을 알아봅시다!</p>
+
+            <h3>Part 1: Measure의 정체 파악 - 기본 다지기</h3>
+            <h4>1. 어원, 핵심 개념, 그리고 인지적 이미지 (Cognitive Image)</h4>
+            <div class="definition-box">
+                <p><strong>어원:</strong> 라틴어 <code class="code-inline">mensura</code> ("측정, 재는 행위, 측정된 것")에서 유래했으며, 이는 '재다(to measure)'라는 의미의 동사 <code class="code-inline">metiri</code>와 관련이 깊습니다.</p>
+                <p><strong>핵심 개념:</strong> 무언가의 <span class="highlight">크기, 양, 정도를 결정하거나 표현하는 행위 또는 그 결과</span>. 더 나아가, 특정 목표를 달성하거나 문제를 해결하기 위한 <span class="highlight">구체적인 행동이나 계획(조치)</span>을 의미하기도 합니다.</p>
+            </div>
+            <div class="cognitive-box">
+                <h5>💡 인지언어학적 접근: 'Measure'의 이미지 스키마</h5>
+                <p><code class="code-inline">Measure</code>라는 단어는 다음과 같은 인지적 이미지를 연상시킵니다:</p>
+                <ul>
+                    <li><strong>'측정 도구' 이미지 (Ruler, Scale, Container):</strong> 자, 저울, 계량컵처럼 무언가를 재고 정량화하는 도구의 이미지가 강합니다. 이는 '치수', '양', '단위'라는 의미와 연결됩니다. (예: "Take the <span class="keyword">measures</span> of the room.")</li>
+                    <li><strong>'경계선' 또는 '기준점' 이미지 (Boundary, Standard):</strong> 어떤 것을 판단하거나 비교하기 위한 '기준'이나 '척도'의 이미지를 가집니다. (예: "Success is not always a good <span class="keyword">measure</span> of talent.")</li>
+                    <li><strong>'단계적 행동' 또는 '계획' 이미지 (Step-by-step Action, Plan):</strong> 특정 목적을 향해 나아가는 일련의 '조치'나 '대책'을 의미할 때는, 마치 계단을 오르거나 계획을 실행하는 듯한 단계적인 이미지를 내포합니다. (예: "The government took <span class="keyword">strong measures</span> to combat inflation.")</li>
+                </ul>
+                <p>이러한 이미지는 <code class="code-inline">measure</code>의 다양한 의미를 이해하고, 특히 '조치'라는 추상적인 의미가 어떻게 파생되었는지 파악하는 데 도움을 줍니다.</p>
+            </div>
+
+            <h4>2. 다의어로서의 Measure: 주요 의미와 가산성(C/U) 분석</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>의미 (영/한)</th>
+                        <th>가산성 (C/U)</th>
+                        <th>핵심 Collocations (형용사/동사 + Measure)</th>
+                        <th>주요 전치사 결합</th>
+                        <th>일상 예문</th>
+                        <th>아카데믹/비즈니스 예문</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. (측정된) 치수, 크기, 양</strong><br>(Dimension, Size, Amount)</td>
+                        <td><strong>C</strong> (구체적 측정치, 종류)<br><strong>U</strong> (일반적 양, 정도)</td>
+                        <td><code class="code-inline">take a measure(ment) of</code>, <code class="code-inline">exact/accurate measure</code>, <code class="code-inline">a small/large measure of</code></td>
+                        <td><code class="code-inline">of</code> (길이/양의)</td>
+                        <td>"Could you give me the <span style="color:blue;">exact measures</span> of the window frame?" [C]<br>"Add <span style="color:blue;">a small measure</span> of sugar to the recipe." [C, 특정 양] / "The recipe calls for <span style="color:blue;">a measure</span> of flour." [C, 정해진 한 단위]</td>
+                        <td>"The experiment requires <span style="color:blue;">precise measures</span> of temperature and pressure." [C]<br>"The project's success will depend in <span style="color:blue;">large measure</span> on teamwork." [U, 상당 부분]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. 측정 단위, 기준</strong><br>(Unit of Measurement, Standard)</td>
+                        <td><strong>C</strong></td>
+                        <td><code class="code-inline">standard measure</code>, <code class="code-inline">unit of measure</code>, <code class="code-inline">weights and measures</code></td>
+                        <td><code class="code-inline">of</code> (단위의)</td>
+                        <td>"A meter is <span style="color:blue;">a measure</span> of length." [C]<br>"In the UK, they still use <span style="color:blue;">imperial measures</span> like miles and pounds." [C]</td>
+                        <td>"The scientific community adopted <span style="color:blue;">a new standard measure</span> for radiation." [C]<br>"This instrument provides <span style="color:blue;">a reliable measure</span> of air quality." [C, 신뢰할 만한 측정 기준/방법]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. (주로 복수형) 조치, 대책, 수단</strong><br>(Action, Step, Means)</td>
+                        <td><strong>C</strong></td>
+                        <td><code class="code-inline">take measures</code>, <code class="code-inline">adopt/implement/introduce measures</code>, <code class="code-inline">drastic/effective/preventive/precautionary measures</code></td>
+                        <td><code class="code-inline">against</code> (대상), <code class="code-inline">for</code> (목적), <code class="code-inline">to</code> + 동사원형</td>
+                        <td>"The government is taking <span style="color:blue;">strong measures</span> to combat unemployment." [C]<br>"What <span style="color:blue;">preventive measures</span> can we take against the flu?" [C]</td>
+                        <td>"The company implemented <span style="color:blue;">cost-cutting measures</span> to improve profitability." [C]<br>"Security <span style="color:blue;">measures</span> at the airport have been tightened." [C]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. (어떤 것의) 정도, 척도, 표시</strong><br>(Extent, Degree, Indication)</td>
+                        <td><strong>U</strong> (일반적 정도)<br><strong>C</strong> (주로 <code class="code-inline">a measure of</code> + 추상명사)</td>
+                        <td><code class="code-inline">a full measure of</code>, <code class="code-inline">a certain measure of</code>, <code class="code-inline">beyond measure</code>, <code class="code-inline">in some measure</code></td>
+                        <td><code class="code-inline">of</code> (정도의)</td>
+                        <td>"His joy was <span style="color:blue;">beyond measure</span>." [U]<br>"Her smile was <span style="color:blue;">a measure of</span> her happiness." [C, 행복의 한 가지 표시]</td>
+                        <td>"The success of the project is <span style="color:blue;">a measure of</span> the team's hard work." [C, 노고의 척도]<br>"The report provides <span style="color:blue;">some measure</span> of insight into the problem." [U, 어느 정도의 통찰]</td>
+                    </tr>
+                    <tr>
+                        <td><strong>5. (음악) 마디, 박자</strong><br>(Bar - 음악 용어)</td>
+                        <td><strong>C</strong></td>
+                        <td><code class="code-inline">count measures</code>, <code class="code-inline">a four-beat measure</code>, <code class="code-inline">time measure</code></td>
+                        <td></td>
+                        <td>"This piece of music has <span style="color:blue;">a simple three-four measure</span>." [C]<br>"Can you count <span style="color:blue;">the first eight measures</span> for me?" [C]</td>
+                        <td>"The conductor indicated the change in <span style="color:blue;">the time measure</span>." [C]<br>"Understanding rhythmic <span style="color:blue;">measures</span> is fundamental to music theory." [C]</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>3. 복수형 "Measures"의 특별한 용법</h4>
+            <p>앞서 보았듯이, <code class="code-inline">measures</code>는 특히 '조치', '대책'이라는 의미로 매우 빈번하게 사용됩니다. 이 외에도 다음과 같은 맥락에서 복수형이 쓰입니다.</p>
+            <ul>
+                <li><code class="code-inline">weights and measures</code>: 도량형 (무게와 길이를 재는 표준 단위 및 기구)
+                    <p class="example">"The Office of Weights and Measures ensures fair trade."</p>
+                </li>
+                <li><code class="code-inline">half measures</code>: 미봉책, 불충분한 조치
+                    <p class="example">"The problem is too serious for <span style="color:purple;">half measures</span>; we need a radical solution."</p>
+                </li>
+                <li><code class="code-inline">safety measures</code> / <code class="code-inline">security measures</code>: 안전 조치 / 보안 조치</li>
+            </ul>
+
+            <h3>Part 2: Measure의 실제 활용 - 패턴과 맥락 마스터하기</h3>
+            <h4>1. 주요 Collocations 상세 분석</h4>
+            <h5>A. 동사 + Measure(s)</h5>
+            <ul>
+                <li>
+                    <strong>take measures:</strong> 조치를 취하다 (가장 일반적)
+                    <p class="example"><span class="example-label">일상:</span> "We need to <span style="color:purple;">take measures</span> to reduce our carbon footprint."</p>
+                    <p class="example"><span class="example-label">비즈니스:</span> "The company <span style="color:purple;">took swift measures</span> to address customer complaints."</p>
+                </li>
+                <li>
+                    <strong>implement/adopt/introduce measures:</strong> 조치를 시행하다/채택하다/도입하다
+                    <p class="example"><span class="example-label">정부/정책:</span> "The government plans to <span style="color:purple;">introduce new measures</span> to stimulate the economy."</p>
+                </li>
+                <li>
+                    <strong>take someone's measure(ments):</strong> ~의 치수를 재다
+                    <p class="example"><span class="example-label">일상:</span> "The tailor <span style="color:purple;">took my measurements</span> for a new suit."</p>
+                </li>
+            </ul>
+
+            <h5>B. 형용사 + Measure(s)</h5>
+            <ul>
+                <li>
+                    <strong>drastic/extreme/strong measures:</strong> 과감한/극단적인/강력한 조치
+                    <p class="example"><span class="example-label">위기 상황:</span> "Due to the crisis, the authorities were forced to implement <span style="color:purple;">drastic measures</span>."</p>
+                </li>
+                <li>
+                    <strong>preventive/precautionary measures:</strong> 예방 조치
+                    <p class="example"><span class="example-label">안전/건강:</span> "Regular handwashing is an important <span style="color:purple;">preventive measure</span> against infections."</p>
+                </li>
+                <li>
+                    <strong>a full/good/large measure of (something):</strong> 충분한/상당한 정도의 (무엇)
+                    <p class="example"><span class="example-label">일상:</span> "The project achieved <span style="color:purple;">a full measure of success</span>."</p>
+                </li>
+                <li>
+                    <strong>an accurate/exact measure:</strong> 정확한 측정(치)
+                    <p class="example"><span class="example-label">과학/공학:</span> "Scientists need <span style="color:purple;">an accurate measure</span> of the substance's density."</p>
+                </li>
+            </ul>
+
+            <h5>C. 고정 표현 및 숙어</h5>
+            <ul>
+                <li>
+                    <strong>for good measure:</strong> (이미 충분하지만) 덤으로, 만약을 위해 더하여
+                    <p class="example"><span class="example-label">일상:</span> "She packed an extra sweater <span style="color:purple;">for good measure</span>, just in case it got cold."</p>
+                </li>
+                <li>
+                    <strong>beyond measure:</strong> 헤아릴 수 없을 정도로, 매우 많이
+                    <p class="example"><span class="example-label">감정 표현:</span> "Her kindness was appreciated <span style="color:purple;">beyond measure</span>."</p>
+                </li>
+                <li>
+                    <strong>in some/large/equal measure:</strong> 어느 정도/상당 부분/동등하게
+                    <p class="example"><span class="example-label">분석/평가:</span> "His success was due <span style="color:purple;">in large measure</span> to his perseverance."</p>
+                </li>
+                <li>
+                    <strong>measure up (to someone/something):</strong> (기대나 기준에) 부응하다, 필적하다 (동사구)
+                    <p class="example"><span class="example-label">평가:</span> "The new employee didn't quite <span style="color:purple;">measure up</span> to our expectations."</p>
+                </li>
+            </ul>
+
+            <h4>2. 전치사와의 결합 심층 탐구</h4>
+            <ul>
+                <li>
+                    <strong>a measure of + [추상명사]:</strong> ~의 정도/척도/표시
+                    <p class="example">"The applause was <span style="color:green;">a measure of</span> the audience's appreciation." (박수갈채는 청중의 감사의 표시였다.)</p>
+                    <p class="example">"There was <span style="color:green;">a measure of truth</span> in his statement." (그의 진술에는 어느 정도 진실이 담겨 있었다.)</p>
+                </li>
+                <li>
+                    <strong>measures against + [문제/위협]:</strong> ~에 대한 대책/조치
+                    <p class="example">"The government implemented stricter <span style="color:green;">measures against</span> tax evasion." (정부는 탈세에 대한 더 엄격한 조치를 시행했다.)</p>
+                </li>
+                <li>
+                    <strong>measures for + [목표/대상]:</strong> ~을 위한 조치/대책
+                    <p class="example">"What are the <span style="color:green;">measures for</span> improving air quality in the city?" (도시의 공기 질 개선을 위한 조치는 무엇인가?)</p>
+                </li>
+                <li>
+                    <strong>measures to + [동사원형]:</strong> ~하기 위한 조치/대책
+                    <p class="example">"The company is taking <span style="color:green;">measures to reduce</span> its operational costs." (회사는 운영 비용을 절감하기 위한 조치를 취하고 있다.)</p>
+                </li>
+            </ul>
+
+            <h4>3. 사용되는 분야/영역별 분석 (예문 추가)</h4>
+            <ul>
+                <li><strong>과학/공학 (Science/Engineering):</strong> '측정(치)', '단위', '정밀도'
+                    <p class="example">"The experiment involved taking precise <span style="color:blue;">measures</span> of various physical properties."</p>
+                    <p class="example">"The standard <span style="color:blue;">measure</span> of electrical resistance is the ohm."</p>
+                </li>
+                <li><strong>정치/행정 (Politics/Administration):</strong> '정책', '조치', '법안'
+                    <p class="example">"The new administration announced a series of economic <span style="color:blue;">measures</span>."</p>
+                    <p class="example">"Legislative <span style="color:blue;">measures</span> were proposed to address the housing crisis."</p>
+                </li>
+                <li><strong>경제/비즈니스 (Economics/Business):</strong> '경제 지표', '시장 조치', '성과 척도'
+                    <p class="example">"Inflation is a key economic <span style="color:blue;">measure</span> monitored by the central bank."</p>
+                    <p class="example">"The company's performance is evaluated using various financial <span style="color:blue;">measures</span>."</p>
+                </li>
+                <li><strong>일상생활 (Everyday Life):</strong> '양', '정도', '예방 조치'
+                    <p class="example">"As a safety <span style="color:blue;">measure</span>, always lock your doors at night."</p>
+                    <p class="example">"He felt <span style="color:blue;">a measure of relief</span> after hearing the news."</p>
+                </li>
+                <li><strong>음악 (Music):</strong> '마디', '박자'
+                    <p class="example">"The waltz is typically in a three-four <span style="color:blue;">measure</span>."</p>
+                </li>
+            </ul>
+
+            <h3>Part 3: Measure의 깊이 있는 이해 - 뉘앙스, 관계망, 문화</h3>
+            <h4>1. 의미 네트워크 시각화 (Mermaid.js 활용)</h4>
+            <div class="mermaid">
+            graph TD
+                A[Measure] -->|의미1: 크기/양| B(Dimension/Amount)
+                A -->|의미2: 단위/기준| C(Unit/Standard)
+                A -->|의미3: 조치/대책| D(Action/Step)
+                A -->|의미4: 정도/척도| E(Extent/Degree)
+                A -->|의미5: (음악)마디| F(Bar)
+
+                subgraph B_Collocations [크기/양 관련]
+                    B1[take a measure of]
+                    B2[exact measure]
+                    B3[a small measure of]
+                end
+                B --> B_Collocations
+
+                subgraph C_Collocations [단위/기준 관련]
+                    C1[unit of measure]
+                    C2[standard measure]
+                end
+                C --> C_Collocations
+
+                subgraph D_Collocations [조치/대책 관련]
+                    D1[take measures]
+                    D2[preventive measures]
+                    D3[security measures]
+                end
+                D --> D_Collocations
+
+                subgraph E_Collocations [정도/척도 관련]
+                    E1[a measure of success]
+                    E2[beyond measure]
+                    E3[in large measure]
+                end
+                E --> E_Collocations
+                
+                classDef main fill:#e3f2fd,stroke:#1565c0,stroke-width:2px,color:#1565c0;
+                classDef meaning fill:#e0f2f1,stroke:#00695c,stroke-width:2px;
+                classDef collocation fill:#fce4ec,stroke:#d81b60,stroke-width:1px;
+                class A main;
+                class B,C,D,E,F meaning;
+                class B_Collocations,C_Collocations,D_Collocations,E_Collocations collocation;
+            </div>
+            <p class="note">위 다이어그램은 <code class="code-inline">measure</code>의 주요 의미와 관련된 핵심 표현들을 시각적으로 보여줍니다.</p>
+
+            <h4>2. 유의어/관련어 비교</h4>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Measure의 의미</th>
+                        <th>유의어/관련어</th>
+                        <th>미묘한 뉘앙스 차이</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>조치/대책 (Action/Step)</strong></td>
+                        <td><code class="code-inline">action</code>, <code class="code-inline">step</code>, <code class="code-inline">procedure</code>, <code class="code-inline">initiative</code>, <code class="code-inline">policy</code></td>
+                        <td><code class="code-inline">Action</code>은 일반적인 행동. <code class="code-inline">Step</code>은 단계적 행동. <code class="code-inline">Procedure</code>는 정해진 절차. <code class="code-inline">Initiative</code>는 새로운 계획/제안. <code class="code-inline">Policy</code>는 공식적인 방침. <code class="code-inline">Measure</code>는 종종 문제 해결이나 특정 목적 달성을 위한 구체적이고 계획된 행동을 의미.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>정도/척도 (Extent/Degree)</strong></td>
+                        <td><code class="code-inline">degree</code>, <code class="code-inline">extent</code>, <code class="code-inline">level</code>, <code class="code-inline">standard</code>, <code class="code-inline">criterion</code></td>
+                        <td><code class="code-inline">Degree</code>/ <code class="code-inline">Extent</code>는 범위나 강도. <code class="code-inline">Level</code>은 단계나 수준. <code class="code-inline">Standard</code>/ <code class="code-inline">Criterion</code>은 판단 기준. <code class="code-inline">A measure of something</code>은 그것의 양이나 중요성을 나타내는 '어느 정도의 표시' 또는 '척도'라는 뉘앙스.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>치수/양 (Dimension/Amount)</strong></td>
+                        <td><code class="code-inline">dimension</code>, <code class="code-inline">size</code>, <code class="code-inline">amount</code>, <code class="code-inline">quantity</code>, <code class="code-inline">volume</code></td>
+                        <td><code class="code-inline">Dimension</code>은 길이/너비/높이. <code class="code-inline">Size</code>는 전반적인 크기. <code class="code-inline">Amount</code>/ <code class="code-inline">Quantity</code>는 양 (Amount는 U, Quantity는 C/U). <code class="code-inline">Volume</code>은 부피. <code class="code-inline">Measure</code>는 측정된 구체적인 값이나 양을 포괄적으로 지칭.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>3. 한국어 "조치", "정도", "측정"과의 뉘앙스 비교</h4>
+            <div class="cultural-note">
+                <p>한국어 "조치(措置)"는 주로 문제 발생 후의 대응이나 해결책이라는 느낌이 강한 반면, 영어 <code class="code-inline">measure(s)</code>는 예방적(preventive/precautionary)이거나 계획적인 행동까지 포괄하는 더 넓은 의미로 사용될 수 있습니다. (예: "We took <span class="keyword">preventive measures</span>." - 예방 조치를 취했다.)</p>
+                <p>"정도(程度)"는 추상적인 수준이나 범위를 나타내는 데 주로 쓰이지만, <code class="code-inline">a measure of something</code>은 '어느 정도의 ~', '약간의 ~'라는 양적인 느낌과 함께 '무엇인가를 가늠할 수 있는 표시/척도'라는 의미를 동시에 가질 수 있습니다. (예: "There was <span class="keyword">a measure of disappointment</span> in her voice." - 그녀의 목소리에는 어느 정도 실망감이 묻어 있었다.)</p>
+                <p>"측정(測定)"은 행위 자체를 강조하는 반면, <code class="code-inline">measure</code>는 그 측정된 '값'이나 '치수'를 의미하는 경우가 많습니다. (예: "The <span class="keyword">measures</span> of the room are 5m by 3m." - 방의 치수는 5미터 곱하기 3미터이다.)</p>
+            </div>
+
+            <h3>Part 4: Measure 마스터를 위한 실전 훈련</h3>
+            <div class="practice-section">
+                <h3>연습 문제 (다양한 유형)</h3>
+                <h5>A. 빈칸 채우기 (올바른 형태의 measure 또는 Collocation 완성)</h5>
+                <div class="practice-question">
+                    <p>1. The government announced new ________ to stimulate economic growth. (정부는 경제 성장을 촉진하기 위한 새로운 조치들을 발표했다.)</p>
+                    <p class="practice-answer">정답: measures</p>
+                </div>
+                <div class="practice-question">
+                    <p>2. Success in this field requires ________ ________ ________ creativity and hard work. (이 분야에서의 성공은 상당 부분 창의성과 노력에 달려있다.)</p>
+                    <p class="practice-answer">정답: a large measure of (또는 a good measure of)</p>
+                </div>
+                <div class="practice-question">
+                    <p>3. As a precautionary ________, all visitors are required to wear masks. (예방 조치로서, 모든 방문객은 마스크를 착용해야 한다.)</p>
+                    <p class="practice-answer">정답: measure</p>
+                </div>
+
+                <h5>B. 문장 변환 연습 (가산성 및 패턴 활용)</h5>
+                <div class="practice-question">
+                    <p>1. 문장 변환: "The company acted to reduce costs." (<code class="code-inline">measure</code>를 사용하여 비슷한 의미로)</p>
+                    <p class="practice-answer">예시 답안: "The company took <span class="keyword">measures</span> to reduce costs."</p>
+                </div>
+                <div class="practice-question">
+                    <p>2. 문장 변환: "The extent of his relief was obvious." (<code class="code-inline">a measure of</code>를 사용하여)</p>
+                    <p class="practice-answer">예시 답안: "There was <span class="keyword">a clear measure of</span> relief in his expression/voice."</p>
+                </div>
+
+                <h5>C. 유의어 선택 (문맥에 가장 적절한 단어 고르기)</h5>
+                <div class="practice-question">
+                    <p>1. The new safety ________ include regular equipment checks and training sessions. (새로운 안전 규정/절차에는 정기적인 장비 점검과 교육 세션이 포함된다.)</p>
+                    <p>(a) measures (b) standards (c) procedures</p>
+                    <p class="practice-answer">정답: (a) measures 또는 (c) procedures (설명: '조치'나 '절차' 모두 가능하나, '규정'의 의미도 포함한다면 measures가 더 포괄적일 수 있음. procedures는 더 구체적인 단계들을 의미.)</p>
+                </div>
+
+                <h5>D. 오류 수정 (한국인 학습자가 자주 하는 실수)</h5>
+                <div class="practice-question">
+                    <p>오류 문장: "We need to take a strong <span style="color:red;">measure</span> to solve this problem." (강력한 '조치들'이 필요할 때)</p>
+                    <p class="practice-answer">수정 문장: "We need to take strong <span class="keyword">measures</span> to solve this problem." (설명: '조치'는 보통 여러 가지 구체적인 행동을 포함하므로 복수형 <code class="code-inline">measures</code>가 더 자연스러움. 단, 하나의 특정 조치를 의미한다면 'a strong measure'도 가능하나, 일반적인 문제 해결에는 여러 조치가 따름.)</p>
+                </div>
+                
+                <h5>E. 한국적 맥락 기반 문장 만들기</h5>
+                <div class="practice-question">
+                    <p>상황: 한국 정부가 미세먼지 문제에 대응하기 위해 여러 가지 정책을 시행하고 있습니다. "정부는 미세먼지 저감을 위한 다양한 조치들을 시행 중이다."를 영어로 표현해보세요. (<code class="code-inline">measure</code> 사용)</p>
+                    <p class="practice-answer">예시 답안: "The government is implementing various <span class="keyword">measures</span> to reduce fine dust pollution."</p>
+                </div>
+            </div>
+            <div class="tip-box" style="margin-top: 30px;">
+                <h4>"Measure" 학습을 위한 최종 팁!</h4>
+                <p><code class="code-inline">Measure</code>는 그 의미가 '구체적인 수치/단위'에서 '추상적인 정도/척도', 그리고 '계획된 행동/조치'까지 넓게 확장됩니다. 각 의미가 어떤 맥락에서 사용되는지, 그리고 그때 가산성이 어떻게 변하는지를 예문 중심으로 익히는 것이 중요합니다. 특히 '조치'를 의미할 때는 복수형 <code class="code-inline">measures</code>가 자주 쓰인다는 점을 기억하세요!</p>
+            </div>
+        </section>
+
+        <footer>
+            <p style="text-align:center; margin-top: 55px; color: #343a40; font-size:1.1em;">&copy; 명사 마스터 가이드: Measure 완전 정복 (v1.0) - 이 가이드가 여러분의 영어 실력을 한 <span class="keyword">measure</span> 더 끌어올리기를 바랍니다! 🎓</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true, theme: 'neutral'});</script>
+</body>
+</html>

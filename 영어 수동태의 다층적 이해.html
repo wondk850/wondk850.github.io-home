@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영어 수동태의 다층적 이해 (개선판)</title>
+    <style>
+        body {
+            font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+            line-height: 1.8;
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 20px;
+            color: #333;
+        }
+        h1, h2, h3, h4 {
+            color: #2c3e50;
+            margin-top: 1.5em;
+            margin-bottom: 0.8em;
+        }
+        h1 {
+            font-size: 2em;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.3em;
+        }
+        h2 {
+            font-size: 1.7em;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 0.2em;
+        }
+        h3 {
+            font-size: 1.4em;
+        }
+        h4 {
+            font-size: 1.2em;
+            color: #555;
+        }
+        p {
+            margin-bottom: 1em;
+            text-align: justify;
+        }
+        ul, ol {
+            margin-bottom: 1em;
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        strong {
+            color: #e74c3c; /* 강조 색상 유지 */
+        }
+        .highlight { /* 피드백 반영 강조 */
+            background-color: #e9f5ff; /* 연한 파란색 배경 */
+            padding: 1px 3px;
+            border-radius: 3px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.5em;
+            font-size: 0.9em;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .example-analysis {
+            margin-left: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #3498db;
+            margin-bottom: 1em;
+        }
+        .example-analysis p:first-child {
+            font-style: italic;
+        }
+        .note { /* 추가 설명이나 참고 사항을 위한 스타일 */
+            font-size: 0.9em;
+            color: #555;
+            border-left: 3px solid #f39c12;
+            padding-left: 10px;
+            margin-top: 0.5em;
+            margin-bottom: 1em;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>영어 수동태의 다층적 이해: 이론적 배경, 의미론적 구분, 그리고 실제 사용 양상 탐구</h1>
+
+    <h2>서론</h2>
+    <p>영어 수동태는 문법적으로 조동사 'be' 또는 'get'과 과거분사(past participle, 이하 pp)의 결합으로 정의되지만, 실제 언어 사용에서는 단순한 문법적 변형을 넘어 다양한 의미론적, 화용론적 기능을 수행한다. 본 연구는 영어 수동태의 기본적인 정의와 기능을 고찰하고, 나아가 사건 수동태(eventive passive), 상태 수동태(stative passive), 그리고 <strong>형용사적 수동태(adjectival passive)</strong>라는 핵심적인 이론적 구분을 심층적으로 탐구하는 것을 목표로 한다. 이 세 가지 유형의 수동태는 과거분사의 해석과 문장 전체의 의미에 결정적인 영향을 미치며, 각각 고유한 특징과 사용 맥락을 지닌다. 본 보고서는 각 수동태 유형의 이론적 배경, 주요 특징, 구분 기준을 상세히 기술하고, 다양한 실제 예시를 통해 이들의 의미론적 차이와 화용론적 기능을 명확히 밝히고자 한다. 또한, 이들 유형 간의 경계가 모호해지는 지점과 문맥의 중요성을 논의함으로써 영어 수동태에 대한 다층적이고 심도 있는 이해를 제공하고자 한다.</p>
+
+    <h2>I. 영어 수동태의 일반론</h2>
+
+    <h3>A. 수동태의 정의 및 기본 기능</h3>
+    <p>수동태(passive voice)는 동사의 한 형태로, 문장의 문법적 주어가 동사의 행위를 수행하는 것이 아니라 행위의 대상이 되거나 영향을 받는 것을 나타낸다. 능동태 문장에서는 주어가 행위자(agent)이지만, 수동태 문장에서는 주어가 피행위자(patient) 또는 수혜자(recipient)가 된다.</p>
+    <p>수동태의 주요 기능은 다음과 같다 (이는 후술될 각 수동태 유형의 이해를 위한 기초가 된다):</p>
+    <ul>
+        <li><strong>행위자 비초점화(Agent De-focusing):</strong> 행위자가 누구인지 알 수 없거나, 중요하지 않거나, 의도적으로 언급하고 싶지 않을 때 사용된다. 예를 들어, "Ray's calculator was made in Germany"라는 문장에서 계산기를 만든 특정 행위자는 중요하지 않다. 또한, "Mistakes were made"와 같이 책임을 회피하거나 특정인을 비난하지 않으려는 <span class="highlight">화자의 의도</span>로 사용되기도 한다. 학술적 글쓰기에서는 객관성을 유지하거나 '나(I)'와 같은 1인칭 주어 사용을 피하기 위해 사용되기도 한다.</li>
+        <li><strong>피행위자 주제화(Patient Topicalization):</strong> 행위의 대상이 되는 피행위자를 문장의 주어로 내세워 강조하거나 주제로 삼을 때 사용된다. 예를 들어, "The cat was chased by the dog"라는 문장은 '고양이(the cat)'에게 초점을 맞춘다.</li>
+    </ul>
+    <p>이러한 기능들은 화자가 전달하고자 하는 정보의 초점을 조절하고 문맥에 따라 적절한 강조점을 설정하는 데 중요한 역할을 한다.</p>
+
+    <h3>B. 수동태의 주요 형태</h3>
+    <p>영어 수동태는 주로 'be' 동사와 과거분사(pp)를 사용하는 be-passive와 'get' 동사와 과거분사를 사용하는 get-passive로 나뉜다.</p>
+
+    <h4>be + pp (be-passive): 형성, 일반적 특징</h4>
+    <p><strong>형성:</strong> be-passive는 조동사 'be'의 적절한 형태(am, is, are, was, were, being, been) 뒤에 주동사의 과거분사(pp)를 결합하여 만든다. 예를 들어, 능동태 문장 "The award-winning chef prepares each meal"은 수동태로 "Each meal is prepared by the award-winning chef"로 전환된다.</p>
+    <p><strong>일반적 특징:</strong> be-passive는 가장 일반적이고 광범위하게 사용되는 수동태 형태이다. 격식체와 비격식체 모두에서 사용될 수 있으며, 행위 자체나 행위의 결과에 초점을 맞추는 경향이 있다. 행위자는 'by' 구문을 통해 명시되거나 생략될 수 있다. be-passive는 동사의 의미를 행위에서 상태로, 즉 '하는 것(doing)'에서 '존재하는 것(being)'으로 전환시키는 효과를 가지기도 한다.</p>
+
+    <h4>get + pp (get-passive): 형성, be-passive와의 주요 차이점</h4>
+    <p><strong>형성:</strong> get-passive는 조동사 'get'의 적절한 형태 뒤에 주동사의 과거분사(pp)를 결합하여 만든다. 예를 들어, "They got fired" 또는 "The tourist got robbed"와 같이 사용된다.</p>
+    <p><strong>be-passive와의 주요 차이점:</strong></p>
+    <ul>
+        <li><strong>격식성(Formality):</strong> get-passive는 일반적으로 be-passive보다 비격식적이며 구어체에서 더 자주 사용된다. be-passive는 문어체나 학술적 글쓰기에서 더 선호된다.</li>
+        <li><strong>주어 관여도(Subject Involvement) 및 함의(Implications):</strong> get-passive는 종종 주어에게 예상치 못한 일, 갑작스러운 변화, 또는 주어가 어떤 일에 대해 어느 정도 책임이 있거나 관여되어 있음을 암시할 수 있다. 이는 긍정적인 상황("They got promoted")과 부정적인 상황("My bike got stolen") 모두에 해당될 수 있다. be-passive는 상대적으로 중립적인 사실 전달에 더 적합할 수 있다.</li>
+        <li><strong>동사 유형(Type of Verb):</strong> get-passive는 주로 행위 동사(action verbs)와 함께 사용되며, 상태 동사(stative verbs)와는 잘 사용되지 않는다. 예를 들어, "I got believed"나 "She gets known"은 어색하다. 반면, be-passive는 행위 동사와 상태 동사 모두와 사용될 수 있다.</li>
+        <li><strong>행위 vs. 상태 강조:</strong> get-passive는 주로 행위나 과정을 강조하는 반면, be-passive는 행위의 결과로 나타난 상태를 기술하는 데에도 사용될 수 있어 때때로 모호성을 야기할 수 있다 (III.A 참조). 예를 들어, "The house was damaged"는 손상된 상태를 의미할 수도 있고, 손상되는 사건을 의미할 수도 있다. 반면, "The house got damaged"는 손상되는 사건이나 과정을 더 명확하게 나타낸다.</li>
+    </ul>
+    <p class="note">get-passive는 본 보고서의 후반부 이론적 구분(사건/상태/형용사적)에서는 주로 사건 수동태의 비격식적 형태로 간주될 수 있으나, "She got excited"와 같이 주어의 상태 변화나 결과를 나타내는 경우 <span class="highlight">형용사적/상태적 뉘앙스</span>를 지닐 때도 있어 문맥에 따른 유연한 해석이 필요하다.</p>
+
+
+    <h3>C. 간단한 일상적 예시와 학술적 예시</h3>
+    <h4>1. 일상적 예시:</h4>
+    <p><strong>be-passive:</strong></p>
+    <ul>
+        <li>"My wallet was stolen last week." (지갑이 도난당한 사건에 초점, 행위자 불명)</li>
+        <li>"The cake was eaten." (케이크가 먹힌 결과에 초점, 누가 먹었는지는 불분명하거나 중요하지 않음)</li>
+    </ul>
+    <p><strong>get-passive:</strong></p>
+    <ul>
+        <li>"My bike got stolen last night!" (예상치 못한 부정적 사건 강조, 비격식적)</li>
+        <li>"She got chosen for the TV show." (예상치 못한 긍정적 사건, 비격식적)</li>
+    </ul>
+
+    <h4>2. 학술적 예시:</h4>
+    <p><strong>be-passive:</strong></p>
+    <ul>
+        <li>"The experiment was conducted in a controlled environment." (실험 수행이라는 객관적 사실 전달, 행위자보다 실험 자체에 초점)</li>
+        <li>"The data were analyzed using statistical software." (데이터 분석 방법 기술, 객관성 유지)</li>
+        <li>"These proteins are classified into three groups." (단백질의 분류 상태 기술)</li>
+    </ul>
+    <p><strong>get-passive:</strong> 학술적 글쓰기에서는 비격식성 때문에 get-passive의 사용 빈도가 낮지만, 특정 분야의 구어적 표현을 인용하거나 덜 격식적인 학문 분야에서는 나타날 수 있다. 그러나 일반적인 학술 논문에서는 be-passive가 압도적으로 선호된다.</p>
+    <p>이처럼 수동태는 그 형태와 기능에 따라 다양한 뉘앙스를 전달하며, 특히 be-passive와 get-passive는 격식성, 의미 강조점 등에서 뚜렷한 차이를 보인다.</p>
+
+    <h2>II. 영어 수동태의 핵심 이론적 배경: 사건 수동태, 상태 수동태, 형용사적 수동태 심층 탐구</h2>
+    <p>영어 수동태는 표면적으로 'be + pp' (또는 비격식적으로 'get + pp')의 형태를 취하지만, 과거분사의 해석과 문장 전체의 의미 기능에 따라 크게 세 가지 유형으로 구분될 수 있다: 사건 수동태(eventive passive), 상태 수동태(stative passive), 그리고 형용사적 수동태(adjectival passive). 이 구분은 수동태의 다층적인 의미를 이해하는 데 매우 중요하다. <span class="highlight">본 보고서에서는 주로 be-passive를 중심으로 이 세 유형을 분석하지만, get-passive 역시 대부분 사건 수동태의 범주에 속하며 때로는 상태적 뉘앙스를 가질 수 있음을 염두에 두어야 한다.</span> 또한, 본 보고서에서 제시되는 예시들은 대표적인 경우이며, 실제 언어에서는 <span class="highlight">감정 동사('be surprised'), 인지 동사('be understood') 등 훨씬 다양한 동사들이 각 수동태 유형의 특징을 드러내며 사용된다.</span></p>
+
+    <h3>A. 사건 수동태 (Eventive Passives / Verbal Passives)</h3>
+    <h4>정의 및 핵심 특징</h4>
+    <p>사건 수동태는 가장 전형적인 수동태 형태로, 동적인 사건(dynamic event)이나 행위(action)를 기술한다. 여기서 과거분사는 동사적 성격을 강하게 유지하며, 문장의 주어가 어떤 행위의 영향을 받거나 그 대상이 됨을 나타낸다.</p>
+    <ul>
+        <li><strong>동적 사건/행위 기술:</strong> 특정 시점에 발생하거나 진행되는 행위나 변화를 묘사한다. (예: "The window was broken by the boy")</li>
+        <li><strong>동사적 성격 유지:</strong> 과거분사가 동사로서의 기능을 수행하며, 행위자(agent)를 함의하거나 명시적으로 표현할 수 있다 (예: by-phrase). 진행형이나 완료형과 결합 가능하며, 동사 수식 부사와도 어울린다. (예: "The report was being written carefully")</li>
+        <li><strong>행위자 함의:</strong> 명시적 by-구가 없어도, 일반적으로 행위자 존재를 강하게 함의한다. (예: "The car was stolen"). Baker, Johnson, & Roberts (1989) 등은 암시적 행위자의 존재를 주장한다.</li>
+        <li><strong>구문론적 파생:</strong> 전통적 생성문법(예: Wasow 1977)에서는 통사적 변형으로, Embick (2004)은 기능핵의 결합으로 설명한다.</li>
+    </ul>
+    <p>사건 수동태는 앞서 I.A에서 언급된 수동태의 일반적 기능(행위자 비초점화, 피행위자 주제화)을 가장 직접적으로 수행한다. <span class="highlight">get-passive 역시 주로 이러한 사건 수동태의 의미를 전달하며, 특히 비격식적인 상황에서 자주 사용된다 (예: "The window got broken.").</span></p>
+
+    <h4>풍부한 예시 및 분석</h4>
+    <p>일상 대화, 뉴스 기사, 문학 작품, 학술적 맥락에서의 예시들은 사건 수동태가 동적인 사건이나 행위를 기술하는 핵심적 기능을 보여준다. (기존 예시 및 분석 내용은 생략 없이 유지)</p>
+    <!-- 기존 예시 및 분석 내용 -->
+    <p><strong>일상 대화:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"My bike was stolen last night!"</p>
+                <p>분석: 이 문장은 어젯밤 자전거가 도난당한 '사건'을 명확히 기술한다. 'stolen'은 도둑맞는 행위를 나타내며, 암묵적으로 누군가(도둑)에 의해 그 행위가 일어났음을 함의한다. 진행형으로 "My bike was being stolen when I looked out the window"와 같이 표현 가능하다면 사건성을 더욱 분명히 할 수 있다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The cookies were eaten quickly."</p>
+                <p>분석: 쿠키가 빠르게 먹힌 '행위'를 나타낸다. 'eaten'은 먹는 동작을 의미하며, 'quickly'라는 양태 부사는 이 행위가 어떻게 수행되었는지를 설명한다. 누군가가 쿠키를 먹었다는 행위자가 암시된다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>뉴스 기사:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The suspect was arrested by the police."</p>
+                <p>분석: 용의자가 경찰에 의해 체포된 '사건'을 보도한다. 'arrested'는 체포라는 구체적인 행위를 나타내며, 'by the police'라는 행위자구가 명시되어 사건의 주체를 밝히고 있다. 이는 뉴스 기사에서 사건의 핵심 정보를 전달하는 전형적인 방식이다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The bill was passed by the Senate."</p>
+                <p>분석: 법안이 상원을 통과한 입법 '행위'를 기술한다. 'passed'는 통과라는 동적인 과정을 의미하며, 'by the Senate'는 이 행위의 주체를 명시한다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>문학 작품:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The letter was written with a trembling hand."</p>
+                <p>분석: 편지가 떨리는 손으로 쓰인 '행위'를 묘사한다. 'written'은 쓰는 동작을 나타내고, 'with a trembling hand'는 그 행위의 방식을 구체적으로 보여준다. 이는 특정 순간의 행동을 생생하게 전달하는 데 기여한다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>학술적 맥락:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The experiment was conducted in a controlled environment."</p>
+                <p>분석: 통제된 환경에서 실험이 수행된 '행위'를 객관적으로 기술한다. 'conducted'는 실험을 진행하는 과정을 의미하며, 학술 논문에서 연구 방법을 설명할 때 흔히 사용된다. 행위자(연구자)는 명시되지 않았지만 맥락상 분명하며, 초점은 실험 행위 자체에 있다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The data were analyzed using a specific method."</p>
+                <p>분석: 특정 방법을 사용하여 데이터가 분석된 '과정'을 설명한다. 'analyzed'는 분석이라는 지적 활동을 나타내며, 연구의 방법론을 명확히 전달한다.</p>
+            </div>
+        </li>
+    </ul>
+    <p>이러한 사건 수동태의 특징들은 수동태가 단순히 능동태의 문법적 변형이 아니라, 사건을 바라보는 관점을 바꾸고 정보의 초점을 재구성하는 능동적인 담화 전략임을 보여준다. 사건의 동적인 측면과 행위자의 역할을 배경화하거나 특정 맥락에서 필요한 만큼만 드러내는 유연성을 제공함으로써, 다양한 의사소통 상황에서 효과적으로 사용될 수 있다.</p>
+
+
+    <h3>B. 상태 수동태 (Stative Passives) / 결과 상태 수동태 (Resultative Passives)</h3>
+    <h4>정의 및 핵심 특징</h4>
+    <p>상태 수동태는 사건 수동태와 달리, 어떤 사건의 결과로 초래된 주어의 현재 상태(state)나 조건(condition)을 기술하는 데 중점을 둔다. 여기서 과거분사는 동사적 성격보다는 형용사적 성격을 더 많이 띠며, 주어의 속성이나 상태를 설명하는 기능을 한다.</p>
+    <ul>
+        <li><strong>결과 상태 기술:</strong> 이전 행위/사건 완료 후 결과로 나타난 주어의 상태 묘사. (예: "The door is closed"는 닫힌 상태)</li>
+        <li><strong>과거분사의 상태 기술 기능:</strong> 주어 상태를 나타내는 서술 형용사와 유사. (예: "The woman is married")</li>
+        <li><strong>'결과 상태(consequent state)' 개념 (Kratzer 2000 등):</strong> 선행 사건의 직접적 결과인 '결과 상태' 또는 '목표 상태'로 이해. Embick (2004)은 "결과 수동태(resultative passive)"로 명명.</li>
+        <li><strong>형태:</strong> 주로 'be + pp'. Embick (2004)은 "결과 수동태"와 "순수 상태 수동태"로 세분화.</li>
+    </ul>
+
+    <h4>사건 수동태와의 구분점 및 결과 상태 개념 설명</h4>
+    <p>상태 수동태와 사건 수동태의 주요 구분점은 초점(상태 vs. 행위), 시간적 해석(지속 상태 vs. 발생 사건), 행위자 함의(약화 vs. 강함), 수식어 결합(상태 지속 부사 vs. 행위 양태 부사) 등이다. (세부 내용은 II.D 비교표 참조)</p>
+    <p>'결과 상태' 개념은 상태 수동태 이해의 핵심으로, 동사 사건 완료 시 도달하는 최종 상태를 의미한다. (예: 'break' 행위의 결과 '깨진 상태'). 이는 과거 사건과 현재 상태를 연결한다.</p>
+
+    <h4>풍부한 예시 및 분석</h4>
+    <p>일상 대화, 기술 매뉴얼, 문학 작품, 학술적 맥락에서의 예시들은 상태 수동태가 사건의 결과로 나타난 정적인 상황이나 조건을 강조함을 보여준다. (기존 예시 및 분석 내용은 생략 없이 유지)</p>
+    <!-- 기존 예시 및 분석 내용 -->
+    <p><strong>일상 대화:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The door is closed."</p>
+                <p>분석: 이 문장은 문이 닫히는 행위보다는 현재 문이 닫혀 있는 '상태'를 기술한다. 'closed'는 문의 현재 속성을 나타내는 형용사처럼 기능한다. 사건 수동태 "The door was closed by John at 5 PM" (존이 오후 5시에 문을 닫았다)과는 달리, 이 문장은 "The door is closed, so we can't enter" (문이 닫혀 있어서 들어갈 수 없다)와 같이 현재 상태에 대한 진술로 해석된다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"I am worried about the exam."</p>
+                <p>분석: 시험에 대해 걱정하는 화자의 현재 '감정 상태'를 나타낸다. 'worried'는 화자의 심리적 조건을 설명하는 형용사적 기능을 한다. 이는 걱정하는 행위 자체보다는 걱정하고 있는 상태에 초점을 맞춘다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>기술 매뉴얼/설명:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The machine is designed for heavy-duty use."</p>
+                <p>분석: 기계가 특정 용도(고강도 사용)를 위해 설계된 '결과적 상태' 또는 '본질적 특성'을 설명한다. 'designed'는 설계라는 과거 행위의 결과로 기계가 지니게 된 특성을 나타낸다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The wires are connected to the main circuit."</p>
+                <p>분석: 전선들이 주 회로에 연결되어 있는 현재의 '연결 상태'를 기술한다. 이는 연결 작업이라는 선행 사건의 결과이다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>문학 작품 (묘사):</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The castle was surrounded by a deep moat."</p>
+                <p>분석: 성이 깊은 해자로 둘러싸여 있는 지속적인 '상태'를 묘사한다. 'surrounded'는 성 주변 환경의 정적인 특징을 나타낸다. 만약 "The castle was being surrounded by the enemy"라면 사건 수동태로 해석될 것이다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>학술적 맥락 (정의/분류):</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"These proteins are classified into three groups."</p>
+                <p>분석: 이 단백질들이 세 그룹으로 분류되어 있는 현재의 '분류학적 상태'를 나타낸다. 이는 분류라는 과거의 지적 행위의 결과로 확립된 상태이다.</p>
+            </div>
+        </li>
+    </ul>
+    <p>상태 수동태는 과거의 사건과 현재의 상태를 연결하며, 사건의 동적인 측면보다는 그 결과로 나타난 정적인 상황이나 조건을 강조한다. 이는 사건 수동태가 사건의 발생과 진행에 초점을 맞추는 것과 대조적이다. 이러한 구분은 특히 과거분사가 동사적 힘을 얼마나 유지하고 있는지, 그리고 문장이 전달하려는 주된 정보가 무엇인지에 따라 달라진다. 상태 수동태의 과거분사는 종종 형용사와 유사한 기능을 수행하며, 이는 형용사적 수동태와의 연결고리를 형성한다.</p>
+
+    <h3>C. 형용사적 수동태 (Adjectival Passives)</h3>
+    <h4>정의 및 핵심 특징</h4>
+    <p>형용사적 수동태는 과거분사가 동사로서의 성격을 거의 또는 완전히 잃고 일반 형용사처럼 기능하는 경우를 말한다. 이는 주어의 항구적이거나 내재적인 속성, 특징을 기술하는 데 주로 사용된다.</p>
+    <ul>
+        <li><strong>과거분사의 완전한 형용사화:</strong> 명사 직접 수식(한정적) 또는 보어(서술적)로 기능. 동사적 의미보다 형용사적 의미 두드러짐. (Wasow 1977)</li>
+        <li><strong>주어의 항구적/내재적 속성 기술:</strong> 일시적 상태(상태 수동태)와 달리, 지속적/본질적 특성 나타냄. (예: "a respected teacher")</li>
+        <li><strong>어휘화(Lexicalization) 경향:</strong> 독립된 형용사로 등재, 관용적 의미 가능. (예: "a hung jury")</li>
+        <li><strong>형용사적 수식어 결합 및 구문적 특징:</strong> 'very' 수식, 'un-' 접두사 결합, 전치 명사 수식, 연결동사 보어 등.</li>
+    </ul>
+    <p>형용사적 수동태는 과거분사의 범주 전환 증거를 제공하며, 이 과정은 점진적일 수 있다.</p>
+
+    <h4>상태 수동태와의 관계 및 구분. Wasow (1977) 등의 구분 기준 간략 소개.</h4>
+    <p>상태 수동태와 형용사적 수동태는 주어의 상태/속성을 기술한다는 공통점으로 인해 경계가 모호할 수 있다. 이들의 구분은 III.A에서 더 자세히 논의된다.</p>
+    <ul>
+        <li><strong>Wasow (1977)의 구분:</strong> 형용사적 수동태(어휘부 파생)와 동사적 수동태(통사부 파생) 구분. 형용사적 특징 제시.</li>
+        <li><strong>Embick (2004) 등의 세분화:</strong> 상태 수동태를 "결과 수동태"와 "순수 상태 수동태"로 구분. 좁은 의미의 형용사적 수동태는 순수 상태 수동태나 어휘화된 형용사적 과거분사에 가까움.</li>
+        <li><strong>경계의 모호성:</strong> 과거분사의 동사성 상실 및 형용사성 획득 정도에 따른 연속선상에 위치. (예: "The window is broken"). 문맥과 화자 의도 중요.</li>
+    </ul>
+    <p>형용사적 수동태는 과거분사가 독립적 형용사로 기능하는 단계, 상태 수동태는 그 중간 단계로 이해할 수 있다. 실제 사용에서는 명확한 선을 긋기 어려울 때가 많다.</p>
+
+    <h4>풍부한 예시 및 분석</h4>
+    <p>일상 대화, 제품 설명, 문학 작품, 학술적 맥락에서의 예시들은 과거분사가 명사의 속성을 기술하거나 주어의 상태를 설명하는 형용사로 기능함을 보여준다. (기존 예시 및 분석 내용은 생략 없이 유지)</p>
+    <!-- 기존 예시 및 분석 내용 -->
+    <p><strong>일상 대화:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"She is a very respected teacher."</p>
+                <p>분석: 'respected'는 'teacher'를 수식하는 형용사로 사용되어, 그 교사가 매우 존경받는다는 지속적인 평판이나 자질을 나타낸다. 'very'의 수식을 받고 있으며, 이는 전형적인 형용사의 특징이다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"He looked surprised."</p>
+                <p>분석: 'surprised'는 연결동사 'looked'의 보어로 사용되어 주어 'He'의 감정 상태를 기술하는 형용사적 기능을 한다. 'very surprised'와 같이 정도 부사의 수식도 가능하다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The road is unpaved."</p>
+                <p>분석: 'unpaved'는 'un-' 접두사가 결합된 형용사로, 도로의 포장되지 않은 상태라는 속성을 나타낸다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>제품 설명/광고:</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"Our coffee is freshly ground."</p>
+                <p>분석: 'ground'는 커피가 갓 갈린 상태임을 나타내는 형용사로, 제품의 신선함이라는 속성을 강조한다. 'freshly'는 부사이지만, 'ground'는 커피의 특성을 설명한다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"This fabric is specially treated."</p>
+                <p>분석: 'treated'는 직물이 특별히 처리된 상태임을 나타내며, 이는 직물의 특정 기능이나 품질이라는 속성을 의미한다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>문학 작품 (인물/배경 묘사):</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"He was a broken man."</p>
+                <p>분석: 'broken'은 'man'을 수식하는 형용사로, 그가 정신적으로나 육체적으로 망가진 상태, 즉 그의 본질적인 특성을 비유적으로 묘사한다. 이는 어휘화된 형용사적 용법으로 볼 수 있다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p>"The house seemed abandoned."</p>
+                <p>분석: 'abandoned'는 연결동사 'seemed'의 보어로 사용되어 집이 버려진 것처럼 보인다는 인상, 즉 집의 현재 상태나 속성을 나타낸다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>학술적 맥락 (용어 정의):</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p>"The term 'decentralized' is often misunderstood."</p>
+                <p>분석: 'misunderstood'는 'decentralized'라는 용어가 자주 오해받는다는 속성이나 경향을 나타낸다. 여기서 'misunderstood'는 용어의 상태를 기술하는 형용사처럼 기능한다.</p>
+            </div>
+        </li>
+    </ul>
+    <p>이 예시들은 과거분사가 동사적 사건을 나타내기보다는 명사의 속성을 기술하거나 주어의 상태를 설명하는 형용사로서 기능함을 보여준다. 'very' 수식, 'un-' 접두사 결합, 전치 명사 수식, 연결동사의 보어 역할 등은 이러한 형용사적 특징을 뒷받침한다. 형용사적 수동태는 언어의 어휘적 자원을 풍부하게 하며, 미묘한 의미 차이를 표현하는 데 기여한다. 이는 동사적 과거분사가 점차 형용사로 굳어지는 어휘화 과정의 결과물로, 언어 변화의 한 단면을 보여주기도 한다.</p>
+
+    <h3>D. 비교 분석 및 표 작성</h3>
+    <h4>세 가지 수동태 유형 비교 분석</h4>
+    <p>사건 수동태, 상태 수동태, 형용사적 수동태는 과거분사의 기능과 의미 초점에 따라 구분된다. 각 유형의 상세한 특징(의미 초점, 분사 성격, 대표적 수식어, 행위자 함의 정도, 테스트 방법 등)은 아래 비교표에 잘 요약되어 있다. 이 표는 각 유형을 구분하는 데 유용한 지침을 제공하지만, 실제 언어 사용에서는 경계가 명확하지 않을 수 있음을 유념해야 한다 (III.A 참조).</p>
+    <!-- 기존 상세 설명은 표로 유도하며 간결화 -->
+
+    <h4>이해를 돕는 비교표</h4>
+    <p>다음 표는 사건 수동태, 상태 수동태, 형용사적 수동태의 주요 특징을 비교하여 한눈에 파악할 수 있도록 정리한 것이다.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>특징</th>
+                <th>사건 수동태 (Eventive Passive)</th>
+                <th>상태 수동태 (Stative Passive / Resultative Passive)</th>
+                <th>형용사적 수동태 (Adjectival Passive)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>주요 의미</strong></td>
+                <td>동적 행위, 사건, 과정</td>
+                <td>선행 사건의 결과로 초래된 주어의 상태/조건</td>
+                <td>주어의 항구적/내재적 속성, 특징</td>
+            </tr>
+            <tr>
+                <td><strong>분사의 성격</strong></td>
+                <td>주로 동사적</td>
+                <td>형용사적 (상태 기술), 사건 함의 가능</td>
+                <td>완전한 형용사</td>
+            </tr>
+            <tr>
+                <td><strong>행위자 함의</strong></td>
+                <td>강함, by-구로 명시 가능</td>
+                <td>약화됨, 선행 사건의 행위자 간접 암시, 또는 없음</td>
+                <td>거의 없거나 무관</td>
+            </tr>
+            <tr>
+                <td><strong>by-구 (행위자)</strong></td>
+                <td>일반적 (행위자)</td>
+                <td>가능 (상태의 원인/유지자), 사건 수동태와 다를 수 있음</td>
+                <td>드묾, 또는 비행위자적 (예: surprised by the news)</td>
+            </tr>
+            <tr>
+                <td><strong>진행형 (be being pp)</strong></td>
+                <td>가능 (예: The road is being repaired.)</td>
+                <td>일반적으로 불가능</td>
+                <td>불가능</td>
+            </tr>
+            <tr>
+                <td><strong>행위 양태 부사 수식</strong></td>
+                <td>가능 (예: The work was done carefully.)</td>
+                <td>제한적 (선행 사건 수식 가능성)</td>
+                <td>부적절 (형용사 수식 부사는 가능)</td>
+            </tr>
+            <tr>
+                <td><strong>very 수식</strong></td>
+                <td>불가능</td>
+                <td>때때로 가능 (형용사성 강할 시)</td>
+                <td>가능 (예: very respected)</td>
+            </tr>
+            <tr>
+                <td><strong>un- 접두사 결합</strong></td>
+                <td>불가능 (동사 부정 방식과 다름)</td>
+                <td>일부 가능 (특히 결과 수동태, 예: unopened)</td>
+                <td>가능 (예: unexpected, uninhabited)</td>
+            </tr>
+            <tr>
+                <td><strong>전치 명사 수식</strong></td>
+                <td>제한적 (예: the recently built house)</td>
+                <td>가능 (예: the closed door)</td>
+                <td>일반적 (예: a broken heart)</td>
+            </tr>
+            <tr>
+                <td><strong>seem 등 연결동사 보어</strong></td>
+                <td>불가능</td>
+                <td>가능 (예: seemed broken)</td>
+                <td>가능 (예: seemed interested)</td>
+            </tr>
+            <tr>
+                <td><strong>어휘화/의미 특이성</strong></td>
+                <td>없음 (구성적 의미)</td>
+                <td>덜 일반적</td>
+                <td>가능성 높음 (예: a hung jury)</td>
+            </tr>
+            <tr>
+                <td><strong>대표 예시</strong></td>
+                <td>The report was written by the committee.</td>
+                <td>The letter is written in French.</td>
+                <td>He is a well-known author.</td>
+            </tr>
+        </tbody>
+    </table>
+    <p>이 표는 각 수동태 유형의 핵심적인 차이점을 명확히 보여주며, 복잡한 수동태 개념을 이해하는 데 유용한 참고 자료가 될 것이다. 그러나 실제 언어 현상에서는 이러한 구분 기준이 항상 명확하게 적용되지 않을 수 있으며, 문맥에 따른 유연한 해석이 필요함을 유념해야 한다.</p>
+
+    <h2>III. 이론 적용의 실제: 경계와 문맥 의존성</h2>
+    <p>앞서 논의된 사건 수동태, 상태 수동태, 형용사적 수동태의 이론적 구분은 실제 언어 사용에서 항상 명확하게 드러나지는 않는다. 특정 과거분사 구문은 여러 유형으로 해석될 여지를 남기기도 하며, 이때 문맥은 해석의 방향을 결정하는 중요한 역할을 한다.</p>
+
+    <h3>A. 세 유형 간 경계의 모호성이 나타나는 경우와 그 이유</h3>
+    <p>세 수동태 유형 간, 특히 <span class="highlight">상태 수동태와 형용사적 수동태 사이</span>, 그리고 때로는 <span class="highlight">사건 수동태와 상태 수동태 사이</span>의 경계는 모호할 수 있다. 이는 과거분사의 형태 동일성, be 동사의 다의성, 그리고 의미적 연속성(semantic cline) 때문이다.</p>
+    <p><strong>"The window was broken"의 이중적 해석 가능성:</strong> 이 문장은 대표적인 모호성의 예시다.</p>
+    <ul>
+        <li><strong>사건 수동태:</strong> "창문이 깨졌다"는 사건. (예: "The window was broken by a falling branch...")</li>
+        <li><strong>상태 수동태/형용사적 수동태:</strong> "창문이 깨져 있었다"는 상태/속성. (예: "When I arrived, the window was broken...")</li>
+    </ul>
+
+    <p><strong>모호성의 이유:</strong></p>
+    <ul>
+        <li><strong>과거분사의 형태 동일성:</strong> 대부분의 동사에서 과거분사는 수동태와 형용사적 용법에 동일 형태 사용.</li>
+        <li><strong>be 동사의 다의성:</strong> 수동태 조동사 및 연결동사로 사용되어 be + pp 구문의 구조적 동일성 야기.</li>
+        <li><strong>의미적 연속성(Semantic Cline):</strong> 사건 결과 상태(상태 수동태)와 지속적 속성(형용사적 수동태) 사이의 점진적 변화. 과거분사가 동사적 특성을 잃고 형용사적 특성을 획득하는 과정은 점진적이어서 여러 해석 허용.</li>
+    </ul>
+    <p>이러한 모호성은 언어의 유연성을 반영하며, 진단 도구(진행상, very 수식, un- 접두사 등)를 통해 특정 해석의 적절성을 판단하려 하지만, 결국 문맥과 화용론적 고려가 중요하다.</p>
+
+    <h3>B. 문맥이 수동태 해석에 미치는 중요성</h3>
+    <p>문맥은 수동태의 다양한 해석 가능성 사이에서 특정 의미를 선택하도록 안내하는 결정적인 역할을 한다. 문맥은 언어적 문맥(주변 단어, 구, 절)과 상황적 문맥(화자와 청자 간의 공유된 지식, 대화의 목적, 물리적 환경 등)을 모두 포함한다.</p>
+
+    <p><strong>언어적 문맥의 영향:</strong></p>
+    <ul>
+        <li><strong>시간/장소 부사구:</strong> "The decision was made yesterday" (사건) vs. "The door is closed now" (상태).</li>
+        <li><strong>행위자구(by-phrase):</strong> "The bill was passed by the Senate" (사건).</li>
+        <li><strong>양태 부사:</strong> "The car was carefully repaired" (사건).</li>
+        <li><strong>연결동사:</strong> "The child seemed frightened" (형용사적).</li>
+    </ul>
+
+    <p><strong>상황적 문맥 및 화용론적 영향:</strong></p>
+    <ul>
+        <li><strong>과학 기술 문서:</strong> "The samples were heated to 100°C". <span class="highlight">실험 절차의 객관적 기술이라는 목적</span> 하에 가열 '행위'(사건 수동태)로 이해.</li>
+        <li><strong>뉴스 보도:</strong> "The bank was robbed last night." <span class="highlight">사건 발생 전달이라는 주된 의도</span>로 인해 사건 수동태로 해석.</li>
+        <li><strong>일상 대화:</strong> 친구가 "I'm exhausted!"라고 말한다면, <span class="highlight">화자는 현재의 극심한 피로 '상태'를 전달하려는 의도</span>를 가지며, 청자 또한 이를 쉽게 파악하여 상태/형용사적 수동태로 이해.</li>
+        <li><strong>문학 작품:</strong> "The old house stood on a hill, its windows boarded..." 'boarded'는 창문이 막힌 '상태'를 묘사하여 <span class="highlight">황량한 분위기를 조성하려는 작가의 의도</span>가 반영된 형용사적/상태 수동태.</li>
+    </ul>
+    <p>이처럼 언어 사용자는 문맥 정보를 활용하여 잠재적으로 모호한 수동태 구문의 의미를 효과적으로 파악한다. 이는 언어가 고정된 규칙의 집합이 아니라, 유연하고 역동적인 의사소통 시스템임을 보여준다. <span class="highlight">현대 구어체나 온라인 소통(예: 소셜 미디어 게시물)에서도 이러한 문맥 의존성은 동일하게 중요하게 작용한다.</span></p>
+
+    <h3>C. 동일한 과거분사가 문맥에 따라 다른 유형의 수동태로 기능할 수 있음을 보여주는 예시</h3>
+    <p>하나의 과거분사가 문맥에 따라 사건, 상태, 또는 형용사적 수동태로 다양하게 기능할 수 있다는 점은 수동태 이해의 복잡성과 유연성을 잘 보여준다. (기존 예시 painted, closed, interested 및 분석 내용은 생략 없이 유지)</p>
+    <!-- 기존 예시 및 분석 내용 -->
+    <p><strong>예시 과거분사: painted</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p><strong>사건 수동태:</strong> "The fence was painted by Tom last Saturday."</p>
+                <p>분석: 이 문장은 톰이 지난 토요일에 울타리를 칠한 '행위'에 초점을 맞춘다. 'last Saturday'라는 시간 부사구와 'by Tom'이라는 행위자구는 이것이 특정 시점에 발생한 사건임을 명확히 한다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>상태 수동태:</strong> "The fence is painted green, but I prefer blue."</p>
+                <p>분석: 이 문장은 울타리가 현재 녹색으로 칠해져 있는 '상태'를 기술한다. 과거의 칠하는 행위의 결과로 나타난 현재의 색상 상태에 관심이 있다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>형용사적 수동태:</strong> "She bought a beautifully painted doll."</p>
+                <p>분석: 'painted'는 명사 'doll'을 앞에서 수식하는 형용사로 사용되어 '아름답게 칠해진'이라는 인형의 속성을 나타낸다. 'beautifully'는 형용사 'painted'를 수식하는 부사이다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>예시 과거분사: closed</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p><strong>사건 수동태:</strong> "The shop was closed by the owner at 9 PM due to the emergency."</p>
+                <p>분석: 주인이 비상 상황으로 인해 오후 9시에 가게 문을 닫은 '행위'를 나타낸다. 특정 시간과 이유, 행위자가 언급되어 사건성이 부각된다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>상태 수동태:</strong> "The shop is closed on Sundays."</p>
+                <p>분석: 가게가 일요일에는 문을 닫는 '상태' 또는 '규칙'을 설명한다. 이는 일요일마다 반복되는 결과적 상태이다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>형용사적 수동태:</strong> "He is a very closed person." (비유적 의미)</p>
+                <p>분석: 'closed'는 사람의 성격이 매우 폐쇄적이라는 '속성'을 나타내는 형용사로 사용되었다. 이는 '닫다'라는 동사의 물리적 의미에서 확장된, 어휘화된 용법이다.</p>
+            </div>
+        </li>
+    </ul>
+
+    <p><strong>예시 과거분사: interested</strong></p>
+    <ul>
+        <li>
+            <div class="example-analysis">
+                <p><strong>사건 수동태:</strong> (드물지만 가능) "The students were interested in the topic by the professor's engaging lecture." (교수의 매력적인 강의로 인해 학생들이 그 주제에 관심을 갖게 '되었다'는 변화/사건)</p>
+                <p>분석: 이 경우 'interested'는 '흥미를 유발하다'라는 타동사의 수동형으로, 학생들이 흥미를 느끼게 되는 과정을 나타낸다. by-구가 사건의 원인을 제공한다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>상태 수동태:</strong> "She is interested in photography."</p>
+                <p>분석: 그녀가 사진에 관심을 가지고 있는 현재의 '상태'를 나타낸다.</p>
+            </div>
+        </li>
+        <li>
+            <div class="example-analysis">
+                <p><strong>형용사적 수동태:</strong> "He gave an interested look."</p>
+                <p>분석: 'interested'는 명사 'look'을 수식하여 '관심 있는' 표정이라는 속성을 나타내는 형용사로 기능한다.</p>
+            </div>
+        </li>
+    </ul>
+    <p>이러한 예시들은 과거분사 자체에 고정된 수동태 유형이 부여되는 것이 아니라, 문맥 속에서 다른 구성 요소들과의 상호작용을 통해 그 기능과 의미가 결정됨을 보여준다. 따라서 영어 수동태를 정확히 이해하고 사용하기 위해서는 개별 과거분사의 의미뿐만 아니라 그것이 사용되는 전체적인 문맥을 주의 깊게 살펴보는 것이 필수적이다.</p>
+
+    <h2>IV. 결론</h2>
+    <h3>A. 본 연구의 주요 내용 요약 및 영어 수동태의 다양성과 복잡성에 대한 이해 강조</h3>
+    <p>본 보고서는 영어 수동태의 일반론(정의, 기능, be/get-passive)을 시작으로, 핵심 이론인 사건 수동태, 상태 수동태, 형용사적 수동태를 심층 분석하였다. 각 유형의 정의, 특징, 이론적 배경, 실제 사용 양상을 예시와 함께 제시하고 비교 분석하였다. 이를 통해 다음 사항들을 강조하였다:</p>
+    <ul>
+        <li><strong>사건 수동태:</strong> 동적 사건/행위 기술, 동사적 성격 강함.</li>
+        <li><strong>상태 수동태:</strong> 선행 사건의 결과 상태 기술, 형용사적 성격 시작, '결과 상태' 개념 중요.</li>
+        <li><strong>형용사적 수동태:</strong> 완전한 형용사화, 주어의 항구적/내재적 속성 기술.</li>
+    </ul>
+    <p>또한, 이론적 구분의 실제 적용 시 나타나는 경계의 모호성과 문맥 의존성의 중요성을 논의하며, 영어 수동태가 단일 현상이 아닌 복잡하고 유연한 문법 범주임을 확인하였다. 이는 과거분사가 동사에서 형용사로 점진적으로 변화하는 연속선상에서 각 수동태 유형이 특정 지점을 점유하며, 영어의 표현력을 풍부하게 함을 시사한다.</p>
+
+    <h3>B. 수동태를 정확히 이해하고 사용하는 것의 중요성 언급</h3>
+    <p>영어 수동태의 다양성과 복잡성에 대한 깊이 있는 이해는 여러 측면에서 중요하다.</p>
+    <p>첫째, 정확한 언어 분석 및 이론 구축을 위해 필수적이다. 수동태의 다양한 유형과 모호성을 인식하는 것은 정교한 문법 이론 발전에 기여하며, 언어 본질 이해의 단서를 제공한다.</p>
+    <p>둘째, 효과적인 의사소통 능력 향상에 기여한다. 영어 학습자나 사용자는 각 수동태 유형의 미묘한 의미 차이와 화용론적 기능을 이해함으로써 의도를 더 정확하고 효과적으로 전달할 수 있다. <span class="highlight">특히 모국어에 수동태 표현 방식이 다른 비영어권 학습자들에게는 이러한 구분이 더욱 중요하게 다가올 수 있으며, 혼동을 줄이는 데 기여할 수 있다.</span> 상황과 목적에 맞는 적절한 수동태 선택 능력이 향상되며, 타인의 의도나 강조점을 정확히 파악하여 원활한 소통을 이끌 수 있다.</p>
+    <p>셋째, 고급 수준의 언어 구사 능력의 지표가 된다. 수동태의 다양한 형태와 기능을 유연하게 활용하고 문맥에 따라 적절히 해석하는 능력은 문법적 정확성뿐 아니라 의미론적, 화용론적 이해가 수반된 고급 영어 구사 능력을 반영한다.</p>
+    <p>결론적으로, 영어 수동태의 다층적 이해는 언어학적 탐구의 중요한 주제일 뿐만 아니라, 실제 언어 생활에서 정확하고 풍부한 표현을 구사하고 이해하는 데 핵심적인 역할을 한다. 본 연구에서 제시된 이론적 구분과 실제 사용 양상에 대한 분석이 영어 수동태에 대한 보다 깊이 있는 통찰을 제공하고, 나아가 효과적인 영어 사용 능력을 함양하는 데 기여할 수 있기를 기대한다.</p>
+    <p class="note">본 보고서에서 인용된 Wasow (1977), Embick (2004), Kratzer (2000) 등의 연구는 영어 수동태 논의의 주요 학술적 배경을 이룹니다. (정식 참고문헌 목록은 학술적 형식에 따라 별도로 제시될 수 있습니다.)</p>
+
+</body>
+</html>
