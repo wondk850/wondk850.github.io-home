@@ -1,0 +1,344 @@
+/* 기본 레이아웃 및 타이포그래피 */
+body {
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0; /* body의 padding-top 제거 */
+    background-color: #f8f9fa;
+    color: #343a40;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container { /* 헤더 및 메인 콘텐츠의 너비 제한 및 중앙 정렬용 */
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+main {
+    flex: 1;
+    padding-top: 20px; /* header와의 간격 */
+    padding-bottom: 20px;
+    /* max-width, margin, width, box-sizing은 .container로 이동 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #212529;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h1 {
+    font-size: 2.5em;
+    text-align: center; /* 제목 중앙 정렬 */
+    margin-bottom: 0.8em;
+}
+
+h2 {
+    font-size: 2em;
+    border-bottom: 2px solid #e2e8f0; /* 제목 아래 구분선 */
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.5em;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+a {
+    color: #005A9C; /* 링크 기본 색상 변경 */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #003D6B; /* 링크 호버 색상 변경 */
+}
+
+/* 헤더 및 네비게이션 */
+header {
+    background-color: #005A9C; /* 배경색 변경 */
+    color: #ffffff;
+    padding: 1em 0;
+    /* text-align: center; 삭제 */
+}
+
+/* header .container 내부에 네비게이션을 위치시키기 위한 조정 */
+header .container {
+    display: flex;
+    justify-content: center; /* 네비게이션 중앙 정렬 */
+    align-items: center;
+}
+
+header nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex; /* 가로 정렬을 위해 flex 사용 */
+    flex-wrap: wrap; /* 화면 작을 시 줄바꿈 허용 */
+    justify-content: center; /* 중앙 정렬 */
+}
+
+header nav ul li {
+    display: inline; /* display: flex로 대체 */
+    margin-right: 20px;
+}
+
+header nav ul li:last-child {
+    margin-right: 0;
+}
+
+header nav ul li a {
+    color: white; /* 색상 유지 */
+    font-weight: bold;
+    padding: 0.5em 0.75em; /* 클릭 영역 확보 */
+    border-radius: 4px; /* 부드러운 모서리 */
+    transition: background-color 0.3s ease;
+}
+
+header nav ul li a:hover,
+header nav ul li a.active { /* hover 및 active 상태 스타일 */
+    background-color: #F59E0B; /* 강조색 배경 */
+    color: #000000; /* 강조색 위 텍스트는 어둡게 */
+    text-decoration: none;
+}
+
+
+/* 푸터 */
+footer {
+    background-color: #1A202C; /* 배경색 변경 */
+    color: #A0AEC0; /* 텍스트 색상 변경 */
+    text-align: center;
+    padding: 1.5em 0; /* 패딩 조정 */
+    margin-top: auto; /* 푸터를 페이지 하단에 고정 */
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+/* 사이트 설명 */
+.site-description {
+    font-size: 1.2em;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: #4A5568;
+}
+
+/* 카테고리 카드 */
+.category-card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 2.5rem;
+}
+
+.category-card {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.07);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.category-card:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transform: translateY(-4px);
+}
+
+.category-card h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-size: 1.4em;
+    color: #005A9C; /* 카드 제목 색상 */
+}
+
+.category-card h3 a {
+    text-decoration: none;
+    color: inherit; /* 부모 요소의 색상 상속 */
+}
+
+.category-card h3 a:hover {
+    text-decoration: underline;
+    color: #003D6B; /* 카드 제목 호버 색상 */
+}
+
+.category-card p {
+    font-size: 0.98em;
+    color: #4A5568;
+    line-height: 1.6;
+}
+
+/* 섹션 구분선 */
+hr.section-divider {
+    border: 0;
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 3rem 0;
+}
+
+
+/* 표 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05); /* 그림자 완화 */
+}
+
+th, td {
+    border: 1px solid #dee2e6;
+    padding: 12px;
+    text-align: left;
+}
+
+thead th {
+    background-color: #e9ecef;
+    color: #495057;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* 코드 블록 스타일 */
+pre {
+    background-color: #212529;
+    color: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9em;
+    white-space: pre;
+    margin-bottom: 1.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); /* 그림자 완화 */
+}
+
+code {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: #e9ecef;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+pre code {
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+}
+
+
+/* 예시 박스 스타일 */
+.example-box {
+    background-color: #e0f7fa;
+    border: 1px solid #007bff; /* 기존 색상 유지 또는 테마 색상으로 변경 고려 */
+    border-left-width: 5px;
+    border-left-color: #005A9C; /* 테마 색상 적용 */
+    padding: 15px;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+}
+
+.example-box p {
+    margin: 0;
+    color: #004085; /* 기존 색상 유지 또는 테마 색상으로 변경 고려 */
+}
+
+/* 반응형 디자인 */
+@media (max-width: 992px) { /* .container 너비 변경 시점과 유사하게 조정 */
+    header .container {
+        /* flex-direction: column; /* 로고와 네비 분리 시 필요 */
+        /* align-items: flex-start; */
+    }
+    header nav ul {
+        /* flex-direction: column; /* 필요시 세로 정렬 */
+        /* align-items: center; */
+        /* width: 100%; */
+    }
+    header nav ul li {
+        margin-right: 10px; /* 간격 줄이기 */
+        margin-bottom: 5px; /* 줄바꿈 대비 */
+    }
+    header nav ul li a {
+        padding: 0.4em 0.6em;
+    }
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2em;
+    }
+
+    h2 {
+        font-size: 1.75em;
+    }
+
+    /* header nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    header nav ul li:last-child {
+        margin-bottom: 0;
+    } */ /* flex-wrap으로 대체 */
+
+    main .container, main { /* main 태그 직접 사용 시 main에 적용 */
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    .category-card-container {
+        grid-template-columns: 1fr; /* 작은 화면에서는 한 줄에 하나씩 */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    main .container, main {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+    header nav ul li {
+        margin-right: 5px;
+    }
+    header nav ul li a {
+        font-size: 0.9em;
+        padding: 0.3em 0.5em;
+    }
+}
